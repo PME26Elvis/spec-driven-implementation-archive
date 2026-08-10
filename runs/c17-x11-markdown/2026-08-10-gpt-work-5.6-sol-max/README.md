@@ -2,7 +2,7 @@ Chat Link: https://chatgpt.com/share/6a7968cd-6dd8-83ee-ba58-768821ea7178
 
 
 ## 用時
-GPT 前端顯示 312m 17s
+GPT 前端顯示 312m 17s，(ChatGPT Plus) weekly usage 使用了 83 %
 
 ## Repomix 統計
 * 42 個手寫檔案
