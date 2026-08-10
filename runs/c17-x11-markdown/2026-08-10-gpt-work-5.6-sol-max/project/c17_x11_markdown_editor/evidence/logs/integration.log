@@ -1,0 +1,16 @@
+PASS test_safe_save_and_conflict
+PASS test_fault_injection
+PASS test_invalid_utf8_open
+PASS test_preferences
+PASS test_recent_items
+PASS test_workspace_and_symlink
+PASS test_workspace_session_corruption
+PASS test_history_roundtrip
+PASS test_history_corruption
+PASS test_history_retention_and_pins
+PASS test_recovery
+PASS test_assets_and_exports
+PASS test_save_as_relocation
+TEST_SUMMARY total=13 passed=13 failed=0 skipped=0
+TEST_ROOT /tmp/mdeditor-storage-Q9ZSpA
+UTILITY_TEST_SUMMARY total=14 passed=14 failed=0 skipped=0 temp=/tmp/mdeditor-tools-kqN6lw

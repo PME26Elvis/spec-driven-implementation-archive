@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "generator_version": "1.0.0",
+  "profile": "small",
+  "seed": 424242,
+  "files": [
+    {"path": "README.md", "role": "markdown", "size": 431, "sha256": "b210a05c103f0b9cb02c547f56464cc6e00ef716a4604db355a1da73476cf52c"},
+    {"path": "assets/blue.bmp", "role": "image-asset", "size": 70, "sha256": "47f589770ab6a8f6ea7a10d407fd9674bdf28da608b31c9905029061a8134b93"},
+    {"path": "assets/gradient.jpg", "role": "image-asset", "size": 665, "sha256": "802422009f546fcbd45729175b992084fd8e365e0231696d1946f70590fac660"},
+    {"path": "assets/gradient.png", "role": "image-asset", "size": 100, "sha256": "0ce3945ec2c4dcd92683c0dce6e49fd545ddafb6f0107956a750b8e6cd6fcdd2"},
+    {"path": "notes/checklist.md", "role": "markdown", "size": 29, "sha256": "2dd48c6c2fa15061c2fb306cce21106ab6aa807de1032c5183eb9ad48d6f4194"},
+    {"path": "notes/guide.md", "role": "markdown", "size": 36, "sha256": "a99b5c50777cf0c75df0093c4be7149a0ceaa76aedf3b21ec4e851f963f0eb54"}
+  ]
+}

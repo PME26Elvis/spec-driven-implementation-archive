@@ -1,0 +1,32 @@
+PASS test_sha256
+PASS test_base64_vectors
+PASS test_utf8_and_graphemes
+PASS test_json_parser
+PASS test_markdown_parser
+PASS test_markdown_corpus_matrix
+PASS test_plain_text_and_statistics
+PASS test_statistics_exact
+PASS test_document_edit_undo_redo
+PASS test_grapheme_deletion
+PASS test_unicode_editing_units
+PASS test_selection_drag_move
+PASS test_format_heading_task
+PASS test_rendered_source_transactions
+PASS test_table_operations
+PASS test_search_replace
+PASS test_search_after_edit_and_nonrecursive_replace
+PASS test_myers_diff
+PASS test_diff_matrix_and_determinism
+PASS test_token_diff
+PASS test_delta_roundtrip
+PASS test_lzss
+PASS test_outline_mapping_and_duplicate_identity
+PASS test_image_and_data_uri
+PASS test_line_column
+TEST_SUMMARY total=25 passed=25 failed=0 skipped=0
+PASS test_wildcards
+PASS test_path_normalization
+PASS test_json_configuration_shapes
+PASS test_prng_golden
+PASS test_digest_and_hex
+TEST_SUMMARY total=5 passed=5 failed=0 skipped=0

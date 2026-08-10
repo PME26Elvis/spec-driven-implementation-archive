@@ -1,0 +1,1 @@
+evidencegen PASS test_runs=6 tests=119 screenshots=29 fixtures=8 artifacts=15 build=32fd04b1e1dfac24c4d80a7946aa0c35d35af14d1b91dfd6e6bba5d2bc6c97e1 source=9fa0443a5398adc187aa710d5ae544a3a670519acc42d23443111d4c803830ea output=evidence/manifest.json

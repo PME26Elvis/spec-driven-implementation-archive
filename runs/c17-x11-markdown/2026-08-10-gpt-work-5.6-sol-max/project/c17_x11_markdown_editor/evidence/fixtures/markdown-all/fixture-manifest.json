@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "generator_version": "1.0.0",
+  "profile": "markdown-all",
+  "seed": 424242,
+  "files": [
+    {"path": "asset.bmp", "role": "image-asset", "size": 70, "sha256": "b2c7b1c368f216ff222bc0672508044c074cfa12f67152662ad00928bb52ea20"},
+    {"path": "markdown-all.md", "role": "markdown-corpus", "size": 674, "sha256": "37dab3228ab7e37480a5a7bdc924e880bec6c8848da3fe4de3a41213f5a2b508"}
+  ]
+}

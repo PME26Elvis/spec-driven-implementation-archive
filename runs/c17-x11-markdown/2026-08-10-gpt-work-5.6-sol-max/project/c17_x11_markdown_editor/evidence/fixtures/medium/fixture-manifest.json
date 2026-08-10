@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "generator_version": "1.0.0",
+  "profile": "medium",
+  "seed": 424242,
+  "files": [
+    {"path": "assets/generated-00.bmp", "role": "image-asset", "size": 70, "sha256": "37cee0abfeafaed9169164668ac3f3d2efc5ace4e57cc1bf9ad5e038bc7577c5"},
+    {"path": "assets/generated-01.bmp", "role": "image-asset", "size": 70, "sha256": "94ff7bf382a97c088a46d76cc26589103be6b68628245c75b72f69e54d4be59c"},
+    {"path": "assets/generated-02.bmp", "role": "image-asset", "size": 70, "sha256": "556cd2f9dbba1059b25e0318cd75a6ba43f07aae1592a933c59ea4bbaed0460f"},
+    {"path": "assets/generated-03.bmp", "role": "image-asset", "size": 70, "sha256": "940e353019c26db8f6fbae31a0fa0f964643883fe14f857c575a10ad86e6fc8f"},
+    {"path": "assets/generated-04.bmp", "role": "image-asset", "size": 70, "sha256": "7dd04e3e879c8e399fc6adb541b12c479978414767205f71d8f84c2dffded7f3"},
+    {"path": "assets/generated-05.bmp", "role": "image-asset", "size": 70, "sha256": "756fca68c5452a55f981add41f6f2020ea4d00c4069d0ca066d0e1343ddff8cb"},
+    {"path": "assets/generated-06.bmp", "role": "image-asset", "size": 70, "sha256": "fe414c283ecafacbbaf0798f9c67915a41099d6cee15677c38f8ae55eb4275e3"},
+    {"path": "assets/generated-07.bmp", "role": "image-asset", "size": 70, "sha256": "045943369a6d310a0d69ddef7de713ba48e5c710843936f8275ddc0fbf762d0e"},
+    {"path": "assets/generated-08.bmp", "role": "image-asset", "size": 70, "sha256": "e7c1f3468913b955ce9825176a944c3e688929ff78c06a7b8fc1fdf84619737c"},
+    {"path": "assets/generated-09.bmp", "role": "image-asset", "size": 70, "sha256": "ec36fb0bf8486064b1f3df1978bacb6f6f95b875fd079b0300598e592709eaea"},
+    {"path": "assets/generated-10.bmp", "role": "image-asset", "size": 70, "sha256": "4211c6d93edd942b12d3fde71b16fb5e9b611160b468d0f38ba20b9002593260"},
+    {"path": "assets/generated-11.bmp", "role": "image-asset", "size": 70, "sha256": "5cfeacd4545b88e6e6fabd3aa52b49ceafc3a71ec6424f5e751ae29546fde8ab"},
+    {"path": "assets/generated-12.bmp", "role": "image-asset", "size": 70, "sha256": "24ee924c7c43ab308ff6e3c0fdd2b508d1d930e0baa770d09acccc3bf9973f8b"},
+    {"path": "assets/generated-13.bmp", "role": "image-asset", "size": 70, "sha256": "ee13319f1105bcc5deb8fa31bfed1321505c1e27d6553dd36e96cf94f790463a"},
+    {"path": "assets/generated-14.bmp", "role": "image-asset", "size": 70, "sha256": "92d3b7ddd56c464a6dc905cd7d9a1a015ee5e9f62d3f7eda06a09f6f5f3fb3f9"},
+    {"path": "assets/generated-15.bmp", "role": "image-asset", "size": 70, "sha256": "0c89ee7ac9b01a920e2a7658c5e46af6f70bd2e0d2dcc9b73aabc786c7407200"},
+    {"path": "assets/generated-16.bmp", "role": "image-asset", "size": 70, "sha256": "3d662f7e2c9564a7f720e0011b109aac3a866a0301b13180482864f12e606d3e"},
+    {"path": "assets/generated-17.bmp", "role": "image-asset", "size": 70, "sha256": "ae556c47fbe220c30fe4b17d74dfcdd0573ca102004d2cae62ab31f635fb641e"},
+    {"path": "assets/generated-18.bmp", "role": "image-asset", "size": 70, "sha256": "866ea9e08ab4fa0df134f3f29712490b235b68ab4f6a25767cff89f0f5b5b7d7"},
+    {"path": "assets/generated-19.bmp", "role": "image-asset", "size": 70, "sha256": "e8c68d8aa2ca46e9a47f69175b89e9b50b0c6de46c9f72879c0e6a4260677900"},
+    {"path": "medium.md", "role": "medium-performance", "size": 2271482, "sha256": "3b198c871bbc6916f861b1a575ccd8796cbea91843be9d3b7a31d66ac3ebfae2"}
+  ]
+}

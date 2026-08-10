@@ -1,0 +1,12 @@
+{
+  "include_extensions": [".c", ".h", ".md", ".json", ".yaml", ".yml", ".sh"],
+  "source_extensions": [".c", ".h"],
+  "test_extensions": [".c"],
+  "documentation_extensions": [".md"],
+  "config_build_extensions": [".json", ".yaml", ".yml", ".sh"],
+  "exclude_dirs": ["build*", "bin", ".git", ".cache", "fixtures-generated"],
+  "exclude_paths": ["evidence/logs/*", "evidence/screenshots/*", "evidence/performance/*", "evidence/failures/*", "*.tmp", "*.o"],
+  "generated_paths": ["evidence/loc-report.json", "evidence/manifest.json", "evidence/release-report.md", "evidence/results/*", "evidence/fixtures/*"],
+  "include_overrides": ["Makefile"],
+  "follow_directory_symlinks": false
+}

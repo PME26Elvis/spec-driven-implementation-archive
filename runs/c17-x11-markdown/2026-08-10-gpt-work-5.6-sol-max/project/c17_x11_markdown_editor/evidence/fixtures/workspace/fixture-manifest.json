@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "generator_version": "1.0.0",
+  "profile": "workspace",
+  "seed": 424242,
+  "files": [
+    {"path": "assets/workspace.bmp", "role": "image-asset", "size": 70, "sha256": "b8ae5e06bd9fec14e7b830e7066aea9fae88a8bc9934e2c390877e1eb11b1e85"},
+    {"path": "documents/group-0/document-04.md", "role": "workspace-markdown", "size": 98, "sha256": "4174076efa006532c53badc5735485dd14a87292e2ab6840124698f0515a7997"},
+    {"path": "documents/group-0/document-08.md", "role": "workspace-markdown", "size": 98, "sha256": "8cd72149673dfa58f7ab566aa490427c1d7a842d714c24ca48532f053974c6b9"},
+    {"path": "documents/group-0/document-12.md", "role": "workspace-markdown", "size": 99, "sha256": "6c801fe9924bc8e1ed6859e56b6cf6b187809f836100927aeb610ab362288873"},
+    {"path": "documents/group-0/document-16.md", "role": "workspace-markdown", "size": 99, "sha256": "0e4daeb789abbad45ea7ca0d5fd2c01c0c84d90b1fd129d6572d5c27f2888740"},
+    {"path": "documents/group-1/document-05.md", "role": "workspace-markdown", "size": 94, "sha256": "39ae274f2ae4def22502aa22e473eff717b94e4e961122197233e60c7e665d26"},
+    {"path": "documents/group-1/document-09.md", "role": "workspace-markdown", "size": 94, "sha256": "a465a436a87c5e693032149c4145437776b5adc07cc6fd86c464dda50c3f32cb"},
+    {"path": "documents/group-1/document-13.md", "role": "workspace-markdown", "size": 95, "sha256": "1d24e5122ccf07d8d7ba507743322f10371f676aff5a11ff02f421110f02962a"},
+    {"path": "documents/group-1/document-17.md", "role": "workspace-markdown", "size": 95, "sha256": "f6bb47f45ef71af6fcfcfcccf0dda1b09dd1ef5a085429bc4b6459e2b2db3d22"},
+    {"path": "documents/group-2/document-06.md", "role": "workspace-markdown", "size": 98, "sha256": "c269aa9fff0ec8e8c587d03ba299e24ea4c97f58dec0d011ebed34fd932b736b"},
+    {"path": "documents/group-2/document-10.md", "role": "workspace-markdown", "size": 99, "sha256": "5b106e1417944b816493259a9937d8c4baeda0b82c7cff08dd7b376e5bd65d05"},
+    {"path": "documents/group-2/document-14.md", "role": "workspace-markdown", "size": 99, "sha256": "91aecb0b1d1c82a4be6d114762ec981e27520907addf7f9183a4033291ac621b"},
+    {"path": "documents/group-2/document-18.md", "role": "workspace-markdown", "size": 99, "sha256": "c1efe984698f4138427bb21b85cbb9675eaca91f226befed7d1d2fa207ceb403"},
+    {"path": "documents/group-3/document-07.md", "role": "workspace-markdown", "size": 94, "sha256": "b7ae853e9ab81b1626fc72fa6db797ace3beb0f2d98f5e54d0ec330cd5f799e3"},
+    {"path": "documents/group-3/document-11.md", "role": "workspace-markdown", "size": 95, "sha256": "72a11b5623fc723622c7d461490641fd458b2199a44aca9030c34c2a09c0350a"},
+    {"path": "documents/group-3/document-15.md", "role": "workspace-markdown", "size": 95, "sha256": "158dd4090c7b71f35a8aa5799597632e465b440e465c524129034e992cbb3bd0"},
+    {"path": "documents/group-3/document-19.md", "role": "workspace-markdown", "size": 95, "sha256": "fcceed019354f94e614ada9e74d98c18582e9b7aedcf0c5fbf10eb11e43b9aad"},
+    {"path": "duplicate/a/note.md", "role": "workspace-markdown", "size": 94, "sha256": "6a716f7234086aea0fcb3cd32bfebef6180e500708b0e7c37653ef1291952eaf"},
+    {"path": "duplicate/b/note.md", "role": "workspace-markdown", "size": 98, "sha256": "e746be99f2242fd26474d8ee47aaffd6a8d96398cac75c1468ea4b67d963ef55"},
+    {"path": "level one/level two/level three/level four/deep.md", "role": "workspace-markdown", "size": 98, "sha256": "01b59b49e8bea39e79ce254754df1873f83e0efdb474f02012a257184cf47bf7"},
+    {"path": "包含 空格/繁體中文.md", "role": "workspace-markdown", "size": 94, "sha256": "cc98bc3b9e0ad59cb387fb4af4aa486070f6f90d4c645c2dc4e1da98c317a323"}
+  ]
+}

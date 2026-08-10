@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "theme": "light",
+  "font_size": 16,
+  "line_spacing": 1.35,
+  "embed_images": false,
+  "autosave_enabled": true,
+  "autosave_interval": 10,
+  "default_mode": "source",
+  "sync_scroll": true,
+  "restore_session": true
+}

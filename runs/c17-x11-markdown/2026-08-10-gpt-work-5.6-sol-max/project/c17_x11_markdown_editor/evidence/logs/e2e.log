@@ -1,0 +1,168 @@
+E2E_X11_SUMMARY total=1 passed=1 failed=0 skipped=0
+PASS E2E-CLIPBOARD-EDITOR
+PASS E2E-MODE-CYCLE-SOURCE-STABILITY Source→Split→Preview→Rendered→Source preserved exact source digest
+PASS E2E-CAPSULE-ANIMATION animated indicator converged to Rendered Edit
+PASS E2E-MODAL-FOCUS-BLOCK background edit key was blocked and focus restored after animated close
+PASS E2E-CONTEXT-MENU-KEYBOARD Shift+F10 opened custom context menu; Escape dismissed it
+PASS E2E-ZOOM Ctrl+wheel changed document zoom
+PASS E2E-SCROLL-FROST wheel scrolling continuously advanced frosted-navigation state
+PASS E2E-BUTTON-HOVER-PRESS-RIPPLE-RELEASE primary Save button produced transient pointer-origin ripple and released cleanly
+PASS E2E-COMMAND-PALETTE Ctrl+Shift+P focused search and executed Statistics
+PASS E2E-EXTERNAL-LINK-ACTIVATION HTTP/HTTPS activation traversed production allow-list path without shell execution
+PASS E2E-OUTLINE-KEYBOARD-FOCUS Outline opened and F6 entered keyboard traversal
+E2E_UI_SCENARIO total=10 passed=10 failed=0 skipped=0
+E2E_X11_SUMMARY total=1 passed=1 failed=0 skipped=0
+PASS E2E-RENDER-PARAGRAPH-SOURCE-UNDO rendered paragraph key changed authoritative source and one Undo restored its exact digest
+PASS E2E-RENDER-H2-H4-UNDO keyboard context action changed an H2 to H4 and one Undo restored exact source
+PASS E2E-RENDER-BOLD rendered selection formatting serialized to source as one undoable transaction
+PASS E2E-RENDER-ITALIC rendered selection formatting serialized to source as one undoable transaction
+PASS E2E-RENDER-STRIKE rendered selection formatting serialized to source as one undoable transaction
+PASS E2E-RENDER-INLINE-CODE-BACKTICK inline-code delimiter selection used a longer backtick run and remained exactly undoable
+PASS E2E-RENDER-LIST-ENTER Enter at a rendered task/list item inserted its structural prefix and one Undo restored source
+PASS E2E-RENDER-LIST-INDENT-OUTDENT Tab and Shift+Tab indented/outdented through production key handling without semantic loss
+PASS E2E-RENDER-TASK-TOGGLE rendered task command toggled the source checkbox and Undo restored it
+PASS E2E-RENDER-NESTED-QUOTE nested quote content edit changed source and remained one-step undoable
+PASS E2E-RENDER-FENCED-CODE fenced code accepted Markdown-looking source text without reinterpretation or loss
+PASS E2E-RENDER-IMAGE-DELETE-UNDO selected rendered image reference was deleted while the asset remained external; Undo restored exact source
+PASS E2E-RENDER-TABLE-TAB-NAVIGATION Tab and Shift+Tab traversed actual rendered table-cell source ranges
+PASS E2E-RENDER-TABLE-CELL-EDIT typing in a rendered table cell edited the mapped source cell and Undo restored exact bytes
+PASS E2E-RENDER-TABLE-ROW-ADD keyboard table context action updated source in one undoable transaction
+PASS E2E-RENDER-TABLE-COLUMN-ADD keyboard table context action updated source in one undoable transaction
+PASS E2E-RENDER-TABLE-COLUMN-DELETE keyboard table context action updated source in one undoable transaction
+PASS E2E-RENDER-TABLE-ALIGNMENT keyboard table context action updated source in one undoable transaction
+PASS E2E-RENDER-TABLE-ROW-DELETE keyboard table navigation selected a body row; context deletion and Undo preserved exact source
+E2E_RENDERED_SCENARIO total=19 passed=19 failed=0 skipped=0
+E2E_X11_SUMMARY total=1 passed=1 failed=0 skipped=0
+PASS E2E-UI-INTERACTION
+PASS E2E-FIND-TRADITIONAL-CHINESE external UTF-8 clipboard text populated Find and matched the source without splitting UTF-8
+PASS E2E-FIND-WRAP-NEXT-PREVIOUS Enter and Shift+Enter traversed the wrapped one-match result set
+PASS E2E-REPLACE-ALL-ONE-TRANSACTION Ctrl+Enter executed the production Replace All path
+PASS E2E-REPLACE-ALL-UNDO-ONCE one Ctrl+Z restored the exact pre-replacement source digest
+E2E_SEARCH_SCENARIO total=4 passed=4 failed=0 skipped=0
+E2E_X11_SUMMARY total=1 passed=1 failed=0 skipped=0
+PASS E2E-SEARCH-REPLACE
+PASS E2E-XIM-COMPOSITION-COMMIT XIC local-compose sequence committed one UTF-8 composition
+PASS E2E-XIM-COMPOSITION-UNDO Ctrl+Z reverted committed composition in one transaction
+PASS E2E-XIM-COMPOSITION-CANCEL Escape cancelled pending composition without phantom bytes
+E2E_IME_SCENARIO total=3 passed=3 failed=0 skipped=0
+E2E_X11_SUMMARY total=1 passed=1 failed=0 skipped=0
+PASS E2E-XIM
+PASS E2E-XDND-MARKDOWN-DROP served_uri_list=true before_documents=1 after_documents=2 source_changed=true
+E2E_X11_SUMMARY total=1 passed=1 failed=0 skipped=0
+PASS E2E-XDND-IMAGE-DROP served_uri_list=true before_documents=2 after_documents=2 source_changed=true
+E2E_X11_SUMMARY total=1 passed=1 failed=0 skipped=0
+PASS E2E-XDND
+PASS E2E-IMAGE-CONTEXT-MENU selected rendered image opened its custom source-backed context menu
+PASS E2E-IMAGE-RELATIVE-EMBEDDED-UNDO-REDO relative image became an exact data URI and Undo/Redo restored exact source digests
+PASS E2E-IMAGE-EMBEDDED-RELATIVE-UNDO-REDO embedded bytes were externalized through the asset store and both transactions remained undoable/redoable
+PASS E2E-IMAGE-POINTER-RESIZE delta=96 live=456x456 persisted_width=456 one_source_transaction=true aspect_preserved=true
+PASS E2E-IMAGE-RESIZE-LARGER-ASPECT-UNDO one larger pointer gesture preserved aspect ratio and one Undo restored exact pre-gesture source
+PASS E2E-IMAGE-POINTER-RESIZE delta=-96 live=264x264 persisted_width=264 one_source_transaction=true aspect_preserved=true
+PASS E2E-IMAGE-RESIZE-SMALLER one smaller pointer gesture persisted constrained inline img width metadata
+PASS E2E-IMAGE-POINTER-RESIZE delta=72 live=432x432 persisted_width=432 one_source_transaction=true aspect_preserved=true
+PASS E2E-IMAGE-EMBEDDED-RESIZE Base64 embedded image used the same aspect-preserving source transaction and inline width persistence
+PASS E2E-IMAGE-RESIZE-SAVE safe Save retained relative and embedded image width metadata for restart verification
+E2E_IMAGE_SCENARIO total=7 passed=7 failed=0 skipped=0 relative_width=264 embedded_width=432
+E2E_X11_SUMMARY total=1 passed=1 failed=0 skipped=0
+MDEDIT_STATE {"documents":1,"active":0,"mode":"Rendered Edit","dirty":false,"conflict":false,"orphaned":false,"source_len":483,"cursor":483,"anchor":483,"undo":2,"redo":0,"modal":0,"modal_selection":0,"modal_progress":0.000,"modal_closing":false,"menu":0,"focus":3,"focus_index":0,"workspace_entries":0,"outline":false,"capsule_x":3.000,"nav_frost":0.939,"sidebar_width":0.5,"zoom":1.000,"split_ratio":0.500,"source_scroll":0.000,"preview_scroll":1635.000,"active_ripples":0,"xim_available":true,"xic_available":true,"find_visible":false,"find_replace":false,"find_replacement_focus":false,"find_matches":0,"find_active":0,"image_selected":true,"image_resizing":false,"image_x":96,"image_y":191,"image_w":382,"image_h":382,"image_persisted_width":432,"recoveries":0,"recovery_index":0,"activated_external":false,"active_id":"a0a351801d60b9d8856492487cb842ddfb95a9186887c1e47093a27100ac4fb5","tab_order_sha256":"3eef1ddb450f9cb3da1560b14e13a25b1abecb606fc066ee198c922d49b71044","source_sha256":"bb528f818726750274e917d5ca1764d6771fffde07039e4a1ec7c66a462b9865"}
+E2E_X11_SUMMARY total=1 passed=1 failed=0 skipped=0
+E2E_X11_SUMMARY total=1 passed=1 failed=0 skipped=0
+MDEDIT_STATE {"documents":1,"active":0,"mode":"Rendered Edit","dirty":false,"conflict":false,"orphaned":false,"source_len":483,"cursor":215,"anchor":215,"undo":0,"redo":0,"modal":0,"modal_selection":0,"modal_progress":0.000,"modal_closing":false,"menu":0,"focus":3,"focus_index":0,"workspace_entries":0,"outline":false,"capsule_x":3.000,"nav_frost":0.000,"sidebar_width":0.5,"zoom":1.000,"split_ratio":0.500,"source_scroll":0.000,"preview_scroll":0.000,"active_ripples":0,"xim_available":true,"xic_available":true,"find_visible":false,"find_replace":false,"find_replacement_focus":false,"find_matches":0,"find_active":0,"image_selected":true,"image_resizing":false,"image_x":96,"image_y":593,"image_w":264,"image_h":264,"image_persisted_width":264,"recoveries":0,"recovery_index":0,"activated_external":false,"active_id":"a0a351801d60b9d8856492487cb842ddfb95a9186887c1e47093a27100ac4fb5","tab_order_sha256":"3eef1ddb450f9cb3da1560b14e13a25b1abecb606fc066ee198c922d49b71044","source_sha256":"bb528f818726750274e917d5ca1764d6771fffde07039e4a1ec7c66a462b9865"}
+E2E_X11_SUMMARY total=2 passed=2 failed=0 skipped=0
+E2E_X11_SUMMARY total=1 passed=1 failed=0 skipped=0
+E2E_X11_SUMMARY total=1 passed=1 failed=0 skipped=0
+PASS E2E-IMAGE-SAVE-AS path=/tmp/mdeditor-e2e-tBRsEU/case-6/saved-image.bmp source_unchanged=true overwrite_confirmation=false
+E2E_X11_SUMMARY total=1 passed=1 failed=0 skipped=0
+PASS E2E-IMAGE-SAVE-AS path=/tmp/mdeditor-e2e-tBRsEU/case-6/saved-image.bmp source_unchanged=true overwrite_confirmation=true
+E2E_X11_SUMMARY total=1 passed=1 failed=0 skipped=0
+PASS E2E-IMAGE-SAVE-AS-FAILURE path=/tmp/mdeditor-e2e-tBRsEU/case-6/missing-parent/failure.bmp source_unchanged=true overwrite_confirmation=false
+E2E_X11_SUMMARY total=1 passed=1 failed=0 skipped=0
+PASS E2E-IMAGE-SAVE-AS-BYTES exact_source_bytes=true overwrite_confirmed=true failure_non_destructive=true
+PASS E2E-IMAGE-SAVE-REOPEN exact_source_sha256=bb528f818726750274e917d5ca1764d6771fffde07039e4a1ec7c66a462b9865 relative_width=264 embedded_width=432 original_asset_unchanged=true
+PASS E2E-IMAGE-WORKFLOWS
+PASS E2E-WORKSPACE-MULTITAB-OPEN real workspace tree and seven or more file-backed tabs are active
+PASS E2E-TAB-CTRL-NEXT-PREVIOUS Ctrl+Tab and Ctrl+Shift+Tab wrapped through the shared tab model
+PASS E2E-TABSTRIP-KEYBOARD-FOCUS F6 reached tab strip and Left changed the active tab
+PASS E2E-FILE-TREE-KEYBOARD End/Enter navigated the deterministic tree and reused an already-open path
+PASS E2E-OUTLINE-KEYBOARD-NAVIGATION Home/Enter navigated a live heading through source mapping
+PASS E2E-TOP-MENU-KEYBOARD F10 opened custom File menu; arrows traversed and Escape dismissed
+PASS E2E-TAB-POINTER-REORDER pointer drag changed tab order through the production insertion indicator path
+PASS E2E-TAB-OVERFLOW overflow control exposed hidden tabs without shrinking them below usable size
+PASS E2E-WORKSPACE-SESSION-STATE-PREPARED active tab now has persisted caret, scroll, Split mode, zoom, divider, and sidebar state
+E2E_WORKSPACE_SCENARIO total=9 passed=9 failed=0 skipped=0
+E2E_X11_SUMMARY total=1 passed=1 failed=0 skipped=0
+MDEDIT_STATE {"documents":7,"active":1,"mode":"Split","dirty":false,"conflict":false,"orphaned":false,"source_len":98,"cursor":98,"anchor":98,"undo":0,"redo":0,"modal":0,"modal_selection":0,"modal_progress":0.000,"modal_closing":false,"menu":0,"focus":3,"focus_index":0,"workspace_entries":36,"outline":true,"capsule_x":1.000,"nav_frost":0.504,"sidebar_width":340.0,"zoom":1.100,"split_ratio":0.605,"source_scroll":72.000,"preview_scroll":72.000,"active_ripples":0,"xim_available":true,"xic_available":true,"find_visible":false,"find_replace":false,"find_replacement_focus":false,"find_matches":0,"find_active":0,"image_selected":false,"image_resizing":false,"image_x":1044,"image_y":219,"image_w":360,"image_h":360,"image_persisted_width":0,"recoveries":0,"recovery_index":0,"activated_external":false,"active_id":"30c9c0616da6b7d6e19bd96e6aab6a857846996f4bebe5f15c6fdc09b5cdc932","tab_order_sha256":"bb9ea4ff5a964d78a1b2664cab1420d535821ab9c0f91c1235a641bc2b42ca5a","source_sha256":"4174076efa006532c53badc5735485dd14a87292e2ab6840124698f0515a7997"}
+E2E_X11_SUMMARY total=1 passed=1 failed=0 skipped=0
+E2E_X11_SUMMARY total=1 passed=1 failed=0 skipped=0
+MDEDIT_STATE {"documents":7,"active":1,"mode":"Split","dirty":false,"conflict":false,"orphaned":false,"source_len":98,"cursor":98,"anchor":98,"undo":0,"redo":0,"modal":0,"modal_selection":0,"modal_progress":0.000,"modal_closing":false,"menu":0,"focus":3,"focus_index":0,"workspace_entries":36,"outline":false,"capsule_x":1.000,"nav_frost":0.505,"sidebar_width":340.0,"zoom":1.100,"split_ratio":0.605,"source_scroll":72.000,"preview_scroll":72.000,"active_ripples":0,"xim_available":true,"xic_available":true,"find_visible":false,"find_replace":false,"find_replacement_focus":false,"find_matches":0,"find_active":0,"image_selected":false,"image_resizing":false,"image_x":1044,"image_y":219,"image_w":360,"image_h":360,"image_persisted_width":0,"recoveries":0,"recovery_index":0,"activated_external":false,"active_id":"30c9c0616da6b7d6e19bd96e6aab6a857846996f4bebe5f15c6fdc09b5cdc932","tab_order_sha256":"bb9ea4ff5a964d78a1b2664cab1420d535821ab9c0f91c1235a641bc2b42ca5a","source_sha256":"4174076efa006532c53badc5735485dd14a87292e2ab6840124698f0515a7997"}
+E2E_X11_SUMMARY total=2 passed=2 failed=0 skipped=0
+PASS E2E-WORKSPACE-SESSION-RESTORE exact_active_and_tab_order=true
+PASS E2E-WORKSPACE-SESSION
+E2E_X11_SUMMARY total=1 passed=1 failed=0 skipped=0
+E2E_X11_SUMMARY total=2 passed=2 failed=0 skipped=0
+E2E_X11_SUMMARY total=2 passed=2 failed=0 skipped=0
+E2E_X11_SUMMARY total=2 passed=2 failed=0 skipped=0
+E2E_X11_SUMMARY total=1 passed=1 failed=0 skipped=0
+E2E_X11_SUMMARY total=2 passed=2 failed=0 skipped=0
+E2E_X11_SUMMARY total=1 passed=1 failed=0 skipped=0
+E2E_X11_SUMMARY total=2 passed=2 failed=0 skipped=0
+E2E_X11_SUMMARY total=2 passed=2 failed=0 skipped=0
+E2E_X11_SUMMARY total=1 passed=1 failed=0 skipped=0
+E2E_X11_SUMMARY total=2 passed=2 failed=0 skipped=0
+E2E_X11_SUMMARY total=2 passed=2 failed=0 skipped=0
+E2E_X11_SUMMARY total=2 passed=2 failed=0 skipped=0
+E2E_X11_SUMMARY total=2 passed=2 failed=0 skipped=0
+E2E_X11_SUMMARY total=1 passed=1 failed=0 skipped=0
+E2E_X11_SUMMARY total=2 passed=2 failed=0 skipped=0
+PASS E2E-KEYBOARD-NEW-EDIT-SAVE-AS-CLOSE-REOPEN exact_file_content=true
+PASS E2E-KEYBOARD-LIFECYCLE
+E2E_X11_SUMMARY total=1 passed=1 failed=0 skipped=0
+E2E_X11_SUMMARY total=2 passed=2 failed=0 skipped=0
+E2E_X11_SUMMARY total=1 passed=1 failed=0 skipped=0
+PASS E2E-EXTERNAL-CLEAN-RELOAD
+E2E_X11_SUMMARY total=1 passed=1 failed=0 skipped=0
+E2E_X11_SUMMARY total=2 passed=2 failed=0 skipped=0
+E2E_X11_SUMMARY total=2 passed=2 failed=0 skipped=0
+E2E_X11_SUMMARY total=1 passed=1 failed=0 skipped=0
+E2E_X11_SUMMARY total=2 passed=2 failed=0 skipped=0
+PASS E2E-EXTERNAL-KEEP-CURRENT-BLOCKED-SAVE
+E2E_X11_SUMMARY total=2 passed=2 failed=0 skipped=0
+E2E_X11_SUMMARY total=2 passed=2 failed=0 skipped=0
+E2E_X11_SUMMARY total=1 passed=1 failed=0 skipped=0
+E2E_X11_SUMMARY total=2 passed=2 failed=0 skipped=0
+E2E_X11_SUMMARY total=2 passed=2 failed=0 skipped=0
+E2E_X11_SUMMARY total=2 passed=2 failed=0 skipped=0
+E2E_X11_SUMMARY total=2 passed=2 failed=0 skipped=0
+PASS E2E-EXTERNAL-DIRTY-COMPARE
+E2E_X11_SUMMARY total=2 passed=2 failed=0 skipped=0
+E2E_X11_SUMMARY total=2 passed=2 failed=0 skipped=0
+E2E_X11_SUMMARY total=2 passed=2 failed=0 skipped=0
+E2E_X11_SUMMARY total=2 passed=2 failed=0 skipped=0
+E2E_X11_SUMMARY total=2 passed=2 failed=0 skipped=0
+E2E_X11_SUMMARY total=1 passed=1 failed=0 skipped=0
+E2E_X11_SUMMARY total=1 passed=1 failed=0 skipped=0
+PASS E2E-EXTERNAL-DIRTY-EXPLICIT-OVERWRITE
+E2E_X11_SUMMARY total=1 passed=1 failed=0 skipped=0
+E2E_X11_SUMMARY total=1 passed=1 failed=0 skipped=0
+E2E_X11_SUMMARY total=2 passed=2 failed=0 skipped=0
+E2E_X11_SUMMARY total=2 passed=2 failed=0 skipped=0
+E2E_X11_SUMMARY total=2 passed=2 failed=0 skipped=0
+E2E_X11_SUMMARY total=2 passed=2 failed=0 skipped=0
+E2E_X11_SUMMARY total=2 passed=2 failed=0 skipped=0
+E2E_X11_SUMMARY total=1 passed=1 failed=0 skipped=0
+E2E_X11_SUMMARY total=2 passed=2 failed=0 skipped=0
+E2E_X11_SUMMARY total=1 passed=1 failed=0 skipped=0
+E2E_X11_SUMMARY total=1 passed=1 failed=0 skipped=0
+PASS E2E-EXTERNAL-DELETION-SAVE-AS
+PASS E2E-EXTERNAL-CONFLICTS
+E2E_X11_SUMMARY total=2 passed=2 failed=0 skipped=0
+MDEDIT_STATE {"documents":1,"active":0,"mode":"Source","dirty":true,"conflict":false,"orphaned":false,"source_len":310,"cursor":1,"anchor":1,"undo":1,"redo":0,"modal":0,"modal_selection":0,"modal_progress":0.000,"modal_closing":false,"menu":0,"focus":3,"focus_index":0,"workspace_entries":0,"outline":false,"capsule_x":0.000,"nav_frost":0.000,"sidebar_width":0.5,"zoom":1.000,"split_ratio":0.500,"source_scroll":0.000,"preview_scroll":0.000,"active_ripples":0,"xim_available":true,"xic_available":true,"find_visible":false,"find_replace":false,"find_replacement_focus":false,"find_matches":0,"find_active":0,"image_selected":false,"image_resizing":false,"image_x":0,"image_y":0,"image_w":0,"image_h":0,"image_persisted_width":0,"recoveries":0,"recovery_index":0,"activated_external":false,"active_id":"13b7c21d74879ba4d84d29797d2a5341a00862c3b5fd18b84b689419f1d0545b","tab_order_sha256":"1cd496797e89cc2ad40e82fdb83a8b0f4738bce32728a8da12eb366621686d26","source_sha256":"922d5c51e516ec4d942e531971c66219fc8fdcc623382c5300fbe61490b5e4cc"}
+E2E_X11_SUMMARY total=1 passed=1 failed=0 skipped=0
+E2E_X11_SUMMARY total=1 passed=1 failed=0 skipped=0
+E2E_X11_SUMMARY total=2 passed=2 failed=0 skipped=0
+E2E_X11_SUMMARY total=1 passed=1 failed=0 skipped=0
+MDEDIT_STATE {"documents":1,"active":0,"mode":"Source","dirty":true,"conflict":false,"orphaned":false,"source_len":310,"cursor":0,"anchor":0,"undo":0,"redo":0,"modal":0,"modal_selection":0,"modal_progress":0.351,"modal_closing":false,"menu":0,"focus":0,"focus_index":0,"workspace_entries":0,"outline":false,"capsule_x":0.000,"nav_frost":0.000,"sidebar_width":0.3,"zoom":1.000,"split_ratio":0.500,"source_scroll":0.000,"preview_scroll":0.000,"active_ripples":0,"xim_available":true,"xic_available":true,"find_visible":false,"find_replace":false,"find_replacement_focus":false,"find_matches":0,"find_active":0,"image_selected":false,"image_resizing":false,"image_x":0,"image_y":0,"image_w":0,"image_h":0,"image_persisted_width":0,"recoveries":1,"recovery_index":0,"activated_external":false,"active_id":"45dd5275708304d6c077ce247e83f42cc1e15d4fb5a4b66d2f5f18247a9b9bba","tab_order_sha256":"3a5dd10fd46fed5298f4108f79d5b776aa5f7ac10a33eaba0a75da240a7812a0","source_sha256":"922d5c51e516ec4d942e531971c66219fc8fdcc623382c5300fbe61490b5e4cc"}
+E2E_X11_SUMMARY total=1 passed=1 failed=0 skipped=0
+PASS E2E-KILLED-PROCESS-RECOVERY exact_source_sha256=922d5c51e516ec4d942e531971c66219fc8fdcc623382c5300fbe61490b5e4cc
+PASS E2E-KILLED-RECOVERY
+E2E_RELEASE_SUMMARY total=10 passed=10 failed=0 skipped=0

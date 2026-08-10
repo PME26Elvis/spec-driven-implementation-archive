@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "generator_version": "1.0.0",
+  "profile": "failure",
+  "seed": 424242,
+  "files": [
+    {"path": "corrupt.bmp", "role": "corrupt-image", "size": 4, "sha256": "7b48b5f9528f4c898a6f9a1d5ce13f9961aa697265724cda0ea836380702218d"},
+    {"path": "corrupt.jpg", "role": "corrupt-image", "size": 5, "sha256": "f55517e918c9f1ac538778a7d787f93b66102886b93464e5bf61b48527913dfd"},
+    {"path": "corrupt.png", "role": "corrupt-image", "size": 9, "sha256": "843ac23b1736b4487ec81cf7c07ddd9bb46ae5b7818c2c3843d99d62fa75f3c9"},
+    {"path": "invalid-utf8.md", "role": "invalid-utf8", "size": 4, "sha256": "c2b586fb1bdccfd53d511e7dc644dbc6cb23fda83c0715741d2b6bc1f3f14ff8"},
+    {"path": "malformed.md", "role": "malformed-markdown", "size": 48, "sha256": "3dfd3126752076b18ed9e0eef95d6d358d8e49e037cf212583b3ea56b0aae9e1"},
+    {"path": "missing-image.md", "role": "missing-image", "size": 31, "sha256": "1d23907bc6711166235dedfbfa1ee9048008d93417a864272ee58ba14d2cfcb0"},
+    {"path": "read-only.md", "role": "read-only", "size": 10, "sha256": "28dc50ce2c559549546af000e2a606f45a45dac10f91bcefc7b21b9555ca1334"},
+    {"path": "special path/繁體 #$& file.md", "role": "special-path", "size": 18, "sha256": "43829c83fa23bc2fefe5935f0cfdbe76454b72e5aae206c3acbc7d954ed583da"},
+    {"path": "truncated-history.mhv", "role": "corrupt-history", "size": 4, "sha256": "807df3ac5b9dc6858ac239502b63f62760c9e800034466a4f335ae3cb0f5d4dd"},
+    {"path": "truncated-recovery.mrec", "role": "corrupt-recovery", "size": 4, "sha256": "164b8db05cce3ff773d56861e3c338a6a786dd3d8965c228c170b1f4575c0da6"},
+    {"path": "truncated-session.json", "role": "corrupt-state", "size": 9, "sha256": "a0695c59941f0970189b5d87b43d686ee39d37b186d0bd19a57998ecbbbaf97a"}
+  ]
+}

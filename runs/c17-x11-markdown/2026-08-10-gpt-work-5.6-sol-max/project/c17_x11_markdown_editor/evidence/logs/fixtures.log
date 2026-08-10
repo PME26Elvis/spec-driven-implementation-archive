@@ -1,0 +1,17 @@
+fixturegen PASS profile=small seed=424242 files=6
+fixturegen verify PASS files=6
+fixturegen PASS profile=unicode seed=424242 files=2
+fixturegen verify PASS files=2
+fixturegen PASS profile=markdown-all seed=424242 files=2
+fixturegen verify PASS files=2
+fixturegen PASS profile=workspace seed=424242 files=21
+fixturegen verify PASS files=21
+fixturegen PASS profile=medium seed=424242 files=21
+fixturegen verify PASS files=21
+fixturegen PASS profile=large seed=424242 files=21
+fixturegen verify PASS files=21
+fixturegen PASS profile=stress-long-line seed=424242 files=1
+fixturegen verify PASS files=1
+fixturegen PASS profile=failure seed=424242 files=11
+fixturegen verify PASS files=11
+FIXTURE_RELEASE_SUMMARY total=8 passed=8 failed=0 skipped=0

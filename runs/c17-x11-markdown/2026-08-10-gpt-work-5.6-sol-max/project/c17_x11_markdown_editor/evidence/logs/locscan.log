@@ -1,0 +1,49 @@
+source              19 files      10294 lines
+test                 7 files       2251 lines
+documentation        5 files        328 lines
+config_build        10 files        896 lines
+other                1 files        104 lines
+grand authored text: 13873 lines
+human documentation: 328 lines
+       104  other           Makefile
+        94  documentation   README.md
+        12  config_build    config/locscan.json
+        10  config_build    config/locscan.yaml
+        71  documentation   docs/ARCHITECTURE.md
+        46  documentation   docs/HUMAN_ACCEPTANCE_CHECKLIST.md
+        80  documentation   docs/REQUIREMENTS_TRACEABILITY.md
+        37  documentation   docs/WORKSTREAM_A.md
+       115  source          include/mdedit/core.h
+        44  source          include/mdedit/diff.h
+       205  source          include/mdedit/document.h
+        41  source          include/mdedit/image.h
+        49  source          include/mdedit/json.h
+       181  source          include/mdedit/storage.h
+        96  source          include/mdedit/ui.h
+       129  config_build    scripts/build_evidence.sh
+       184  config_build    scripts/capture_evidence.sh
+        28  config_build    scripts/generate_fixtures.sh
+       362  config_build    scripts/run_e2e.sh
+        58  config_build    scripts/test_evidence_mutations.sh
+        49  config_build    scripts/test_utilities.sh
+        52  config_build    scripts/write_release_report.sh
+       906  source          src/core.c
+       364  source          src/diff.c
+      1461  source          src/document.c
+       247  source          src/image.c
+       422  source          src/json.c
+        14  source          src/main.c
+      1372  source          src/storage.c
+      3411  source          src/ui.c
+       240  test            tests/acceptance_matrix.c
+        12  config_build    tests/data/preferences-autosave-10.json
+       685  test            tests/e2e_x11.c
+       268  test            tests/failure_matrix.c
+       284  test            tests/performance.c
+       398  test            tests/test_core.c
+       294  test            tests/test_storage.c
+        82  test            tests/test_tools.c
+       366  source          tools/evidencecheck.c
+       323  source          tools/evidencegen.c
+       323  source          tools/fixturegen.c
+       354  source          tools/locscan.c

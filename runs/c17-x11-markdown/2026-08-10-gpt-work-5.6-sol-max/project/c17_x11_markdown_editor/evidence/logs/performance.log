@@ -1,0 +1,11 @@
+PASS PERF-MEDIUM-OPEN duration_ms=34.320 source_bytes=2271482 render_blocks=623
+PASS PERF-LARGE-OPEN duration_ms=171.848 source_bytes=11461342 render_blocks=3053
+PASS PERF-LARGE-PREVIEW duration_ms=171.678 render_blocks=3053 decoded_unique_images=20
+PASS PERF-MEDIUM-TYPING duration_ms=9.331 samples=40 p95_source_update_ms=9.331
+PASS PERF-LARGE-TYPING duration_ms=39.426 samples=40 p95_source_update_ms=39.426
+PASS PERF-LARGE-FIND duration_ms=66.384 matches=48646 first_and_count_complete=true
+PASS PERF-LARGE-REPLACE-ALL duration_ms=125.060 replaced=48646 undo_entries=1
+PASS PERF-LARGE-OUTLINE duration_ms=168.964 headings=1000 construction_ms=168.964 update_ms=38.266
+PASS PERF-LONG-LINE duration_ms=40.758 saved_reopened_bytes=1048577 valid_utf8=true
+PASS PERF-MEMORY-20 duration_ms=642.220 baseline_kib=18344 final_kib=18344 second_half_range_kib=0
+PERFORMANCE_SUMMARY total=10 passed=10 failed=0 skipped=0 output=/workspace/scratch/0eae0aef3454/c17_x11_markdown_editor/evidence/results/performance.json

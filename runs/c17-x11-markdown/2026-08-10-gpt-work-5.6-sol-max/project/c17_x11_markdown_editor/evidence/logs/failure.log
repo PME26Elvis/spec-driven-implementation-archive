@@ -1,0 +1,16 @@
+PASS FAIL-READONLY-SAVE child_exercised=true exit_status=0 save_as_recovery=true original_digest_unchanged=true
+PASS FAIL-ENOSPC save_failed=true dirty_preserved=true original_digest_unchanged=true diagnostic=Injected ENOSPC while writing replacement
+PASS FAIL-PARTIAL-WRITE save_failed=true dirty_preserved=true original_digest_unchanged=true diagnostic=Injected partial-write failure after 3 bytes
+PASS FAIL-CLOSE save_failed=true dirty_preserved=true original_digest_unchanged=true diagnostic=Close/flush failed for /tmp/mdeditor-failure-0mSg9q/fault/close.md: Input/output error; original remains intact
+PASS FAIL-RENAME save_failed=true dirty_preserved=true original_digest_unchanged=true diagnostic=Injected atomic-rename failure; original remains intact, recovery copy: /tmp/mdeditor-failure-0mSg9q/fault/.mdedit-save-
+PASS FAIL-INVALID-UTF8 open_rejected=true original_digest_unchanged=true diagnostic=/workspace/scratch/0eae0aef3454/c17_x11_markdown_editor/evidence/fixtures/failure/invalid-utf8.md is not valid UTF-8 (byte 2)
+PASS FAIL-TRUNCATED-SESSION workspace_opened=true corrupt_state_rejected=true authored_markdown_opened=true digest_unchanged=true
+PASS FAIL-CORRUPT-HISTORY corrupt_record_rejected=true live_document_unchanged=true
+PASS FAIL-CORRUPT-RECOVERY valid_records=1 corrupt_records=1 valid_record_opened=true
+PASS FAIL-MISSING-IMAGE asset_missing=true reference_preserved=true edited_source_saved=true
+PASS FAIL-CORRUPT-PNG decode_rejected=true process_survived=true source_digest_unchanged=true diagnostic=PNG decode failed: read beyond end of data
+PASS FAIL-CORRUPT-JPEG decode_rejected=true process_survived=true source_digest_unchanged=true diagnostic=JPEG decode failed: JPEG datastream contains no image
+PASS FAIL-CORRUPT-BMP decode_rejected=true process_survived=true source_digest_unchanged=true diagnostic=BMP header is truncated
+PASS FAIL-SYMLINK-CYCLE scan_completed=true duration_ms=0.072 entries=16 symlink_observed=true
+PASS FAIL-SPECIAL-PATHS special_path_open_edit_save_reopen=true exact_digest_reopen=true
+FAILURE_SUMMARY total=15 passed=15 failed=0 skipped=0 output=/workspace/scratch/0eae0aef3454/c17_x11_markdown_editor/evidence/results/failure.json
