@@ -1,0 +1,332 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "pinball-benchmark-release-result-v1",
+  "title": "Pinball Benchmark Release Result",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "format_version",
+    "task_package_version",
+    "build_id",
+    "tests",
+    "categories",
+    "release_gates",
+    "scenarios",
+    "stress",
+    "determinism",
+    "failing_test_ids",
+    "known_mandatory_failures"
+  ],
+  "properties": {
+    "format_version": {
+      "const": 1
+    },
+    "task_package_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "build_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "tests": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/counts"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "total": {
+              "type": "integer",
+              "minimum": 420
+            }
+          }
+        }
+      ]
+    },
+    "categories": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {
+        "$ref": "#/$defs/counts"
+      }
+    },
+    "release_gates": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "build",
+        "dependency",
+        "main_ui",
+        "editor",
+        "advanced_editor",
+        "persistence",
+        "physics_core",
+        "determinism",
+        "gameplay",
+        "mechanisms_tilt",
+        "replay",
+        "physics_inspector",
+        "desktop_interaction",
+        "reliability_recovery",
+        "diagnostics_trace",
+        "headless",
+        "engineering_utilities",
+        "automated_tests",
+        "visual_evidence",
+        "stress",
+        "performance_resource",
+        "canonical_e2e",
+        "release_evidence",
+        "error_handling",
+        "anti_placeholder"
+      ],
+      "properties": {
+        "build": {
+          "$ref": "#/$defs/gateStatus"
+        },
+        "dependency": {
+          "$ref": "#/$defs/gateStatus"
+        },
+        "main_ui": {
+          "$ref": "#/$defs/gateStatus"
+        },
+        "editor": {
+          "$ref": "#/$defs/gateStatus"
+        },
+        "advanced_editor": {
+          "$ref": "#/$defs/gateStatus"
+        },
+        "persistence": {
+          "$ref": "#/$defs/gateStatus"
+        },
+        "physics_core": {
+          "$ref": "#/$defs/gateStatus"
+        },
+        "determinism": {
+          "$ref": "#/$defs/gateStatus"
+        },
+        "gameplay": {
+          "$ref": "#/$defs/gateStatus"
+        },
+        "mechanisms_tilt": {
+          "$ref": "#/$defs/gateStatus"
+        },
+        "replay": {
+          "$ref": "#/$defs/gateStatus"
+        },
+        "physics_inspector": {
+          "$ref": "#/$defs/gateStatus"
+        },
+        "desktop_interaction": {
+          "$ref": "#/$defs/gateStatus"
+        },
+        "reliability_recovery": {
+          "$ref": "#/$defs/gateStatus"
+        },
+        "diagnostics_trace": {
+          "$ref": "#/$defs/gateStatus"
+        },
+        "headless": {
+          "$ref": "#/$defs/gateStatus"
+        },
+        "engineering_utilities": {
+          "$ref": "#/$defs/gateStatus"
+        },
+        "automated_tests": {
+          "$ref": "#/$defs/gateStatus"
+        },
+        "visual_evidence": {
+          "$ref": "#/$defs/gateStatus"
+        },
+        "stress": {
+          "$ref": "#/$defs/gateStatus"
+        },
+        "performance_resource": {
+          "$ref": "#/$defs/gateStatus"
+        },
+        "canonical_e2e": {
+          "$ref": "#/$defs/gateStatus"
+        },
+        "release_evidence": {
+          "$ref": "#/$defs/gateStatus"
+        },
+        "error_handling": {
+          "$ref": "#/$defs/gateStatus"
+        },
+        "anti_placeholder": {
+          "$ref": "#/$defs/gateStatus"
+        }
+      }
+    },
+    "scenarios": {
+      "type": "object",
+      "minProperties": 10,
+      "additionalProperties": {
+        "$ref": "#/$defs/gateStatus"
+      }
+    },
+    "stress": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "long_run_steps",
+        "multiball_active_balls",
+        "multiball_simulated_seconds",
+        "headless_stress_balls",
+        "repeated_cycles",
+        "nan_or_inf_count"
+      ],
+      "properties": {
+        "long_run_steps": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "multiball_active_balls": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "multiball_simulated_seconds": {
+          "type": "number",
+          "minimum": 0
+        },
+        "nan_or_inf_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "impact_cap_hits": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "event_cap_hits": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "headless_stress_balls": {
+          "type": "integer",
+          "minimum": 64
+        },
+        "headless_stress_simulated_seconds": {
+          "type": "number",
+          "minimum": 10
+        },
+        "repeated_cycles": {
+          "type": "integer",
+          "minimum": 100
+        },
+        "final_memory_bytes": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "cycle10_memory_bytes": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "p2_backlog_drops": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "descriptor_stability_pass": {
+          "type": "boolean"
+        }
+      }
+    },
+    "determinism": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "repetitions",
+        "all_match",
+        "final_state_fingerprint",
+        "gui_headless_match",
+        "trace_toggle_match",
+        "ui_scale_match"
+      ],
+      "properties": {
+        "repetitions": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "all_match": {
+          "type": "boolean"
+        },
+        "final_state_fingerprint": {
+          "type": "string"
+        },
+        "replay_fingerprint": {
+          "type": "string"
+        },
+        "gui_headless_match": {
+          "type": "boolean"
+        },
+        "trace_toggle_match": {
+          "type": "boolean"
+        },
+        "ui_scale_match": {
+          "type": "boolean"
+        },
+        "nudge_tilt_replay_match": {
+          "type": "boolean"
+        },
+        "detcompare_first_divergence_test": {
+          "type": "boolean"
+        }
+      }
+    },
+    "failing_test_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "known_mandatory_failures": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    }
+  },
+  "$defs": {
+    "gateStatus": {
+      "type": "string",
+      "enum": [
+        "PASS",
+        "FAIL",
+        "BLOCKED",
+        "NOT_RUN"
+      ]
+    },
+    "counts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "total",
+        "passed",
+        "failed",
+        "skipped"
+      ],
+      "properties": {
+        "total": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "passed": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "failed": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "skipped": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    }
+  }
+}

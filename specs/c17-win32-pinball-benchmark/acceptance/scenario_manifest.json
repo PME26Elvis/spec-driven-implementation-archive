@@ -1,0 +1,177 @@
+{
+  "version": 1,
+  "fixed_dt": 0.004166666666666667,
+  "default_numeric_tolerance": 1e-05,
+  "scenarios": [
+    {
+      "id": "gravity_drop",
+      "fixture": "fixtures/gravity_drop.pbt",
+      "steps": 240,
+      "expected": {
+        "ball_1_position": [
+          500.0,
+          592.0416666666666
+        ],
+        "ball_1_velocity": [
+          0.0,
+          980.0
+        ],
+        "active_ball_count": 1
+      }
+    },
+    {
+      "id": "perfect_bounce",
+      "fixture": "fixtures/perfect_bounce.pbt",
+      "steps": 240,
+      "expected": {
+        "ball_1_position": [
+          800.0,
+          56.0
+        ],
+        "ball_1_velocity": [
+          0.0,
+          -600.0
+        ],
+        "active_ball_count": 1,
+        "minimum_solid_collisions": 1
+      }
+    },
+    {
+      "id": "high_speed_thin_wall",
+      "fixture": "fixtures/high_speed_thin_wall.pbt",
+      "steps": 1,
+      "expected": {
+        "ball_1_position": [
+          800.0,
+          278.6666666666667
+        ],
+        "ball_1_velocity": [
+          0.0,
+          -8000.0
+        ],
+        "must_not_be_below_wall": true,
+        "minimum_ccd_impacts": 1
+      }
+    },
+    {
+      "id": "sensor_crossing",
+      "fixture": "fixtures/sensor_crossing.pbt",
+      "steps": 1,
+      "expected": {
+        "sensor_enter_count": 1,
+        "sensor_leave_count": 1,
+        "score": 50,
+        "notes": "ENTER awards 10 at combo 1x; LEAVE in the same step is the second qualifying score at combo 2x and awards 40; normative total is 50."
+      }
+    },
+    {
+      "id": "drain_test",
+      "fixture": "fixtures/drain_test.pbt",
+      "steps": 1,
+      "expected": {
+        "drained_ball_count": 1,
+        "active_ball_count": 0,
+        "turn_end_count": 1
+      }
+    },
+    {
+      "id": "friction_ramp",
+      "fixture": "fixtures/friction_ramp.pbt",
+      "setup": "Initialize one runtime ball from spawn_main with authored initial velocity; run until first ramp contact and compare pre/post contact tangential components using production contact diagnostics.",
+      "expected_predicates": [
+        "post-contact tangential speed magnitude is not greater than pre-contact tangential speed",
+        "all state remains finite"
+      ]
+    },
+    {
+      "id": "flipper_strike",
+      "fixture": "fixtures/flipper_strike.pbt",
+      "setup": "Moving case: initialize one ball at spawn_main, press LEFT_FLIPPER at fixed step 0 and hold through contact. Control case: identical initial state with no flipper press. Compare production runtime checkpoints after contact.",
+      "expected_predicates": [
+        "moving-flipper case transfers positive kinetic energy to ball",
+        "outgoing direction is consistent with contact normal/surface motion",
+        "stationary control does not exhibit the same motor energy transfer"
+      ]
+    },
+    {
+      "id": "bumper_ring",
+      "fixture": "fixtures/bumper_ring.pbt",
+      "setup": "Initialize one ball from spawn_main with authored velocity and run production simulation long enough to obtain separated bumper contacts; use production contact/scoring diagnostics to verify qualification/cooldown behavior.",
+      "expected_predicates": [
+        "qualified hits equal expected constructed hit count",
+        "continuous overlap does not score every fixed step",
+        "combo scoring follows normative ordering",
+        "all state remains finite"
+      ]
+    },
+    {
+      "id": "eight_ball_collision",
+      "fixture": "fixtures/eight_ball_collision.pbt",
+      "setup": "Initialize exactly one runtime ball from each of spawn_1 through spawn_8, preserving authored velocities and assigning canonical runtime IDs in spawn authored order; run 5 simulated seconds.",
+      "expected_predicates": [
+        "all 8 runtime IDs remain unique",
+        "ball-ball contacts occur",
+        "state remains finite",
+        "repeated runs yield identical checkpoints"
+      ]
+    },
+    {
+      "id": "multiball_stress",
+      "fixture": "fixtures/multiball_stress.pbt",
+      "setup": "Initialize exactly one runtime ball from each of spawn_1 through spawn_16, preserving authored velocities and assigning canonical runtime IDs in spawn authored order; run at least 30 simulated seconds.",
+      "expected_predicates": [
+        "no NaN or infinity",
+        "no crash",
+        "active-ball cap is respected",
+        "valid scenario does not hit event-action cap",
+        "same-build repeated checkpoint fingerprints match"
+      ]
+    },
+    {
+      "id": "stationary_no_force",
+      "fixture": "fixtures/stationary_no_force_v2.pbt",
+      "steps": 10000,
+      "expected_predicates": [
+        "position remains (500,500) within invariant tolerance",
+        "velocity remains zero within invariant tolerance",
+        "all state finite"
+      ]
+    },
+    {
+      "id": "free_flight",
+      "fixture": "fixtures/free_flight_v2.pbt",
+      "steps": 10000,
+      "expected_predicates": [
+        "velocity remains (120,-48) within invariant tolerance",
+        "position matches analytic linear motion at golden checkpoints",
+        "all state finite"
+      ]
+    },
+    {
+      "id": "elastic_head_on",
+      "fixture": "fixtures/elastic_head_on_v2.pbt",
+      "steps": 240,
+      "setup": "Initialize one runtime ball from spawn_1 then spawn_2 in authored order.",
+      "expected_predicates": [
+        "equal-mass head-on velocities exchange",
+        "linear momentum relative error <=1e-8",
+        "kinetic energy relative error <=1e-8",
+        "golden checkpoints match"
+      ]
+    },
+    {
+      "id": "reference_full_game",
+      "fixture": "fixtures/reference_full_game_v2.pbt",
+      "setup": "Validate zero Errors, then exercise canonical J01-J24 user journey and reference routes in document 26.",
+      "expected_predicates": [
+        "all 15 object types parse/round-trip",
+        "zero validation Errors",
+        "table playable through normal controls",
+        "multiball/event chain reachable",
+        "no mandatory runtime failure during canonical journey"
+      ]
+    }
+  ],
+  "task_package_version": "1.0.0",
+  "legacy_scene_version_note": "The original ten scenario fixtures intentionally remain PINBALL_TABLE 1 and must be migrated by the current reader."
+}

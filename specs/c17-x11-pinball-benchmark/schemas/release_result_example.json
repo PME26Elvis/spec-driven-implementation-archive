@@ -1,0 +1,144 @@
+{
+  "format_version": 1,
+  "task_package_version": "1.0.0",
+  "build_id": "example-release-candidate",
+  "tests": {
+    "total": 420,
+    "passed": 420,
+    "failed": 0,
+    "skipped": 0
+  },
+  "categories": {
+    "math_geometry_numeric": {
+      "total": 35,
+      "passed": 35,
+      "failed": 0,
+      "skipped": 0
+    },
+    "physics_collision_ccd": {
+      "total": 85,
+      "passed": 85,
+      "failed": 0,
+      "skipped": 0
+    },
+    "mechanisms_nudge_tilt": {
+      "total": 45,
+      "passed": 45,
+      "failed": 0,
+      "skipped": 0
+    },
+    "events_gameplay_scoring": {
+      "total": 45,
+      "passed": 45,
+      "failed": 0,
+      "skipped": 0
+    },
+    "scene_io_recovery": {
+      "total": 55,
+      "passed": 55,
+      "failed": 0,
+      "skipped": 0
+    },
+    "editor_history_clipboard": {
+      "total": 60,
+      "passed": 60,
+      "failed": 0,
+      "skipped": 0
+    },
+    "replay_headless_traces": {
+      "total": 35,
+      "passed": 35,
+      "failed": 0,
+      "skipped": 0
+    },
+    "ui_focus_text_scale": {
+      "total": 35,
+      "passed": 35,
+      "failed": 0,
+      "skipped": 0
+    },
+    "utilities_release_evidence": {
+      "total": 15,
+      "passed": 15,
+      "failed": 0,
+      "skipped": 0
+    },
+    "performance_resource_faults": {
+      "total": 10,
+      "passed": 10,
+      "failed": 0,
+      "skipped": 0
+    }
+  },
+  "release_gates": {
+    "build": "PASS",
+    "dependency": "PASS",
+    "main_ui": "PASS",
+    "editor": "PASS",
+    "advanced_editor": "PASS",
+    "persistence": "PASS",
+    "physics_core": "PASS",
+    "determinism": "PASS",
+    "gameplay": "PASS",
+    "mechanisms_tilt": "PASS",
+    "replay": "PASS",
+    "physics_inspector": "PASS",
+    "desktop_interaction": "PASS",
+    "reliability_recovery": "PASS",
+    "diagnostics_trace": "PASS",
+    "headless": "PASS",
+    "engineering_utilities": "PASS",
+    "automated_tests": "PASS",
+    "visual_evidence": "PASS",
+    "stress": "PASS",
+    "performance_resource": "PASS",
+    "canonical_e2e": "PASS",
+    "release_evidence": "PASS",
+    "error_handling": "PASS",
+    "anti_placeholder": "PASS"
+  },
+  "scenarios": {
+    "gravity_drop": "PASS",
+    "perfect_bounce": "PASS",
+    "friction_ramp": "PASS",
+    "high_speed_thin_wall": "PASS",
+    "flipper_strike": "PASS",
+    "bumper_ring": "PASS",
+    "sensor_crossing": "PASS",
+    "eight_ball_collision": "PASS",
+    "drain_test": "PASS",
+    "multiball_stress": "PASS",
+    "stationary_no_force": "PASS",
+    "free_flight": "PASS",
+    "elastic_head_on": "PASS",
+    "reference_full_game": "PASS"
+  },
+  "stress": {
+    "long_run_steps": 1000000,
+    "multiball_active_balls": 16,
+    "multiball_simulated_seconds": 30,
+    "headless_stress_balls": 64,
+    "headless_stress_simulated_seconds": 10,
+    "repeated_cycles": 100,
+    "nan_or_inf_count": 0,
+    "impact_cap_hits": 0,
+    "event_cap_hits": 0,
+    "p2_backlog_drops": 0,
+    "descriptor_stability_pass": true,
+    "cycle10_memory_bytes": 104857600,
+    "final_memory_bytes": 110100480
+  },
+  "determinism": {
+    "repetitions": 10,
+    "all_match": true,
+    "final_state_fingerprint": "fnv1a64:0000000000000000",
+    "replay_fingerprint": "fnv1a64:0000000000000000",
+    "gui_headless_match": true,
+    "trace_toggle_match": true,
+    "ui_scale_match": true,
+    "nudge_tilt_replay_match": true,
+    "detcompare_first_divergence_test": true
+  },
+  "failing_test_ids": [],
+  "known_mandatory_failures": []
+}

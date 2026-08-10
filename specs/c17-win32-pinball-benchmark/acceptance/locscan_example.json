@@ -1,0 +1,13 @@
+{
+  "include_extensions": [".c", ".h", ".md", ".json", ".yaml", ".yml", ".pbt", ".pbr"],
+  "exclude_extensions": [".o", ".a", ".so", ".png", ".jpg", ".mp4", ".log"],
+  "exclude_paths": [".git/**", "build/**", "cache/**", "results/**", "visual-evidence/**"],
+  "category_rules": [
+    {"pattern": "tests/**", "category": "tests"},
+    {"extension": ".c", "category": "source"},
+    {"extension": ".h", "category": "headers"},
+    {"extension": ".md", "category": "docs"}
+  ],
+  "follow_symlinks": false,
+  "max_file_bytes": 16777216
+}

@@ -1,0 +1,30 @@
+{
+  "version": 1,
+  "task_package_version": "1.0.0",
+  "minimum_total": 420,
+  "domain_minimums": {
+    "math_geometry_numeric": 35,
+    "physics_collision_ccd_invariants": 85,
+    "mechanisms_nudge_tilt": 45,
+    "events_gameplay_scoring": 45,
+    "scene_io_migration_recovery": 55,
+    "editor_history_clipboard_layers": 60,
+    "replay_headless_determinism_traces": 35,
+    "ui_focus_text_hidpi_animation": 35,
+    "utilities_release_evidence": 15,
+    "performance_resource_fault_injection": 10
+  },
+  "required_named_groups": [
+    "physics named cases",
+    "mechanism named cases",
+    "sensor/event edge cases",
+    "advanced editor cases",
+    "text/focus/HiDPI cases",
+    "persistence/recovery cases",
+    "migration cases",
+    "determinism variants",
+    "atomic-save fault injection",
+    "resource stability",
+    "canonical J01-J24 journey"
+  ]
+}

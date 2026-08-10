@@ -1,0 +1,55 @@
+{
+  "version": 1,
+  "task_package_version": "1.0.0",
+  "purpose": "Deterministic recipes for large boundary fixtures to avoid storing multi-megabyte repetitive files in the task package.",
+  "recipes": [
+    {
+      "id": "objects_exact_limit",
+      "base": "fixtures/stationary_no_force_v2.pbt",
+      "operation": "append valid WALL objects with fresh IDs until total authored object count is exactly 10000",
+      "expected": "parse/load succeeds if all geometry/IDs valid"
+    },
+    {
+      "id": "objects_over_limit",
+      "base": "objects_exact_limit",
+      "operation": "append one additional valid WALL object",
+      "expected_primary_code": "PBT_E_LIMIT_OBJECTS"
+    },
+    {
+      "id": "events_exact_limit",
+      "base": "fixtures/stationary_no_force_v2.pbt",
+      "operation": "append valid unique event sections until total events is exactly 10000; each event has one valid ADD_SCORE action and a valid source",
+      "expected": "parse/load succeeds subject to file-size hard limit configured consistently for generated test"
+    },
+    {
+      "id": "events_over_limit",
+      "base": "events_exact_limit",
+      "operation": "append one additional valid event",
+      "expected_primary_code": "PBT_E_LIMIT_EVENTS"
+    },
+    {
+      "id": "actions_exact_limit",
+      "base": "fixtures/stationary_no_force_v2.pbt",
+      "operation": "append one event containing exactly 256 contiguous valid ADD_SCORE actions",
+      "expected": "parse/load succeeds"
+    },
+    {
+      "id": "actions_over_limit",
+      "base": "fixtures/stationary_no_force_v2.pbt",
+      "operation": "append one event with action_count=257 and contiguous valid actions",
+      "expected_primary_code": "PBT_E_LIMIT_ACTIONS"
+    },
+    {
+      "id": "groups_over_limit",
+      "base": "fixtures/reference_full_game_v2.pbt",
+      "operation": "generate unique valid non-nested groups above normative hard group limit while respecting single-membership by generating sufficient objects",
+      "expected_primary_code": "PBT_E_LIMIT_GROUPS"
+    },
+    {
+      "id": "layers_over_limit",
+      "base": "fixtures/stationary_no_force_v2.pbt",
+      "operation": "generate 65 valid unique layers with contiguous order values",
+      "expected_primary_code": "PBT_E_LIMIT_LAYERS"
+    }
+  ]
+}

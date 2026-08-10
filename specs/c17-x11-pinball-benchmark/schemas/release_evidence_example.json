@@ -1,0 +1,1637 @@
+{
+  "format_version": 1,
+  "task_package_version": "1.0.0",
+  "build_id": "example-not-a-complete-release",
+  "requirements": [
+    {
+      "requirement_id": "R-PLAT-01",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-PLAT-02",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-PLAT-03",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-PLAT-04",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-PLAT-05",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-PLAT-06",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-UI-01",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-UI-02",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-UI-03",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-UI-04",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-UI-05",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-UI-06",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-UI-07",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-UI-08",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-UI-09",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-UI-10",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-UI-11",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-UI-12",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-UI-13",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-UI-14",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-UI-15",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-UI-16",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-UI-17",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-UI-18",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-UI-19",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-UI-20",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-ED-01",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-ED-02",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-ED-03",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-ED-04",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-ED-05",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-ED-06",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-ED-07",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-ED-08",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-ED-09",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-ED-10",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-ED-11",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-ED-12",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-ED-13",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-ED-14",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-ED-15",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-ED-16",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-ED-17",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-ED-18",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-ED-19",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-ED-20",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-ED-21",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-ED-22",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-ED-23",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-ED-24",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-ED-25",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-ED-26",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-ED-27",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-ED-28",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-IO-01",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-IO-02",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-IO-03",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-IO-04",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-IO-05",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-IO-06",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-IO-07",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-IO-08",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-IO-09",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-IO-10",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-IO-11",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-IO-12",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-IO-13",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-IO-14",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-IO-15",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-IO-16",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-IO-17",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-IO-18",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-IO-19",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-IO-20",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-PHY-01",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-PHY-02",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-PHY-03",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-PHY-04",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-PHY-05",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-PHY-06",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-PHY-07",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-PHY-08",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-PHY-09",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-PHY-10",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-PHY-11",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-PHY-12",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-PHY-13",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-PHY-14",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-PHY-15",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-PHY-16",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-PHY-17",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-PHY-18",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-PHY-19",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-PHY-20",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-PHY-21",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-PHY-22",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-PHY-23",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-PHY-24",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-GAME-01",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-GAME-02",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-GAME-03",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-GAME-04",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-GAME-05",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-GAME-06",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-GAME-07",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-GAME-08",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-GAME-09",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-GAME-10",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-GAME-11",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-GAME-12",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-GAME-13",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-GAME-14",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-GAME-15",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-GAME-16",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-GAME-17",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-EVT-01",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-EVT-02",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-EVT-03",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-EVT-04",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-EVT-05",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-EVT-06",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-EVT-07",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-EVT-08",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-RPL-01",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-RPL-02",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-RPL-03",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-RPL-04",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-HDL-01",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-HDL-02",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-HDL-03",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-DBG-01",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-DBG-02",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-DBG-03",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-DBG-04",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-DBG-05",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-DBG-06",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-DBG-07",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-UTIL-01",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-UTIL-02",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-UTIL-03",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-UTIL-04",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-UTIL-05",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-UTIL-06",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-UTIL-07",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-PERF-01",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-PERF-02",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-PERF-03",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-PERF-04",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-RES-01",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-RES-02",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-RES-03",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-RES-04",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-REF-01",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-REF-02",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-TST-01",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-TST-02",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-VIS-01",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-VIS-02",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-REL-01",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-REL-02",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-REL-03",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-REL-04",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    },
+    {
+      "requirement_id": "R-REL-05",
+      "status": "NOT_RUN",
+      "verification_methods": [],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Example structure only; a real release must provide PASS evidence."
+    }
+  ]
+}

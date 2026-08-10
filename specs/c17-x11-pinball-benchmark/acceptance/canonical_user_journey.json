@@ -1,0 +1,126 @@
+{
+  "version": 1,
+  "task_package_version": "1.0.0",
+  "steps": [
+    {
+      "id": "J01",
+      "name": "New",
+      "expected": "clean current-format authored document with default layers"
+    },
+    {
+      "id": "J02",
+      "name": "Create boundaries",
+      "expected": "three or more Walls authored through UI"
+    },
+    {
+      "id": "J03",
+      "name": "Create core gameplay objects",
+      "expected": "spawn/launcher/flippers/bumper/drain/sensor created"
+    },
+    {
+      "id": "J04",
+      "name": "Exact edit",
+      "expected": "exact Inspector coordinate/size/angle/property committed"
+    },
+    {
+      "id": "J05",
+      "name": "Group/layer/lock",
+      "expected": "group and layer operations plus locked-transform semantics observed"
+    },
+    {
+      "id": "J06",
+      "name": "Align/distribute",
+      "expected": "alignment and distribution exact and undoable"
+    },
+    {
+      "id": "J07",
+      "name": "Event authoring",
+      "expected": "Sensor event with score and state/spawn action created"
+    },
+    {
+      "id": "J08",
+      "name": "Validate",
+      "expected": "deliberate Error blocks Play; repair produces zero Errors"
+    },
+    {
+      "id": "J09",
+      "name": "Save",
+      "expected": "Save As writes PINBALL_TABLE 2 and clears dirty"
+    },
+    {
+      "id": "J10",
+      "name": "Dirty checkpoint",
+      "expected": "edit/Undo/Redo semantic dirty-state contract verified"
+    },
+    {
+      "id": "J11",
+      "name": "Simulation Preview",
+      "expected": "preview changes no authored fingerprint/history/dirty state"
+    },
+    {
+      "id": "J12",
+      "name": "Play and launch",
+      "expected": "known charge launches a real ball"
+    },
+    {
+      "id": "J13",
+      "name": "Score",
+      "expected": "qualified score updates HUD/trace/statistics"
+    },
+    {
+      "id": "J14",
+      "name": "Multiball",
+      "expected": "two or more independent balls simulated with ball-ball collision"
+    },
+    {
+      "id": "J15",
+      "name": "Pause/Step/Resume",
+      "expected": "pause freezes; one step increments exactly one"
+    },
+    {
+      "id": "J16",
+      "name": "Nudge/Tilt",
+      "expected": "nudge reaches Tilt with suppression semantics"
+    },
+    {
+      "id": "J17",
+      "name": "Drain/new turn",
+      "expected": "all balls drain and next turn clears default Tilt"
+    },
+    {
+      "id": "J18",
+      "name": "Replay record",
+      "expected": "logical launcher/flipper/nudge actions recorded and saved"
+    },
+    {
+      "id": "J19",
+      "name": "Replay playback",
+      "expected": "checkpoint/final fingerprint and score reproduce"
+    },
+    {
+      "id": "J20",
+      "name": "Diagnostics",
+      "expected": "real Event/Collision traces exported"
+    },
+    {
+      "id": "J21",
+      "name": "Headless replay",
+      "expected": "GUI/headless final fingerprint matches"
+    },
+    {
+      "id": "J22",
+      "name": "External modification conflict",
+      "expected": "conflict prevents silent overwrite; Save As preserves external original"
+    },
+    {
+      "id": "J23",
+      "name": "Recovery",
+      "expected": "abnormal exit recovery opens dirty without overwriting formal scene"
+    },
+    {
+      "id": "J24",
+      "name": "Final Save/Reload",
+      "expected": "final save/reopen validates and semantic model matches"
+    }
+  ]
+}

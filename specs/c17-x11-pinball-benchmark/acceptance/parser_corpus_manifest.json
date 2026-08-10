@@ -1,0 +1,154 @@
+{
+  "version": 1,
+  "task_package_version": "1.0.0",
+  "cases": [
+    {
+      "id": "empty",
+      "file": "malformed/empty.pbt",
+      "expected_primary_code": "PBT_E_EMPTY"
+    },
+    {
+      "id": "comments_only",
+      "file": "malformed/comments_only.pbt",
+      "expected_primary_code": "PBT_E_EMPTY"
+    },
+    {
+      "id": "bad_header",
+      "file": "malformed/bad_header.pbt",
+      "expected_primary_code": "PBT_E_HEADER"
+    },
+    {
+      "id": "unsupported_v3",
+      "file": "malformed/unsupported_v3.pbt",
+      "expected_primary_code": "PBT_E_VERSION_UNSUPPORTED"
+    },
+    {
+      "id": "invalid_utf8",
+      "file": "malformed/invalid_utf8.pbt",
+      "expected_primary_code": "PBT_E_UTF8"
+    },
+    {
+      "id": "nul_byte",
+      "file": "malformed/nul_byte.pbt",
+      "expected_primary_code": "PBT_E_NUL"
+    },
+    {
+      "id": "line_too_long",
+      "file": "malformed/line_too_long.pbt",
+      "expected_primary_code": "PBT_E_LINE_TOO_LONG"
+    },
+    {
+      "id": "duplicate_property",
+      "file": "malformed/duplicate_property.pbt",
+      "expected_primary_code": "PBT_E_DUP_KEY"
+    },
+    {
+      "id": "duplicate_object_id",
+      "file": "malformed/duplicate_object_id.pbt",
+      "expected_primary_code": "PBT_E_DUP_ID"
+    },
+    {
+      "id": "unknown_object",
+      "file": "malformed/unknown_object.pbt",
+      "expected_primary_code": "PBT_E_UNKNOWN_OBJECT"
+    },
+    {
+      "id": "missing_required_field",
+      "file": "malformed/missing_required_field.pbt",
+      "expected_primary_code": "PBT_E_MISSING_FIELD"
+    },
+    {
+      "id": "wrong_scalar_type",
+      "file": "malformed/wrong_scalar_type.pbt",
+      "expected_primary_code": "PBT_E_TYPE"
+    },
+    {
+      "id": "nan_value",
+      "file": "malformed/nan_value.pbt",
+      "expected_primary_code": "PBT_E_NONFINITE"
+    },
+    {
+      "id": "inf_value",
+      "file": "malformed/inf_value.pbt",
+      "expected_primary_code": "PBT_E_NONFINITE"
+    },
+    {
+      "id": "numeric_overflow",
+      "file": "malformed/numeric_overflow.pbt",
+      "expected_primary_code": "PBT_E_NUMERIC_OVERFLOW"
+    },
+    {
+      "id": "negative_count",
+      "file": "malformed/negative_count.pbt",
+      "expected_primary_code": "PBT_E_NUMERIC_RANGE"
+    },
+    {
+      "id": "malformed_vector",
+      "file": "malformed/malformed_vector.pbt",
+      "expected_primary_code": "PBT_E_TYPE"
+    },
+    {
+      "id": "unknown_escape",
+      "file": "malformed/unknown_escape.pbt",
+      "expected_primary_code": "PBT_E_STRING_ESCAPE"
+    },
+    {
+      "id": "unterminated_string",
+      "file": "malformed/unterminated_string.pbt",
+      "expected_primary_code": "PBT_E_STRING_UNTERMINATED"
+    },
+    {
+      "id": "dangling_reference",
+      "file": "malformed/dangling_reference.pbt",
+      "expected_primary_code": "PBT_E_REFERENCE_MISSING"
+    },
+    {
+      "id": "wrong_reference_type",
+      "file": "malformed/wrong_reference_type.pbt",
+      "expected_primary_code": "PBT_E_REFERENCE_TYPE"
+    },
+    {
+      "id": "action_index_gap",
+      "file": "malformed/action_index_gap.pbt",
+      "expected_primary_code": "PBT_E_ACTION_INDEX"
+    },
+    {
+      "id": "unknown_action",
+      "file": "malformed/unknown_action.pbt",
+      "expected_primary_code": "PBT_E_UNKNOWN_ACTION"
+    },
+    {
+      "id": "v2_missing_layer_ref",
+      "file": "malformed/v2_missing_layer_ref.pbt",
+      "expected_primary_code": "PBT_E_LAYER"
+    },
+    {
+      "id": "v2_group_nesting",
+      "file": "malformed/v2_group_nesting.pbt",
+      "expected_primary_code": "PBT_E_GROUP_NESTING"
+    },
+    {
+      "id": "v2_group_duplicate_member",
+      "file": "malformed/v2_group_duplicate_member.pbt",
+      "expected_primary_code": "PBT_E_GROUP_MEMBERSHIP"
+    },
+    {
+      "id": "id_too_long",
+      "file": "malformed/id_too_long.pbt",
+      "expected_primary_code": "PBT_E_TOKEN_TOO_LONG"
+    },
+    {
+      "id": "string_too_long",
+      "file": "malformed/string_too_long.pbt",
+      "expected_primary_code": "PBT_E_TOKEN_TOO_LONG"
+    }
+  ],
+  "valid_cases": [
+    {
+      "file": "fixtures/valid_crlf_legacy.pbt"
+    },
+    {
+      "file": "fixtures/valid_chinese_v2.pbt"
+    }
+  ]
+}

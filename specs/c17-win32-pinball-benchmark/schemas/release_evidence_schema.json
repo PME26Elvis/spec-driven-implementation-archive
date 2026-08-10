@@ -1,0 +1,284 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "pinball-benchmark-release-evidence-v1",
+  "title": "Pinball Benchmark Release Evidence",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "format_version",
+    "task_package_version",
+    "build_id",
+    "requirements"
+  ],
+  "properties": {
+    "format_version": {
+      "const": 1
+    },
+    "task_package_version": {
+      "const": "1.0.0"
+    },
+    "build_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "requirements": {
+      "type": "array",
+      "minItems": 163,
+      "maxItems": 163,
+      "items": {
+        "$ref": "#/$defs/requirementEvidence"
+      }
+    }
+  },
+  "$defs": {
+    "status": {
+      "type": "string",
+      "enum": [
+        "PASS",
+        "FAIL",
+        "BLOCKED",
+        "NOT_RUN"
+      ]
+    },
+    "requirementEvidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "requirement_id",
+        "status",
+        "verification_methods",
+        "test_ids",
+        "fixture_ids",
+        "visual_ids",
+        "artifacts",
+        "notes"
+      ],
+      "properties": {
+        "requirement_id": {
+          "enum": [
+            "R-PLAT-01",
+            "R-PLAT-02",
+            "R-PLAT-03",
+            "R-PLAT-04",
+            "R-PLAT-05",
+            "R-PLAT-06",
+            "R-UI-01",
+            "R-UI-02",
+            "R-UI-03",
+            "R-UI-04",
+            "R-UI-05",
+            "R-UI-06",
+            "R-UI-07",
+            "R-UI-08",
+            "R-UI-09",
+            "R-UI-10",
+            "R-UI-11",
+            "R-UI-12",
+            "R-UI-13",
+            "R-UI-14",
+            "R-UI-15",
+            "R-UI-16",
+            "R-UI-17",
+            "R-UI-18",
+            "R-UI-19",
+            "R-UI-20",
+            "R-ED-01",
+            "R-ED-02",
+            "R-ED-03",
+            "R-ED-04",
+            "R-ED-05",
+            "R-ED-06",
+            "R-ED-07",
+            "R-ED-08",
+            "R-ED-09",
+            "R-ED-10",
+            "R-ED-11",
+            "R-ED-12",
+            "R-ED-13",
+            "R-ED-14",
+            "R-ED-15",
+            "R-ED-16",
+            "R-ED-17",
+            "R-ED-18",
+            "R-ED-19",
+            "R-ED-20",
+            "R-ED-21",
+            "R-ED-22",
+            "R-ED-23",
+            "R-ED-24",
+            "R-ED-25",
+            "R-ED-26",
+            "R-ED-27",
+            "R-ED-28",
+            "R-IO-01",
+            "R-IO-02",
+            "R-IO-03",
+            "R-IO-04",
+            "R-IO-05",
+            "R-IO-06",
+            "R-IO-07",
+            "R-IO-08",
+            "R-IO-09",
+            "R-IO-10",
+            "R-IO-11",
+            "R-IO-12",
+            "R-IO-13",
+            "R-IO-14",
+            "R-IO-15",
+            "R-IO-16",
+            "R-IO-17",
+            "R-IO-18",
+            "R-IO-19",
+            "R-IO-20",
+            "R-PHY-01",
+            "R-PHY-02",
+            "R-PHY-03",
+            "R-PHY-04",
+            "R-PHY-05",
+            "R-PHY-06",
+            "R-PHY-07",
+            "R-PHY-08",
+            "R-PHY-09",
+            "R-PHY-10",
+            "R-PHY-11",
+            "R-PHY-12",
+            "R-PHY-13",
+            "R-PHY-14",
+            "R-PHY-15",
+            "R-PHY-16",
+            "R-PHY-17",
+            "R-PHY-18",
+            "R-PHY-19",
+            "R-PHY-20",
+            "R-PHY-21",
+            "R-PHY-22",
+            "R-PHY-23",
+            "R-PHY-24",
+            "R-GAME-01",
+            "R-GAME-02",
+            "R-GAME-03",
+            "R-GAME-04",
+            "R-GAME-05",
+            "R-GAME-06",
+            "R-GAME-07",
+            "R-GAME-08",
+            "R-GAME-09",
+            "R-GAME-10",
+            "R-GAME-11",
+            "R-GAME-12",
+            "R-GAME-13",
+            "R-GAME-14",
+            "R-GAME-15",
+            "R-GAME-16",
+            "R-GAME-17",
+            "R-EVT-01",
+            "R-EVT-02",
+            "R-EVT-03",
+            "R-EVT-04",
+            "R-EVT-05",
+            "R-EVT-06",
+            "R-EVT-07",
+            "R-EVT-08",
+            "R-RPL-01",
+            "R-RPL-02",
+            "R-RPL-03",
+            "R-RPL-04",
+            "R-HDL-01",
+            "R-HDL-02",
+            "R-HDL-03",
+            "R-DBG-01",
+            "R-DBG-02",
+            "R-DBG-03",
+            "R-DBG-04",
+            "R-DBG-05",
+            "R-DBG-06",
+            "R-DBG-07",
+            "R-UTIL-01",
+            "R-UTIL-02",
+            "R-UTIL-03",
+            "R-UTIL-04",
+            "R-UTIL-05",
+            "R-UTIL-06",
+            "R-UTIL-07",
+            "R-PERF-01",
+            "R-PERF-02",
+            "R-PERF-03",
+            "R-PERF-04",
+            "R-RES-01",
+            "R-RES-02",
+            "R-RES-03",
+            "R-RES-04",
+            "R-REF-01",
+            "R-REF-02",
+            "R-TST-01",
+            "R-TST-02",
+            "R-VIS-01",
+            "R-VIS-02",
+            "R-REL-01",
+            "R-REL-02",
+            "R-REL-03",
+            "R-REL-04",
+            "R-REL-05"
+          ]
+        },
+        "status": {
+          "$ref": "#/$defs/status"
+        },
+        "verification_methods": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "automated_test",
+              "headless",
+              "manual_ui",
+              "visual",
+              "source_audit",
+              "build_audit",
+              "performance",
+              "fault_injection",
+              "schema_validation",
+              "e2e"
+            ]
+          },
+          "uniqueItems": true
+        },
+        "test_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^T-[A-Z0-9]+-[0-9]{3,}$"
+          },
+          "uniqueItems": true
+        },
+        "fixture_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "visual_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[VA][0-9]{2}$"
+          },
+          "uniqueItems": true
+        },
+        "artifacts": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "notes": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
