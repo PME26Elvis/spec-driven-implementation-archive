@@ -1,0 +1,109 @@
+name: Count spec tokens
+
+on:
+  workflow_dispatch:
+    inputs:
+      token_encoding:
+        description: Repomix token-count encoding
+        required: true
+        type: choice
+        default: o200k_base
+        options:
+          - o200k_base
+          - cl100k_base
+          - p50k_base
+          - p50k_edit
+          - r50k_base
+
+permissions:
+  contents: read
+
+env:
+  REPOMIX_VERSION: '1.18.0'
+
+jobs:
+  count:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Count tokens for each spec folder
+        shell: bash
+        env:
+          TOKEN_ENCODING: ${{ inputs.token_encoding }}
+          NO_COLOR: '1'
+        run: |
+          set -euo pipefail
+
+          : > spec-token-counts.txt
+          total=0
+          count=0
+
+          for folder in specs/*/; do
+            [[ -d "$folder" ]] || continue
+            name="$(basename "$folder")"
+            log="$RUNNER_TEMP/repomix-${name}.log"
+            output="$RUNNER_TEMP/repomix-${name}.xml"
+
+            echo "Counting $name..."
+            npx --yes "repomix@${REPOMIX_VERSION}" "$folder" \
+              --token-count-encoding "$TOKEN_ENCODING" \
+              --output "$output" \
+              --top-files-len 0 \
+              --no-security-check \
+              2>&1 | tee "$log"
+
+            tokens="$(sed -nE 's/^[[:space:]]*Total Tokens:[[:space:]]*([0-9,]+)[[:space:]]+tokens.*$/\1/p' "$log" | head -n 1 | tr -d ',')"
+
+            if [[ ! "$tokens" =~ ^[0-9]+$ ]]; then
+              echo "Could not parse Repomix token count for $name" >&2
+              exit 1
+            fi
+
+            printf '%s - %s tokens\n' "$name" "$tokens" >> spec-token-counts.txt
+            total=$((total + tokens))
+            count=$((count + 1))
+          done
+
+          if (( count == 0 )); then
+            echo "No spec directories found under specs/." >&2
+            exit 1
+          fi
+
+          {
+            echo
+            echo "TOTAL - ${total} tokens"
+          } >> spec-token-counts.txt
+
+          echo "Token counts:"
+          cat spec-token-counts.txt
+
+      - name: Add workflow summary
+        shell: bash
+        env:
+          TOKEN_ENCODING: ${{ inputs.token_encoding }}
+        run: |
+          {
+            echo "## Specs token count"
+            echo
+            echo "Repomix: \`${REPOMIX_VERSION}\`  "
+            echo "Encoding: \`${TOKEN_ENCODING}\`"
+            echo
+            echo '```text'
+            cat spec-token-counts.txt
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Upload token-count report
+        uses: actions/upload-artifact@v4
+        with:
+          name: spec-token-counts-${{ inputs.token_encoding }}-${{ github.run_number }}
+          path: spec-token-counts.txt
+          if-no-files-found: error
+          retention-days: 30
