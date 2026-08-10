@@ -1,0 +1,148 @@
+name: Package selected runs
+
+on:
+  workflow_dispatch:
+    inputs:
+      include_all_runs:
+        description: Include every run currently under runs/*/*
+        required: true
+        type: boolean
+        default: false
+      c17_x11_markdown_2026_08_10_gpt_work_5_6_sol_max:
+        description: c17-x11-markdown/2026-08-10-gpt-work-5.6-sol-max
+        required: true
+        type: boolean
+        default: false
+      additional_runs:
+        description: Optional comma-separated run paths relative to runs/ (for future runs)
+        required: false
+        type: string
+      exclude_conversations:
+        description: Exclude each run's conversations/ directory
+        required: true
+        type: boolean
+        default: true
+
+permissions:
+  contents: read
+
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Resolve selected runs
+        id: selection
+        shell: bash
+        env:
+          INCLUDE_ALL_RUNS: ${{ inputs.include_all_runs }}
+          SELECT_C17_X11_MARKDOWN_2026_08_10_GPT_WORK_5_6_SOL_MAX: ${{ inputs.c17_x11_markdown_2026_08_10_gpt_work_5_6_sol_max }}
+          ADDITIONAL_RUNS: ${{ inputs.additional_runs }}
+        run: |
+          set -euo pipefail
+
+          declare -A selected=()
+
+          add_run() {
+            local rel="$1"
+            rel="${rel#runs/}"
+            rel="$(printf '%s' "$rel" | sed 's/^[[:space:]]*//;s/[[:space:]]*$//')"
+            [[ -z "$rel" ]] && return 0
+
+            if [[ ! "$rel" =~ ^[A-Za-z0-9._-]+/[A-Za-z0-9._-]+$ ]]; then
+              echo "Invalid run path: $rel" >&2
+              exit 1
+            fi
+            if [[ ! -d "runs/$rel" ]]; then
+              echo "Run directory does not exist: runs/$rel" >&2
+              exit 1
+            fi
+
+            selected["$rel"]=1
+          }
+
+          if [[ "$INCLUDE_ALL_RUNS" == "true" ]]; then
+            while IFS= read -r rel; do
+              add_run "$rel"
+            done < <(find runs -mindepth 2 -maxdepth 2 -type d -printf '%P\n' | sort)
+          fi
+
+          if [[ "$SELECT_C17_X11_MARKDOWN_2026_08_10_GPT_WORK_5_6_SOL_MAX" == "true" ]]; then
+            add_run "c17-x11-markdown/2026-08-10-gpt-work-5.6-sol-max"
+          fi
+
+          while IFS= read -r rel; do
+            add_run "$rel"
+          done < <(printf '%s\n' "$ADDITIONAL_RUNS" | tr ',' '\n')
+
+          if (( ${#selected[@]} == 0 )); then
+            echo "No runs selected. Select a checkbox, choose all runs, or provide additional_runs." >&2
+            exit 1
+          fi
+
+          printf '%s\n' "${!selected[@]}" | sort > "$RUNNER_TEMP/selected-runs.txt"
+          echo "count=${#selected[@]}" >> "$GITHUB_OUTPUT"
+
+          echo "Selected runs:"
+          sed 's/^/  - /' "$RUNNER_TEMP/selected-runs.txt"
+
+      - name: Build package
+        shell: bash
+        env:
+          EXCLUDE_CONVERSATIONS: ${{ inputs.exclude_conversations }}
+        run: |
+          set -euo pipefail
+
+          mkdir -p package/runs
+
+          {
+            echo "spec-driven-implementation-archive run package"
+            echo "source_commit=${GITHUB_SHA}"
+            echo "exclude_conversations=${EXCLUDE_CONVERSATIONS}"
+            echo
+            echo "included_runs:"
+          } > package/PACKAGE_MANIFEST.txt
+
+          while IFS= read -r rel; do
+            src="runs/$rel"
+            dest="package/runs/$rel"
+            mkdir -p "$(dirname "$dest")"
+            cp -a "$src" "$dest"
+
+            if [[ "$EXCLUDE_CONVERSATIONS" == "true" ]]; then
+              rm -rf "$dest/conversations"
+            fi
+
+            printf -- '- %s\n' "$rel" >> package/PACKAGE_MANIFEST.txt
+          done < "$RUNNER_TEMP/selected-runs.txt"
+
+          echo "Package contents:"
+          find package -maxdepth 4 -type d -o -type f | sort
+
+      - name: Add workflow summary
+        shell: bash
+        env:
+          EXCLUDE_CONVERSATIONS: ${{ inputs.exclude_conversations }}
+        run: |
+          {
+            echo "## Run package"
+            echo
+            echo "- Selected runs: **${{ steps.selection.outputs.count }}**"
+            echo "- Conversations excluded: **${EXCLUDE_CONVERSATIONS}**"
+            echo "- Source commit: \`${GITHUB_SHA}\`"
+            echo
+            echo '```text'
+            cat "$RUNNER_TEMP/selected-runs.txt"
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Upload selected runs
+        uses: actions/upload-artifact@v4
+        with:
+          name: selected-runs-${{ github.run_number }}
+          path: package/
+          if-no-files-found: error
+          compression-level: 6
+          retention-days: 14
