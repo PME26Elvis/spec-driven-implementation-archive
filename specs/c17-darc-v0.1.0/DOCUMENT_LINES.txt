@@ -1,0 +1,21 @@
+Human-readable Markdown line counts
+==================================
+   69  README.md
+   70  acceptance/CHECKLIST.md
+  192  acceptance/GOLDEN_VECTORS.md
+  317  acceptance/TEST_CATALOG.md
+   17  acceptance/TRACEABILITY_TEMPLATE.md
+  126  spec/00_scope_and_constraints.md
+  259  spec/01_cli_contract.md
+  263  spec/02_config_json_yaml.md
+  276  spec/03_repository_format.md
+  245  spec/04_chunking_hash_compression.md
+  220  spec/05_scan_snapshot_incremental.md
+  189  spec/06_diff_restore_reporting.md
+  237  spec/07_index_gc_integrity_recovery.md
+  199  spec/08_errors_edge_cases_security.md
+  202  spec/09_test_and_acceptance.md
+  214  spec/10_delivery_dod_release_gates.md
+   35  spec/11_non_normative_rationale.md
+
+TOTAL_MD_LINES=3130
