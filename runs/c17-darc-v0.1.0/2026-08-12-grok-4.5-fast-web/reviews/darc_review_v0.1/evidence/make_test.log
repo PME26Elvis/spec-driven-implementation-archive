@@ -1,0 +1,26 @@
+gcc -std=c17 -Wall -Wextra -O2 -Iinclude -D_POSIX_C_SOURCE=200809L -o /tmp/test_alg tests/test_algorithms.c \
+  src/sha256.c src/crc32c.c src/buzhash.c src/lzh1.c
+src/lzh1.c: In function 'darc_lzh1_decompress':
+src/lzh1.c:397:12: warning: unused variable 'tok_cap' [-Wunused-variable]
+  397 |     size_t tok_cap = 0, tok_len = 0;
+      |            ^~~~~~~
+/tmp/test_alg
+PASS sha256 empty
+PASS sha256 abc
+PASS crc32c
+PASS buzhash T[0]
+PASS buzhash T[255]
+PASS lzh1 abc len
+PASS lzh1 abc sha
+PASS lzh1 roundtrip
+ALL ALGORITHM TESTS PASSED
+Initialized empty DARC repository at /tmp/darc_e2e_repo2
+Created snapshot a05ecd4fc346e64b24756eecc7c54d6fa82a456e2b038fabe1f06e6ba8089538
+Checked: 11  OK: 9  Corrupt: 0  Missing: 0  Repaired: 0  Unrecoverable: 0
+Restored to /tmp/darc_e2e_out2
+Created snapshot b6d0e4edab4c38708bc382d07c214a475e373a060ebce99b7eecc6ae378fc3da
+OK
+OK
+Deleted snapshot ref (objects retained until gc)
+Would have reclaimed 0 objects
+E2E_PASS

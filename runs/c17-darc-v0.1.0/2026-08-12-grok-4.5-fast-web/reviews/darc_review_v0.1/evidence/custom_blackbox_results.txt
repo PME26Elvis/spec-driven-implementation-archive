@@ -1,0 +1,16 @@
+FAIL duplicate-independent-restore: inodes 3982399,3982399; spec requires independent files
+PASS diff-metadata-only: output={"added":0,"removed":0,"modified":1,"changes":[{"path":"src","kind":"M"}]}
+FAIL partial-restore-filter: restored files=['src/a', 'src/b']
+FAIL overwrite-never-conflict: rc=0, existing=b'SENTINEL', stdout=Restored to /tmp/darc_independent_xk8e2fm1/out3, stderr=
+FAIL default-parent-head: show=Snapshot: 37a746255274ddedd8ddcd0ae2eba94f499071943f0641bb0ad4776c49db6f3b
+Created_ns: 2
+Files: 1  Dirs: 1  Symlinks: 0
+Logical bytes: 1
+New chunks: 1  Stored: 1
+FAIL timestamp-zero-honored: list row=bc6ece2d7aac   2026-08-12T04:47:50Z     -                 1          1          1
+FAIL config-unknown-key-reject: rc=0, out=OK, err=
+FAIL config-duplicate-key-reject: rc=0, out=OK
+FAIL config-exclude-applied: drop.tmp exists=True
+FAIL special-file-default-error: rc=0, out=Created snapshot 3cd8a580bab89afe49bf6ee64ea0688f3e8ff109d2befddeceb12affb877f650, err=
+PASS diff-symlink-target: output={"added":0,"removed":0,"modified":1,"changes":[{"path":"sy","kind":"M"}]}
+SUMMARY 2 passed 9 failed of 11

@@ -1,0 +1,4 @@
+GC_PARTIAL: Actually reclaimed 0 objects
+MISSING_FILE_VERIFY_EC=0 OUT=Checked: 14  OK: 11  Corrupt: 0  Missing: 0  Repaired: 0  Unrecoverable: 0
+MISSING_FILE_RESTORE_EC=0 OUT=Restored to /tmp/darc_int_bV2d/out
+HEAD_DELETE before=b09aaae8057fe9349be1cc9763bbb74e2de95493c24ba7db31c5839e831989cf after=b09aaae8057fe9349be1cc9763bbb74e2de95493c24ba7db31c5839e831989cf refs=1

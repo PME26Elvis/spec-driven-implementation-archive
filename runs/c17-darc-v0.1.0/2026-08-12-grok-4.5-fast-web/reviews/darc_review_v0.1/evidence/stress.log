@@ -1,0 +1,6 @@
+Initialized empty DARC repository at /tmp/darc_stress_repo
+Created snapshot 261ce881d8e454d00200df49c3dd065007c5914cf35fbba6e690ecae1a956a65
+Checked: 97  OK: 67  Corrupt: 0  Missing: 0  Repaired: 0  Unrecoverable: 0
+Created snapshot 4ce797e7d816431a906cfe590c2465a8c7d4a555960f29251392383932257189
+Checked: 132  OK: 72  Corrupt: 0  Missing: 0  Repaired: 0  Unrecoverable: 0
+STRESS_OK

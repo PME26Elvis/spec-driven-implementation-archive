@@ -1,0 +1,119 @@
+rm -f src/sha256.o src/crc32c.o src/buzhash.o src/lzh1.o src/object.o src/repo.o src/index.o src/snapshot.o src/verify.o src/restore.o src/diff.o src/config.o src/main.o bin/darc
+gcc -std=c17 -Wall -Wextra -O2 -Iinclude -D_POSIX_C_SOURCE=200809L -c -o src/sha256.o src/sha256.c
+gcc -std=c17 -Wall -Wextra -O2 -Iinclude -D_POSIX_C_SOURCE=200809L -c -o src/crc32c.o src/crc32c.c
+gcc -std=c17 -Wall -Wextra -O2 -Iinclude -D_POSIX_C_SOURCE=200809L -c -o src/buzhash.o src/buzhash.c
+gcc -std=c17 -Wall -Wextra -O2 -Iinclude -D_POSIX_C_SOURCE=200809L -c -o src/lzh1.o src/lzh1.c
+gcc -std=c17 -Wall -Wextra -O2 -Iinclude -D_POSIX_C_SOURCE=200809L -c -o src/object.o src/object.c
+src/lzh1.c: In function 'darc_lzh1_decompress':
+src/lzh1.c:397:12: warning: unused variable 'tok_cap' [-Wunused-variable]
+  397 |     size_t tok_cap = 0, tok_len = 0;
+      |            ^~~~~~~
+gcc -std=c17 -Wall -Wextra -O2 -Iinclude -D_POSIX_C_SOURCE=200809L -c -o src/repo.o src/repo.c
+gcc -std=c17 -Wall -Wextra -O2 -Iinclude -D_POSIX_C_SOURCE=200809L -c -o src/index.o src/index.c
+src/repo.c: In function 'darc_repo_atomic_write':
+src/repo.c:143:35: warning: '.tmp.' directive output may be truncated writing 5 bytes into a region of size between 1 and 4096 [-Wformat-truncation=]
+  143 |     snprintf(tmp, sizeof(tmp), "%s.tmp.%d", full, (int)getpid());
+      |                                   ^~~~~
+src/repo.c:143:5: note: 'snprintf' output between 7 and 4112 bytes into a destination of size 4096
+  143 |     snprintf(tmp, sizeof(tmp), "%s.tmp.%d", full, (int)getpid());
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+src/repo.c: In function 'darc_journal_recover':
+src/repo.c:203:42: warning: '%s' directive output may be truncated writing up to 255 bytes into a region of size between 0 and 4095 [-Wformat-truncation=]
+  203 |             snprintf(fp, sizeof(fp), "%s/%s", tmpdir, e->d_name);
+      |                                          ^~
+src/repo.c:203:13: note: 'snprintf' output between 2 and 4352 bytes into a destination of size 4096
+  203 |             snprintf(fp, sizeof(fp), "%s/%s", tmpdir, e->d_name);
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+gcc -std=c17 -Wall -Wextra -O2 -Iinclude -D_POSIX_C_SOURCE=200809L -c -o src/snapshot.o src/snapshot.c
+src/index.c: In function 'darc_index_rebuild':
+src/index.c:172:40: warning: '%s' directive output may be truncated writing 2 bytes into a region of size between 0 and 4095 [-Wformat-truncation=]
+  172 |         snprintf(sub, sizeof(sub), "%s/%s", dir, e1->d_name);
+      |                                        ^~
+src/index.c:172:9: note: 'snprintf' output between 4 and 4099 bytes into a destination of size 4096
+  172 |         snprintf(sub, sizeof(sub), "%s/%s", dir, e1->d_name);
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+gcc -std=c17 -Wall -Wextra -O2 -Iinclude -D_POSIX_C_SOURCE=200809L -c -o src/verify.o src/verify.c
+src/verify.c: In function 'darc_gc':
+src/verify.c:356:46: warning: unused parameter 'idx' [-Wunused-parameter]
+  356 | int darc_gc(darc_repo_t *repo, darc_index_t *idx, bool dry_run, size_t *reclaimed) {
+      |                                ~~~~~~~~~~~~~~^~~
+src/verify.c: In function 'darc_verify':
+src/verify.c:284:40: warning: '%s' directive output may be truncated writing 2 bytes into a region of size between 0 and 4095 [-Wformat-truncation=]
+  284 |         snprintf(sub, sizeof(sub), "%s/%s", dir, e1->d_name);
+      |                                        ^~
+src/verify.c:284:9: note: 'snprintf' output between 4 and 4099 bytes into a destination of size 4096
+  284 |         snprintf(sub, sizeof(sub), "%s/%s", dir, e1->d_name);
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+src/verify.c: In function 'darc_gc':
+src/verify.c:391:48: warning: '%s' directive output may be truncated writing 2 bytes into a region of size between 0 and 4095 [-Wformat-truncation=]
+  391 |                 snprintf(sub, sizeof(sub), "%s/%s", dir, e1->d_name);
+      |                                                ^~
+src/verify.c:391:17: note: 'snprintf' output between 4 and 4099 bytes into a destination of size 4096
+  391 |                 snprintf(sub, sizeof(sub), "%s/%s", dir, e1->d_name);
+      |                 ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+src/verify.c:398:50: warning: '%s' directive output may be truncated writing up to 255 bytes into a region of size between 0 and 4095 [-Wformat-truncation=]
+  398 |                     snprintf(fp, sizeof(fp), "%s/%s", sub, e2->d_name);
+      |                                                  ^~
+src/verify.c:398:21: note: 'snprintf' output between 2 and 4352 bytes into a destination of size 4096
+  398 |                     snprintf(fp, sizeof(fp), "%s/%s", sub, e2->d_name);
+      |                     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+gcc -std=c17 -Wall -Wextra -O2 -Iinclude -D_POSIX_C_SOURCE=200809L -c -o src/restore.o src/restore.c
+gcc -std=c17 -Wall -Wextra -O2 -Iinclude -D_POSIX_C_SOURCE=200809L -c -o src/diff.o src/diff.c
+src/restore.c: In function 'restore_tree.isra':
+src/restore.c:148:44: warning: 'snprintf' output may be truncated before the last format character [-Wformat-truncation=]
+  148 |         snprintf(full, sizeof(full), "%s/%s", dest, name);
+      |                                            ^
+src/restore.c:148:9: note: 'snprintf' output 2 or more bytes (assuming 4097) into a destination of size 4096
+  148 |         snprintf(full, sizeof(full), "%s/%s", dest, name);
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+gcc -std=c17 -Wall -Wextra -O2 -Iinclude -D_POSIX_C_SOURCE=200809L -c -o src/config.o src/config.c
+gcc -std=c17 -Wall -Wextra -O2 -Iinclude -D_POSIX_C_SOURCE=200809L -c -o src/main.o src/main.c
+src/config.c: In function 'apply_key':
+src/config.c:131:9: warning: this 'if' clause does not guard... [-Wmisleading-indentation]
+  131 |         if (is_num) c->chunk_min = (uint64_t)nval; return 0;
+      |         ^~
+src/config.c:131:52: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'if'
+  131 |         if (is_num) c->chunk_min = (uint64_t)nval; return 0;
+      |                                                    ^~~~~~
+src/config.c:134:9: warning: this 'if' clause does not guard... [-Wmisleading-indentation]
+  134 |         if (is_num) c->chunk_avg = (uint64_t)nval; return 0;
+      |         ^~
+src/config.c:134:52: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'if'
+  134 |         if (is_num) c->chunk_avg = (uint64_t)nval; return 0;
+      |                                                    ^~~~~~
+src/config.c:137:9: warning: this 'if' clause does not guard... [-Wmisleading-indentation]
+  137 |         if (is_num) c->chunk_max = (uint64_t)nval; return 0;
+      |         ^~
+src/config.c:137:52: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'if'
+  137 |         if (is_num) c->chunk_max = (uint64_t)nval; return 0;
+      |                                                    ^~~~~~
+src/config.c:140:9: warning: this 'if' clause does not guard... [-Wmisleading-indentation]
+  140 |         if (is_num) c->min_savings_bytes = (uint64_t)nval; return 0;
+      |         ^~
+src/config.c:140:60: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'if'
+  140 |         if (is_num) c->min_savings_bytes = (uint64_t)nval; return 0;
+      |                                                            ^~~~~~
+src/config.c:143:9: warning: this 'if' clause does not guard... [-Wmisleading-indentation]
+  143 |         if (is_bool) c->compression_enabled = bval; return 0;
+      |         ^~
+src/config.c:143:53: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'if'
+  143 |         if (is_bool) c->compression_enabled = bval; return 0;
+      |                                                     ^~~~~~
+src/config.c:146:9: warning: this 'if' clause does not guard... [-Wmisleading-indentation]
+  146 |         if (is_bool) c->parity_enabled = bval; return 0;
+      |         ^~
+src/config.c:146:48: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'if'
+  146 |         if (is_bool) c->parity_enabled = bval; return 0;
+      |                                                ^~~~~~
+src/config.c:149:9: warning: this 'if' clause does not guard... [-Wmisleading-indentation]
+  149 |         if (sval) snprintf(c->format, sizeof(c->format), "%s", sval); return 0;
+      |         ^~
+src/config.c:149:71: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'if'
+  149 |         if (sval) snprintf(c->format, sizeof(c->format), "%s", sval); return 0;
+      |                                                                       ^~~~~~
+src/main.c: In function 'cmd_snapshot':
+src/main.c:156:14: warning: unused variable 'full' [-Wunused-variable]
+  156 |         char full[65] = {0};
+      |              ^~~~
+gcc -std=c17 -Wall -Wextra -O2 -Iinclude -D_POSIX_C_SOURCE=200809L -o bin/darc src/sha256.o src/crc32c.o src/buzhash.o src/lzh1.o src/object.o src/repo.o src/index.o src/snapshot.o src/verify.o src/restore.o src/diff.o src/config.o src/main.o
+chmod +x bin/darc 2>/dev/null || true
