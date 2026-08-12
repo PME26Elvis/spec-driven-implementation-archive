@@ -1,0 +1,51 @@
+repository:
+  format_version: 1
+  parity_enabled: true
+  parity_data_members: 8
+scan:
+  follow_symlinks: false
+  cross_filesystems: false
+  include:
+    - "**"
+  exclude:
+    - "**/*.tmp"
+    - "**/.cache/**"
+  exclude_hidden: false
+  on_special_file: "error"
+  on_permission_error: "error"
+chunking:
+  algorithm: "buzhash64"
+  window_bytes: 64
+  min_bytes: 16384
+  avg_bytes: 65536
+  max_bytes: 262144
+compression:
+  algorithm: "lzh1"
+  enabled: true
+  min_savings_bytes: 1
+snapshot:
+  name: null
+  parent: null
+  timestamp_ns: null
+  trust_unchanged_identity: true
+restore:
+  overwrite: "never"
+  preserve_mode: true
+  preserve_mtime: true
+  create_hardlinks: true
+  on_unrecoverable: "error"
+diff:
+  path: null
+  top_n_svg: 50
+  show_chunk_metrics: true
+verify:
+  level: "full"
+  repair: false
+gc:
+  dry_run: false
+  repack_parity: true
+output:
+  format: "text"
+  color: "auto"
+  quiet: false
+  verbose: false
