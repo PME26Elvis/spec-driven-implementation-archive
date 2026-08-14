@@ -1,0 +1,94 @@
+name: Test recorded runs
+
+on:
+  workflow_dispatch:
+    inputs:
+      run:
+        description: Recorded run to test
+        required: true
+        type: choice
+        default: all
+        options:
+          - all
+          - markdown
+          - darc
+          - physics-sandbox
+
+permissions:
+  contents: read
+
+jobs:
+  markdown:
+    if: ${{ inputs.run == 'all' || inputs.run == 'markdown' }}
+    name: Markdown Editor (X11)
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    defaults:
+      run:
+        working-directory: runs/c17-x11-markdown/2026-08-10-gpt-work-5.6-sol-max/project/c17_x11_markdown_editor
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Install test dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            build-essential pkg-config \
+            libx11-dev libxft-dev libfontconfig1-dev \
+            libpng-dev libjpeg-dev \
+            xvfb ripgrep
+
+      - name: Run project test target
+        run: |
+          make clean
+          make test
+
+  darc:
+    if: ${{ inputs.run == 'all' || inputs.run == 'darc' }}
+    name: DARC v0.1.0
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    defaults:
+      run:
+        working-directory: runs/c17-darc-v0.1.0/2026-08-12-grok-4.5-fast-web/project/darc_gates_closed_v0.1/darc
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Install test dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends build-essential
+
+      - name: Run project test target
+        run: |
+          make clean
+          make test
+
+  physics-sandbox:
+    if: ${{ inputs.run == 'all' || inputs.run == 'physics-sandbox' }}
+    name: 2D Physics Sandbox (X11)
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    defaults:
+      run:
+        working-directory: runs/c17-x11-physics-sandbox/2026-08-14-grok-4.5-fast-web/project/physics_sandbox_v1.0_wip/physics_sandbox
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Install test dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends build-essential
+
+      - name: Run project test targets
+        run: |
+          make clean
+          make tests
+
+      - name: Scope note
+        run: |
+          echo "This workflow executes the archived project's native test target only."
+          echo "A green result is not a substitute for the independent spec-compliance review recorded with this run."
