@@ -21,18 +21,24 @@ Run-specific timing, usage, implementation statistics, validation evidence, and 
 
 Equivalent X11 and Win32 task packs are grouped below as one logical specification where applicable.
 
-| Specification | Platforms | Scope |
-| --- | --- | --- |
-| Markdown Editor | [X11](specs/c17-x11-markdown) / [Win32](specs/c17-win32-markdown) | Native Markdown editor with source, split, preview, rendered editing, workspaces, tabs, images, history, recovery, and extensive verification requirements. |
-| 2D Physics Sandbox | [X11](specs/c17-x11-physics-sandbox) / [Win32](specs/c17-win32-physics-sandbox) | Rigid-body physics sandbox and scene editor with collision handling, constraints, diagnostics, persistence, deterministic verification, and automated testing. |
-| Pinball Sandbox | [X11](specs/c17-x11-pinball-benchmark) / [Win32](specs/c17-win32-pinball-benchmark) | Deterministic pinball physics sandbox and table editor with edit/play modes, multiball, replay, diagnostics, save/load, and headless verification. |
-| Sudoku | [X11](specs/c17-x11-sudoku) / [Win32](specs/c17-win32-sudoku) | Modern 9×9 Sudoku desktop application with a hand-built UI, gameplay assistance, persistence, statistics, automated tests, and strict release gates. |
-| DARC v0.1.0 | [Linux/POSIX](specs/c17-darc-v0.1.0) | Headless C17 deterministic deduplicating archive with content-defined chunking, chunk-level deduplication, self-implemented compression, cryptographic IDs, Merkle integrity, snapshots/diff/restore, JSON/YAML configuration, GC, repository verification, crash-safe publication, corruption detection/recovery, and strict release gates. |
+| Specification | Platforms | Spec token estimate | Scope |
+| --- | --- | ---: | --- |
+| Markdown Editor | [X11](specs/c17-x11-markdown) / [Win32](specs/c17-win32-markdown) | X11: 39,576 · Win32: 49,398 | Native Markdown editor with source, split, preview, rendered editing, workspaces, tabs, images, history, recovery, and extensive verification requirements. |
+| 2D Physics Sandbox | [X11](specs/c17-x11-physics-sandbox) / [Win32](specs/c17-win32-physics-sandbox) | X11: 73,866 · Win32: 83,740 | Rigid-body physics sandbox and scene editor with collision handling, constraints, diagnostics, persistence, deterministic verification, and automated testing. |
+| Pinball Sandbox | [X11](specs/c17-x11-pinball-benchmark) / [Win32](specs/c17-win32-pinball-benchmark) | X11: 255,261 · Win32: 270,774 | Deterministic pinball physics sandbox and table editor with edit/play modes, multiball, replay, diagnostics, save/load, and headless verification. |
+| Sudoku | [X11](specs/c17-x11-sudoku) / [Win32](specs/c17-win32-sudoku) | X11: 67,016 · Win32: 75,059 | Modern 9×9 Sudoku desktop application with a hand-built UI, gameplay assistance, persistence, statistics, automated tests, and strict release gates. |
+| DARC v0.1.0 | [Linux/POSIX](specs/c17-darc-v0.1.0) | 34,641 | Headless C17 deterministic deduplicating archive with content-defined chunking, chunk-level deduplication, self-implemented compression, cryptographic IDs, Merkle integrity, snapshots/diff/restore, JSON/YAML configuration, GC, repository verification, crash-safe publication, corruption detection/recovery, and strict release gates. |
+
+> [!NOTE]
+> Spec token estimates come from the latest successful **Count spec tokens** workflow using Repomix 1.18.0 with the `o200k_base` encoding; the nine specification directories total **949,331 tokens** in that run. The specification packages currently in this archive were authored with **ChatGPT Plus · ChatGPT Chat · GPT-5.6 Sol · High reasoning**. Token counts are estimates of the checked-in specification artifacts, not model inference usage.
 
 ## Recorded runs
 
-| Specification | Run | Execution Surface | Notes |
-| --- | --- | --- | --- |
-| Markdown Editor (X11) | [2026-08-10-gpt-work-5.6-sol-max](runs/c17-x11-markdown/2026-08-10-gpt-work-5.6-sol-max) | ChatGPT Work · GPT-5.6 Sol · Max | Plus; run README records timing, weekly-usage consumption, Repomix statistics, and pending manual testing. |
-| DARC v0.1.0 | [2026-08-12-grok-4.5-fast-web](runs/c17-darc-v0.1.0/2026-08-12-grok-4.5-fast-web) | Grok Web · Grok 4.5 · Fast | Free web run; run README includes Repomix statistics and a later independent GPT-5.6 Sol review whose release verdict is FAIL. |
-| 2D Physics Sandbox (X11) | [2026-08-14-grok-4.5-fast-web](runs/c17-x11-physics-sandbox/2026-08-14-grok-4.5-fast-web) | Grok Web · Grok 4.5 · Fast | Free web run; Repomix records 81 files / 74,017 tokens, with a later independent GPT-5.6 Sol review assessing the v1.0 release as BLOCKED. |
+| Specification | Run | Execution Surface | Repomix token estimate | Notes |
+| --- | --- | --- | ---: | --- |
+| Markdown Editor (X11) | [2026-08-10-gpt-work-5.6-sol-max](runs/c17-x11-markdown/2026-08-10-gpt-work-5.6-sol-max) | ChatGPT Work · GPT-5.6 Sol · Max | 161,533 | Plus; run README records timing, weekly-usage consumption, Repomix statistics, and pending manual testing. |
+| DARC v0.1.0 | [2026-08-12-grok-4.5-fast-web](runs/c17-darc-v0.1.0/2026-08-12-grok-4.5-fast-web) | Grok Web · Grok 4.5 · Fast | 49,490 | Free web run; run README includes Repomix statistics and a later independent GPT-5.6 Sol review whose release verdict is FAIL. |
+| 2D Physics Sandbox (X11) | [2026-08-14-grok-4.5-fast-web](runs/c17-x11-physics-sandbox/2026-08-14-grok-4.5-fast-web) | Grok Web · Grok 4.5 · Fast | 74,017 | Free web run; Repomix records 81 files, with a later independent GPT-5.6 Sol review assessing the v1.0 release as BLOCKED. |
+
+> [!NOTE]
+> Repomix token estimates measure only the implementation artifacts included in each recorded run snapshot and selected by that run's Repomix counting rules. They do not include conversational output unless it was explicitly saved into the project, and they cannot include platform-hidden reasoning/thoughts, hidden internal context, or other non-exported model activity. Treat these figures as estimates of implementation-artifact size, not as total inference token consumption, total product usage, or cost.
