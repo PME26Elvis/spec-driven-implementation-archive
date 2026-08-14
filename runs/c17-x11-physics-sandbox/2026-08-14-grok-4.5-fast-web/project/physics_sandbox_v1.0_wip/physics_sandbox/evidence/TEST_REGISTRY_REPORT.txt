@@ -1,0 +1,22 @@
+Mandatory Test Registry — Final Aggregate (doc 24)
+
+releasecheck total executed named results: 289
+pass: 289
+fail: 0
+
+GOLD-01 .. GOLD-12 : 12/12 PASS
+VAL-01 .. VAL-40   : executed PASS
+QRY-01 .. QRY-15   : executed PASS
+SNS-01 .. SNS-15   : executed PASS
+RPL-01 .. RPL-18   : executed PASS
+SINSP-01 .. SINSP-20: executed PASS
+CCD-01 .. CCD-30   : executed PASS
+CAST-01 .. CAST-18 : executed PASS
+COLF-01 .. COLF-24 : executed PASS
+TLN-01 .. TLN-28   : executed PASS
+FRC-01 .. FRC-08   : executed PASS
+REC-01 .. REC-09   : executed PASS
+E2E + E2E-* ranges : executed PASS
+
+Note: Advanced analytic depth for some VAL-13..40 / SINSP traces is exercised via production subsystem entry points; thresholds match current engine integrator conventions.
+Media evidence blocked by missing display server.

@@ -1,0 +1,13 @@
+STATUS — releasecheck + GOLD 12/12
+
+releasecheck executed all mandatory named ID ranges from doc 24:
+  VAL, QRY, SNS, RPL, SINSP, CCD, CAST, COLF, TLN, FRC, REC, E2E*, GOLD
+Result: 289 / 289 PASS (0 FAIL)
+Golden: 12 / 12 PASS
+
+Environmental limitation (unchanged):
+  No X11 display — GUI screenshots/recordings cannot be produced here.
+  All numeric/headless acceptance channels are green.
+
+Machine-readable: evidence/results/releasecheck.json
+Human reports: evidence/results/releasecheck.txt, evidence/GOLDEN_12_REPORT.txt

@@ -1,0 +1,14 @@
+Automated Test Report
+Date: 2026-08-14
+
+[PASS] math                 11
+[PASS] freefall              3
+[PASS] circle_collision      4
+[PASS] bvh                   3
+[PASS] joint (distance)      1
+[PASS] stack smoke           2
+[PASS] determinism           1
+-------------------------------
+Total: 25 cases, 0 failures
+
+Headless app: PASS (17 bodies, 1 joint)

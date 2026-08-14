@@ -1,0 +1,17 @@
+Golden Scenario Acceptance Suite — Aggregate Report
+
+ID       STATUS
+GOLD-01  PASS   Free Fall Analytic
+GOLD-02  PASS   Elastic Momentum Collision
+GOLD-03  PASS   Friction Ramp
+GOLD-04  PASS   Five-Block Tower
+GOLD-05  PASS   Pyramid Stack Perturbation
+GOLD-06  PASS   Pendulum Constraint
+GOLD-07  PASS   Motorized Revolute Joint
+GOLD-08  PASS   Suspension Bridge Impact
+GOLD-09  PASS   Ragdoll / Linked Body Drop
+GOLD-10  PASS   Sensor Course and Filtering
+GOLD-11  PASS   High-Speed CCD Thin Wall
+GOLD-12  PASS   Mixed Stress Playground
+
+Aggregate: 12 / 12 PASS
