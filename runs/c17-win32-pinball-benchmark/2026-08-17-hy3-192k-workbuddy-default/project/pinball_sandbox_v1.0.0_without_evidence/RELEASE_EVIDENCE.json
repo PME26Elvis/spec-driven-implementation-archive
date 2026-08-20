@@ -1,0 +1,2769 @@
+{
+  "format_version": 1,
+  "task_package_version": "1.0.0",
+  "build_id": "build-20260817-pinball-v1.0.0",
+  "requirements": [
+    {
+      "requirement_id": "R-PLAT-01",
+      "status": "PASS",
+      "verification_methods": [
+        "build_audit",
+        "source_audit"
+      ],
+      "test_ids": [
+        "T-PLAT-001"
+      ],
+      "fixture_ids": [
+        "fixtures/reference_full_game_v2.pbt"
+      ],
+      "visual_ids": [],
+      "artifacts": [
+        "build/pinball_sandbox.exe",
+        "locscan_report.json"
+      ],
+      "notes": "Native Win32 C17 build produced; no prohibited frameworks linked (build_audit + source_audit)."
+    },
+    {
+      "requirement_id": "R-PLAT-02",
+      "status": "PASS",
+      "verification_methods": [
+        "build_audit",
+        "source_audit"
+      ],
+      "test_ids": [
+        "T-PLAT-002"
+      ],
+      "fixture_ids": [
+        "fixtures/reference_full_game_v2.pbt"
+      ],
+      "visual_ids": [],
+      "artifacts": [
+        "build/pinball_sandbox.exe",
+        "locscan_report.json"
+      ],
+      "notes": "Native Win32 C17 build produced; no prohibited frameworks linked (build_audit + source_audit)."
+    },
+    {
+      "requirement_id": "R-PLAT-03",
+      "status": "PASS",
+      "verification_methods": [
+        "build_audit",
+        "source_audit"
+      ],
+      "test_ids": [
+        "T-PLAT-003"
+      ],
+      "fixture_ids": [
+        "fixtures/reference_full_game_v2.pbt"
+      ],
+      "visual_ids": [],
+      "artifacts": [
+        "build/pinball_sandbox.exe",
+        "locscan_report.json"
+      ],
+      "notes": "Native Win32 C17 build produced; no prohibited frameworks linked (build_audit + source_audit)."
+    },
+    {
+      "requirement_id": "R-PLAT-04",
+      "status": "PASS",
+      "verification_methods": [
+        "build_audit",
+        "source_audit"
+      ],
+      "test_ids": [
+        "T-PLAT-004"
+      ],
+      "fixture_ids": [
+        "fixtures/reference_full_game_v2.pbt"
+      ],
+      "visual_ids": [],
+      "artifacts": [
+        "build/pinball_sandbox.exe",
+        "locscan_report.json"
+      ],
+      "notes": "Native Win32 C17 build produced; no prohibited frameworks linked (build_audit + source_audit)."
+    },
+    {
+      "requirement_id": "R-PLAT-05",
+      "status": "PASS",
+      "verification_methods": [
+        "build_audit",
+        "source_audit"
+      ],
+      "test_ids": [
+        "T-PLAT-005"
+      ],
+      "fixture_ids": [
+        "fixtures/reference_full_game_v2.pbt"
+      ],
+      "visual_ids": [],
+      "artifacts": [
+        "build/pinball_sandbox.exe",
+        "locscan_report.json"
+      ],
+      "notes": "Native Win32 C17 build produced; no prohibited frameworks linked (build_audit + source_audit)."
+    },
+    {
+      "requirement_id": "R-PLAT-06",
+      "status": "PASS",
+      "verification_methods": [
+        "build_audit",
+        "source_audit"
+      ],
+      "test_ids": [
+        "T-PLAT-006"
+      ],
+      "fixture_ids": [
+        "fixtures/reference_full_game_v2.pbt"
+      ],
+      "visual_ids": [],
+      "artifacts": [
+        "build/pinball_sandbox.exe",
+        "locscan_report.json"
+      ],
+      "notes": "Native Win32 C17 build produced; no prohibited frameworks linked (build_audit + source_audit)."
+    },
+    {
+      "requirement_id": "R-UI-01",
+      "status": "NOT_RUN",
+      "verification_methods": [
+        "manual_ui"
+      ],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Requires live Win32 desktop; not executed in headless CI. Visual evidence files present."
+    },
+    {
+      "requirement_id": "R-UI-02",
+      "status": "NOT_RUN",
+      "verification_methods": [
+        "manual_ui"
+      ],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Requires live Win32 desktop; not executed in headless CI. Visual evidence files present."
+    },
+    {
+      "requirement_id": "R-UI-03",
+      "status": "NOT_RUN",
+      "verification_methods": [
+        "manual_ui"
+      ],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Requires live Win32 desktop; not executed in headless CI. Visual evidence files present."
+    },
+    {
+      "requirement_id": "R-UI-04",
+      "status": "NOT_RUN",
+      "verification_methods": [
+        "manual_ui"
+      ],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Requires live Win32 desktop; not executed in headless CI. Visual evidence files present."
+    },
+    {
+      "requirement_id": "R-UI-05",
+      "status": "NOT_RUN",
+      "verification_methods": [
+        "manual_ui"
+      ],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Requires live Win32 desktop; not executed in headless CI. Visual evidence files present."
+    },
+    {
+      "requirement_id": "R-UI-06",
+      "status": "NOT_RUN",
+      "verification_methods": [
+        "manual_ui"
+      ],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Requires live Win32 desktop; not executed in headless CI. Visual evidence files present."
+    },
+    {
+      "requirement_id": "R-UI-07",
+      "status": "NOT_RUN",
+      "verification_methods": [
+        "manual_ui"
+      ],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Requires live Win32 desktop; not executed in headless CI. Visual evidence files present."
+    },
+    {
+      "requirement_id": "R-UI-08",
+      "status": "NOT_RUN",
+      "verification_methods": [
+        "manual_ui"
+      ],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Requires live Win32 desktop; not executed in headless CI. Visual evidence files present."
+    },
+    {
+      "requirement_id": "R-UI-09",
+      "status": "NOT_RUN",
+      "verification_methods": [
+        "manual_ui"
+      ],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Requires live Win32 desktop; not executed in headless CI. Visual evidence files present."
+    },
+    {
+      "requirement_id": "R-UI-10",
+      "status": "NOT_RUN",
+      "verification_methods": [
+        "manual_ui"
+      ],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Requires live Win32 desktop; not executed in headless CI. Visual evidence files present."
+    },
+    {
+      "requirement_id": "R-UI-11",
+      "status": "NOT_RUN",
+      "verification_methods": [
+        "manual_ui"
+      ],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Requires live Win32 desktop; not executed in headless CI. Visual evidence files present."
+    },
+    {
+      "requirement_id": "R-UI-12",
+      "status": "NOT_RUN",
+      "verification_methods": [
+        "manual_ui"
+      ],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Requires live Win32 desktop; not executed in headless CI. Visual evidence files present."
+    },
+    {
+      "requirement_id": "R-UI-13",
+      "status": "NOT_RUN",
+      "verification_methods": [
+        "manual_ui"
+      ],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Requires live Win32 desktop; not executed in headless CI. Visual evidence files present."
+    },
+    {
+      "requirement_id": "R-UI-14",
+      "status": "NOT_RUN",
+      "verification_methods": [
+        "manual_ui"
+      ],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Requires live Win32 desktop; not executed in headless CI. Visual evidence files present."
+    },
+    {
+      "requirement_id": "R-UI-15",
+      "status": "NOT_RUN",
+      "verification_methods": [
+        "manual_ui"
+      ],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Requires live Win32 desktop; not executed in headless CI. Visual evidence files present."
+    },
+    {
+      "requirement_id": "R-UI-16",
+      "status": "NOT_RUN",
+      "verification_methods": [
+        "manual_ui"
+      ],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Requires live Win32 desktop; not executed in headless CI. Visual evidence files present."
+    },
+    {
+      "requirement_id": "R-UI-17",
+      "status": "NOT_RUN",
+      "verification_methods": [
+        "manual_ui"
+      ],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Requires live Win32 desktop; not executed in headless CI. Visual evidence files present."
+    },
+    {
+      "requirement_id": "R-UI-18",
+      "status": "NOT_RUN",
+      "verification_methods": [
+        "manual_ui"
+      ],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Requires live Win32 desktop; not executed in headless CI. Visual evidence files present."
+    },
+    {
+      "requirement_id": "R-UI-19",
+      "status": "NOT_RUN",
+      "verification_methods": [
+        "manual_ui"
+      ],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Requires live Win32 desktop; not executed in headless CI. Visual evidence files present."
+    },
+    {
+      "requirement_id": "R-UI-20",
+      "status": "NOT_RUN",
+      "verification_methods": [
+        "manual_ui"
+      ],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Requires live Win32 desktop; not executed in headless CI. Visual evidence files present."
+    },
+    {
+      "requirement_id": "R-ED-01",
+      "status": "NOT_RUN",
+      "verification_methods": [
+        "manual_ui"
+      ],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Requires live Win32 editor UI; not executed in headless CI. Authoring logic unit-covered."
+    },
+    {
+      "requirement_id": "R-ED-02",
+      "status": "NOT_RUN",
+      "verification_methods": [
+        "manual_ui"
+      ],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Requires live Win32 editor UI; not executed in headless CI. Authoring logic unit-covered."
+    },
+    {
+      "requirement_id": "R-ED-03",
+      "status": "NOT_RUN",
+      "verification_methods": [
+        "manual_ui"
+      ],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Requires live Win32 editor UI; not executed in headless CI. Authoring logic unit-covered."
+    },
+    {
+      "requirement_id": "R-ED-04",
+      "status": "NOT_RUN",
+      "verification_methods": [
+        "manual_ui"
+      ],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Requires live Win32 editor UI; not executed in headless CI. Authoring logic unit-covered."
+    },
+    {
+      "requirement_id": "R-ED-05",
+      "status": "NOT_RUN",
+      "verification_methods": [
+        "manual_ui"
+      ],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Requires live Win32 editor UI; not executed in headless CI. Authoring logic unit-covered."
+    },
+    {
+      "requirement_id": "R-ED-06",
+      "status": "NOT_RUN",
+      "verification_methods": [
+        "manual_ui"
+      ],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Requires live Win32 editor UI; not executed in headless CI. Authoring logic unit-covered."
+    },
+    {
+      "requirement_id": "R-ED-07",
+      "status": "NOT_RUN",
+      "verification_methods": [
+        "manual_ui"
+      ],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Requires live Win32 editor UI; not executed in headless CI. Authoring logic unit-covered."
+    },
+    {
+      "requirement_id": "R-ED-08",
+      "status": "NOT_RUN",
+      "verification_methods": [
+        "manual_ui"
+      ],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Requires live Win32 editor UI; not executed in headless CI. Authoring logic unit-covered."
+    },
+    {
+      "requirement_id": "R-ED-09",
+      "status": "NOT_RUN",
+      "verification_methods": [
+        "manual_ui"
+      ],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Requires live Win32 editor UI; not executed in headless CI. Authoring logic unit-covered."
+    },
+    {
+      "requirement_id": "R-ED-10",
+      "status": "NOT_RUN",
+      "verification_methods": [
+        "manual_ui"
+      ],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Requires live Win32 editor UI; not executed in headless CI. Authoring logic unit-covered."
+    },
+    {
+      "requirement_id": "R-ED-11",
+      "status": "NOT_RUN",
+      "verification_methods": [
+        "manual_ui"
+      ],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Requires live Win32 editor UI; not executed in headless CI. Authoring logic unit-covered."
+    },
+    {
+      "requirement_id": "R-ED-12",
+      "status": "NOT_RUN",
+      "verification_methods": [
+        "manual_ui"
+      ],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Requires live Win32 editor UI; not executed in headless CI. Authoring logic unit-covered."
+    },
+    {
+      "requirement_id": "R-ED-13",
+      "status": "NOT_RUN",
+      "verification_methods": [
+        "manual_ui"
+      ],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Requires live Win32 editor UI; not executed in headless CI. Authoring logic unit-covered."
+    },
+    {
+      "requirement_id": "R-ED-14",
+      "status": "NOT_RUN",
+      "verification_methods": [
+        "manual_ui"
+      ],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Requires live Win32 editor UI; not executed in headless CI. Authoring logic unit-covered."
+    },
+    {
+      "requirement_id": "R-ED-15",
+      "status": "NOT_RUN",
+      "verification_methods": [
+        "manual_ui"
+      ],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Requires live Win32 editor UI; not executed in headless CI. Authoring logic unit-covered."
+    },
+    {
+      "requirement_id": "R-ED-16",
+      "status": "NOT_RUN",
+      "verification_methods": [
+        "manual_ui"
+      ],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Requires live Win32 editor UI; not executed in headless CI. Authoring logic unit-covered."
+    },
+    {
+      "requirement_id": "R-ED-17",
+      "status": "NOT_RUN",
+      "verification_methods": [
+        "manual_ui"
+      ],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Requires live Win32 editor UI; not executed in headless CI. Authoring logic unit-covered."
+    },
+    {
+      "requirement_id": "R-ED-18",
+      "status": "NOT_RUN",
+      "verification_methods": [
+        "manual_ui"
+      ],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Requires live Win32 editor UI; not executed in headless CI. Authoring logic unit-covered."
+    },
+    {
+      "requirement_id": "R-ED-19",
+      "status": "NOT_RUN",
+      "verification_methods": [
+        "manual_ui"
+      ],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Requires live Win32 editor UI; not executed in headless CI. Authoring logic unit-covered."
+    },
+    {
+      "requirement_id": "R-ED-20",
+      "status": "NOT_RUN",
+      "verification_methods": [
+        "manual_ui"
+      ],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Requires live Win32 editor UI; not executed in headless CI. Authoring logic unit-covered."
+    },
+    {
+      "requirement_id": "R-ED-21",
+      "status": "NOT_RUN",
+      "verification_methods": [
+        "manual_ui"
+      ],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Requires live Win32 editor UI; not executed in headless CI. Authoring logic unit-covered."
+    },
+    {
+      "requirement_id": "R-ED-22",
+      "status": "NOT_RUN",
+      "verification_methods": [
+        "manual_ui"
+      ],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Requires live Win32 editor UI; not executed in headless CI. Authoring logic unit-covered."
+    },
+    {
+      "requirement_id": "R-ED-23",
+      "status": "NOT_RUN",
+      "verification_methods": [
+        "manual_ui"
+      ],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Requires live Win32 editor UI; not executed in headless CI. Authoring logic unit-covered."
+    },
+    {
+      "requirement_id": "R-ED-24",
+      "status": "NOT_RUN",
+      "verification_methods": [
+        "manual_ui"
+      ],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Requires live Win32 editor UI; not executed in headless CI. Authoring logic unit-covered."
+    },
+    {
+      "requirement_id": "R-ED-25",
+      "status": "NOT_RUN",
+      "verification_methods": [
+        "manual_ui"
+      ],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Requires live Win32 editor UI; not executed in headless CI. Authoring logic unit-covered."
+    },
+    {
+      "requirement_id": "R-ED-26",
+      "status": "NOT_RUN",
+      "verification_methods": [
+        "manual_ui"
+      ],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Requires live Win32 editor UI; not executed in headless CI. Authoring logic unit-covered."
+    },
+    {
+      "requirement_id": "R-ED-27",
+      "status": "NOT_RUN",
+      "verification_methods": [
+        "manual_ui"
+      ],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Requires live Win32 editor UI; not executed in headless CI. Authoring logic unit-covered."
+    },
+    {
+      "requirement_id": "R-ED-28",
+      "status": "NOT_RUN",
+      "verification_methods": [
+        "manual_ui"
+      ],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Requires live Win32 editor UI; not executed in headless CI. Authoring logic unit-covered."
+    },
+    {
+      "requirement_id": "R-IO-01",
+      "status": "NOT_RUN",
+      "verification_methods": [
+        "manual_ui"
+      ],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Requires live desktop interaction/HiDPI; not executed in headless CI."
+    },
+    {
+      "requirement_id": "R-IO-02",
+      "status": "NOT_RUN",
+      "verification_methods": [
+        "manual_ui"
+      ],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Requires live desktop interaction/HiDPI; not executed in headless CI."
+    },
+    {
+      "requirement_id": "R-IO-03",
+      "status": "NOT_RUN",
+      "verification_methods": [
+        "manual_ui"
+      ],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Requires live desktop interaction/HiDPI; not executed in headless CI."
+    },
+    {
+      "requirement_id": "R-IO-04",
+      "status": "NOT_RUN",
+      "verification_methods": [
+        "manual_ui"
+      ],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Requires live desktop interaction/HiDPI; not executed in headless CI."
+    },
+    {
+      "requirement_id": "R-IO-05",
+      "status": "NOT_RUN",
+      "verification_methods": [
+        "manual_ui"
+      ],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Requires live desktop interaction/HiDPI; not executed in headless CI."
+    },
+    {
+      "requirement_id": "R-IO-06",
+      "status": "NOT_RUN",
+      "verification_methods": [
+        "manual_ui"
+      ],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Requires live desktop interaction/HiDPI; not executed in headless CI."
+    },
+    {
+      "requirement_id": "R-IO-07",
+      "status": "NOT_RUN",
+      "verification_methods": [
+        "manual_ui"
+      ],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Requires live desktop interaction/HiDPI; not executed in headless CI."
+    },
+    {
+      "requirement_id": "R-IO-08",
+      "status": "NOT_RUN",
+      "verification_methods": [
+        "manual_ui"
+      ],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Requires live desktop interaction/HiDPI; not executed in headless CI."
+    },
+    {
+      "requirement_id": "R-IO-09",
+      "status": "NOT_RUN",
+      "verification_methods": [
+        "manual_ui"
+      ],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Requires live desktop interaction/HiDPI; not executed in headless CI."
+    },
+    {
+      "requirement_id": "R-IO-10",
+      "status": "NOT_RUN",
+      "verification_methods": [
+        "manual_ui"
+      ],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Requires live desktop interaction/HiDPI; not executed in headless CI."
+    },
+    {
+      "requirement_id": "R-IO-11",
+      "status": "NOT_RUN",
+      "verification_methods": [
+        "manual_ui"
+      ],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Requires live desktop interaction/HiDPI; not executed in headless CI."
+    },
+    {
+      "requirement_id": "R-IO-12",
+      "status": "NOT_RUN",
+      "verification_methods": [
+        "manual_ui"
+      ],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Requires live desktop interaction/HiDPI; not executed in headless CI."
+    },
+    {
+      "requirement_id": "R-IO-13",
+      "status": "NOT_RUN",
+      "verification_methods": [
+        "manual_ui"
+      ],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Requires live desktop interaction/HiDPI; not executed in headless CI."
+    },
+    {
+      "requirement_id": "R-IO-14",
+      "status": "NOT_RUN",
+      "verification_methods": [
+        "manual_ui"
+      ],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Requires live desktop interaction/HiDPI; not executed in headless CI."
+    },
+    {
+      "requirement_id": "R-IO-15",
+      "status": "NOT_RUN",
+      "verification_methods": [
+        "manual_ui"
+      ],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Requires live desktop interaction/HiDPI; not executed in headless CI."
+    },
+    {
+      "requirement_id": "R-IO-16",
+      "status": "NOT_RUN",
+      "verification_methods": [
+        "manual_ui"
+      ],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Requires live desktop interaction/HiDPI; not executed in headless CI."
+    },
+    {
+      "requirement_id": "R-IO-17",
+      "status": "NOT_RUN",
+      "verification_methods": [
+        "manual_ui"
+      ],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Requires live desktop interaction/HiDPI; not executed in headless CI."
+    },
+    {
+      "requirement_id": "R-IO-18",
+      "status": "NOT_RUN",
+      "verification_methods": [
+        "manual_ui"
+      ],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Requires live desktop interaction/HiDPI; not executed in headless CI."
+    },
+    {
+      "requirement_id": "R-IO-19",
+      "status": "NOT_RUN",
+      "verification_methods": [
+        "manual_ui"
+      ],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Requires live desktop interaction/HiDPI; not executed in headless CI."
+    },
+    {
+      "requirement_id": "R-IO-20",
+      "status": "NOT_RUN",
+      "verification_methods": [
+        "manual_ui"
+      ],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Requires live desktop interaction/HiDPI; not executed in headless CI."
+    },
+    {
+      "requirement_id": "R-PHY-01",
+      "status": "PASS",
+      "verification_methods": [
+        "automated_test",
+        "headless"
+      ],
+      "test_ids": [
+        "T-PHY-001"
+      ],
+      "fixture_ids": [
+        "fixtures/reference_full_game_v2.pbt",
+        "fixtures/multiball_stress.pbt",
+        "fixtures/high_speed_thin_wall.pbt"
+      ],
+      "visual_ids": [],
+      "artifacts": [
+        "build/simcheck.exe",
+        "fixtures/reference_full_game_v2.pbt"
+      ],
+      "notes": "Fixed 1/240s semi-implicit Euler core; collision/friction/CCD validated by automated + headless tests."
+    },
+    {
+      "requirement_id": "R-PHY-02",
+      "status": "PASS",
+      "verification_methods": [
+        "automated_test",
+        "headless"
+      ],
+      "test_ids": [
+        "T-PHY-002"
+      ],
+      "fixture_ids": [
+        "fixtures/reference_full_game_v2.pbt",
+        "fixtures/multiball_stress.pbt",
+        "fixtures/high_speed_thin_wall.pbt"
+      ],
+      "visual_ids": [],
+      "artifacts": [
+        "build/simcheck.exe",
+        "fixtures/reference_full_game_v2.pbt"
+      ],
+      "notes": "Fixed 1/240s semi-implicit Euler core; collision/friction/CCD validated by automated + headless tests."
+    },
+    {
+      "requirement_id": "R-PHY-03",
+      "status": "PASS",
+      "verification_methods": [
+        "automated_test",
+        "headless"
+      ],
+      "test_ids": [
+        "T-PHY-003"
+      ],
+      "fixture_ids": [
+        "fixtures/reference_full_game_v2.pbt",
+        "fixtures/multiball_stress.pbt",
+        "fixtures/high_speed_thin_wall.pbt"
+      ],
+      "visual_ids": [],
+      "artifacts": [
+        "build/simcheck.exe",
+        "fixtures/reference_full_game_v2.pbt"
+      ],
+      "notes": "Fixed 1/240s semi-implicit Euler core; collision/friction/CCD validated by automated + headless tests."
+    },
+    {
+      "requirement_id": "R-PHY-04",
+      "status": "PASS",
+      "verification_methods": [
+        "automated_test",
+        "headless"
+      ],
+      "test_ids": [
+        "T-PHY-004"
+      ],
+      "fixture_ids": [
+        "fixtures/reference_full_game_v2.pbt",
+        "fixtures/multiball_stress.pbt",
+        "fixtures/high_speed_thin_wall.pbt"
+      ],
+      "visual_ids": [],
+      "artifacts": [
+        "build/simcheck.exe",
+        "fixtures/reference_full_game_v2.pbt"
+      ],
+      "notes": "Fixed 1/240s semi-implicit Euler core; collision/friction/CCD validated by automated + headless tests."
+    },
+    {
+      "requirement_id": "R-PHY-05",
+      "status": "PASS",
+      "verification_methods": [
+        "automated_test",
+        "headless"
+      ],
+      "test_ids": [
+        "T-PHY-005"
+      ],
+      "fixture_ids": [
+        "fixtures/reference_full_game_v2.pbt",
+        "fixtures/multiball_stress.pbt",
+        "fixtures/high_speed_thin_wall.pbt"
+      ],
+      "visual_ids": [],
+      "artifacts": [
+        "build/simcheck.exe",
+        "fixtures/reference_full_game_v2.pbt"
+      ],
+      "notes": "Fixed 1/240s semi-implicit Euler core; collision/friction/CCD validated by automated + headless tests."
+    },
+    {
+      "requirement_id": "R-PHY-06",
+      "status": "PASS",
+      "verification_methods": [
+        "automated_test",
+        "headless"
+      ],
+      "test_ids": [
+        "T-PHY-006"
+      ],
+      "fixture_ids": [
+        "fixtures/reference_full_game_v2.pbt",
+        "fixtures/multiball_stress.pbt",
+        "fixtures/high_speed_thin_wall.pbt"
+      ],
+      "visual_ids": [],
+      "artifacts": [
+        "build/simcheck.exe",
+        "fixtures/reference_full_game_v2.pbt"
+      ],
+      "notes": "Fixed 1/240s semi-implicit Euler core; collision/friction/CCD validated by automated + headless tests."
+    },
+    {
+      "requirement_id": "R-PHY-07",
+      "status": "PASS",
+      "verification_methods": [
+        "automated_test",
+        "headless"
+      ],
+      "test_ids": [
+        "T-PHY-007"
+      ],
+      "fixture_ids": [
+        "fixtures/reference_full_game_v2.pbt",
+        "fixtures/multiball_stress.pbt",
+        "fixtures/high_speed_thin_wall.pbt"
+      ],
+      "visual_ids": [],
+      "artifacts": [
+        "build/simcheck.exe",
+        "fixtures/reference_full_game_v2.pbt"
+      ],
+      "notes": "Fixed 1/240s semi-implicit Euler core; collision/friction/CCD validated by automated + headless tests."
+    },
+    {
+      "requirement_id": "R-PHY-08",
+      "status": "PASS",
+      "verification_methods": [
+        "automated_test",
+        "headless"
+      ],
+      "test_ids": [
+        "T-PHY-008"
+      ],
+      "fixture_ids": [
+        "fixtures/reference_full_game_v2.pbt",
+        "fixtures/multiball_stress.pbt",
+        "fixtures/high_speed_thin_wall.pbt"
+      ],
+      "visual_ids": [],
+      "artifacts": [
+        "build/simcheck.exe",
+        "fixtures/reference_full_game_v2.pbt"
+      ],
+      "notes": "Fixed 1/240s semi-implicit Euler core; collision/friction/CCD validated by automated + headless tests."
+    },
+    {
+      "requirement_id": "R-PHY-09",
+      "status": "PASS",
+      "verification_methods": [
+        "automated_test",
+        "headless"
+      ],
+      "test_ids": [
+        "T-PHY-009"
+      ],
+      "fixture_ids": [
+        "fixtures/reference_full_game_v2.pbt",
+        "fixtures/multiball_stress.pbt",
+        "fixtures/high_speed_thin_wall.pbt"
+      ],
+      "visual_ids": [],
+      "artifacts": [
+        "build/simcheck.exe",
+        "fixtures/reference_full_game_v2.pbt"
+      ],
+      "notes": "Fixed 1/240s semi-implicit Euler core; collision/friction/CCD validated by automated + headless tests."
+    },
+    {
+      "requirement_id": "R-PHY-10",
+      "status": "PASS",
+      "verification_methods": [
+        "automated_test",
+        "headless"
+      ],
+      "test_ids": [
+        "T-PHY-010"
+      ],
+      "fixture_ids": [
+        "fixtures/reference_full_game_v2.pbt",
+        "fixtures/multiball_stress.pbt",
+        "fixtures/high_speed_thin_wall.pbt"
+      ],
+      "visual_ids": [],
+      "artifacts": [
+        "build/simcheck.exe",
+        "fixtures/reference_full_game_v2.pbt"
+      ],
+      "notes": "Fixed 1/240s semi-implicit Euler core; collision/friction/CCD validated by automated + headless tests."
+    },
+    {
+      "requirement_id": "R-PHY-11",
+      "status": "PASS",
+      "verification_methods": [
+        "automated_test",
+        "headless"
+      ],
+      "test_ids": [
+        "T-PHY-011"
+      ],
+      "fixture_ids": [
+        "fixtures/reference_full_game_v2.pbt",
+        "fixtures/multiball_stress.pbt",
+        "fixtures/high_speed_thin_wall.pbt"
+      ],
+      "visual_ids": [],
+      "artifacts": [
+        "build/simcheck.exe",
+        "fixtures/reference_full_game_v2.pbt"
+      ],
+      "notes": "Fixed 1/240s semi-implicit Euler core; collision/friction/CCD validated by automated + headless tests."
+    },
+    {
+      "requirement_id": "R-PHY-12",
+      "status": "PASS",
+      "verification_methods": [
+        "automated_test",
+        "headless"
+      ],
+      "test_ids": [
+        "T-PHY-012"
+      ],
+      "fixture_ids": [
+        "fixtures/reference_full_game_v2.pbt",
+        "fixtures/multiball_stress.pbt",
+        "fixtures/high_speed_thin_wall.pbt"
+      ],
+      "visual_ids": [],
+      "artifacts": [
+        "build/simcheck.exe",
+        "fixtures/reference_full_game_v2.pbt"
+      ],
+      "notes": "Fixed 1/240s semi-implicit Euler core; collision/friction/CCD validated by automated + headless tests."
+    },
+    {
+      "requirement_id": "R-PHY-13",
+      "status": "PASS",
+      "verification_methods": [
+        "automated_test",
+        "headless"
+      ],
+      "test_ids": [
+        "T-PHY-013"
+      ],
+      "fixture_ids": [
+        "fixtures/reference_full_game_v2.pbt",
+        "fixtures/multiball_stress.pbt",
+        "fixtures/high_speed_thin_wall.pbt"
+      ],
+      "visual_ids": [],
+      "artifacts": [
+        "build/simcheck.exe",
+        "fixtures/reference_full_game_v2.pbt"
+      ],
+      "notes": "Fixed 1/240s semi-implicit Euler core; collision/friction/CCD validated by automated + headless tests."
+    },
+    {
+      "requirement_id": "R-PHY-14",
+      "status": "PASS",
+      "verification_methods": [
+        "automated_test",
+        "headless"
+      ],
+      "test_ids": [
+        "T-PHY-014"
+      ],
+      "fixture_ids": [
+        "fixtures/reference_full_game_v2.pbt",
+        "fixtures/multiball_stress.pbt",
+        "fixtures/high_speed_thin_wall.pbt"
+      ],
+      "visual_ids": [],
+      "artifacts": [
+        "build/simcheck.exe",
+        "fixtures/reference_full_game_v2.pbt"
+      ],
+      "notes": "Fixed 1/240s semi-implicit Euler core; collision/friction/CCD validated by automated + headless tests."
+    },
+    {
+      "requirement_id": "R-PHY-15",
+      "status": "PASS",
+      "verification_methods": [
+        "automated_test",
+        "headless"
+      ],
+      "test_ids": [
+        "T-PHY-015"
+      ],
+      "fixture_ids": [
+        "fixtures/reference_full_game_v2.pbt",
+        "fixtures/multiball_stress.pbt",
+        "fixtures/high_speed_thin_wall.pbt"
+      ],
+      "visual_ids": [],
+      "artifacts": [
+        "build/simcheck.exe",
+        "fixtures/reference_full_game_v2.pbt"
+      ],
+      "notes": "Fixed 1/240s semi-implicit Euler core; collision/friction/CCD validated by automated + headless tests."
+    },
+    {
+      "requirement_id": "R-PHY-16",
+      "status": "PASS",
+      "verification_methods": [
+        "automated_test",
+        "headless"
+      ],
+      "test_ids": [
+        "T-PHY-016"
+      ],
+      "fixture_ids": [
+        "fixtures/reference_full_game_v2.pbt",
+        "fixtures/multiball_stress.pbt",
+        "fixtures/high_speed_thin_wall.pbt"
+      ],
+      "visual_ids": [],
+      "artifacts": [
+        "build/simcheck.exe",
+        "fixtures/reference_full_game_v2.pbt"
+      ],
+      "notes": "Fixed 1/240s semi-implicit Euler core; collision/friction/CCD validated by automated + headless tests."
+    },
+    {
+      "requirement_id": "R-PHY-17",
+      "status": "PASS",
+      "verification_methods": [
+        "automated_test",
+        "headless"
+      ],
+      "test_ids": [
+        "T-PHY-017"
+      ],
+      "fixture_ids": [
+        "fixtures/reference_full_game_v2.pbt",
+        "fixtures/multiball_stress.pbt",
+        "fixtures/high_speed_thin_wall.pbt"
+      ],
+      "visual_ids": [],
+      "artifacts": [
+        "build/simcheck.exe",
+        "fixtures/reference_full_game_v2.pbt"
+      ],
+      "notes": "Fixed 1/240s semi-implicit Euler core; collision/friction/CCD validated by automated + headless tests."
+    },
+    {
+      "requirement_id": "R-PHY-18",
+      "status": "PASS",
+      "verification_methods": [
+        "automated_test",
+        "headless"
+      ],
+      "test_ids": [
+        "T-PHY-018"
+      ],
+      "fixture_ids": [
+        "fixtures/reference_full_game_v2.pbt",
+        "fixtures/multiball_stress.pbt",
+        "fixtures/high_speed_thin_wall.pbt"
+      ],
+      "visual_ids": [],
+      "artifacts": [
+        "build/simcheck.exe",
+        "fixtures/reference_full_game_v2.pbt"
+      ],
+      "notes": "Fixed 1/240s semi-implicit Euler core; collision/friction/CCD validated by automated + headless tests."
+    },
+    {
+      "requirement_id": "R-PHY-19",
+      "status": "PASS",
+      "verification_methods": [
+        "automated_test",
+        "headless"
+      ],
+      "test_ids": [
+        "T-PHY-019"
+      ],
+      "fixture_ids": [
+        "fixtures/reference_full_game_v2.pbt",
+        "fixtures/multiball_stress.pbt",
+        "fixtures/high_speed_thin_wall.pbt"
+      ],
+      "visual_ids": [],
+      "artifacts": [
+        "build/simcheck.exe",
+        "fixtures/reference_full_game_v2.pbt"
+      ],
+      "notes": "Fixed 1/240s semi-implicit Euler core; collision/friction/CCD validated by automated + headless tests."
+    },
+    {
+      "requirement_id": "R-PHY-20",
+      "status": "PASS",
+      "verification_methods": [
+        "automated_test",
+        "headless"
+      ],
+      "test_ids": [
+        "T-PHY-020"
+      ],
+      "fixture_ids": [
+        "fixtures/reference_full_game_v2.pbt",
+        "fixtures/multiball_stress.pbt",
+        "fixtures/high_speed_thin_wall.pbt"
+      ],
+      "visual_ids": [],
+      "artifacts": [
+        "build/simcheck.exe",
+        "fixtures/reference_full_game_v2.pbt"
+      ],
+      "notes": "Fixed 1/240s semi-implicit Euler core; collision/friction/CCD validated by automated + headless tests."
+    },
+    {
+      "requirement_id": "R-PHY-21",
+      "status": "PASS",
+      "verification_methods": [
+        "automated_test",
+        "headless"
+      ],
+      "test_ids": [
+        "T-PHY-021"
+      ],
+      "fixture_ids": [
+        "fixtures/reference_full_game_v2.pbt",
+        "fixtures/multiball_stress.pbt",
+        "fixtures/high_speed_thin_wall.pbt"
+      ],
+      "visual_ids": [],
+      "artifacts": [
+        "build/simcheck.exe",
+        "fixtures/reference_full_game_v2.pbt"
+      ],
+      "notes": "Fixed 1/240s semi-implicit Euler core; collision/friction/CCD validated by automated + headless tests."
+    },
+    {
+      "requirement_id": "R-PHY-22",
+      "status": "PASS",
+      "verification_methods": [
+        "automated_test",
+        "headless"
+      ],
+      "test_ids": [
+        "T-PHY-022"
+      ],
+      "fixture_ids": [
+        "fixtures/reference_full_game_v2.pbt",
+        "fixtures/multiball_stress.pbt",
+        "fixtures/high_speed_thin_wall.pbt"
+      ],
+      "visual_ids": [],
+      "artifacts": [
+        "build/simcheck.exe",
+        "fixtures/reference_full_game_v2.pbt"
+      ],
+      "notes": "Fixed 1/240s semi-implicit Euler core; collision/friction/CCD validated by automated + headless tests."
+    },
+    {
+      "requirement_id": "R-PHY-23",
+      "status": "PASS",
+      "verification_methods": [
+        "automated_test",
+        "headless"
+      ],
+      "test_ids": [
+        "T-PHY-023"
+      ],
+      "fixture_ids": [
+        "fixtures/reference_full_game_v2.pbt",
+        "fixtures/multiball_stress.pbt",
+        "fixtures/high_speed_thin_wall.pbt"
+      ],
+      "visual_ids": [],
+      "artifacts": [
+        "build/simcheck.exe",
+        "fixtures/reference_full_game_v2.pbt"
+      ],
+      "notes": "Fixed 1/240s semi-implicit Euler core; collision/friction/CCD validated by automated + headless tests."
+    },
+    {
+      "requirement_id": "R-PHY-24",
+      "status": "PASS",
+      "verification_methods": [
+        "automated_test",
+        "headless"
+      ],
+      "test_ids": [
+        "T-PHY-024"
+      ],
+      "fixture_ids": [
+        "fixtures/reference_full_game_v2.pbt",
+        "fixtures/multiball_stress.pbt",
+        "fixtures/high_speed_thin_wall.pbt"
+      ],
+      "visual_ids": [],
+      "artifacts": [
+        "build/simcheck.exe",
+        "fixtures/reference_full_game_v2.pbt"
+      ],
+      "notes": "Fixed 1/240s semi-implicit Euler core; collision/friction/CCD validated by automated + headless tests."
+    },
+    {
+      "requirement_id": "R-GAME-01",
+      "status": "PASS",
+      "verification_methods": [
+        "automated_test"
+      ],
+      "test_ids": [
+        "T-GAME-001"
+      ],
+      "fixture_ids": [
+        "fixtures/reference_full_game_v2.pbt",
+        "fixtures/free_flight_v2.pbt",
+        "fixtures/drain_test.pbt"
+      ],
+      "visual_ids": [],
+      "artifacts": [
+        "build/simcheck.exe",
+        "fixtures/free_flight_v2.pbt"
+      ],
+      "notes": "Launcher/charge/flippers/score/combo/multiball/drain semantics validated by automated tests."
+    },
+    {
+      "requirement_id": "R-GAME-02",
+      "status": "PASS",
+      "verification_methods": [
+        "automated_test"
+      ],
+      "test_ids": [
+        "T-GAME-002"
+      ],
+      "fixture_ids": [
+        "fixtures/reference_full_game_v2.pbt",
+        "fixtures/free_flight_v2.pbt",
+        "fixtures/drain_test.pbt"
+      ],
+      "visual_ids": [],
+      "artifacts": [
+        "build/simcheck.exe",
+        "fixtures/free_flight_v2.pbt"
+      ],
+      "notes": "Launcher/charge/flippers/score/combo/multiball/drain semantics validated by automated tests."
+    },
+    {
+      "requirement_id": "R-GAME-03",
+      "status": "PASS",
+      "verification_methods": [
+        "automated_test"
+      ],
+      "test_ids": [
+        "T-GAME-003"
+      ],
+      "fixture_ids": [
+        "fixtures/reference_full_game_v2.pbt",
+        "fixtures/free_flight_v2.pbt",
+        "fixtures/drain_test.pbt"
+      ],
+      "visual_ids": [],
+      "artifacts": [
+        "build/simcheck.exe",
+        "fixtures/free_flight_v2.pbt"
+      ],
+      "notes": "Launcher/charge/flippers/score/combo/multiball/drain semantics validated by automated tests."
+    },
+    {
+      "requirement_id": "R-GAME-04",
+      "status": "PASS",
+      "verification_methods": [
+        "automated_test"
+      ],
+      "test_ids": [
+        "T-GAME-004"
+      ],
+      "fixture_ids": [
+        "fixtures/reference_full_game_v2.pbt",
+        "fixtures/free_flight_v2.pbt",
+        "fixtures/drain_test.pbt"
+      ],
+      "visual_ids": [],
+      "artifacts": [
+        "build/simcheck.exe",
+        "fixtures/free_flight_v2.pbt"
+      ],
+      "notes": "Launcher/charge/flippers/score/combo/multiball/drain semantics validated by automated tests."
+    },
+    {
+      "requirement_id": "R-GAME-05",
+      "status": "PASS",
+      "verification_methods": [
+        "automated_test"
+      ],
+      "test_ids": [
+        "T-GAME-005"
+      ],
+      "fixture_ids": [
+        "fixtures/reference_full_game_v2.pbt",
+        "fixtures/free_flight_v2.pbt",
+        "fixtures/drain_test.pbt"
+      ],
+      "visual_ids": [],
+      "artifacts": [
+        "build/simcheck.exe",
+        "fixtures/free_flight_v2.pbt"
+      ],
+      "notes": "Launcher/charge/flippers/score/combo/multiball/drain semantics validated by automated tests."
+    },
+    {
+      "requirement_id": "R-GAME-06",
+      "status": "PASS",
+      "verification_methods": [
+        "automated_test"
+      ],
+      "test_ids": [
+        "T-GAME-006"
+      ],
+      "fixture_ids": [
+        "fixtures/reference_full_game_v2.pbt",
+        "fixtures/free_flight_v2.pbt",
+        "fixtures/drain_test.pbt"
+      ],
+      "visual_ids": [],
+      "artifacts": [
+        "build/simcheck.exe",
+        "fixtures/free_flight_v2.pbt"
+      ],
+      "notes": "Launcher/charge/flippers/score/combo/multiball/drain semantics validated by automated tests."
+    },
+    {
+      "requirement_id": "R-GAME-07",
+      "status": "PASS",
+      "verification_methods": [
+        "automated_test"
+      ],
+      "test_ids": [
+        "T-GAME-007"
+      ],
+      "fixture_ids": [
+        "fixtures/reference_full_game_v2.pbt",
+        "fixtures/free_flight_v2.pbt",
+        "fixtures/drain_test.pbt"
+      ],
+      "visual_ids": [],
+      "artifacts": [
+        "build/simcheck.exe",
+        "fixtures/free_flight_v2.pbt"
+      ],
+      "notes": "Launcher/charge/flippers/score/combo/multiball/drain semantics validated by automated tests."
+    },
+    {
+      "requirement_id": "R-GAME-08",
+      "status": "PASS",
+      "verification_methods": [
+        "automated_test"
+      ],
+      "test_ids": [
+        "T-GAME-008"
+      ],
+      "fixture_ids": [
+        "fixtures/reference_full_game_v2.pbt",
+        "fixtures/free_flight_v2.pbt",
+        "fixtures/drain_test.pbt"
+      ],
+      "visual_ids": [],
+      "artifacts": [
+        "build/simcheck.exe",
+        "fixtures/free_flight_v2.pbt"
+      ],
+      "notes": "Launcher/charge/flippers/score/combo/multiball/drain semantics validated by automated tests."
+    },
+    {
+      "requirement_id": "R-GAME-09",
+      "status": "PASS",
+      "verification_methods": [
+        "automated_test"
+      ],
+      "test_ids": [
+        "T-GAME-009"
+      ],
+      "fixture_ids": [
+        "fixtures/reference_full_game_v2.pbt",
+        "fixtures/free_flight_v2.pbt",
+        "fixtures/drain_test.pbt"
+      ],
+      "visual_ids": [],
+      "artifacts": [
+        "build/simcheck.exe",
+        "fixtures/free_flight_v2.pbt"
+      ],
+      "notes": "Launcher/charge/flippers/score/combo/multiball/drain semantics validated by automated tests."
+    },
+    {
+      "requirement_id": "R-GAME-10",
+      "status": "PASS",
+      "verification_methods": [
+        "automated_test"
+      ],
+      "test_ids": [
+        "T-GAME-010"
+      ],
+      "fixture_ids": [
+        "fixtures/reference_full_game_v2.pbt",
+        "fixtures/free_flight_v2.pbt",
+        "fixtures/drain_test.pbt"
+      ],
+      "visual_ids": [],
+      "artifacts": [
+        "build/simcheck.exe",
+        "fixtures/free_flight_v2.pbt"
+      ],
+      "notes": "Launcher/charge/flippers/score/combo/multiball/drain semantics validated by automated tests."
+    },
+    {
+      "requirement_id": "R-GAME-11",
+      "status": "PASS",
+      "verification_methods": [
+        "automated_test"
+      ],
+      "test_ids": [
+        "T-GAME-011"
+      ],
+      "fixture_ids": [
+        "fixtures/reference_full_game_v2.pbt",
+        "fixtures/free_flight_v2.pbt",
+        "fixtures/drain_test.pbt"
+      ],
+      "visual_ids": [],
+      "artifacts": [
+        "build/simcheck.exe",
+        "fixtures/free_flight_v2.pbt"
+      ],
+      "notes": "Launcher/charge/flippers/score/combo/multiball/drain semantics validated by automated tests."
+    },
+    {
+      "requirement_id": "R-GAME-12",
+      "status": "PASS",
+      "verification_methods": [
+        "automated_test"
+      ],
+      "test_ids": [
+        "T-GAME-012"
+      ],
+      "fixture_ids": [
+        "fixtures/reference_full_game_v2.pbt",
+        "fixtures/free_flight_v2.pbt",
+        "fixtures/drain_test.pbt"
+      ],
+      "visual_ids": [],
+      "artifacts": [
+        "build/simcheck.exe",
+        "fixtures/free_flight_v2.pbt"
+      ],
+      "notes": "Launcher/charge/flippers/score/combo/multiball/drain semantics validated by automated tests."
+    },
+    {
+      "requirement_id": "R-GAME-13",
+      "status": "PASS",
+      "verification_methods": [
+        "automated_test"
+      ],
+      "test_ids": [
+        "T-GAME-013"
+      ],
+      "fixture_ids": [
+        "fixtures/reference_full_game_v2.pbt",
+        "fixtures/free_flight_v2.pbt",
+        "fixtures/drain_test.pbt"
+      ],
+      "visual_ids": [],
+      "artifacts": [
+        "build/simcheck.exe",
+        "fixtures/free_flight_v2.pbt"
+      ],
+      "notes": "Launcher/charge/flippers/score/combo/multiball/drain semantics validated by automated tests."
+    },
+    {
+      "requirement_id": "R-GAME-14",
+      "status": "PASS",
+      "verification_methods": [
+        "automated_test"
+      ],
+      "test_ids": [
+        "T-GAME-014"
+      ],
+      "fixture_ids": [
+        "fixtures/reference_full_game_v2.pbt",
+        "fixtures/free_flight_v2.pbt",
+        "fixtures/drain_test.pbt"
+      ],
+      "visual_ids": [],
+      "artifacts": [
+        "build/simcheck.exe",
+        "fixtures/free_flight_v2.pbt"
+      ],
+      "notes": "Launcher/charge/flippers/score/combo/multiball/drain semantics validated by automated tests."
+    },
+    {
+      "requirement_id": "R-GAME-15",
+      "status": "PASS",
+      "verification_methods": [
+        "automated_test"
+      ],
+      "test_ids": [
+        "T-GAME-015"
+      ],
+      "fixture_ids": [
+        "fixtures/reference_full_game_v2.pbt",
+        "fixtures/free_flight_v2.pbt",
+        "fixtures/drain_test.pbt"
+      ],
+      "visual_ids": [],
+      "artifacts": [
+        "build/simcheck.exe",
+        "fixtures/free_flight_v2.pbt"
+      ],
+      "notes": "Launcher/charge/flippers/score/combo/multiball/drain semantics validated by automated tests."
+    },
+    {
+      "requirement_id": "R-GAME-16",
+      "status": "PASS",
+      "verification_methods": [
+        "automated_test"
+      ],
+      "test_ids": [
+        "T-GAME-016"
+      ],
+      "fixture_ids": [
+        "fixtures/reference_full_game_v2.pbt",
+        "fixtures/free_flight_v2.pbt",
+        "fixtures/drain_test.pbt"
+      ],
+      "visual_ids": [],
+      "artifacts": [
+        "build/simcheck.exe",
+        "fixtures/free_flight_v2.pbt"
+      ],
+      "notes": "Launcher/charge/flippers/score/combo/multiball/drain semantics validated by automated tests."
+    },
+    {
+      "requirement_id": "R-GAME-17",
+      "status": "PASS",
+      "verification_methods": [
+        "automated_test"
+      ],
+      "test_ids": [
+        "T-GAME-017"
+      ],
+      "fixture_ids": [
+        "fixtures/reference_full_game_v2.pbt",
+        "fixtures/free_flight_v2.pbt",
+        "fixtures/drain_test.pbt"
+      ],
+      "visual_ids": [],
+      "artifacts": [
+        "build/simcheck.exe",
+        "fixtures/free_flight_v2.pbt"
+      ],
+      "notes": "Launcher/charge/flippers/score/combo/multiball/drain semantics validated by automated tests."
+    },
+    {
+      "requirement_id": "R-EVT-01",
+      "status": "PASS",
+      "verification_methods": [
+        "automated_test"
+      ],
+      "test_ids": [
+        "T-EVT-001"
+      ],
+      "fixture_ids": [
+        "fixtures/flipper_strike.pbt",
+        "fixtures/bumper_ring.pbt"
+      ],
+      "visual_ids": [],
+      "artifacts": [
+        "build/simcheck.exe",
+        "fixtures/flipper_strike.pbt"
+      ],
+      "notes": "Nudge/tilt/targets/triggers/actions validated by automated tests and replays."
+    },
+    {
+      "requirement_id": "R-EVT-02",
+      "status": "PASS",
+      "verification_methods": [
+        "automated_test"
+      ],
+      "test_ids": [
+        "T-EVT-002"
+      ],
+      "fixture_ids": [
+        "fixtures/flipper_strike.pbt",
+        "fixtures/bumper_ring.pbt"
+      ],
+      "visual_ids": [],
+      "artifacts": [
+        "build/simcheck.exe",
+        "fixtures/flipper_strike.pbt"
+      ],
+      "notes": "Nudge/tilt/targets/triggers/actions validated by automated tests and replays."
+    },
+    {
+      "requirement_id": "R-EVT-03",
+      "status": "PASS",
+      "verification_methods": [
+        "automated_test"
+      ],
+      "test_ids": [
+        "T-EVT-003"
+      ],
+      "fixture_ids": [
+        "fixtures/flipper_strike.pbt",
+        "fixtures/bumper_ring.pbt"
+      ],
+      "visual_ids": [],
+      "artifacts": [
+        "build/simcheck.exe",
+        "fixtures/flipper_strike.pbt"
+      ],
+      "notes": "Nudge/tilt/targets/triggers/actions validated by automated tests and replays."
+    },
+    {
+      "requirement_id": "R-EVT-04",
+      "status": "PASS",
+      "verification_methods": [
+        "automated_test"
+      ],
+      "test_ids": [
+        "T-EVT-004"
+      ],
+      "fixture_ids": [
+        "fixtures/flipper_strike.pbt",
+        "fixtures/bumper_ring.pbt"
+      ],
+      "visual_ids": [],
+      "artifacts": [
+        "build/simcheck.exe",
+        "fixtures/flipper_strike.pbt"
+      ],
+      "notes": "Nudge/tilt/targets/triggers/actions validated by automated tests and replays."
+    },
+    {
+      "requirement_id": "R-EVT-05",
+      "status": "PASS",
+      "verification_methods": [
+        "automated_test"
+      ],
+      "test_ids": [
+        "T-EVT-005"
+      ],
+      "fixture_ids": [
+        "fixtures/flipper_strike.pbt",
+        "fixtures/bumper_ring.pbt"
+      ],
+      "visual_ids": [],
+      "artifacts": [
+        "build/simcheck.exe",
+        "fixtures/flipper_strike.pbt"
+      ],
+      "notes": "Nudge/tilt/targets/triggers/actions validated by automated tests and replays."
+    },
+    {
+      "requirement_id": "R-EVT-06",
+      "status": "PASS",
+      "verification_methods": [
+        "automated_test"
+      ],
+      "test_ids": [
+        "T-EVT-006"
+      ],
+      "fixture_ids": [
+        "fixtures/flipper_strike.pbt",
+        "fixtures/bumper_ring.pbt"
+      ],
+      "visual_ids": [],
+      "artifacts": [
+        "build/simcheck.exe",
+        "fixtures/flipper_strike.pbt"
+      ],
+      "notes": "Nudge/tilt/targets/triggers/actions validated by automated tests and replays."
+    },
+    {
+      "requirement_id": "R-EVT-07",
+      "status": "PASS",
+      "verification_methods": [
+        "automated_test"
+      ],
+      "test_ids": [
+        "T-EVT-007"
+      ],
+      "fixture_ids": [
+        "fixtures/flipper_strike.pbt",
+        "fixtures/bumper_ring.pbt"
+      ],
+      "visual_ids": [],
+      "artifacts": [
+        "build/simcheck.exe",
+        "fixtures/flipper_strike.pbt"
+      ],
+      "notes": "Nudge/tilt/targets/triggers/actions validated by automated tests and replays."
+    },
+    {
+      "requirement_id": "R-EVT-08",
+      "status": "PASS",
+      "verification_methods": [
+        "automated_test"
+      ],
+      "test_ids": [
+        "T-EVT-008"
+      ],
+      "fixture_ids": [
+        "fixtures/flipper_strike.pbt",
+        "fixtures/bumper_ring.pbt"
+      ],
+      "visual_ids": [],
+      "artifacts": [
+        "build/simcheck.exe",
+        "fixtures/flipper_strike.pbt"
+      ],
+      "notes": "Nudge/tilt/targets/triggers/actions validated by automated tests and replays."
+    },
+    {
+      "requirement_id": "R-RPL-01",
+      "status": "PASS",
+      "verification_methods": [
+        "headless",
+        "automated_test"
+      ],
+      "test_ids": [
+        "T-RPL-001"
+      ],
+      "fixture_ids": [
+        "fixtures/flipper_strike.pbt"
+      ],
+      "visual_ids": [],
+      "artifacts": [
+        "build/replaycheck.exe",
+        "out/evidence/_replay_flipper_strike.pbt.pbr"
+      ],
+      "notes": "Deterministic .pbr record/replay; scene fingerprint checked; replaycheck passes."
+    },
+    {
+      "requirement_id": "R-RPL-02",
+      "status": "PASS",
+      "verification_methods": [
+        "headless",
+        "automated_test"
+      ],
+      "test_ids": [
+        "T-RPL-002"
+      ],
+      "fixture_ids": [
+        "fixtures/flipper_strike.pbt"
+      ],
+      "visual_ids": [],
+      "artifacts": [
+        "build/replaycheck.exe",
+        "out/evidence/_replay_flipper_strike.pbt.pbr"
+      ],
+      "notes": "Deterministic .pbr record/replay; scene fingerprint checked; replaycheck passes."
+    },
+    {
+      "requirement_id": "R-RPL-03",
+      "status": "PASS",
+      "verification_methods": [
+        "headless",
+        "automated_test"
+      ],
+      "test_ids": [
+        "T-RPL-003"
+      ],
+      "fixture_ids": [
+        "fixtures/flipper_strike.pbt"
+      ],
+      "visual_ids": [],
+      "artifacts": [
+        "build/replaycheck.exe",
+        "out/evidence/_replay_flipper_strike.pbt.pbr"
+      ],
+      "notes": "Deterministic .pbr record/replay; scene fingerprint checked; replaycheck passes."
+    },
+    {
+      "requirement_id": "R-RPL-04",
+      "status": "PASS",
+      "verification_methods": [
+        "headless",
+        "automated_test"
+      ],
+      "test_ids": [
+        "T-RPL-004"
+      ],
+      "fixture_ids": [
+        "fixtures/flipper_strike.pbt"
+      ],
+      "visual_ids": [],
+      "artifacts": [
+        "build/replaycheck.exe",
+        "out/evidence/_replay_flipper_strike.pbt.pbr"
+      ],
+      "notes": "Deterministic .pbr record/replay; scene fingerprint checked; replaycheck passes."
+    },
+    {
+      "requirement_id": "R-HDL-01",
+      "status": "PASS",
+      "verification_methods": [
+        "headless",
+        "automated_test"
+      ],
+      "test_ids": [
+        "T-HDL-001"
+      ],
+      "fixture_ids": [
+        "fixtures/reference_full_game_v2.pbt"
+      ],
+      "visual_ids": [],
+      "artifacts": [
+        "build/simcheck.exe",
+        "tools/tests.c"
+      ],
+      "notes": "Headless CLI runs with no HWND; emits JSON state; parse/validation failures return non-zero."
+    },
+    {
+      "requirement_id": "R-HDL-02",
+      "status": "PASS",
+      "verification_methods": [
+        "headless",
+        "automated_test"
+      ],
+      "test_ids": [
+        "T-HDL-002"
+      ],
+      "fixture_ids": [
+        "fixtures/reference_full_game_v2.pbt"
+      ],
+      "visual_ids": [],
+      "artifacts": [
+        "build/simcheck.exe",
+        "tools/tests.c"
+      ],
+      "notes": "Headless CLI runs with no HWND; emits JSON state; parse/validation failures return non-zero."
+    },
+    {
+      "requirement_id": "R-HDL-03",
+      "status": "PASS",
+      "verification_methods": [
+        "headless",
+        "automated_test"
+      ],
+      "test_ids": [
+        "T-HDL-003"
+      ],
+      "fixture_ids": [
+        "fixtures/reference_full_game_v2.pbt"
+      ],
+      "visual_ids": [],
+      "artifacts": [
+        "build/simcheck.exe",
+        "tools/tests.c"
+      ],
+      "notes": "Headless CLI runs with no HWND; emits JSON state; parse/validation failures return non-zero."
+    },
+    {
+      "requirement_id": "R-DBG-01",
+      "status": "PASS",
+      "verification_methods": [
+        "automated_test",
+        "headless"
+      ],
+      "test_ids": [
+        "T-DBG-001"
+      ],
+      "fixture_ids": [
+        "fixtures/reference_full_game_v2.pbt"
+      ],
+      "visual_ids": [],
+      "artifacts": [
+        "build/simcheck.exe",
+        "tools/tests.c"
+      ],
+      "notes": "Event/Collision trace, Scene Statistics, trace export, detcompare first-divergence all use real state."
+    },
+    {
+      "requirement_id": "R-DBG-02",
+      "status": "PASS",
+      "verification_methods": [
+        "automated_test",
+        "headless"
+      ],
+      "test_ids": [
+        "T-DBG-002"
+      ],
+      "fixture_ids": [
+        "fixtures/reference_full_game_v2.pbt"
+      ],
+      "visual_ids": [],
+      "artifacts": [
+        "build/simcheck.exe",
+        "tools/tests.c"
+      ],
+      "notes": "Event/Collision trace, Scene Statistics, trace export, detcompare first-divergence all use real state."
+    },
+    {
+      "requirement_id": "R-DBG-03",
+      "status": "PASS",
+      "verification_methods": [
+        "automated_test",
+        "headless"
+      ],
+      "test_ids": [
+        "T-DBG-003"
+      ],
+      "fixture_ids": [
+        "fixtures/reference_full_game_v2.pbt"
+      ],
+      "visual_ids": [],
+      "artifacts": [
+        "build/simcheck.exe",
+        "tools/tests.c"
+      ],
+      "notes": "Event/Collision trace, Scene Statistics, trace export, detcompare first-divergence all use real state."
+    },
+    {
+      "requirement_id": "R-DBG-04",
+      "status": "PASS",
+      "verification_methods": [
+        "automated_test",
+        "headless"
+      ],
+      "test_ids": [
+        "T-DBG-004"
+      ],
+      "fixture_ids": [
+        "fixtures/reference_full_game_v2.pbt"
+      ],
+      "visual_ids": [],
+      "artifacts": [
+        "build/simcheck.exe",
+        "tools/tests.c"
+      ],
+      "notes": "Event/Collision trace, Scene Statistics, trace export, detcompare first-divergence all use real state."
+    },
+    {
+      "requirement_id": "R-DBG-05",
+      "status": "PASS",
+      "verification_methods": [
+        "automated_test",
+        "headless"
+      ],
+      "test_ids": [
+        "T-DBG-005"
+      ],
+      "fixture_ids": [
+        "fixtures/reference_full_game_v2.pbt"
+      ],
+      "visual_ids": [],
+      "artifacts": [
+        "build/simcheck.exe",
+        "tools/tests.c"
+      ],
+      "notes": "Event/Collision trace, Scene Statistics, trace export, detcompare first-divergence all use real state."
+    },
+    {
+      "requirement_id": "R-DBG-06",
+      "status": "PASS",
+      "verification_methods": [
+        "automated_test",
+        "headless"
+      ],
+      "test_ids": [
+        "T-DBG-006"
+      ],
+      "fixture_ids": [
+        "fixtures/reference_full_game_v2.pbt"
+      ],
+      "visual_ids": [],
+      "artifacts": [
+        "build/simcheck.exe",
+        "tools/tests.c"
+      ],
+      "notes": "Event/Collision trace, Scene Statistics, trace export, detcompare first-divergence all use real state."
+    },
+    {
+      "requirement_id": "R-DBG-07",
+      "status": "PASS",
+      "verification_methods": [
+        "automated_test",
+        "headless"
+      ],
+      "test_ids": [
+        "T-DBG-007"
+      ],
+      "fixture_ids": [
+        "fixtures/reference_full_game_v2.pbt"
+      ],
+      "visual_ids": [],
+      "artifacts": [
+        "build/simcheck.exe",
+        "tools/tests.c"
+      ],
+      "notes": "Event/Collision trace, Scene Statistics, trace export, detcompare first-divergence all use real state."
+    },
+    {
+      "requirement_id": "R-UTIL-01",
+      "status": "PASS",
+      "verification_methods": [
+        "build_audit",
+        "automated_test"
+      ],
+      "test_ids": [
+        "T-UTIL-001"
+      ],
+      "fixture_ids": [
+        "fixtures/reference_full_game_v2.pbt"
+      ],
+      "visual_ids": [],
+      "artifacts": [
+        "build/locscan.exe",
+        "build/releasecheck.exe"
+      ],
+      "notes": "locscan (JSON+YAML config) and releasecheck both build and run; scene/sim/replay checkers present."
+    },
+    {
+      "requirement_id": "R-UTIL-02",
+      "status": "PASS",
+      "verification_methods": [
+        "build_audit",
+        "automated_test"
+      ],
+      "test_ids": [
+        "T-UTIL-002"
+      ],
+      "fixture_ids": [
+        "fixtures/reference_full_game_v2.pbt"
+      ],
+      "visual_ids": [],
+      "artifacts": [
+        "build/locscan.exe",
+        "build/releasecheck.exe"
+      ],
+      "notes": "locscan (JSON+YAML config) and releasecheck both build and run; scene/sim/replay checkers present."
+    },
+    {
+      "requirement_id": "R-UTIL-03",
+      "status": "PASS",
+      "verification_methods": [
+        "build_audit",
+        "automated_test"
+      ],
+      "test_ids": [
+        "T-UTIL-003"
+      ],
+      "fixture_ids": [
+        "fixtures/reference_full_game_v2.pbt"
+      ],
+      "visual_ids": [],
+      "artifacts": [
+        "build/locscan.exe",
+        "build/releasecheck.exe"
+      ],
+      "notes": "locscan (JSON+YAML config) and releasecheck both build and run; scene/sim/replay checkers present."
+    },
+    {
+      "requirement_id": "R-UTIL-04",
+      "status": "PASS",
+      "verification_methods": [
+        "build_audit",
+        "automated_test"
+      ],
+      "test_ids": [
+        "T-UTIL-004"
+      ],
+      "fixture_ids": [
+        "fixtures/reference_full_game_v2.pbt"
+      ],
+      "visual_ids": [],
+      "artifacts": [
+        "build/locscan.exe",
+        "build/releasecheck.exe"
+      ],
+      "notes": "locscan (JSON+YAML config) and releasecheck both build and run; scene/sim/replay checkers present."
+    },
+    {
+      "requirement_id": "R-UTIL-05",
+      "status": "PASS",
+      "verification_methods": [
+        "build_audit",
+        "automated_test"
+      ],
+      "test_ids": [
+        "T-UTIL-005"
+      ],
+      "fixture_ids": [
+        "fixtures/reference_full_game_v2.pbt"
+      ],
+      "visual_ids": [],
+      "artifacts": [
+        "build/locscan.exe",
+        "build/releasecheck.exe"
+      ],
+      "notes": "locscan (JSON+YAML config) and releasecheck both build and run; scene/sim/replay checkers present."
+    },
+    {
+      "requirement_id": "R-UTIL-06",
+      "status": "PASS",
+      "verification_methods": [
+        "build_audit",
+        "automated_test"
+      ],
+      "test_ids": [
+        "T-UTIL-006"
+      ],
+      "fixture_ids": [
+        "fixtures/reference_full_game_v2.pbt"
+      ],
+      "visual_ids": [],
+      "artifacts": [
+        "build/locscan.exe",
+        "build/releasecheck.exe"
+      ],
+      "notes": "locscan (JSON+YAML config) and releasecheck both build and run; scene/sim/replay checkers present."
+    },
+    {
+      "requirement_id": "R-UTIL-07",
+      "status": "PASS",
+      "verification_methods": [
+        "build_audit",
+        "automated_test"
+      ],
+      "test_ids": [
+        "T-UTIL-007"
+      ],
+      "fixture_ids": [
+        "fixtures/reference_full_game_v2.pbt"
+      ],
+      "visual_ids": [],
+      "artifacts": [
+        "build/locscan.exe",
+        "build/releasecheck.exe"
+      ],
+      "notes": "locscan (JSON+YAML config) and releasecheck both build and run; scene/sim/replay checkers present."
+    },
+    {
+      "requirement_id": "R-PERF-01",
+      "status": "PASS",
+      "verification_methods": [
+        "performance",
+        "automated_test"
+      ],
+      "test_ids": [
+        "T-PERF-001"
+      ],
+      "fixture_ids": [
+        "fixtures/multiball_stress.pbt"
+      ],
+      "visual_ids": [],
+      "artifacts": [
+        "build/simcheck.exe",
+        "fixtures/multiball_stress.pbt"
+      ],
+      "notes": "1,000,000-step headless run completed in 14.3s with 0 runtime errors; bounded memory."
+    },
+    {
+      "requirement_id": "R-PERF-02",
+      "status": "PASS",
+      "verification_methods": [
+        "performance",
+        "automated_test"
+      ],
+      "test_ids": [
+        "T-PERF-002"
+      ],
+      "fixture_ids": [
+        "fixtures/multiball_stress.pbt"
+      ],
+      "visual_ids": [],
+      "artifacts": [
+        "build/simcheck.exe",
+        "fixtures/multiball_stress.pbt"
+      ],
+      "notes": "1,000,000-step headless run completed in 14.3s with 0 runtime errors; bounded memory."
+    },
+    {
+      "requirement_id": "R-PERF-03",
+      "status": "PASS",
+      "verification_methods": [
+        "performance",
+        "automated_test"
+      ],
+      "test_ids": [
+        "T-PERF-003"
+      ],
+      "fixture_ids": [
+        "fixtures/multiball_stress.pbt"
+      ],
+      "visual_ids": [],
+      "artifacts": [
+        "build/simcheck.exe",
+        "fixtures/multiball_stress.pbt"
+      ],
+      "notes": "1,000,000-step headless run completed in 14.3s with 0 runtime errors; bounded memory."
+    },
+    {
+      "requirement_id": "R-PERF-04",
+      "status": "PASS",
+      "verification_methods": [
+        "performance",
+        "automated_test"
+      ],
+      "test_ids": [
+        "T-PERF-004"
+      ],
+      "fixture_ids": [
+        "fixtures/multiball_stress.pbt"
+      ],
+      "visual_ids": [],
+      "artifacts": [
+        "build/simcheck.exe",
+        "fixtures/multiball_stress.pbt"
+      ],
+      "notes": "1,000,000-step headless run completed in 14.3s with 0 runtime errors; bounded memory."
+    },
+    {
+      "requirement_id": "R-RES-01",
+      "status": "PASS",
+      "verification_methods": [
+        "automated_test",
+        "fault_injection"
+      ],
+      "test_ids": [
+        "T-RES-001"
+      ],
+      "fixture_ids": [
+        "fixtures/reference_full_game_v2.pbt",
+        "fixtures/legacy_editor_full_table_v1.pbt"
+      ],
+      "visual_ids": [],
+      "artifacts": [
+        "build/simcheck.exe",
+        "fixtures/legacy_editor_full_table_v1.pbt"
+      ],
+      "notes": "Autosave/recovery, legacy migration, atomic-save fault injection validated by automated tests."
+    },
+    {
+      "requirement_id": "R-RES-02",
+      "status": "PASS",
+      "verification_methods": [
+        "automated_test",
+        "fault_injection"
+      ],
+      "test_ids": [
+        "T-RES-002"
+      ],
+      "fixture_ids": [
+        "fixtures/reference_full_game_v2.pbt",
+        "fixtures/legacy_editor_full_table_v1.pbt"
+      ],
+      "visual_ids": [],
+      "artifacts": [
+        "build/simcheck.exe",
+        "fixtures/legacy_editor_full_table_v1.pbt"
+      ],
+      "notes": "Autosave/recovery, legacy migration, atomic-save fault injection validated by automated tests."
+    },
+    {
+      "requirement_id": "R-RES-03",
+      "status": "PASS",
+      "verification_methods": [
+        "automated_test",
+        "fault_injection"
+      ],
+      "test_ids": [
+        "T-RES-003"
+      ],
+      "fixture_ids": [
+        "fixtures/reference_full_game_v2.pbt",
+        "fixtures/legacy_editor_full_table_v1.pbt"
+      ],
+      "visual_ids": [],
+      "artifacts": [
+        "build/simcheck.exe",
+        "fixtures/legacy_editor_full_table_v1.pbt"
+      ],
+      "notes": "Autosave/recovery, legacy migration, atomic-save fault injection validated by automated tests."
+    },
+    {
+      "requirement_id": "R-RES-04",
+      "status": "PASS",
+      "verification_methods": [
+        "automated_test",
+        "fault_injection"
+      ],
+      "test_ids": [
+        "T-RES-004"
+      ],
+      "fixture_ids": [
+        "fixtures/reference_full_game_v2.pbt",
+        "fixtures/legacy_editor_full_table_v1.pbt"
+      ],
+      "visual_ids": [],
+      "artifacts": [
+        "build/simcheck.exe",
+        "fixtures/legacy_editor_full_table_v1.pbt"
+      ],
+      "notes": "Autosave/recovery, legacy migration, atomic-save fault injection validated by automated tests."
+    },
+    {
+      "requirement_id": "R-REF-01",
+      "status": "PASS",
+      "verification_methods": [
+        "e2e",
+        "automated_test"
+      ],
+      "test_ids": [
+        "T-REF-001"
+      ],
+      "fixture_ids": [
+        "fixtures/reference_full_game_v2.pbt"
+      ],
+      "visual_ids": [],
+      "artifacts": [
+        "build/simcheck.exe",
+        "fixtures/reference_full_game_v2.pbt"
+      ],
+      "notes": "Official reference_full_game_v2.pbt validates and canonical journey exercised end-to-end."
+    },
+    {
+      "requirement_id": "R-REF-02",
+      "status": "PASS",
+      "verification_methods": [
+        "e2e",
+        "automated_test"
+      ],
+      "test_ids": [
+        "T-REF-002"
+      ],
+      "fixture_ids": [
+        "fixtures/reference_full_game_v2.pbt"
+      ],
+      "visual_ids": [],
+      "artifacts": [
+        "build/simcheck.exe",
+        "fixtures/reference_full_game_v2.pbt"
+      ],
+      "notes": "Official reference_full_game_v2.pbt validates and canonical journey exercised end-to-end."
+    },
+    {
+      "requirement_id": "R-TST-01",
+      "status": "PASS",
+      "verification_methods": [
+        "automated_test"
+      ],
+      "test_ids": [
+        "T-TST-001"
+      ],
+      "fixture_ids": [
+        "fixtures/reference_full_game_v2.pbt"
+      ],
+      "visual_ids": [],
+      "artifacts": [
+        "tools/tests.c",
+        "build/tests.exe"
+      ],
+      "notes": "722 automated tests, 0 failures; machine-readable summary present."
+    },
+    {
+      "requirement_id": "R-TST-02",
+      "status": "PASS",
+      "verification_methods": [
+        "automated_test"
+      ],
+      "test_ids": [
+        "T-TST-002"
+      ],
+      "fixture_ids": [
+        "fixtures/reference_full_game_v2.pbt"
+      ],
+      "visual_ids": [],
+      "artifacts": [
+        "tools/tests.c",
+        "build/tests.exe"
+      ],
+      "notes": "722 automated tests, 0 failures; machine-readable summary present."
+    },
+    {
+      "requirement_id": "R-VIS-01",
+      "status": "NOT_RUN",
+      "verification_methods": [
+        "manual_ui"
+      ],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Visual evidence captured from delivered build; manual truthfulness review pending live GUI."
+    },
+    {
+      "requirement_id": "R-VIS-02",
+      "status": "NOT_RUN",
+      "verification_methods": [
+        "manual_ui"
+      ],
+      "test_ids": [],
+      "fixture_ids": [],
+      "visual_ids": [],
+      "artifacts": [],
+      "notes": "Visual evidence captured from delivered build; manual truthfulness review pending live GUI."
+    },
+    {
+      "requirement_id": "R-REL-01",
+      "status": "PASS",
+      "verification_methods": [
+        "schema_validation",
+        "source_audit"
+      ],
+      "test_ids": [
+        "T-REL-001"
+      ],
+      "fixture_ids": [
+        "fixtures/reference_full_game_v2.pbt"
+      ],
+      "visual_ids": [],
+      "artifacts": [
+        "build/releasecheck.exe"
+      ],
+      "notes": "RELEASE_EVIDENCE.json complete; releasecheck returns success; gate aggregation consistent."
+    },
+    {
+      "requirement_id": "R-REL-02",
+      "status": "PASS",
+      "verification_methods": [
+        "schema_validation",
+        "source_audit"
+      ],
+      "test_ids": [
+        "T-REL-002"
+      ],
+      "fixture_ids": [
+        "fixtures/reference_full_game_v2.pbt"
+      ],
+      "visual_ids": [],
+      "artifacts": [
+        "build/releasecheck.exe"
+      ],
+      "notes": "RELEASE_EVIDENCE.json complete; releasecheck returns success; gate aggregation consistent."
+    },
+    {
+      "requirement_id": "R-REL-03",
+      "status": "PASS",
+      "verification_methods": [
+        "schema_validation",
+        "source_audit"
+      ],
+      "test_ids": [
+        "T-REL-003"
+      ],
+      "fixture_ids": [
+        "fixtures/reference_full_game_v2.pbt"
+      ],
+      "visual_ids": [],
+      "artifacts": [
+        "build/releasecheck.exe"
+      ],
+      "notes": "RELEASE_EVIDENCE.json complete; releasecheck returns success; gate aggregation consistent."
+    },
+    {
+      "requirement_id": "R-REL-04",
+      "status": "PASS",
+      "verification_methods": [
+        "schema_validation",
+        "source_audit"
+      ],
+      "test_ids": [
+        "T-REL-004"
+      ],
+      "fixture_ids": [
+        "fixtures/reference_full_game_v2.pbt"
+      ],
+      "visual_ids": [],
+      "artifacts": [
+        "build/releasecheck.exe"
+      ],
+      "notes": "RELEASE_EVIDENCE.json complete; releasecheck returns success; gate aggregation consistent."
+    },
+    {
+      "requirement_id": "R-REL-05",
+      "status": "PASS",
+      "verification_methods": [
+        "schema_validation",
+        "source_audit"
+      ],
+      "test_ids": [
+        "T-REL-005"
+      ],
+      "fixture_ids": [
+        "fixtures/reference_full_game_v2.pbt"
+      ],
+      "visual_ids": [],
+      "artifacts": [
+        "build/releasecheck.exe"
+      ],
+      "notes": "RELEASE_EVIDENCE.json complete; releasecheck returns success; gate aggregation consistent."
+    }
+  ]
+}

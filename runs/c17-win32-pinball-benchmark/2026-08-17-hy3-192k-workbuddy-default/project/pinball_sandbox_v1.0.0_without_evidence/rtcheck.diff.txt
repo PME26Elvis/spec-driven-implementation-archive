@@ -1,0 +1,280 @@
+=== WRITE1 ===
+PINBALL_TABLE 2
+
+[table]
+name = "Acceptance Full Object Table"
+world_size = (1600, 1000)
+gravity = (0, 980)
+max_active_balls = 16
+starting_turns = 3
+default_ball_radius = 12
+default_ball_mass = 1
+default_ball_restitution = 0.78000000000000003
+default_ball_friction = 0.080000000000000002
+default_ball_damping = 0.029999999999999999
+default_ball_max_speed = 3000
+scene_seed = 0
+nudge_impulse = 85
+nudge_tilt_cost = 1
+tilt_threshold = 3
+tilt_decay_per_second = 0.75
+nudge_cooldown = 0.080000000000000002
+
+[layer gameplay]
+name = "Gameplay"
+visible = true
+locked = false
+order = 0
+
+[object BALL_SPAWN spawn_main]
+position = (1450, 850)
+initial_velocity = (0, 0)
+enabled = true
+layer = gameplay
+locked = false
+
+[object WALL wall_left]
+start = (100, 100)
+end = (100, 900)
+thickness = 20
+restitution = 0.80000000000000004
+friction = 0.050000000000000003
+enabled = true
+layer = gameplay
+locked = false
+
+[object RAMP ramp_001]
+start = (300, 600)
+end = (550, 500)
+thickness = 16
+restitution = 0.75
+friction = 0.10000000000000001
+enabled = true
+layer = gameplay
+locked = false
+
+[object BUMPER bumper_001]
+center = (800, 350)
+radius = 45
+restitution = 0.90000000000000002
+friction = 0.050000000000000003
+impulse = 500
+base_score = 100
+cooldown = 0.10000000000000001
+enabled = true
+layer = gameplay
+locked = false
+
+[object FLIPPER flipper_left]
+pivot = (680, 780)
+length = 150
+thickness = 24
+rest_angle_deg = 20
+active_angle_deg = -25
+engage_speed_deg_s = 900
+return_speed_deg_s = 700
+restitution = 0.84999999999999998
+friction = 0.10000000000000001
+input = LEFT_FLIPPER
+enabled = true
+layer = gameplay
+locked = false
+
+[object SENSOR sensor_bonus]
+rect = (700, 500, 200, 50)
+enabled = true
+debug_visible = false
+layer = gameplay
+locked = false
+
+[object DRAIN drain_main]
+rect = (500, 940, 600, 50)
+enabled = true
+layer = gameplay
+locked = false
+
+[object LAUNCHER launcher_main]
+position = (1450, 850)
+spawn = spawn_main
+direction = (0, -1)
+min_speed = 400
+max_speed = 1800
+full_charge_time = 1.2
+charge_curve = LINEAR
+enabled = true
+layer = gameplay
+locked = false
+
+[object ONE_WAY_GATE gate_001]
+start = (1200, 400)
+end = (1350, 400)
+thickness = 12
+allowed_direction = (0, -1)
+restitution = 0.69999999999999996
+friction = 0.050000000000000003
+enabled = true
+layer = gameplay
+locked = false
+
+[object SLINGSHOT slingshot_001]
+start = (450, 700)
+end = (600, 760)
+thickness = 18
+restitution = 0.84999999999999998
+friction = 0.050000000000000003
+impulse = 350
+base_score = 50
+cooldown = 0.10000000000000001
+enabled = true
+layer = gameplay
+locked = false
+
+[event event_bonus]
+source = sensor_bonus
+trigger = SENSOR_ENTER
+action_count = 3
+action.0 = ADD_SCORE amount=500
+action.1 = START_MULTIBALL spawn=spawn_main
+action.2 = LIGHT_INDICATOR target=bumper_001
+
+
+=== WRITE2 ===
+PINBALL_TABLE 2
+
+[table]
+name = "Acceptance Full Object Table"
+world_size = (1600, 1000)
+gravity = (0, 980)
+max_active_balls = 16
+starting_turns = 3
+default_ball_radius = 12
+default_ball_mass = 1
+default_ball_restitution = 0.78000000000000003
+default_ball_friction = 0.080000000000000002
+default_ball_damping = 0.029999999999999999
+default_ball_max_speed = 3000
+scene_seed = 0
+nudge_impulse = 85
+nudge_tilt_cost = 1
+tilt_threshold = 3
+tilt_decay_per_second = 0.75
+nudge_cooldown = 0.080000000000000002
+
+[layer gameplay]
+name = "Gameplay"
+visible = true
+locked = false
+order = 0
+
+[object BALL_SPAWN spawn_main]
+position = (1450, 850)
+initial_velocity = (0, 0)
+enabled = true
+layer = gameplay
+locked = false
+
+[object WALL wall_left]
+start = (100, 100)
+end = (100, 900)
+thickness = 20
+restitution = 0.80000000000000004
+friction = 0.050000000000000003
+enabled = true
+layer = gameplay
+locked = false
+
+[object RAMP ramp_001]
+start = (300, 600)
+end = (550, 500)
+thickness = 16
+restitution = 0.75
+friction = 0.10000000000000001
+enabled = true
+layer = gameplay
+locked = false
+
+[object BUMPER bumper_001]
+center = (800, 350)
+radius = 45
+restitution = 0.90000000000000002
+friction = 0.050000000000000003
+impulse = 500
+base_score = 100
+cooldown = 0.10000000000000001
+enabled = true
+layer = gameplay
+locked = false
+
+[object FLIPPER flipper_left]
+pivot = (680, 780)
+length = 150
+thickness = 24
+rest_angle_deg = 20
+active_angle_deg = -25
+engage_speed_deg_s = 900
+return_speed_deg_s = 700
+restitution = 0.84999999999999998
+friction = 0.10000000000000001
+input = LEFT_FLIPPER
+enabled = true
+layer = gameplay
+locked = false
+
+[object SENSOR sensor_bonus]
+rect = (700, 500, 200, 50)
+enabled = true
+debug_visible = false
+layer = gameplay
+locked = false
+
+[object DRAIN drain_main]
+rect = (500, 940, 600, 50)
+enabled = true
+layer = gameplay
+locked = false
+
+[object LAUNCHER launcher_main]
+position = (1450, 850)
+spawn = spawn_main
+direction = (0, -1)
+min_speed = 400
+max_speed = 1800
+full_charge_time = 1.2
+charge_curve = LINEAR
+enabled = true
+layer = gameplay
+locked = false
+
+[object ONE_WAY_GATE gate_001]
+start = (1200, 400)
+end = (1350, 400)
+thickness = 12
+allowed_direction = (0, -1)
+restitution = 0.69999999999999996
+friction = 0.050000000000000003
+enabled = true
+layer = gameplay
+locked = false
+
+[object SLINGSHOT slingshot_001]
+start = (450, 700)
+end = (600, 760)
+thickness = 18
+restitution = 0.84999999999999998
+friction = 0.050000000000000003
+impulse = 350
+base_score = 50
+cooldown = 0.10000000000000001
+enabled = true
+layer = gameplay
+locked = false
+
+[event event_bonus]
+source = sensor_bonus
+trigger = SENSOR_ENTER
+action_count = 3
+action.0 = ADD_SCORE amount=500
+action.1 = START_MULTIBALL spawn=spawn_main
+action.2 = LIGHT_INDICATOR target=bumper_001
+
+

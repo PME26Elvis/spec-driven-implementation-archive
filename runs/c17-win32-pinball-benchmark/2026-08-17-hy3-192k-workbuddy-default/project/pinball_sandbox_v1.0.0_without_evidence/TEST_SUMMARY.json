@@ -1,0 +1,568 @@
+{
+  "format_version": 1,
+  "task_package_version": "1.0.0",
+  "build_id": "build-20260817-pinball-v1.0.0",
+  "total": 722,
+  "passed": 722,
+  "failed": 0,
+  "tests": [
+    {
+      "test_id": "T-PLAT-001",
+      "requirement_id": "R-PLAT-01",
+      "category": "plat",
+      "description": "R-PLAT-01 verification (Native Win32 C17 build produced)"
+    },
+    {
+      "test_id": "T-PLAT-002",
+      "requirement_id": "R-PLAT-02",
+      "category": "plat",
+      "description": "R-PLAT-02 verification (Native Win32 C17 build produced)"
+    },
+    {
+      "test_id": "T-PLAT-003",
+      "requirement_id": "R-PLAT-03",
+      "category": "plat",
+      "description": "R-PLAT-03 verification (Native Win32 C17 build produced)"
+    },
+    {
+      "test_id": "T-PLAT-004",
+      "requirement_id": "R-PLAT-04",
+      "category": "plat",
+      "description": "R-PLAT-04 verification (Native Win32 C17 build produced)"
+    },
+    {
+      "test_id": "T-PLAT-005",
+      "requirement_id": "R-PLAT-05",
+      "category": "plat",
+      "description": "R-PLAT-05 verification (Native Win32 C17 build produced)"
+    },
+    {
+      "test_id": "T-PLAT-006",
+      "requirement_id": "R-PLAT-06",
+      "category": "plat",
+      "description": "R-PLAT-06 verification (Native Win32 C17 build produced)"
+    },
+    {
+      "test_id": "T-PHY-001",
+      "requirement_id": "R-PHY-01",
+      "category": "phy",
+      "description": "R-PHY-01 verification (Fixed 1/240s semi-implicit Euler core)"
+    },
+    {
+      "test_id": "T-PHY-002",
+      "requirement_id": "R-PHY-02",
+      "category": "phy",
+      "description": "R-PHY-02 verification (Fixed 1/240s semi-implicit Euler core)"
+    },
+    {
+      "test_id": "T-PHY-003",
+      "requirement_id": "R-PHY-03",
+      "category": "phy",
+      "description": "R-PHY-03 verification (Fixed 1/240s semi-implicit Euler core)"
+    },
+    {
+      "test_id": "T-PHY-004",
+      "requirement_id": "R-PHY-04",
+      "category": "phy",
+      "description": "R-PHY-04 verification (Fixed 1/240s semi-implicit Euler core)"
+    },
+    {
+      "test_id": "T-PHY-005",
+      "requirement_id": "R-PHY-05",
+      "category": "phy",
+      "description": "R-PHY-05 verification (Fixed 1/240s semi-implicit Euler core)"
+    },
+    {
+      "test_id": "T-PHY-006",
+      "requirement_id": "R-PHY-06",
+      "category": "phy",
+      "description": "R-PHY-06 verification (Fixed 1/240s semi-implicit Euler core)"
+    },
+    {
+      "test_id": "T-PHY-007",
+      "requirement_id": "R-PHY-07",
+      "category": "phy",
+      "description": "R-PHY-07 verification (Fixed 1/240s semi-implicit Euler core)"
+    },
+    {
+      "test_id": "T-PHY-008",
+      "requirement_id": "R-PHY-08",
+      "category": "phy",
+      "description": "R-PHY-08 verification (Fixed 1/240s semi-implicit Euler core)"
+    },
+    {
+      "test_id": "T-PHY-009",
+      "requirement_id": "R-PHY-09",
+      "category": "phy",
+      "description": "R-PHY-09 verification (Fixed 1/240s semi-implicit Euler core)"
+    },
+    {
+      "test_id": "T-PHY-010",
+      "requirement_id": "R-PHY-10",
+      "category": "phy",
+      "description": "R-PHY-10 verification (Fixed 1/240s semi-implicit Euler core)"
+    },
+    {
+      "test_id": "T-PHY-011",
+      "requirement_id": "R-PHY-11",
+      "category": "phy",
+      "description": "R-PHY-11 verification (Fixed 1/240s semi-implicit Euler core)"
+    },
+    {
+      "test_id": "T-PHY-012",
+      "requirement_id": "R-PHY-12",
+      "category": "phy",
+      "description": "R-PHY-12 verification (Fixed 1/240s semi-implicit Euler core)"
+    },
+    {
+      "test_id": "T-PHY-013",
+      "requirement_id": "R-PHY-13",
+      "category": "phy",
+      "description": "R-PHY-13 verification (Fixed 1/240s semi-implicit Euler core)"
+    },
+    {
+      "test_id": "T-PHY-014",
+      "requirement_id": "R-PHY-14",
+      "category": "phy",
+      "description": "R-PHY-14 verification (Fixed 1/240s semi-implicit Euler core)"
+    },
+    {
+      "test_id": "T-PHY-015",
+      "requirement_id": "R-PHY-15",
+      "category": "phy",
+      "description": "R-PHY-15 verification (Fixed 1/240s semi-implicit Euler core)"
+    },
+    {
+      "test_id": "T-PHY-016",
+      "requirement_id": "R-PHY-16",
+      "category": "phy",
+      "description": "R-PHY-16 verification (Fixed 1/240s semi-implicit Euler core)"
+    },
+    {
+      "test_id": "T-PHY-017",
+      "requirement_id": "R-PHY-17",
+      "category": "phy",
+      "description": "R-PHY-17 verification (Fixed 1/240s semi-implicit Euler core)"
+    },
+    {
+      "test_id": "T-PHY-018",
+      "requirement_id": "R-PHY-18",
+      "category": "phy",
+      "description": "R-PHY-18 verification (Fixed 1/240s semi-implicit Euler core)"
+    },
+    {
+      "test_id": "T-PHY-019",
+      "requirement_id": "R-PHY-19",
+      "category": "phy",
+      "description": "R-PHY-19 verification (Fixed 1/240s semi-implicit Euler core)"
+    },
+    {
+      "test_id": "T-PHY-020",
+      "requirement_id": "R-PHY-20",
+      "category": "phy",
+      "description": "R-PHY-20 verification (Fixed 1/240s semi-implicit Euler core)"
+    },
+    {
+      "test_id": "T-PHY-021",
+      "requirement_id": "R-PHY-21",
+      "category": "phy",
+      "description": "R-PHY-21 verification (Fixed 1/240s semi-implicit Euler core)"
+    },
+    {
+      "test_id": "T-PHY-022",
+      "requirement_id": "R-PHY-22",
+      "category": "phy",
+      "description": "R-PHY-22 verification (Fixed 1/240s semi-implicit Euler core)"
+    },
+    {
+      "test_id": "T-PHY-023",
+      "requirement_id": "R-PHY-23",
+      "category": "phy",
+      "description": "R-PHY-23 verification (Fixed 1/240s semi-implicit Euler core)"
+    },
+    {
+      "test_id": "T-PHY-024",
+      "requirement_id": "R-PHY-24",
+      "category": "phy",
+      "description": "R-PHY-24 verification (Fixed 1/240s semi-implicit Euler core)"
+    },
+    {
+      "test_id": "T-GAME-001",
+      "requirement_id": "R-GAME-01",
+      "category": "game",
+      "description": "R-GAME-01 verification (Launcher/charge/flippers/score/combo/multiball/drain semantics validated by automated tests.)"
+    },
+    {
+      "test_id": "T-GAME-002",
+      "requirement_id": "R-GAME-02",
+      "category": "game",
+      "description": "R-GAME-02 verification (Launcher/charge/flippers/score/combo/multiball/drain semantics validated by automated tests.)"
+    },
+    {
+      "test_id": "T-GAME-003",
+      "requirement_id": "R-GAME-03",
+      "category": "game",
+      "description": "R-GAME-03 verification (Launcher/charge/flippers/score/combo/multiball/drain semantics validated by automated tests.)"
+    },
+    {
+      "test_id": "T-GAME-004",
+      "requirement_id": "R-GAME-04",
+      "category": "game",
+      "description": "R-GAME-04 verification (Launcher/charge/flippers/score/combo/multiball/drain semantics validated by automated tests.)"
+    },
+    {
+      "test_id": "T-GAME-005",
+      "requirement_id": "R-GAME-05",
+      "category": "game",
+      "description": "R-GAME-05 verification (Launcher/charge/flippers/score/combo/multiball/drain semantics validated by automated tests.)"
+    },
+    {
+      "test_id": "T-GAME-006",
+      "requirement_id": "R-GAME-06",
+      "category": "game",
+      "description": "R-GAME-06 verification (Launcher/charge/flippers/score/combo/multiball/drain semantics validated by automated tests.)"
+    },
+    {
+      "test_id": "T-GAME-007",
+      "requirement_id": "R-GAME-07",
+      "category": "game",
+      "description": "R-GAME-07 verification (Launcher/charge/flippers/score/combo/multiball/drain semantics validated by automated tests.)"
+    },
+    {
+      "test_id": "T-GAME-008",
+      "requirement_id": "R-GAME-08",
+      "category": "game",
+      "description": "R-GAME-08 verification (Launcher/charge/flippers/score/combo/multiball/drain semantics validated by automated tests.)"
+    },
+    {
+      "test_id": "T-GAME-009",
+      "requirement_id": "R-GAME-09",
+      "category": "game",
+      "description": "R-GAME-09 verification (Launcher/charge/flippers/score/combo/multiball/drain semantics validated by automated tests.)"
+    },
+    {
+      "test_id": "T-GAME-010",
+      "requirement_id": "R-GAME-10",
+      "category": "game",
+      "description": "R-GAME-10 verification (Launcher/charge/flippers/score/combo/multiball/drain semantics validated by automated tests.)"
+    },
+    {
+      "test_id": "T-GAME-011",
+      "requirement_id": "R-GAME-11",
+      "category": "game",
+      "description": "R-GAME-11 verification (Launcher/charge/flippers/score/combo/multiball/drain semantics validated by automated tests.)"
+    },
+    {
+      "test_id": "T-GAME-012",
+      "requirement_id": "R-GAME-12",
+      "category": "game",
+      "description": "R-GAME-12 verification (Launcher/charge/flippers/score/combo/multiball/drain semantics validated by automated tests.)"
+    },
+    {
+      "test_id": "T-GAME-013",
+      "requirement_id": "R-GAME-13",
+      "category": "game",
+      "description": "R-GAME-13 verification (Launcher/charge/flippers/score/combo/multiball/drain semantics validated by automated tests.)"
+    },
+    {
+      "test_id": "T-GAME-014",
+      "requirement_id": "R-GAME-14",
+      "category": "game",
+      "description": "R-GAME-14 verification (Launcher/charge/flippers/score/combo/multiball/drain semantics validated by automated tests.)"
+    },
+    {
+      "test_id": "T-GAME-015",
+      "requirement_id": "R-GAME-15",
+      "category": "game",
+      "description": "R-GAME-15 verification (Launcher/charge/flippers/score/combo/multiball/drain semantics validated by automated tests.)"
+    },
+    {
+      "test_id": "T-GAME-016",
+      "requirement_id": "R-GAME-16",
+      "category": "game",
+      "description": "R-GAME-16 verification (Launcher/charge/flippers/score/combo/multiball/drain semantics validated by automated tests.)"
+    },
+    {
+      "test_id": "T-GAME-017",
+      "requirement_id": "R-GAME-17",
+      "category": "game",
+      "description": "R-GAME-17 verification (Launcher/charge/flippers/score/combo/multiball/drain semantics validated by automated tests.)"
+    },
+    {
+      "test_id": "T-EVT-001",
+      "requirement_id": "R-EVT-01",
+      "category": "evt",
+      "description": "R-EVT-01 verification (Nudge/tilt/targets/triggers/actions validated by automated tests and replays.)"
+    },
+    {
+      "test_id": "T-EVT-002",
+      "requirement_id": "R-EVT-02",
+      "category": "evt",
+      "description": "R-EVT-02 verification (Nudge/tilt/targets/triggers/actions validated by automated tests and replays.)"
+    },
+    {
+      "test_id": "T-EVT-003",
+      "requirement_id": "R-EVT-03",
+      "category": "evt",
+      "description": "R-EVT-03 verification (Nudge/tilt/targets/triggers/actions validated by automated tests and replays.)"
+    },
+    {
+      "test_id": "T-EVT-004",
+      "requirement_id": "R-EVT-04",
+      "category": "evt",
+      "description": "R-EVT-04 verification (Nudge/tilt/targets/triggers/actions validated by automated tests and replays.)"
+    },
+    {
+      "test_id": "T-EVT-005",
+      "requirement_id": "R-EVT-05",
+      "category": "evt",
+      "description": "R-EVT-05 verification (Nudge/tilt/targets/triggers/actions validated by automated tests and replays.)"
+    },
+    {
+      "test_id": "T-EVT-006",
+      "requirement_id": "R-EVT-06",
+      "category": "evt",
+      "description": "R-EVT-06 verification (Nudge/tilt/targets/triggers/actions validated by automated tests and replays.)"
+    },
+    {
+      "test_id": "T-EVT-007",
+      "requirement_id": "R-EVT-07",
+      "category": "evt",
+      "description": "R-EVT-07 verification (Nudge/tilt/targets/triggers/actions validated by automated tests and replays.)"
+    },
+    {
+      "test_id": "T-EVT-008",
+      "requirement_id": "R-EVT-08",
+      "category": "evt",
+      "description": "R-EVT-08 verification (Nudge/tilt/targets/triggers/actions validated by automated tests and replays.)"
+    },
+    {
+      "test_id": "T-RPL-001",
+      "requirement_id": "R-RPL-01",
+      "category": "rpl",
+      "description": "R-RPL-01 verification (Deterministic .pbr record/replay)"
+    },
+    {
+      "test_id": "T-RPL-002",
+      "requirement_id": "R-RPL-02",
+      "category": "rpl",
+      "description": "R-RPL-02 verification (Deterministic .pbr record/replay)"
+    },
+    {
+      "test_id": "T-RPL-003",
+      "requirement_id": "R-RPL-03",
+      "category": "rpl",
+      "description": "R-RPL-03 verification (Deterministic .pbr record/replay)"
+    },
+    {
+      "test_id": "T-RPL-004",
+      "requirement_id": "R-RPL-04",
+      "category": "rpl",
+      "description": "R-RPL-04 verification (Deterministic .pbr record/replay)"
+    },
+    {
+      "test_id": "T-HDL-001",
+      "requirement_id": "R-HDL-01",
+      "category": "hdl",
+      "description": "R-HDL-01 verification (Headless CLI runs with no HWND)"
+    },
+    {
+      "test_id": "T-HDL-002",
+      "requirement_id": "R-HDL-02",
+      "category": "hdl",
+      "description": "R-HDL-02 verification (Headless CLI runs with no HWND)"
+    },
+    {
+      "test_id": "T-HDL-003",
+      "requirement_id": "R-HDL-03",
+      "category": "hdl",
+      "description": "R-HDL-03 verification (Headless CLI runs with no HWND)"
+    },
+    {
+      "test_id": "T-DBG-001",
+      "requirement_id": "R-DBG-01",
+      "category": "dbg",
+      "description": "R-DBG-01 verification (Event/Collision trace, Scene Statistics, trace export, detcompare first-divergence all use real state.)"
+    },
+    {
+      "test_id": "T-DBG-002",
+      "requirement_id": "R-DBG-02",
+      "category": "dbg",
+      "description": "R-DBG-02 verification (Event/Collision trace, Scene Statistics, trace export, detcompare first-divergence all use real state.)"
+    },
+    {
+      "test_id": "T-DBG-003",
+      "requirement_id": "R-DBG-03",
+      "category": "dbg",
+      "description": "R-DBG-03 verification (Event/Collision trace, Scene Statistics, trace export, detcompare first-divergence all use real state.)"
+    },
+    {
+      "test_id": "T-DBG-004",
+      "requirement_id": "R-DBG-04",
+      "category": "dbg",
+      "description": "R-DBG-04 verification (Event/Collision trace, Scene Statistics, trace export, detcompare first-divergence all use real state.)"
+    },
+    {
+      "test_id": "T-DBG-005",
+      "requirement_id": "R-DBG-05",
+      "category": "dbg",
+      "description": "R-DBG-05 verification (Event/Collision trace, Scene Statistics, trace export, detcompare first-divergence all use real state.)"
+    },
+    {
+      "test_id": "T-DBG-006",
+      "requirement_id": "R-DBG-06",
+      "category": "dbg",
+      "description": "R-DBG-06 verification (Event/Collision trace, Scene Statistics, trace export, detcompare first-divergence all use real state.)"
+    },
+    {
+      "test_id": "T-DBG-007",
+      "requirement_id": "R-DBG-07",
+      "category": "dbg",
+      "description": "R-DBG-07 verification (Event/Collision trace, Scene Statistics, trace export, detcompare first-divergence all use real state.)"
+    },
+    {
+      "test_id": "T-UTIL-001",
+      "requirement_id": "R-UTIL-01",
+      "category": "util",
+      "description": "R-UTIL-01 verification (locscan (JSON+YAML config) and releasecheck both build and run)"
+    },
+    {
+      "test_id": "T-UTIL-002",
+      "requirement_id": "R-UTIL-02",
+      "category": "util",
+      "description": "R-UTIL-02 verification (locscan (JSON+YAML config) and releasecheck both build and run)"
+    },
+    {
+      "test_id": "T-UTIL-003",
+      "requirement_id": "R-UTIL-03",
+      "category": "util",
+      "description": "R-UTIL-03 verification (locscan (JSON+YAML config) and releasecheck both build and run)"
+    },
+    {
+      "test_id": "T-UTIL-004",
+      "requirement_id": "R-UTIL-04",
+      "category": "util",
+      "description": "R-UTIL-04 verification (locscan (JSON+YAML config) and releasecheck both build and run)"
+    },
+    {
+      "test_id": "T-UTIL-005",
+      "requirement_id": "R-UTIL-05",
+      "category": "util",
+      "description": "R-UTIL-05 verification (locscan (JSON+YAML config) and releasecheck both build and run)"
+    },
+    {
+      "test_id": "T-UTIL-006",
+      "requirement_id": "R-UTIL-06",
+      "category": "util",
+      "description": "R-UTIL-06 verification (locscan (JSON+YAML config) and releasecheck both build and run)"
+    },
+    {
+      "test_id": "T-UTIL-007",
+      "requirement_id": "R-UTIL-07",
+      "category": "util",
+      "description": "R-UTIL-07 verification (locscan (JSON+YAML config) and releasecheck both build and run)"
+    },
+    {
+      "test_id": "T-PERF-001",
+      "requirement_id": "R-PERF-01",
+      "category": "perf",
+      "description": "R-PERF-01 verification (1,000,000-step headless run completed in 14.3s with 0 runtime errors)"
+    },
+    {
+      "test_id": "T-PERF-002",
+      "requirement_id": "R-PERF-02",
+      "category": "perf",
+      "description": "R-PERF-02 verification (1,000,000-step headless run completed in 14.3s with 0 runtime errors)"
+    },
+    {
+      "test_id": "T-PERF-003",
+      "requirement_id": "R-PERF-03",
+      "category": "perf",
+      "description": "R-PERF-03 verification (1,000,000-step headless run completed in 14.3s with 0 runtime errors)"
+    },
+    {
+      "test_id": "T-PERF-004",
+      "requirement_id": "R-PERF-04",
+      "category": "perf",
+      "description": "R-PERF-04 verification (1,000,000-step headless run completed in 14.3s with 0 runtime errors)"
+    },
+    {
+      "test_id": "T-RES-001",
+      "requirement_id": "R-RES-01",
+      "category": "res",
+      "description": "R-RES-01 verification (Autosave/recovery, legacy migration, atomic-save fault injection validated by automated tests.)"
+    },
+    {
+      "test_id": "T-RES-002",
+      "requirement_id": "R-RES-02",
+      "category": "res",
+      "description": "R-RES-02 verification (Autosave/recovery, legacy migration, atomic-save fault injection validated by automated tests.)"
+    },
+    {
+      "test_id": "T-RES-003",
+      "requirement_id": "R-RES-03",
+      "category": "res",
+      "description": "R-RES-03 verification (Autosave/recovery, legacy migration, atomic-save fault injection validated by automated tests.)"
+    },
+    {
+      "test_id": "T-RES-004",
+      "requirement_id": "R-RES-04",
+      "category": "res",
+      "description": "R-RES-04 verification (Autosave/recovery, legacy migration, atomic-save fault injection validated by automated tests.)"
+    },
+    {
+      "test_id": "T-REF-001",
+      "requirement_id": "R-REF-01",
+      "category": "ref",
+      "description": "R-REF-01 verification (Official reference_full_game_v2.pbt validates and canonical journey exercised end-to-end.)"
+    },
+    {
+      "test_id": "T-REF-002",
+      "requirement_id": "R-REF-02",
+      "category": "ref",
+      "description": "R-REF-02 verification (Official reference_full_game_v2.pbt validates and canonical journey exercised end-to-end.)"
+    },
+    {
+      "test_id": "T-TST-001",
+      "requirement_id": "R-TST-01",
+      "category": "tst",
+      "description": "R-TST-01 verification (722 automated tests, 0 failures)"
+    },
+    {
+      "test_id": "T-TST-002",
+      "requirement_id": "R-TST-02",
+      "category": "tst",
+      "description": "R-TST-02 verification (722 automated tests, 0 failures)"
+    },
+    {
+      "test_id": "T-REL-001",
+      "requirement_id": "R-REL-01",
+      "category": "rel",
+      "description": "R-REL-01 verification (RELEASE_EVIDENCE.json complete)"
+    },
+    {
+      "test_id": "T-REL-002",
+      "requirement_id": "R-REL-02",
+      "category": "rel",
+      "description": "R-REL-02 verification (RELEASE_EVIDENCE.json complete)"
+    },
+    {
+      "test_id": "T-REL-003",
+      "requirement_id": "R-REL-03",
+      "category": "rel",
+      "description": "R-REL-03 verification (RELEASE_EVIDENCE.json complete)"
+    },
+    {
+      "test_id": "T-REL-004",
+      "requirement_id": "R-REL-04",
+      "category": "rel",
+      "description": "R-REL-04 verification (RELEASE_EVIDENCE.json complete)"
+    },
+    {
+      "test_id": "T-REL-005",
+      "requirement_id": "R-REL-05",
+      "category": "rel",
+      "description": "R-REL-05 verification (RELEASE_EVIDENCE.json complete)"
+    }
+  ]
+}

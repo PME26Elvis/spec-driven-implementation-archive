@@ -1,0 +1,57 @@
+# locscan configuration (YAML subset)
+include_extensions:
+  - c
+  - h
+  - md
+  - sh
+  - yaml
+  - yml
+  - py
+exclude_extensions:
+  - png
+  - exe
+  - o
+  - obj
+  - dll
+  - zip
+  - mp4
+  - gif
+  - jpg
+  - bin
+  - pbt
+exclude_paths:
+  - build/
+  - out/
+  - build_test/__pycache__/
+  - locscan_report.json
+  - RELEASE_RESULT.json
+  - RELEASE_EVIDENCE.json
+category_rules:
+  - pattern: tools/tests.c
+    category: tests
+  - pattern: "*.md"
+    category: docs
+  - pattern: tools/*.sh
+    category: build_scripts
+  - pattern: "*.sh"
+    category: build_scripts
+  - pattern: "*.py"
+    category: build_scripts
+  - pattern: src/**/*.c
+    category: source
+  - pattern: tools/*.c
+    category: source
+  - pattern: src/**/*.h
+    category: headers
+  - pattern: tools/*.h
+    category: headers
+  - extension: c
+    category: source
+  - extension: h
+    category: headers
+  - extension: yaml
+    category: build_scripts
+  - extension: yml
+    category: build_scripts
+follow_symlinks: false
+max_file_bytes: 2000000

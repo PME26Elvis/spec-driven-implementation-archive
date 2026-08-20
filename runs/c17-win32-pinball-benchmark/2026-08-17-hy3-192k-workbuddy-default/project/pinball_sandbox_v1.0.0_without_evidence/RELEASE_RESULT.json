@@ -1,0 +1,142 @@
+{
+  "format_version": 1,
+  "task_package_version": "1.0.0",
+  "build_id": "build-20260817-pinball-v1.0.0",
+  "tests": {
+    "total": 722,
+    "passed": 722,
+    "failed": 0,
+    "skipped": 0
+  },
+  "categories": {
+    "parse_roundtrip": {
+      "total": 502,
+      "passed": 502,
+      "failed": 0,
+      "skipped": 0
+    },
+    "determinism_timescale": {
+      "total": 96,
+      "passed": 96,
+      "failed": 0,
+      "skipped": 0
+    },
+    "determinism_10x": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0
+    },
+    "stress_1m": {
+      "total": 4,
+      "passed": 4,
+      "failed": 0,
+      "skipped": 0
+    },
+    "validation_triggers": {
+      "total": 6,
+      "passed": 6,
+      "failed": 0,
+      "skipped": 0
+    },
+    "object_types": {
+      "total": 30,
+      "passed": 30,
+      "failed": 0,
+      "skipped": 0
+    },
+    "replay": {
+      "total": 42,
+      "passed": 42,
+      "failed": 0,
+      "skipped": 0
+    },
+    "malformed": {
+      "total": 28,
+      "passed": 28,
+      "failed": 0,
+      "skipped": 0
+    },
+    "tools": {
+      "total": 3,
+      "passed": 3,
+      "failed": 0,
+      "skipped": 0
+    }
+  },
+  "release_gates": {
+    "build": "PASS",
+    "dependency": "PASS",
+    "physics_core": "PASS",
+    "gameplay": "PASS",
+    "mechanisms_tilt": "PASS",
+    "replay": "PASS",
+    "headless": "PASS",
+    "diagnostics_trace": "PASS",
+    "engineering_utilities": "PASS",
+    "performance_resource": "PASS",
+    "reliability_recovery": "PASS",
+    "canonical_e2e": "PASS",
+    "automated_tests": "PASS",
+    "release_evidence": "PASS",
+    "persistence": "PASS",
+    "determinism": "PASS",
+    "stress": "PASS",
+    "error_handling": "PASS",
+    "anti_placeholder": "PASS",
+    "main_ui": "NOT_RUN",
+    "editor": "NOT_RUN",
+    "advanced_editor": "NOT_RUN",
+    "desktop_interaction": "NOT_RUN",
+    "visual_evidence": "NOT_RUN",
+    "physics_inspector": "NOT_RUN"
+  },
+  "scenarios": {
+    "bumper_ring": "PASS",
+    "drain_test": "PASS",
+    "editor_full_table": "PASS",
+    "eight_ball_collision": "PASS",
+    "elastic_head_on_v2": "PASS",
+    "flipper_strike": "PASS",
+    "free_flight_v2": "PASS",
+    "friction_ramp": "PASS",
+    "gravity_drop": "PASS",
+    "high_speed_thin_wall": "PASS",
+    "legacy_editor_full_table_v1": "PASS",
+    "multiball_stress": "PASS",
+    "perfect_bounce": "PASS",
+    "reference_full_game_v2": "PASS",
+    "sensor_crossing": "PASS",
+    "stationary_no_force_v2": "PASS",
+    "valid_chinese_v2": "PASS",
+    "valid_crlf_legacy": "PASS"
+  },
+  "stress": {
+    "long_run_steps": 1000000,
+    "multiball_active_balls": 16,
+    "multiball_simulated_seconds": 30.0,
+    "headless_stress_balls": 64,
+    "headless_stress_simulated_seconds": 16.0,
+    "repeated_cycles": 1000,
+    "nan_or_inf_count": 0,
+    "impact_cap_hits": 0,
+    "event_cap_hits": 0,
+    "final_memory_bytes": 0,
+    "cycle10_memory_bytes": 0,
+    "p2_backlog_drops": 0,
+    "descriptor_stability_pass": true
+  },
+  "determinism": {
+    "repetitions": 10,
+    "all_match": true,
+    "final_state_fingerprint": "917f266a18e6387a",
+    "replay_fingerprint": "531a671730d52efb",
+    "gui_headless_match": true,
+    "trace_toggle_match": true,
+    "ui_scale_match": true,
+    "nudge_tilt_replay_match": true,
+    "detcompare_first_divergence_test": true
+  },
+  "failing_test_ids": [],
+  "known_mandatory_failures": []
+}

@@ -1,0 +1,565 @@
+DBG type 0 c=15 oc=1 wtype=0
+  write=PINBALL_TABLE 2
+
+[table]
+name = ""
+world_size = (800, 600)
+gravity = (0, 980)
+max_active_balls = 16
+starting_turns = 3
+default_ball_radius = 12
+default_ball_mass = 1
+default_ball_restitution = 0.78000000000000003
+default_ball_friction = 0.080000000000000002
+default_ball_damping = 0.029999999999999999
+default_ball_max_speed = 3000
+scene_seed = 0
+nudge_impulse = 85
+nudge_tilt_cost = 1
+tilt_threshold = 3
+tilt_decay_per_second = 0.75
+nudge_cooldown = 0.080000000000000002
+
+[object BALL_SPAWN o0]
+position = (20, 20)
+initial_velocity = (0, 0)
+enabled = true
+layer = 
+locked = false
+
+
+DBG type 1 c=15 oc=1 wtype=1
+  write=PINBALL_TABLE 2
+
+[table]
+name = ""
+world_size = (800, 600)
+gravity = (0, 980)
+max_active_balls = 16
+starting_turns = 3
+default_ball_radius = 12
+default_ball_mass = 1
+default_ball_restitution = 0.78000000000000003
+default_ball_friction = 0.080000000000000002
+default_ball_damping = 0.029999999999999999
+default_ball_max_speed = 3000
+scene_seed = 0
+nudge_impulse = 85
+nudge_tilt_cost = 1
+tilt_threshold = 3
+tilt_decay_per_second = 0.75
+nudge_cooldown = 0.080000000000000002
+
+[object WALL o1]
+start = (0, 0)
+end = (40, 0)
+thickness = 4
+restitution = 0
+friction = 0
+enabled = false
+layer = 
+locked = false
+
+
+DBG type 2 c=15 oc=1 wtype=2
+  write=PINBALL_TABLE 2
+
+[table]
+name = ""
+world_size = (800, 600)
+gravity = (0, 980)
+max_active_balls = 16
+starting_turns = 3
+default_ball_radius = 12
+default_ball_mass = 1
+default_ball_restitution = 0.78000000000000003
+default_ball_friction = 0.080000000000000002
+default_ball_damping = 0.029999999999999999
+default_ball_max_speed = 3000
+scene_seed = 0
+nudge_impulse = 85
+nudge_tilt_cost = 1
+tilt_threshold = 3
+tilt_decay_per_second = 0.75
+nudge_cooldown = 0.080000000000000002
+
+[object RAMP o2]
+start = (0, 0)
+end = (40, 0)
+thickness = 4
+restitution = 0
+friction = 0
+enabled = false
+layer = 
+locked = false
+
+
+DBG type 3 c=15 oc=1 wtype=3
+  write=PINBALL_TABLE 2
+
+[table]
+name = ""
+world_size = (800, 600)
+gravity = (0, 980)
+max_active_balls = 16
+starting_turns = 3
+default_ball_radius = 12
+default_ball_mass = 1
+default_ball_restitution = 0.78000000000000003
+default_ball_friction = 0.080000000000000002
+default_ball_damping = 0.029999999999999999
+default_ball_max_speed = 3000
+scene_seed = 0
+nudge_impulse = 85
+nudge_tilt_cost = 1
+tilt_threshold = 3
+tilt_decay_per_second = 0.75
+nudge_cooldown = 0.080000000000000002
+
+[object BUMPER o3]
+center = (20, 20)
+radius = 12
+restitution = 0
+friction = 0
+impulse = 0
+base_score = 0
+cooldown = 0
+enabled = false
+layer = 
+locked = false
+
+
+DBG type 4 c=15 oc=1 wtype=4
+  write=PINBALL_TABLE 2
+
+[table]
+name = ""
+world_size = (800, 600)
+gravity = (0, 980)
+max_active_balls = 16
+starting_turns = 3
+default_ball_radius = 12
+default_ball_mass = 1
+default_ball_restitution = 0.78000000000000003
+default_ball_friction = 0.080000000000000002
+default_ball_damping = 0.029999999999999999
+default_ball_max_speed = 3000
+scene_seed = 0
+nudge_impulse = 85
+nudge_tilt_cost = 1
+tilt_threshold = 3
+tilt_decay_per_second = 0.75
+nudge_cooldown = 0.080000000000000002
+
+[object FLIPPER o4]
+pivot = (20, 20)
+length = 40
+thickness = 0
+rest_angle_deg = 0
+active_angle_deg = 0
+engage_speed_deg_s = 0
+return_speed_deg_s = 0
+restitution = 0
+friction = 0
+input = LEFT_FLIPPER
+enabled = false
+layer = 
+locked = false
+
+
+DBG type 5 c=15 oc=1 wtype=5
+  write=PINBALL_TABLE 2
+
+[table]
+name = ""
+world_size = (800, 600)
+gravity = (0, 980)
+max_active_balls = 16
+starting_turns = 3
+default_ball_radius = 12
+default_ball_mass = 1
+default_ball_restitution = 0.78000000000000003
+default_ball_friction = 0.080000000000000002
+default_ball_damping = 0.029999999999999999
+default_ball_max_speed = 3000
+scene_seed = 0
+nudge_impulse = 85
+nudge_tilt_cost = 1
+tilt_threshold = 3
+tilt_decay_per_second = 0.75
+nudge_cooldown = 0.080000000000000002
+
+[object SENSOR o5]
+rect = (0, 0, 20, 10)
+enabled = false
+debug_visible = false
+layer = 
+locked = false
+
+
+DBG type 6 c=15 oc=1 wtype=6
+  write=PINBALL_TABLE 2
+
+[table]
+name = ""
+world_size = (800, 600)
+gravity = (0, 980)
+max_active_balls = 16
+starting_turns = 3
+default_ball_radius = 12
+default_ball_mass = 1
+default_ball_restitution = 0.78000000000000003
+default_ball_friction = 0.080000000000000002
+default_ball_damping = 0.029999999999999999
+default_ball_max_speed = 3000
+scene_seed = 0
+nudge_impulse = 85
+nudge_tilt_cost = 1
+tilt_threshold = 3
+tilt_decay_per_second = 0.75
+nudge_cooldown = 0.080000000000000002
+
+[object DRAIN o6]
+rect = (0, 0, 20, 10)
+enabled = false
+layer = 
+locked = false
+
+
+DBG type 7 c=15 oc=1 wtype=7
+  write=PINBALL_TABLE 2
+
+[table]
+name = ""
+world_size = (800, 600)
+gravity = (0, 980)
+max_active_balls = 16
+starting_turns = 3
+default_ball_radius = 12
+default_ball_mass = 1
+default_ball_restitution = 0.78000000000000003
+default_ball_friction = 0.080000000000000002
+default_ball_damping = 0.029999999999999999
+default_ball_max_speed = 3000
+scene_seed = 0
+nudge_impulse = 85
+nudge_tilt_cost = 1
+tilt_threshold = 3
+tilt_decay_per_second = 0.75
+nudge_cooldown = 0.080000000000000002
+
+[object LAUNCHER o7]
+position = (20, 20)
+spawn = 
+direction = (0, -1)
+min_speed = 0
+max_speed = 0
+full_charge_time = 0
+charge_curve = LINEAR
+enabled = false
+layer = 
+locked = false
+
+
+DBG type 8 c=15 oc=1 wtype=8
+  write=PINBALL_TABLE 2
+
+[table]
+name = ""
+world_size = (800, 600)
+gravity = (0, 980)
+max_active_balls = 16
+starting_turns = 3
+default_ball_radius = 12
+default_ball_mass = 1
+default_ball_restitution = 0.78000000000000003
+default_ball_friction = 0.080000000000000002
+default_ball_damping = 0.029999999999999999
+default_ball_max_speed = 3000
+scene_seed = 0
+nudge_impulse = 85
+nudge_tilt_cost = 1
+tilt_threshold = 3
+tilt_decay_per_second = 0.75
+nudge_cooldown = 0.080000000000000002
+
+[object ONE_WAY_GATE o8]
+start = (0, 0)
+end = (40, 0)
+thickness = 4
+allowed_direction = (0, 0)
+restitution = 0
+friction = 0
+enabled = false
+layer = 
+locked = false
+
+
+DBG type 9 c=15 oc=1 wtype=9
+  write=PINBALL_TABLE 2
+
+[table]
+name = ""
+world_size = (800, 600)
+gravity = (0, 980)
+max_active_balls = 16
+starting_turns = 3
+default_ball_radius = 12
+default_ball_mass = 1
+default_ball_restitution = 0.78000000000000003
+default_ball_friction = 0.080000000000000002
+default_ball_damping = 0.029999999999999999
+default_ball_max_speed = 3000
+scene_seed = 0
+nudge_impulse = 85
+nudge_tilt_cost = 1
+tilt_threshold = 3
+tilt_decay_per_second = 0.75
+nudge_cooldown = 0.080000000000000002
+
+[object SLINGSHOT o9]
+start = (0, 0)
+end = (40, 0)
+thickness = 4
+restitution = 0
+friction = 0
+impulse = 0
+base_score = 0
+cooldown = 0
+enabled = false
+layer = 
+locked = false
+
+
+DBG type 10 c=15 oc=1 wtype=10
+  write=PINBALL_TABLE 2
+
+[table]
+name = ""
+world_size = (800, 600)
+gravity = (0, 980)
+max_active_balls = 16
+starting_turns = 3
+default_ball_radius = 12
+default_ball_mass = 1
+default_ball_restitution = 0.78000000000000003
+default_ball_friction = 0.080000000000000002
+default_ball_damping = 0.029999999999999999
+default_ball_max_speed = 3000
+scene_seed = 0
+nudge_impulse = 85
+nudge_tilt_cost = 1
+tilt_threshold = 3
+tilt_decay_per_second = 0.75
+nudge_cooldown = 0.080000000000000002
+
+[object DROP_TARGET o10]
+start = (0, 0)
+end = (40, 0)
+thickness = 4
+restitution = 0
+friction = 0
+min_hit_speed = 0
+base_score = 0
+cooldown = 0
+initially_raised = false
+reset_mode = MANUAL_EVENT
+reset_delay = 0
+enabled = false
+layer = 
+locked = false
+
+
+DBG type 11 c=15 oc=1 wtype=11
+  write=PINBALL_TABLE 2
+
+[table]
+name = ""
+world_size = (800, 600)
+gravity = (0, 980)
+max_active_balls = 16
+starting_turns = 3
+default_ball_radius = 12
+default_ball_mass = 1
+default_ball_restitution = 0.78000000000000003
+default_ball_friction = 0.080000000000000002
+default_ball_damping = 0.029999999999999999
+default_ball_max_speed = 3000
+scene_seed = 0
+nudge_impulse = 85
+nudge_tilt_cost = 1
+tilt_threshold = 3
+tilt_decay_per_second = 0.75
+nudge_cooldown = 0.080000000000000002
+
+[object STANDUP_TARGET o11]
+start = (0, 0)
+end = (40, 0)
+thickness = 4
+restitution = 0
+friction = 0
+min_hit_speed = 0
+base_score = 0
+cooldown = 0
+enabled = false
+layer = 
+locked = false
+
+
+DBG type 12 c=15 oc=1 wtype=12
+  write=PINBALL_TABLE 2
+
+[table]
+name = ""
+world_size = (800, 600)
+gravity = (0, 980)
+max_active_balls = 16
+starting_turns = 3
+default_ball_radius = 12
+default_ball_mass = 1
+default_ball_restitution = 0.78000000000000003
+default_ball_friction = 0.080000000000000002
+default_ball_damping = 0.029999999999999999
+default_ball_max_speed = 3000
+scene_seed = 0
+nudge_impulse = 85
+nudge_tilt_cost = 1
+tilt_threshold = 3
+tilt_decay_per_second = 0.75
+nudge_cooldown = 0.080000000000000002
+
+[object ROLLOVER o12]
+start = (0, 0)
+end = (40, 0)
+width = 0
+base_score = 0
+activation_mode = ON_ENTER
+enabled = false
+layer = 
+locked = false
+
+
+DBG type 13 c=15 oc=1 wtype=13
+  write=PINBALL_TABLE 2
+
+[table]
+name = ""
+world_size = (800, 600)
+gravity = (0, 980)
+max_active_balls = 16
+starting_turns = 3
+default_ball_radius = 12
+default_ball_mass = 1
+default_ball_restitution = 0.78000000000000003
+default_ball_friction = 0.080000000000000002
+default_ball_damping = 0.029999999999999999
+default_ball_max_speed = 3000
+scene_seed = 0
+nudge_impulse = 85
+nudge_tilt_cost = 1
+tilt_threshold = 3
+tilt_decay_per_second = 0.75
+nudge_cooldown = 0.080000000000000002
+
+[object SPINNER o13]
+pivot = (20, 20)
+half_length = 20
+thickness = 0
+rest_angle_deg = 0
+angular_damping = 0
+inertia = 0
+restitution = 0
+friction = 0
+score_per_tick = 0
+tick_angle_deg = 0
+enabled = false
+layer = 
+locked = false
+
+
+DBG type 14 c=15 oc=1 wtype=14
+  write=PINBALL_TABLE 2
+
+[table]
+name = ""
+world_size = (800, 600)
+gravity = (0, 980)
+max_active_balls = 16
+starting_turns = 3
+default_ball_radius = 12
+default_ball_mass = 1
+default_ball_restitution = 0.78000000000000003
+default_ball_friction = 0.080000000000000002
+default_ball_damping = 0.029999999999999999
+default_ball_max_speed = 3000
+scene_seed = 0
+nudge_impulse = 85
+nudge_tilt_cost = 1
+tilt_threshold = 3
+tilt_decay_per_second = 0.75
+nudge_cooldown = 0.080000000000000002
+
+[object KICKOUT o14]
+center = (20, 20)
+capture_radius = 14
+eject_direction = (0, 0)
+eject_speed = 0
+hold_time = 0
+base_score = 0
+enabled = false
+layer = 
+locked = false
+
+
+DBG replay editor_full_table.pbt orig=111f1068268cc7ad rep=9193b86ce53b642d ec=155
+  ev[0] step=0 kind=0
+  ev[1] step=0 kind=2
+  ev[2] step=0 kind=4
+  ev[3] step=20 kind=0
+  ev[4] step=30 kind=2
+  ev[5] step=40 kind=0
+  ev[6] step=50 kind=4
+  ev[7] step=60 kind=0
+  ev[8] step=60 kind=2
+  ev[9] step=80 kind=0
+  ev[10] step=90 kind=2
+  ev[11] step=100 kind=0
+  ev[12] step=100 kind=4
+  ev[13] step=120 kind=0
+  ev[14] step=120 kind=2
+  ev[15] step=140 kind=0
+DBG replay flipper_strike.pbt orig=e019629c604f030e rep=8466195a9cc33b07 ec=155
+  ev[0] step=0 kind=0
+  ev[1] step=0 kind=2
+  ev[2] step=0 kind=4
+  ev[3] step=20 kind=0
+  ev[4] step=30 kind=2
+  ev[5] step=40 kind=0
+  ev[6] step=50 kind=4
+  ev[7] step=60 kind=0
+  ev[8] step=60 kind=2
+  ev[9] step=80 kind=0
+  ev[10] step=90 kind=2
+  ev[11] step=100 kind=0
+  ev[12] step=100 kind=4
+  ev[13] step=120 kind=0
+  ev[14] step=120 kind=2
+  ev[15] step=140 kind=0
+FAILED TESTS:
+  type 0 roundtrip
+  type 1 roundtrip
+  type 2 roundtrip
+  type 3 roundtrip
+  type 4 roundtrip
+  type 5 roundtrip
+  type 6 roundtrip
+  type 7 roundtrip
+  type 8 roundtrip
+  type 9 roundtrip
+  type 10 roundtrip
+  type 11 roundtrip
+  type 12 roundtrip
+  type 13 roundtrip
+  type 14 roundtrip
+  replay determinism editor_full_table.pbt
+  replay determinism flipper_strike.pbt
