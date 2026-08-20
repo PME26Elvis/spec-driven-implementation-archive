@@ -1,0 +1,1691 @@
+# C17 / X11 Embedded Database Workbench — Software Implementation Task Specification
+
+**Specification version:** 1.0.0
+**Status:** Version 1.0 — complete implementation and acceptance specification
+**Normative keywords:** MUST, MUST NOT, REQUIRED, SHALL, SHALL NOT, SHOULD, SHOULD NOT, MAY
+
+This document defines the complete required product, engineering behavior, file formats, command behavior, GUI behavior, validation obligations, error handling, edge cases, tests, evidence, and Definition of Done for a self-contained embedded database engine and desktop database workbench.
+
+Unless a requirement is explicitly marked OPTIONAL, it is mandatory.
+
+## 1. Product Summary
+
+The deliverable is a native Linux desktop application and command-line database system written in C17. The central product is a self-contained embedded relational database engine implemented from first principles. The same engine SHALL be used by both the CLI and the X11 desktop workbench.
+
+The project SHALL demonstrate real persistence, single-column and composite B+ tree indexing, query execution, snapshot-isolation MVCC, transactions, durability, recovery, corruption detection, authenticated encryption, maintenance operations, import/export, Unicode-safe text handling, and a modern custom-rendered desktop user interface.
+
+- **P-001** — The database engine is the product core. The GUI and CLI are front ends over the same engine implementation; duplicated or divergent storage engines are forbidden.
+- **P-002** — The application SHALL open existing database files and create new database files using the format defined by this project.
+- **P-003** — The implementation SHALL be usable without any network service, remote API, external database server, or runtime-generated remote dependency.
+- **P-004** — All persistence SHALL be local-file based.
+- **P-005** — All required features SHALL be real and wired to persistent state. Demonstration-only behavior, fake rows, hard-coded query results, placeholder controls, or no-op commands are forbidden.
+## 2. Language, Platform, and Dependency Boundary
+
+- **ENG-001** — All production source code SHALL be ISO C17.
+- **ENG-002** — C++ is forbidden in production code.
+- **ENG-003** — Third-party GUI frameworks and widget toolkits are forbidden, including GTK, Qt, SDL, GLFW, wxWidgets, FLTK, Electron, and browser-based UI shells.
+- **ENG-004** — X11/Xlib and X11 protocol support libraries MAY be used only as the native window-system boundary for window creation, event input, clipboard/selection integration, cursor control, and presentation of pixels.
+- **ENG-005** — All application widgets, controls, layouts, text editing behavior, data grids, menus, dialogs, scrolling, animation, shadows, blur, glow, and transitions SHALL be implemented by the submission.
+- **ENG-006** — Third-party database, SQL, parser, storage-engine, indexing, transaction, WAL, cryptography, compression, serialization, or data-structure libraries are forbidden.
+- **ENG-007** — SQLite, Berkeley DB, LMDB, RocksDB, LevelDB, DuckDB, PostgreSQL client/server substitution, or invoking their command-line tools is forbidden.
+- **ENG-008** — System/POSIX facilities MAY be used for file descriptors, locking, durability barriers, clocks, secure randomness, process control needed by tests, and memory mapping. These facilities SHALL NOT replace required database algorithms.
+- **ENG-009** — The build SHALL be driven by a Makefile and SHALL produce all required executables from source.
+- **ENG-010** — Generated parser generators or code generators are forbidden. The SQL lexer and parser SHALL be authored as project source.
+- **ENG-011** — The product SHALL not require a network connection to build, test, launch, or operate after the required system interfaces are present.
+- **ENG-012** — Undefined behavior, signed-integer overflow reliance, unaligned aliasing tricks without guarded portable fallbacks, or host-endian on-disk serialization are forbidden.
+## 3. Required Deliverables
+
+- **DEL-001** — Complete C17 source for the storage engine, SQL layer, CLI, X11 workbench, cryptographic primitives, and required utilities.
+- **DEL-002** — A top-level Makefile supporting at least `make`, `make clean`, `make test`, and `make check`.
+- **DEL-003** — A README containing build commands, launch commands, database-format version, supported SQL grammar summary, known limits, and recovery instructions.
+- **DEL-004** — Automated unit tests, integration tests, crash-recovery tests, corruption tests, CLI tests, and GUI-state tests.
+- **DEL-005** — Deterministic test fixtures generated from source-controlled definitions.
+- **DEL-006** — A test runner that exits nonzero if any mandatory test fails.
+- **DEL-007** — A machine-readable test summary generated after `make test`.
+- **DEL-008** — Required developer utilities defined later in this specification.
+- **DEL-009** — No compiled binaries, object files, caches, temporary database files, generated screenshots, transient logs, or test-output directories SHALL be required to understand or build the submission.
+- **DEL-010** — The source tree SHALL distinguish production source, public/internal headers, tests, fixtures, and documentation clearly.
+## 4. Executables and Roles
+
+- **BIN-001** — `edb` SHALL be the command-line database shell and batch executor.
+- **BIN-002** — `edb-gui` SHALL be the native X11 desktop workbench.
+- **BIN-003** — `edb-check` SHALL validate database structural integrity without modifying the database unless an explicit repair option is supplied.
+- **BIN-004** — `edb-fixture` SHALL generate deterministic fixture databases and data files for tests.
+- **BIN-005** — `edb-crashrun` SHALL execute crash-injection durability scenarios against a child database process.
+- **BIN-006** — `locscan` SHALL count authored source/document/test/config lines according to a config file and ignore rules.
+- **BIN-007** — All executables SHALL support `--help` and return a nonzero status for invalid invocation.
+## 5. Repository Layout Requirements
+
+The exact filenames MAY differ, but the logical separation below SHALL be recognizable:
+
+```text
+src/              production implementation
+include/          public or shared headers
+tests/            unit/integration/crash/corruption/GUI tests
+fixtures/         deterministic source fixtures or fixture definitions
+tools/            required developer utilities
+docs/             human-readable engineering documentation
+Makefile          top-level build entry point
+README.md         build/use/limits/recovery documentation
+```
+
+- **TREE-001** — Production source SHALL NOT depend on files generated by running tests.
+- **TREE-002** — Tests MAY generate disposable files under a dedicated temporary test directory.
+- **TREE-003** — Temporary artifacts SHALL be removable through `make clean`.
+## 6. Database File Model
+
+- **FMT-001** — The engine SHALL use a documented binary page-oriented file format.
+- **FMT-002** — Logical database pages SHALL have a fixed size of 4096 bytes unless this document specifies an envelope around a logical page.
+- **FMT-003** — The file header SHALL contain a magic identifier, file-format major/minor version, page size, feature flags, cryptographic metadata, database identifier, and integrity metadata.
+- **FMT-004** — All multibyte numeric fields on disk SHALL use one explicitly documented byte order independent of host endianness.
+- **FMT-005** — Every page SHALL have a type identifier, page number, generation or change counter, payload bounds, and integrity information sufficient to detect damage.
+- **FMT-006** — Page zero SHALL be reserved for file-level metadata and SHALL NOT be used as a user table/index page.
+- **FMT-007** — The format SHALL distinguish at minimum metadata/schema pages, B+ tree internal pages, B+ tree leaf pages, overflow pages, freelist pages, and recovery-related metadata.
+- **FMT-008** — Unknown incompatible major format versions SHALL be rejected without modification.
+- **FMT-009** — Unknown optional feature flags SHALL be rejected unless explicitly marked forward-compatible by the format.
+- **FMT-010** — The database SHALL retain enough metadata to distinguish an initialized empty database from a truncated or random file.
+- **FMT-011** — The engine SHALL never interpret arbitrary unvalidated bytes as trusted page counts, offsets, lengths, or allocation sizes.
+- **FMT-012** — Opening a malformed database SHALL fail safely without unbounded allocation, out-of-bounds access, or overwrite of the original file.
+### 6.1 File Header Minimum Fields
+
+- **FMT-H-01** — Header SHALL encode `magic`: fixed signature identifying this database family.
+- **FMT-H-02** — Header SHALL encode `format_major`: incompatible format generation.
+- **FMT-H-03** — Header SHALL encode `format_minor`: compatible format revision.
+- **FMT-H-04** — Header SHALL encode `page_size`: logical page size.
+- **FMT-H-05** — Header SHALL encode `database_id`: random identifier for this database.
+- **FMT-H-06** — Header SHALL encode `feature_flags`: enabled file features.
+- **FMT-H-07** — Header SHALL encode `kdf_id`: password KDF identifier.
+- **FMT-H-08** — Header SHALL encode `kdf_iterations`: KDF work parameter.
+- **FMT-H-09** — Header SHALL encode `salt`: per-database KDF salt.
+- **FMT-H-10** — Header SHALL encode `header_generation`: monotonic metadata generation.
+- **FMT-H-11** — Header SHALL encode `root_schema_page`: entry page for schema metadata.
+- **FMT-H-12** — Header SHALL encode `freelist_root`: entry page or descriptor for free pages.
+- **FMT-H-13** — Header SHALL encode `last_page_number`: highest allocated logical page.
+- **FMT-H-14** — Header SHALL encode `checkpoint_sequence`: last durable checkpoint sequence.
+- **FMT-H-15** — Header SHALL encode `header_checksum_or_tag`: header integrity/authentication value.
+## 7. Pager and Buffer Manager
+
+- **PAGER-001** — All table/index access SHALL go through a pager abstraction rather than arbitrary direct offsets throughout the SQL layer.
+- **PAGER-002** — The pager SHALL validate page numbers and file bounds before reading.
+- **PAGER-003** — The pager SHALL maintain an in-memory page cache with a documented bounded replacement policy such as clock or LRU.
+- **PAGER-004** — Dirty state SHALL be tracked per cached page.
+- **PAGER-005** — Pinned/in-use pages SHALL NOT be evicted.
+- **PAGER-006** — The pager SHALL distinguish short read, checksum/authentication failure, impossible page type, invalid payload bounds, and generic I/O errors.
+- **PAGER-007** — Page creation SHALL not expose partially initialized pages to higher layers.
+- **PAGER-008** — Page writes SHALL participate in transaction/WAL ordering rather than bypassing durability rules.
+- **PAGER-009** — The cache SHALL have tests that force eviction with a cache smaller than the working set.
+- **PAGER-010** — The engine SHALL operate correctly when cache capacity is one page greater than the minimum needed for a tested operation.
+- **PAGER-011** — Cache statistics SHALL expose hits, misses, evictions, dirty writes, and pinned-page peak for diagnostics.
+- **PAGER-012** — Closing a connection SHALL release all cache resources and file descriptors even following an error.
+## 8. Record and Value Representation
+
+- **REC-001** — Supported SQL value classes SHALL include NULL, signed 64-bit INTEGER, IEEE-754 64-bit REAL, UTF-8 TEXT, and arbitrary BLOB.
+- **REC-002** — BOOLEAN MAY be accepted syntactically but SHALL have a documented mapping to the core value classes.
+- **REC-003** — Rows SHALL use a deterministic self-describing or schema-driven binary serialization that validates all field lengths before access.
+- **REC-004** — Variable-length records larger than a leaf-page local payload threshold SHALL use overflow pages rather than requiring a page larger than the fixed page size.
+- **REC-005** — Overflow chains SHALL be cycle-checked and bounds-checked during integrity validation.
+- **REC-006** — A single TEXT or BLOB value of at least 1 MiB SHALL be supported through overflow storage.
+- **REC-007** — A zero-length TEXT and a zero-length BLOB SHALL remain distinguishable from NULL.
+- **REC-008** — NaN and infinity behavior for REAL SHALL be documented and tested; they SHALL NOT silently corrupt ordering structures.
+- **REC-009** — Row serialization SHALL be endian-stable and deterministic.
+- **REC-010** — Malformed record headers SHALL be reported as corruption, not interpreted using unchecked lengths.
+## 9. Page Allocation, Free Space, and Compaction
+
+- **ALLOC-001** — The engine SHALL maintain reusable free pages.
+- **ALLOC-002** — Deleting rows or dropping tables/indexes SHALL eventually make unreachable pages reclaimable.
+- **ALLOC-003** — Freelist metadata SHALL itself be validated for duplicate entries, out-of-range pages, and cycles.
+- **ALLOC-004** — Page allocation SHALL prefer reusable pages before indefinitely extending the file where safe.
+- **ALLOC-005** — The engine SHALL implement an explicit `VACUUM` or equivalent compaction operation.
+- **ALLOC-006** — Compaction SHALL rebuild the database into a consistent compact form and replace the original atomically only after successful completion.
+- **ALLOC-007** — An interrupted compaction SHALL leave either the old valid database or the new valid database, not a half-written primary file.
+- **ALLOC-008** — Compaction SHALL preserve all logical rows, schema objects, constraints, indexes, and encryption settings.
+- **ALLOC-009** — Database size before/after compaction SHALL be available in maintenance statistics.
+- **ALLOC-010** — Free-page reuse SHALL be covered by tests that repeatedly insert and delete enough data to span many pages.
+## 10. B+ Tree Implementation
+
+Tables and secondary indexes SHALL be backed by project-authored B+ trees. A sorted flat file or linear list is not an acceptable substitute for indexed structures.
+
+- **BTREE-001** — B+ tree internal and leaf nodes SHALL have distinct on-disk representations.
+- **BTREE-002** — Tree search SHALL descend by key comparisons and SHALL NOT linearly scan all pages for an indexed equality lookup.
+- **BTREE-003** — Leaf pages SHALL store ordered entries.
+- **BTREE-004** — Internal pages SHALL store separator keys and child references.
+- **BTREE-005** — Insertion SHALL implement leaf splitting.
+- **BTREE-006** — Insertion SHALL implement internal-node splitting and root creation.
+- **BTREE-007** — Deletion SHALL implement removal from leaf nodes.
+- **BTREE-008** — Deletion SHALL implement redistribution/borrowing where applicable.
+- **BTREE-009** — Deletion SHALL implement merge/coalescing where applicable.
+- **BTREE-010** — Deletion SHALL shrink the root when the previous root becomes redundant.
+- **BTREE-011** — Parent separator keys SHALL remain correct after first-key changes in child pages.
+- **BTREE-012** — Duplicate-key handling SHALL obey index uniqueness rules.
+- **BTREE-013** — Range traversal SHALL return keys in deterministic order.
+- **BTREE-014** — Leaf sibling navigation MAY be used and, if present, SHALL be integrity-checked.
+- **BTREE-015** — Each B+ tree SHALL expose validation logic checking sort order, occupancy rules, child ranges, page reachability, and cycles.
+- **BTREE-016** — Tests SHALL force at least three tree levels, not only root-plus-leaf examples.
+- **BTREE-017** — Tests SHALL insert ascending, descending, alternating, and pseudorandom key sequences.
+- **BTREE-018** — Tests SHALL delete keys in orders chosen to force borrow-left, borrow-right, merge-left, merge-right, and root collapse cases.
+- **BTREE-019** — Variable-length TEXT keys SHALL be supported for secondary indexes within documented maximum key size limits.
+- **BTREE-020** — Oversized index keys SHALL fail with a specific error without corrupting the transaction.
+
+### 10.1 Composite B+ Tree Indexes
+
+Composite indexes are mandatory. They SHALL be implemented as true ordered tuple keys inside the project-authored B+ tree. Maintaining several independent single-column indexes and intersecting their results is not an acceptable substitute for a required composite index.
+
+- **CIDX-001** — `CREATE [UNIQUE] INDEX name ON table(col1, col2, ...);` SHALL accept from one through at least four indexed columns.
+- **CIDX-002** — The schema catalog SHALL persist the ordered list of indexed columns. Column order is semantically significant.
+- **CIDX-003** — Composite index keys SHALL have an unambiguous binary encoding containing sufficient type/null/length information so distinct tuples cannot alias through concatenation ambiguity.
+- **CIDX-004** — Composite keys SHALL compare lexicographically: component 1 first; component 2 only when component 1 compares equal; and so on.
+- **CIDX-005** — Each component SHALL use the same deterministic type and collation comparison semantics used by SQL predicates for that column.
+- **CIDX-006** — NULL ordering inside index keys SHALL be deterministic and SHALL match the documented engine ordering semantics.
+- **CIDX-007** — A nonunique composite index SHALL include a deterministic row identity/version discriminator after the logical tuple so multiple equal logical keys can coexist without overwriting one another.
+- **CIDX-008** — A UNIQUE composite index SHALL enforce uniqueness over the complete indexed tuple.
+- **CIDX-009** — For UNIQUE indexes, any tuple containing one or more NULL components SHALL be treated according to one explicitly documented SQL-consistent rule. Version 1.0 requires the common rule that NULL-containing tuples do not conflict with one another; two fully non-NULL equal tuples SHALL conflict.
+- **CIDX-010** — Insert, update, delete, rollback, crash recovery, VACUUM, rekey, salvage, and index rebuild SHALL preserve composite index correctness.
+- **CIDX-011** — Updating any indexed component SHALL atomically retire/remove the old logical tuple entry and create the new logical tuple entry according to MVCC visibility rules.
+- **CIDX-012** — Updating a non-indexed column SHALL not create a logically different composite key, although MVCC representation MAY require version metadata maintenance.
+- **CIDX-013** — The planner SHALL support the leftmost-prefix rule. For index `(a,b,c)`, predicates constraining `a`, `(a,b)`, or `(a,b,c)` MAY use the index; a predicate on `b` or `c` alone SHALL NOT be claimed as a direct ordered lookup on that index.
+- **CIDX-014** — The planner SHALL support equality on a leading prefix followed by a bounded range on the next component; e.g. `(a = ? AND b = ? AND c BETWEEN ? AND ?)` for index `(a,b,c)`.
+- **CIDX-015** — Once a range condition is used on a composite key component, later components SHALL NOT be claimed as narrowing the ordered seek interval unless the implementation demonstrably supports a correct stronger transformation.
+- **CIDX-016** — `ORDER BY` MAY be satisfied by a composite index when ordering is proven compatible with its key order and constrained leading prefix. Otherwise an explicit sort SHALL remain in the plan.
+- **CIDX-017** — Index-assisted nested-loop joins SHALL be able to use a composite index when the inner-side join predicates constrain a usable leading prefix.
+- **CIDX-018** — `EXPLAIN` SHALL identify the composite index and the number/names of leading key components used for seek/range bounds.
+- **CIDX-019** — The planner SHALL NOT report use of a composite index when execution actually performs a complete table scan or complete unrelated-index scan.
+- **CIDX-020** — Composite index key-size limits SHALL be based on the serialized complete tuple and SHALL be checked before modifying persistent state.
+- **CIDX-021** — If one component causes the serialized composite key to exceed the supported key limit, the statement SHALL fail atomically with a specific key-too-large error.
+- **CIDX-022** — Composite index validation SHALL verify tuple ordering, component decode validity, uniqueness rules, row references, MVCC visibility metadata where present, and B+ tree structural invariants.
+- **CIDX-023** — Index rebuild SHALL reconstruct composite tuple keys from table rows/versions rather than copying possibly corrupted source index bytes.
+- **CIDX-024** — `ANALYZE` SHALL collect at minimum total entry count and distinct-count estimates for the first indexed component; it SHOULD collect distinct-prefix estimates for `(c1,c2)` and longer prefixes when practical.
+- **CIDX-025** — The GUI Structure/Create Index flow SHALL allow selection and ordering of multiple columns, clearly showing the resulting key order before creation.
+- **CIDX-026** — The CLI schema/index listing SHALL display composite columns in stored key order.
+- **CIDX-027** — Index names, indexed column names, and UTF-8 TEXT values in composite keys SHALL obey the same UTF-8 safety requirements as their single-column equivalents.
+- **CIDX-028** — Descending-per-column index definitions are NOT required in v1.0. If accepted syntactically, they SHALL be implemented correctly rather than ignored. The minimum mandatory implementation is ascending key order for every component.
+- **CIDX-029** — Included/covering columns are NOT required. The implementation SHALL NOT claim a covering-index plan unless all requested values are actually obtainable without table-row access.
+- **CIDX-030** — Composite primary keys are not required as SQL table declarations in v1.0; composite UNIQUE and nonunique secondary indexes are mandatory.
+
+## 11. Schema Catalog
+
+- **SCHEMA-001** — The database SHALL maintain a persistent schema catalog inside the database file.
+- **SCHEMA-002** — The catalog SHALL describe tables, columns, types, nullability, defaults, primary keys, unique constraints, and indexes.
+- **SCHEMA-003** — Schema object names SHALL be stored as UTF-8.
+- **SCHEMA-004** — Table names and column names SHALL reject embedded NUL bytes.
+- **SCHEMA-005** — Duplicate names within the same applicable namespace SHALL be rejected according to documented comparison rules.
+- **SCHEMA-006** — Creating a table SHALL be transactional.
+- **SCHEMA-007** — Dropping a table SHALL be transactional.
+- **SCHEMA-008** — Creating an index SHALL be transactional and SHALL populate it from existing rows before commit.
+- **SCHEMA-009** — Dropping an index SHALL be transactional.
+- **SCHEMA-010** — `ALTER TABLE ... ADD COLUMN` SHALL be supported for nullable columns and/or columns having a constant default.
+- **SCHEMA-011** — `ALTER TABLE ... RENAME TO` SHALL be supported.
+- **SCHEMA-012** — Catalog corruption SHALL be detectable by `edb-check`.
+- **SCHEMA-013** — Schema changes SHALL invalidate stale prepared/planned statements safely.
+- **SCHEMA-014** — System catalog rows SHALL not be directly writable through ordinary user DML.
+## 12. SQL Lexer and Parser
+
+- **SQL-LEX-001** — The SQL lexer SHALL be implemented by the project and SHALL produce explicit token kinds with source offsets.
+- **SQL-LEX-002** — The lexer SHALL handle ASCII whitespace plus line endings consistently.
+- **SQL-LEX-003** — SQL keywords SHALL be case-insensitive in ASCII.
+- **SQL-LEX-004** — Quoted string literals SHALL support escaping by doubled single quotes.
+- **SQL-LEX-005** — Quoted identifiers SHALL be supported with one documented quoting style.
+- **SQL-LEX-006** — Integer and floating literals SHALL detect overflow or malformed forms.
+- **SQL-LEX-007** — Line comments beginning with `--` SHALL be supported.
+- **SQL-LEX-008** — The lexer SHALL reject embedded NUL in SQL input unless the front end provides length-aware semantics and a documented rule.
+- **SQL-PARSE-001** — The parser SHALL be authored manually using recursive descent, Pratt parsing, precedence climbing, or another project-authored technique.
+- **SQL-PARSE-002** — Syntax errors SHALL report a useful byte offset or line/column location and an error category.
+- **SQL-PARSE-003** — The parser SHALL construct an AST or equivalent structured representation; direct ad-hoc string splitting is forbidden.
+- **SQL-PARSE-004** — Expression precedence SHALL be deterministic and tested.
+- **SQL-PARSE-005** — Parenthesized expressions SHALL override normal precedence.
+- **SQL-PARSE-006** — Multiple statements separated by semicolons SHALL be supported in batch input.
+- **SQL-PARSE-007** — A syntax error SHALL not execute the malformed statement.
+### 12.1 Required SQL Statement Grammar
+
+- **SQL-STMT-01** — The parser/executor SHALL support `CREATE TABLE`.
+- **SQL-STMT-02** — The parser/executor SHALL support `DROP TABLE`.
+- **SQL-STMT-03** — The parser/executor SHALL support `ALTER TABLE ... ADD COLUMN`.
+- **SQL-STMT-04** — The parser/executor SHALL support `ALTER TABLE ... RENAME TO`.
+- **SQL-STMT-05** — The parser/executor SHALL support `CREATE [UNIQUE] INDEX`.
+- **SQL-STMT-06** — The parser/executor SHALL support `DROP INDEX`.
+- **SQL-STMT-07** — The parser/executor SHALL support `INSERT INTO ... VALUES`.
+- **SQL-STMT-08** — The parser/executor SHALL support `INSERT INTO ... (column list) VALUES`.
+- **SQL-STMT-09** — The parser/executor SHALL support `UPDATE ... SET ... WHERE`.
+- **SQL-STMT-10** — The parser/executor SHALL support `DELETE FROM ... WHERE`.
+- **SQL-STMT-11** — The parser/executor SHALL support `SELECT ... FROM`.
+- **SQL-STMT-12** — The parser/executor SHALL support `BEGIN`.
+- **SQL-STMT-13** — The parser/executor SHALL support `COMMIT`.
+- **SQL-STMT-14** — The parser/executor SHALL support `ROLLBACK`.
+- **SQL-STMT-15** — The parser/executor SHALL support `SAVEPOINT`.
+- **SQL-STMT-16** — The parser/executor SHALL support `ROLLBACK TO`.
+- **SQL-STMT-17** — The parser/executor SHALL support `RELEASE`.
+- **SQL-STMT-18** — The parser/executor SHALL support `PRAGMA-like engine metadata query or equivalent documented command`.
+- **SQL-STMT-19** — The parser/executor SHALL support `EXPLAIN`.
+- **SQL-STMT-20** — The parser/executor SHALL support `VACUUM`.
+- **SQL-STMT-21** — The parser/executor SHALL support `ANALYZE`.
+### 12.2 Required SELECT Features
+
+- **SQL-SEL-001** — Projection of columns and expressions.
+- **SQL-SEL-002** — `*` expansion.
+- **SQL-SEL-003** — Column aliases.
+- **SQL-SEL-004** — Table aliases.
+- **SQL-SEL-005** — `WHERE`.
+- **SQL-SEL-006** — `DISTINCT`.
+- **SQL-SEL-007** — `ORDER BY` with ASC and DESC.
+- **SQL-SEL-008** — `LIMIT`.
+- **SQL-SEL-009** — `OFFSET`.
+- **SQL-SEL-010** — `INNER JOIN ... ON`.
+- **SQL-SEL-011** — `LEFT JOIN ... ON`.
+- **SQL-SEL-012** — Multiple joins in one query.
+- **SQL-SEL-013** — `GROUP BY`.
+- **SQL-SEL-014** — `HAVING`.
+- **SQL-SEL-015** — Aggregate functions COUNT, SUM, AVG, MIN, MAX.
+- **SQL-SEL-016** — `COUNT(*)`.
+- **SQL-SEL-017** — NULL-aware aggregate behavior.
+- **SQL-SEL-018** — Qualified column references `table.column`.
+- **SQL-SEL-019** — A deterministic ambiguous-column error.
+- **SQL-SEL-020** — Simple scalar subqueries MAY be omitted; if omitted, syntax SHALL be rejected clearly rather than partially misexecuted.
+### 12.3 Required Expressions and Operators
+
+- **SQL-EXPR-001** — Arithmetic `+ - * / %` for compatible numeric values.
+- **SQL-EXPR-002** — Unary `+` and `-`.
+- **SQL-EXPR-003** — Comparison `= != <> < <= > >=`.
+- **SQL-EXPR-004** — Boolean `AND OR NOT` with documented NULL three-valued semantics.
+- **SQL-EXPR-005** — `IS NULL` and `IS NOT NULL`.
+- **SQL-EXPR-006** — `BETWEEN`.
+- **SQL-EXPR-007** — `IN` with a literal/expression list.
+- **SQL-EXPR-008** — `LIKE` with `%` and `_` wildcards.
+- **SQL-EXPR-009** — String concatenation using one documented SQL operator.
+- **SQL-EXPR-010** — Parentheses.
+- **SQL-EXPR-011** — Column references.
+- **SQL-EXPR-012** — Literal NULL, integer, real, text, and blob.
+- **SQL-EXPR-013** — Parameter placeholder `?` in the C API or prepared-statement interface.
+- **SQL-EXPR-014** — Built-in scalar functions `length`, `lower`, `upper`, `substr`, `abs`, and `coalesce` with documented semantics.
+## 13. SQL Semantics and Type Rules
+
+- **SEM-001** — NULL comparison SHALL follow documented SQL-style three-valued logic; `NULL = NULL` SHALL not evaluate TRUE.
+- **SEM-002** — Division by zero SHALL produce a deterministic query error or documented NULL result; it SHALL never crash.
+- **SEM-003** — Integer arithmetic overflow SHALL be detected or promoted according to one documented rule; signed C overflow SHALL not be relied upon.
+- **SEM-004** — Numeric comparison between INTEGER and REAL SHALL be defined and tested.
+- **SEM-005** — TEXT comparison SHALL use a documented deterministic collation. At minimum, binary UTF-8/code-point-safe ordering SHALL be available.
+- **SEM-006** — An ASCII-only case-insensitive collation MAY be provided, but SHALL NOT claim full Unicode case folding unless fully implemented.
+- **SEM-007** — `LIKE` wildcard matching SHALL operate without splitting UTF-8 continuation bytes. Chinese substring and wildcard matching SHALL work correctly.
+- **SEM-008** — Invalid UTF-8 inserted into a TEXT value SHALL be rejected or normalized according to one documented rule; BLOB remains unrestricted.
+- **SEM-009** — Column defaults SHALL be applied to omitted INSERT columns.
+- **SEM-010** — NOT NULL constraints SHALL be enforced on INSERT and UPDATE.
+- **SEM-011** — UNIQUE constraints SHALL be enforced using indexes or equivalently bounded lookup structures.
+- **SEM-012** — PRIMARY KEY uniqueness SHALL be enforced transactionally.
+- **SEM-013** — Constraint failure SHALL roll back the current statement without leaving partial index/table changes.
+- **SEM-014** — ORDER BY SHALL have deterministic NULL placement defined by the project.
+- **SEM-015** — LIMIT/OFFSET negative and overflow inputs SHALL have documented errors.
+- **SEM-016** — DISTINCT SHALL treat NULL values according to one documented SQL-consistent rule.
+## 14. Query Planner and Execution Engine
+
+- **PLAN-001** — The executor SHALL operate on structured plans/operators rather than re-parsing SQL during row iteration.
+- **PLAN-002** — The planner SHALL support full table scan.
+- **PLAN-003** — The planner SHALL support primary-key point lookup.
+- **PLAN-004** — The planner SHALL support secondary-index equality lookup.
+- **PLAN-005** — The planner SHALL support secondary-index bounded range scan for compatible predicates.
+- **PLAN-006** — The planner SHALL choose a usable index for simple conjunctions when a leading indexed column is constrained.
+- **PLAN-007** — The planner SHALL support nested-loop join.
+- **PLAN-008** — The planner SHALL support index-assisted nested-loop join when an applicable index exists.
+- **PLAN-009** — ORDER BY MAY use an index when order compatibility is proven; otherwise it SHALL perform an explicit sort.
+- **PLAN-010** — Sorting SHALL not compare raw pointers or rely on unstable address order for equal keys.
+- **PLAN-011** — GROUP BY and aggregation SHALL be implemented by project-authored logic.
+- **PLAN-012** — Planner decisions SHALL be visible through `EXPLAIN`.
+- **PLAN-013** — `EXPLAIN` SHALL indicate at minimum scan type, chosen table/index, join order, sort step, and aggregation step where applicable.
+- **PLAN-014** — `ANALYZE` SHALL collect persistent or reconstructible basic statistics useful to planning, at minimum row count and index cardinality estimate.
+- **PLAN-015** — Planner behavior SHALL remain correct when statistics are absent or stale; statistics affect performance choice, not correctness.
+- **PLAN-016** — Execution SHALL propagate cancellation/interruption from the front end at safe boundaries for long queries.
+- **PLAN-017** — A cancelled read query SHALL not corrupt state.
+- **PLAN-018** — A cancelled write statement SHALL roll back its statement changes.
+- **PLAN-019** — Composite-index planning SHALL obey CIDX-013 through CIDX-019.
+- **PLAN-020** — For index `(a,b,c)`, `a=? AND b=?` SHALL be representable as a bounded prefix seek; `b=?` alone SHALL not be presented as an equivalent seek.
+- **PLAN-021** — For index `(a,b,c)`, equality constraints on `a,b` plus a range on `c` SHALL be representable as one ordered range scan when semantically compatible.
+- **PLAN-022** — `EXPLAIN` output for composite indexes SHALL state seek prefix and range component so acceptance tests can distinguish a real composite seek from a full scan.
+- **PLAN-023** — Planner cost/statistics logic SHALL never change query correctness when composite-prefix statistics are missing or stale.
+## 15. Transactions and Atomicity
+
+- **TXN-001** — Autocommit mode SHALL be supported.
+- **TXN-002** — Explicit `BEGIN` SHALL start a transaction.
+- **TXN-003** — `COMMIT` SHALL atomically make all changes in the transaction durable according to the durability mode.
+- **TXN-004** — `ROLLBACK` SHALL discard all changes since BEGIN.
+- **TXN-005** — SAVEPOINT SHALL create a nested rollback point within a transaction.
+- **TXN-006** — ROLLBACK TO SHALL undo changes after the named savepoint without ending the outer transaction.
+- **TXN-007** — RELEASE SHALL merge/remove the named savepoint according to documented semantics.
+- **TXN-008** — Failed statements SHALL have statement-level atomicity inside a larger transaction.
+- **TXN-009** — A constraint failure in one statement SHALL not automatically destroy previously successful statements in the same explicit transaction unless a documented fatal error occurs.
+- **TXN-010** — Transaction state SHALL be observable by CLI prompt/status and GUI status indicator.
+- **TXN-011** — Closing a connection with an active uncommitted transaction SHALL roll it back.
+- **TXN-012** — An application crash before commit completion SHALL not expose a partially committed logical transaction after recovery.
+- **TXN-013** — A successful durable COMMIT acknowledged to the caller SHALL survive a subsequent simulated abrupt termination under the defined crash model.
+- **TXN-014** — Transaction identifiers or sequence numbers SHALL be monotonic enough to support WAL recovery ordering.
+- **TXN-015** — Nested BEGIN without savepoint syntax SHALL return a deterministic error.
+- **TXN-016** — Explicit transactions SHALL use the MVCC snapshot semantics defined in Section 17.1.
+- **TXN-017** — A transaction SHALL read its own successful writes, updates, and deletes before commit.
+- **TXN-018** — A transaction SHALL never read another transaction's uncommitted versions.
+- **TXN-019** — Statement rollback and SAVEPOINT rollback SHALL correctly restore MVCC visibility and index state, including composite index entries.
+- **TXN-020** — Transaction and commit-sequence counters SHALL use checked arithmetic; exhaustion/wraparound SHALL produce a controlled error rather than reuse an identifier unsafely.
+## 16. Write-Ahead Log and Crash Recovery
+
+- **WAL-001** — The engine SHALL implement a write-ahead log or journal designed by the project; simply copying the whole database for every transaction is not acceptable.
+- **WAL-002** — WAL records SHALL have explicit record types, lengths, sequence information, and integrity checks.
+- **WAL-003** — WAL records SHALL be parsed with bounds checks before use.
+- **WAL-004** — Page changes required for recovery SHALL be represented sufficiently to redo or undo according to the chosen documented recovery design.
+- **WAL-005** — Log durability ordering SHALL ensure required log data reaches durable storage before dependent main-file pages are considered committed.
+- **WAL-006** — A commit record SHALL distinguish committed from incomplete transactions.
+- **WAL-007** — Recovery SHALL run automatically when opening a database with pending recovery state.
+- **WAL-008** — Recovery SHALL be idempotent: crashing during recovery and rerunning recovery SHALL converge to a valid state.
+- **WAL-009** — Torn/truncated WAL tails SHALL be detected and handled without reading beyond valid records.
+- **WAL-010** — Checksum failure inside the committed required portion of WAL SHALL produce a corruption/recovery error rather than silent acceptance.
+- **WAL-011** — Checkpointing SHALL move recoverable committed state into the main database and allow obsolete WAL space to be reclaimed.
+- **WAL-012** — Checkpoint SHALL be safe if interrupted.
+- **WAL-013** — Checkpoint thresholds SHALL be deterministic/configurable within documented limits.
+- **WAL-014** — The engine SHALL distinguish clean shutdown, recoverable dirty shutdown, and unrecoverable corruption states.
+- **WAL-015** — Crash injection tests SHALL terminate a process at many named durability checkpoints.
+- **WAL-016** — For each crash point, reopening SHALL produce either the complete pre-transaction state or complete committed post-transaction state according to whether durable commit had occurred; mixed state is forbidden.
+- **WAL-017** — Recovery SHALL rebuild or validate indexes consistently with table state.
+- **WAL-018** — No test may satisfy crash recovery merely by deleting the database and regenerating fixtures.
+## 17. Concurrency and Locking
+
+- **LOCK-001** — The engine SHALL support multiple concurrent read transactions against the same database file from independent connections/processes.
+- **LOCK-002** — Version 1.0 permits at most one active write transaction at a time per database. Multiple concurrent writers are not required.
+- **LOCK-003** — An active writer SHALL NOT invalidate or force-terminate readers whose snapshots began before the writer committed.
+- **LOCK-004** — Existing read transactions SHALL continue to observe their stable snapshots while a writer creates and commits newer row versions.
+- **LOCK-005** — A second writer SHALL use a bounded wait/timeout or return an explicit busy/locked result; it SHALL never enter an unsafe simultaneous-write state.
+- **LOCK-006** — Ordinary row-level reads SHALL not require exclusive database locking for the whole read transaction.
+- **LOCK-007** — Lock release SHALL occur on normal close and operating-system process termination.
+- **LOCK-008** — Lock files/shared lock metadata, if used, SHALL not create a permanently stale writer or reader registration after an unclean process exit.
+- **LOCK-009** — GUI and CLI SHALL surface locked/busy conditions distinctly from corruption, authentication, and SQL errors.
+- **LOCK-010** — DDL and structural maintenance operations MAY require stronger schema/database locks. Their lock requirements SHALL be documented and behavior under active snapshots SHALL be deterministic.
+- **LOCK-011** — Version 1.0 SHALL reject or wait for DDL/VACUUM/rekey operations that cannot safely coexist with active snapshots rather than silently violating snapshot semantics.
+- **LOCK-012** — Automated tests SHALL use separate processes, not only multiple handles in one process, for mandatory concurrency acceptance scenarios.
+
+### 17.1 Multi-Version Concurrency Control (MVCC)
+
+MVCC is mandatory in v1.0. The required isolation level is **snapshot isolation with multiple concurrent readers and a single active writer**. A global read/write mutex that blocks every reader for the full duration of a writer is not an acceptable substitute.
+
+#### 17.1.1 Snapshot Semantics
+
+- **MVCC-001** — Every explicit transaction SHALL have a stable logical snapshot established at transaction start.
+- **MVCC-002** — An autocommit read statement SHALL execute against a snapshot established for that statement.
+- **MVCC-003** — Within one explicit transaction, repeated reads SHALL continue to use the same snapshot until COMMIT or ROLLBACK.
+- **MVCC-004** — A transaction SHALL see versions committed before or at its snapshot boundary and SHALL not see versions committed after that boundary, except for its own writes.
+- **MVCC-005** — A transaction SHALL see its own successful inserts and updates immediately.
+- **MVCC-006** — A transaction SHALL treat its own successful deletes as absent immediately.
+- **MVCC-007** — Uncommitted changes from any other connection/process SHALL never be visible.
+- **MVCC-008** — A read transaction that begins before writer W commits SHALL continue seeing the pre-W logical state after W commits.
+- **MVCC-009** — A new read transaction beginning after W's durable commit SHALL see W's committed state.
+- **MVCC-010** — Snapshot isolation SHALL prevent dirty reads, non-repeatable reads caused by later commits, and phantoms caused solely by later committed inserts during one explicit transaction snapshot.
+- **MVCC-011** — Serializable isolation and multiple simultaneous writers are not required by v1.0 and SHALL not be claimed unless separately implemented and tested.
+
+#### 17.1.2 Version Representation and Visibility
+
+- **MVCC-012** — Each logical row SHALL support multiple physical/logical versions when necessary to preserve active snapshots.
+- **MVCC-013** — Every row version SHALL carry or resolve to creation-transaction/commit visibility metadata and retirement/deletion visibility metadata sufficient to decide snapshot visibility without consulting mutable user data.
+- **MVCC-014** — An INSERT SHALL create a new uncommitted version belonging to the writer; it becomes visible to new transactions only after successful commit.
+- **MVCC-015** — An UPDATE SHALL create a new row version and retire the prior visible version for future snapshots. It SHALL NOT destructively overwrite the only copy if an active older snapshot may still need it.
+- **MVCC-016** — A DELETE SHALL retire/tombstone the visible version for future snapshots while preserving enough state for older active snapshots to continue reading it.
+- **MVCC-017** — Aborted/rolled-back versions SHALL never become visible to other transactions.
+- **MVCC-018** — Visibility decisions SHALL be centralized in project-authored MVCC logic; individual query operators SHALL NOT invent inconsistent visibility rules.
+- **MVCC-019** — Table scans, primary-key lookups, secondary-index lookups, composite-index lookups, joins, aggregates, and GUI data browsing SHALL all apply the same MVCC visibility semantics.
+- **MVCC-020** — If a physical row identifier changes across versions, references/index entries SHALL still resolve to the correct visible version without returning stale/deleted data.
+
+#### 17.1.3 MVCC and Indexes
+
+- **MVCC-021** — Secondary indexes, including composite indexes, SHALL preserve old logical index keys while an active snapshot can still require the corresponding old row version.
+- **MVCC-022** — Updating an indexed key from `K_old` to `K_new` SHALL allow an older snapshot to find `K_old` and a post-commit snapshot to find `K_new`.
+- **MVCC-023** — A post-commit lookup for `K_old` SHALL not return the updated row unless another currently visible row legitimately has that key.
+- **MVCC-024** — Deleting a row SHALL not make its old index entry unusable to a snapshot that began before the delete commit.
+- **MVCC-025** — Index scans MAY encounter entries that are not visible to the current snapshot, but they SHALL filter them correctly and SHALL not return duplicate logical row versions.
+- **MVCC-026** — Unique-constraint checks SHALL consider the correct writer-visible/current committed state so a newly committed duplicate fully non-NULL unique tuple cannot be created.
+- **MVCC-027** — Composite UNIQUE indexes SHALL combine CIDX-009 NULL semantics with MVCC visibility: obsolete versions invisible to the writer SHALL not create false uniqueness failures once safe visibility rules permit reuse of a key.
+- **MVCC-028** — Index integrity checking SHALL be able to distinguish a valid retained historical entry from an orphan/stale corrupt entry.
+
+#### 17.1.4 Transaction IDs, Commit Sequence, and Recovery
+
+- **MVCC-029** — The engine SHALL maintain a monotonic 64-bit-or-wider transaction/commit sequencing mechanism sufficient to establish snapshot order.
+- **MVCC-030** — Transaction identity and commit publication SHALL be integrated with WAL/recovery so recovery can classify versions as committed, aborted/incomplete, or otherwise safely reclaimable.
+- **MVCC-031** — The durable commit boundary that makes a transaction visible to future snapshots SHALL correspond to the WAL durability rules; a transaction SHALL not become externally visible before the required durable commit state.
+- **MVCC-032** — Crashing after durable commit but before version/index cleanup SHALL recover to the committed logical state while retaining/reclaiming historical versions safely.
+- **MVCC-033** — Crashing before durable commit SHALL not expose the writer's new versions after recovery.
+- **MVCC-034** — Recovery SHALL be idempotent even when historical MVCC versions and composite index entries are present.
+- **MVCC-035** — A process that dies while holding a read snapshot SHALL not pin historical versions forever after operating-system cleanup/reopen.
+
+#### 17.1.5 Version Garbage Collection
+
+- **MVCC-036** — The engine SHALL track or derive the oldest active snapshot boundary needed by current readers.
+- **MVCC-037** — A historical row/index version SHALL NOT be reclaimed while any active snapshot may still legally observe it.
+- **MVCC-038** — Once no active snapshot can observe a retired/aborted historical version and recovery no longer requires it, the engine SHALL provide a path to reclaim its storage.
+- **MVCC-039** — Version reclamation MAY occur incrementally and/or during VACUUM, but it SHALL be deterministic, integrity-checkable, and crash-safe.
+- **MVCC-040** — Long-lived readers MAY delay reclamation but SHALL not cause incorrect results, use-after-free page references, or index corruption.
+- **MVCC-041** — VACUUM SHALL either wait/reject while incompatible snapshots exist or preserve their required historical view; v1.0 permits explicit busy rejection.
+- **MVCC-042** — Maintenance statistics SHALL expose at minimum active snapshot count (for the local process/available global mechanism), oldest visible snapshot/sequence if available, and reclaimable historical-version count or page estimate.
+
+#### 17.1.6 Schema Changes and MVCC
+
+- **MVCC-043** — Full multi-version schema catalogs are not required in v1.0.
+- **MVCC-044** — DDL that would invalidate an active reader's schema SHALL acquire an exclusive schema condition and SHALL wait/fail with BUSY while incompatible active snapshots exist.
+- **MVCC-045** — DDL SHALL never silently change column interpretation under an already-running read transaction.
+- **MVCC-046** — GUI/CLI SHALL display a clear busy reason when DDL/VACUUM/rekey cannot proceed because of active snapshots.
+
+#### 17.1.7 MVCC Diagnostics
+
+- **MVCC-047** — Debug/check builds SHALL provide an internal consistency report for row-version chains or equivalent version structures.
+- **MVCC-048** — `edb-check` SHALL validate version metadata ranges, version-chain cycles, impossible transaction ordering, references to nonexistent transaction state, and historical index/row consistency.
+- **MVCC-049** — `EXPLAIN` need not expose physical version-chain details, but executor diagnostics in debug/test mode SHALL permit tests to prove an older snapshot returned an older version rather than a cached stale result.
+- **MVCC-050** — Completion evidence SHALL report the maximum number of simultaneous reader processes exercised and the number of MVCC concurrency scenarios executed.
+## 18. Authenticated Encryption
+
+Encryption is a mandatory feature of the database format. The objective is to implement specified well-known primitives, not to invent a proprietary cipher.
+
+- **CRYPTO-001** — The engine SHALL support password-protected databases.
+- **CRYPTO-002** — Passwords SHALL be converted to key material using PBKDF2-HMAC-SHA-256 implemented by the project.
+- **CRYPTO-003** — The KDF SHALL use a per-database random salt stored in the authenticated file header.
+- **CRYPTO-004** — KDF iteration count SHALL be stored in the file header and validated against reasonable minimum/maximum bounds before work is performed.
+- **CRYPTO-005** — Data pages and recovery records containing user/schema data SHALL be encrypted and authenticated using XChaCha20-Poly1305 implemented by the project.
+- **CRYPTO-006** — XChaCha20 SHALL be derived using a project-authored HChaCha20 implementation.
+- **CRYPTO-007** — Poly1305 SHALL be implemented by the project with correct modular arithmetic and validated using known-answer tests.
+- **CRYPTO-008** — Every authenticated-encryption operation SHALL use a nonce that is unique for a given key.
+- **CRYPTO-009** — Nonce construction/generation SHALL remain unique across page rewrites, transactions, checkpoints, process restarts, and recovery.
+- **CRYPTO-010** — Random salts/nonces requiring entropy SHALL use an operating-system cryptographically secure random source, never `rand()` or time-based pseudo-random values.
+- **CRYPTO-011** — Authentication tags SHALL be verified before decrypted plaintext is exposed to higher database layers.
+- **CRYPTO-012** — Authentication failure SHALL abort access to the affected encrypted object and SHALL not return unauthenticated plaintext.
+- **CRYPTO-013** — The plaintext password and derived keys SHALL not be printed in logs, diagnostics, crash reports, or GUI status text.
+- **CRYPTO-014** — Key buffers SHALL be overwritten before release where practical and SHALL not be persisted as plaintext files.
+- **CRYPTO-015** — Wrong password SHALL fail cleanly without modifying the database.
+- **CRYPTO-016** — Tampering with an encrypted page SHALL be detected.
+- **CRYPTO-017** — Tampering with authenticated header fields SHALL be detected.
+- **CRYPTO-018** — Copying an encrypted page from a different database into this database SHALL be detected through authentication/context binding.
+- **CRYPTO-019** — The project SHALL include known-answer tests for SHA-256, HMAC-SHA-256, PBKDF2-HMAC-SHA-256, ChaCha20/HChaCha20, Poly1305, and XChaCha20-Poly1305.
+- **CRYPTO-020** — Base64, XOR, byte rotation, substitution tables, checksums without secret keys, or plain ChaCha20 without authentication SHALL NOT be presented as encryption.
+## 19. Password and Rekey Operations
+
+- **REKEY-001** — Creating an encrypted database SHALL require an explicit password from an interactive secure prompt or caller-provided API parameter; the password SHALL not be forced onto the command line.
+- **REKEY-002** — The CLI SHALL provide a way to open encrypted databases without placing the password in shell history.
+- **REKEY-003** — The GUI SHALL use a custom password dialog with masked input and explicit error state.
+- **REKEY-004** — A `rekey` maintenance operation SHALL change the database password and fresh cryptographic salt/material.
+- **REKEY-005** — Rekey SHALL be atomic at the database-file level: interruption SHALL not destroy the only valid copy.
+- **REKEY-006** — Rekey SHALL not reuse encryption nonces from the old key under the new key.
+- **REKEY-007** — An empty password policy SHALL be documented; if empty passwords are rejected, rejection SHALL be explicit.
+- **REKEY-008** — The engine SHALL impose a maximum password byte length to prevent unreasonable allocation and SHALL document it.
+## 20. Integrity Checking and Corruption Detection
+
+- **CHECK-001** — `edb-check` SHALL validate: Header signature/version/bounds validation.
+- **CHECK-002** — `edb-check` SHALL validate: Header authentication/integrity validation.
+- **CHECK-003** — `edb-check` SHALL validate: File length versus declared page count.
+- **CHECK-004** — `edb-check` SHALL validate: Every allocated page number valid and within file.
+- **CHECK-005** — `edb-check` SHALL validate: Every referenced child page exists.
+- **CHECK-006** — `edb-check` SHALL validate: No page graph cycles where forbidden.
+- **CHECK-007** — `edb-check` SHALL validate: No page simultaneously reachable as incompatible object types.
+- **CHECK-008** — `edb-check` SHALL validate: B+ tree key ordering.
+- **CHECK-009** — `edb-check` SHALL validate: B+ tree parent/child key-range consistency.
+- **CHECK-010** — `edb-check` SHALL validate: B+ tree occupancy rules except documented root exceptions.
+- **CHECK-011** — `edb-check` SHALL validate: Leaf/overflow record boundaries.
+- **CHECK-012** — `edb-check` SHALL validate: Overflow-chain cycles and duplicate ownership.
+- **CHECK-013** — `edb-check` SHALL validate: Freelist validity and no overlap with live reachable pages.
+- **CHECK-014** — `edb-check` SHALL validate: Schema catalog parseability and referential consistency.
+- **CHECK-015** — `edb-check` SHALL validate: Table row decode validity.
+- **CHECK-016** — `edb-check` SHALL validate: Secondary index entries correspond to existing rows.
+- **CHECK-017** — `edb-check` SHALL validate: Unique index contains no duplicate logical keys.
+- **CHECK-023** — `edb-check` SHALL validate composite-index tuple decode, stored component count/order, and lexicographic ordering.
+- **CHECK-024** — `edb-check` SHALL validate composite-index references against the indexed table and indexed column values for each visible/historical entry according to MVCC state.
+- **CHECK-025** — `edb-check` SHALL validate MVCC version metadata and detect version-chain cycles or impossible creation/retirement ordering.
+- **CHECK-026** — `edb-check` SHALL detect versions marked simultaneously committed and aborted or otherwise contradictory transaction states.
+- **CHECK-027** — `edb-check` SHALL distinguish valid historical versions retained for snapshots/recovery from unreachable leaked versions.
+- **CHECK-028** — `edb-check` SHALL validate that reclaimable versions/pages are not referenced by any active/persistently recoverable chain before repair frees them.
+- **CHECK-018** — `edb-check` SHALL validate: Index key/value agreement with referenced table rows.
+- **CHECK-019** — `edb-check` SHALL validate: WAL structure and checksum/authentication.
+- **CHECK-020** — `edb-check` SHALL validate: Encryption authentication for all encrypted objects when credentials are available.
+- **CHECK-021** — `edb-check` SHALL validate: No unreachable allocated pages except documented pending/recovery cases.
+- **CHECK-022** — `edb-check` SHALL validate: Root page identifiers have correct page types.
+- **CHECK-100** — `edb-check` SHALL default to read-only behavior.
+- **CHECK-101** — `edb-check` SHALL produce both human-readable output and optional JSON output.
+- **CHECK-102** — `edb-check` SHALL use distinct exit statuses for healthy, recoverable warnings, corruption, authentication failure, usage error, and I/O failure.
+- **CHECK-103** — `edb-check --repair` MAY repair only explicitly documented classes of damage and SHALL first create/retain a safe recoverable original unless the user explicitly selects an unsafe mode.
+- **CHECK-104** — Repair SHALL NOT fabricate missing user rows and claim full recovery.
+- **CHECK-105** — If full repair is impossible, salvage mode SHALL recover independently authenticated/valid rows or objects to a new database and report omissions.
+## 21. Partial Corruption Recovery and Salvage
+
+- **SALVAGE-001** — Salvage SHALL write to a separate output database by default.
+- **SALVAGE-002** — Salvage SHALL never overwrite the damaged source unless an explicit option requests replacement after a successful output verification.
+- **SALVAGE-003** — Valid independent tables/rows SHALL be recovered when their pages and required metadata are intact.
+- **SALVAGE-004** — Rows depending on corrupted overflow chains SHALL be reported as unrecoverable rather than returned with invented/truncated data.
+- **SALVAGE-005** — Index corruption MAY be repaired by rebuilding an index from valid table rows.
+- **SALVAGE-006** — Freelist corruption MAY be repaired by rebuilding reachability information when all live objects are valid.
+- **SALVAGE-007** — Catalog corruption that makes object identity ambiguous SHALL stop automatic destructive repair.
+- **SALVAGE-008** — Salvage output SHALL pass the same full integrity checker.
+- **SALVAGE-009** — Salvage SHALL produce a report of recovered objects, skipped objects, damaged page numbers, and reasons.
+- **SALVAGE-010** — Corruption tests SHALL flip bits, truncate files, duplicate pages, alter child pointers, corrupt tags/checksums, and damage WAL tails.
+## 22. C API
+
+A reusable in-process C API SHALL be provided so the engine is not inseparably coupled to CLI input parsing.
+
+- **API-001** — The C API SHALL open/create/close a database handle.
+- **API-002** — The C API SHALL open in read-write or read-only mode.
+- **API-003** — The C API SHALL provide credentials through memory rather than command-line parsing.
+- **API-004** — The C API SHALL prepare a SQL statement.
+- **API-005** — The C API SHALL bind NULL, integer, real, text, and blob parameters.
+- **API-006** — The C API SHALL step/execute a prepared statement.
+- **API-007** — The C API SHALL read result column count, names, types, and values.
+- **API-008** — The C API SHALL reset/finalize a statement.
+- **API-009** — The C API SHALL begin/commit/rollback transaction operations or execute equivalent SQL.
+- **API-010** — The C API SHALL report numeric error code plus stable error category and human-readable message.
+- **API-011** — The C API SHALL expose changed-row count.
+- **API-012** — The C API SHALL expose last inserted primary key when meaningful.
+- **API-013** — The C API SHALL interrupt a long-running query.
+- **API-014** — The C API SHALL expose pager/query statistics needed by diagnostics.
+- **API-015** — The C API SHALL avoid exposing internal mutable page pointers as public API contracts.
+- **API-100** — Public API documentation SHALL state ownership/lifetime for returned strings/blobs and input buffers.
+- **API-101** — API calls SHALL not require global mutable singleton database state.
+- **API-102** — At least two independent database handles to different files SHALL be usable in one process.
+## 23. CLI Shell — `edb`
+
+- **CLI-001** — Interactive SQL prompt.
+- **CLI-002** — Batch execution from a SQL file.
+- **CLI-003** — Execution of one statement supplied as a command option.
+- **CLI-004** — Columnar table output for interactive use.
+- **CLI-005** — CSV output mode.
+- **CLI-006** — JSON output mode for SELECT results.
+- **CLI-007** — Headers on/off control.
+- **CLI-008** — `.tables` equivalent.
+- **CLI-009** — `.schema [name]` equivalent.
+- **CLI-010** — `.indexes [table]` equivalent.
+- **CLI-011** — `.mode` equivalent to choose output mode.
+- **CLI-012** — `.read file` equivalent.
+- **CLI-013** — `.import` for CSV import.
+- **CLI-014** — `.export` or query redirection for CSV export.
+- **CLI-015** — `.dump` to emit reconstructive SQL for schema and data within documented supported types.
+- **CLI-016** — `.check` to run integrity validation.
+- **CLI-017** — `.stats` to display database and pager statistics.
+- **CLI-018** — `.timer on|off` for query elapsed time.
+- **CLI-019** — `.transaction` or prompt indicator showing transaction state.
+- **CLI-020** — `.quit`/`.exit`.
+- **CLI-021** — History within the current session is optional; persistent plaintext SQL history SHALL be disabled by default for encrypted databases unless explicitly enabled.
+- **CLI-022** — Interactive SIGINT/Ctrl-C SHALL interrupt the current query where safe without terminating the shell when possible.
+- **CLI-023** — EOF SHALL exit cleanly and roll back uncommitted work.
+### 23.1 CLI Exit and Error Behavior
+
+- **CLI-ERR-001** — Batch mode SHALL return success only when all statements required by the selected mode succeed.
+- **CLI-ERR-002** — An option SHALL allow stop-on-first-error behavior; this SHALL be the default for scripts intended as migrations.
+- **CLI-ERR-003** — Errors SHALL include statement location when available.
+- **CLI-ERR-004** — Authentication failure SHALL use a distinct category from file-not-found.
+- **CLI-ERR-005** — Corruption SHALL use a distinct category from SQL syntax error.
+- **CLI-ERR-006** — Constraint failures SHALL identify the violated constraint/table/index when determinable.
+- **CLI-ERR-007** — CLI diagnostics SHALL go to stderr; query data SHALL go to stdout in batch modes.
+- **CLI-ERR-008** — JSON result mode SHALL not intermix human diagnostics into stdout JSON.
+## 24. CSV Import and Export
+
+- **CSV-001** — RFC-4180-like quoted field parsing SHALL be implemented by the project and documented.
+- **CSV-002** — Quoted delimiters and embedded newlines SHALL be supported.
+- **CSV-003** — Doubled quote escaping SHALL be supported.
+- **CSV-004** — UTF-8 CSV input including Chinese text SHALL be supported.
+- **CSV-005** — Import SHALL optionally treat the first row as headers.
+- **CSV-006** — Import SHALL support explicit target column mapping.
+- **CSV-007** — Import SHALL run inside a transaction by default so a failure does not leave a half-imported dataset.
+- **CSV-008** — An explicit best-effort mode MAY continue after row errors and SHALL report rejected row numbers/reasons.
+- **CSV-009** — CSV export SHALL quote fields as required so re-import reproduces TEXT values.
+- **CSV-010** — NULL representation SHALL be configurable/documented and distinguishable from empty string in lossless mode.
+- **CSV-011** — BLOB export SHALL use a documented textual encoding when CSV is selected.
+## 25. Native X11 Desktop Workbench — `edb-gui`
+
+The GUI SHALL be a functional database workbench, not a demonstration surface. All visible actions described here SHALL operate on the same persistent engine and shall surface real errors.
+
+### 25.1 Main Window Information Architecture
+
+- **GUI-IA-001** — Custom title/header region containing database identity/status.
+- **GUI-IA-002** — Primary navigation capsule with at least Database, Query, Data, Structure, and Maintenance views.
+- **GUI-IA-003** — Collapsible schema/navigation sidebar.
+- **GUI-IA-004** — Main content area.
+- **GUI-IA-005** — Bottom status bar containing connection state, transaction state, result row count when relevant, and last operation duration.
+- **GUI-IA-006** — Nonmodal notification/toast region for short success/warning messages.
+- **GUI-IA-007** — Custom modal layer for destructive actions, password entry, errors requiring acknowledgment, and long-operation confirmation.
+- **GUI-IA-008** — Resizable split panes where Query editor and Results are both visible.
+- **GUI-IA-009** — Keyboard focus indicator distinct from hover state.
+- **GUI-IA-010** — Custom scrollbars for scrollable project-drawn regions.
+### 25.2 Database Start/Open Flow
+
+- **GUI-OPEN-001** — On launch with no path, show a start view offering Create Database and Open Database.
+- **GUI-OPEN-002** — Create flow SHALL request file path/name and encryption password settings.
+- **GUI-OPEN-003** — Open flow SHALL allow selecting or entering a database path using a project-provided path-entry/browser interface; reliance on an external toolkit file chooser is forbidden.
+- **GUI-OPEN-004** — Opening an encrypted database SHALL prompt for a password in a custom modal.
+- **GUI-OPEN-005** — Wrong password SHALL leave the start/open state intact and display a recoverable error.
+- **GUI-OPEN-006** — Corrupt database SHALL offer read-only integrity-check/report flow, not silently create a new file at the same path.
+- **GUI-OPEN-007** — Opening a valid database SHALL populate schema navigation from actual catalog contents.
+- **GUI-OPEN-008** — Recent-file persistence MAY be implemented; if implemented for encrypted databases it SHALL store only paths/metadata, never passwords.
+### 25.3 Query Workspace
+
+- **GUI-QUERY-001** — The query editor SHALL support multiline UTF-8 SQL entry.
+- **GUI-QUERY-002** — The editor SHALL support caret movement, selection, insertion, deletion, Home/End, line navigation, and clipboard copy/cut/paste through X11 selection mechanisms.
+- **GUI-QUERY-003** — The editor SHALL render visible selection highlighting.
+- **GUI-QUERY-004** — Execute button SHALL run selected SQL if a nonempty selection exists; otherwise it SHALL run the current statement or full editor content according to one documented rule.
+- **GUI-QUERY-005** — Keyboard shortcut SHALL execute the query.
+- **GUI-QUERY-006** — A cancel/stop action SHALL interrupt a long-running query at safe engine boundaries.
+- **GUI-QUERY-007** — Results SHALL appear in a virtualized/scrolled grid and SHALL not require materializing every cell widget individually.
+- **GUI-QUERY-008** — Result columns SHALL be resizable.
+- **GUI-QUERY-009** — Result rows SHALL support horizontal and vertical scrolling.
+- **GUI-QUERY-010** — NULL, BLOB, INTEGER, REAL, and TEXT SHALL have visually distinguishable rendering where needed.
+- **GUI-QUERY-011** — Large BLOBs SHALL show a bounded preview plus size rather than trying to render arbitrary binary as text.
+- **GUI-QUERY-012** — Query errors SHALL show source position and message while preserving editor contents.
+- **GUI-QUERY-013** — Execution duration and row count SHALL update from real execution data.
+- **GUI-QUERY-014** — `EXPLAIN` results SHALL have a readable plan presentation.
+- **GUI-QUERY-015** — Opening multiple query tabs SHALL be supported; each tab has independent editor contents but shares the current database connection unless explicitly duplicated.
+### 25.4 Data Browser
+
+- **GUI-DATA-001** — Selecting a table SHALL display paginated/virtualized actual rows.
+- **GUI-DATA-002** — Columns SHALL derive from catalog schema, not hard-coded examples.
+- **GUI-DATA-003** — Users SHALL be able to sort by a selected column; sort indicator SHALL show direction.
+- **GUI-DATA-004** — Users SHALL be able to apply a text filter/search to the current table.
+- **GUI-DATA-005** — Chinese UTF-8 search text SHALL be accepted and matched using the engine-defined text semantics.
+- **GUI-DATA-006** — Users SHALL be able to insert a row using a custom edit dialog/form.
+- **GUI-DATA-007** — Users SHALL be able to edit a selected row.
+- **GUI-DATA-008** — Users SHALL be able to delete one or more selected rows after confirmation.
+- **GUI-DATA-009** — All data edits SHALL use normal transactions and constraints.
+- **GUI-DATA-010** — Constraint errors SHALL keep user input available for correction rather than discarding the form.
+- **GUI-DATA-011** — Refresh SHALL reflect committed database state.
+- **GUI-DATA-012** — Uncommitted changes made in the same connection SHALL follow the engine transaction semantics and be visibly indicated.
+### 25.5 Structure Browser
+
+- **GUI-STRUCT-001** — Display tables, columns, types, nullability, defaults, primary-key designation, and indexes.
+- **GUI-STRUCT-002** — Create Table flow SHALL construct valid CREATE TABLE operations through the engine.
+- **GUI-STRUCT-003** — Create Index flow SHALL support unique/nonunique indexes and an ordered selection of one through at least four columns, with controls to add/remove/reorder columns before creation.
+- **GUI-STRUCT-004** — Drop Table and Drop Index SHALL require destructive-action confirmation.
+- **GUI-STRUCT-005** — Add Column and Rename Table operations SHALL be available where engine capabilities permit.
+- **GUI-STRUCT-006** — After successful DDL, navigation and structure view SHALL refresh from the persistent catalog.
+- **GUI-STRUCT-007** — DDL failures SHALL not leave ghost GUI objects.
+### 25.6 Maintenance View
+
+- **GUI-MAINT-001** — Display file size, page count, free page count, WAL size/state, format version, encryption enabled status, and latest checkpoint sequence.
+- **GUI-MAINT-002** — Run full integrity check and show progress/status.
+- **GUI-MAINT-003** — Run checkpoint.
+- **GUI-MAINT-004** — Run VACUUM/compaction with confirmation and progress.
+- **GUI-MAINT-005** — Run ANALYZE.
+- **GUI-MAINT-006** — Rekey database using a password-change flow.
+- **GUI-MAINT-007** — Export integrity-check report.
+- **GUI-MAINT-008** — When corruption is detected, provide a path to invoke salvage-to-new-file rather than mutating automatically.
+- **GUI-MAINT-009** — Dangerous maintenance operations SHALL be disabled while transaction state makes them unsafe, with a visible reason.
+## 26. Custom GUI Rendering and Interaction Requirements
+
+- **UI-001** — The GUI SHALL render its own widgets and visual states rather than using Athena/Xaw or other ready-made controls for required components.
+- **UI-002** — A central theme/style system SHALL define spacing, typography sizes, radii, animation durations, elevations, and semantic colors rather than scattering unrelated literals throughout widgets.
+- **UI-003** — All interactive controls SHALL have normal, hover, pressed, keyboard-focus, disabled, and where applicable selected states.
+- **UI-004** — Click targets SHALL remain stable during hover animation; hover lift SHALL be visual rather than moving the hitbox unpredictably.
+- **UI-005** — Mouse capture/state SHALL prevent a pressed control from firing when release occurs outside unless the component contract intentionally supports drag behavior.
+### 26.1 Button Motion and Effects
+
+- **UI-BTN-001** — Every standard button SHALL animate a subtle upward hover elevation.
+- **UI-BTN-002** — Hover elevation SHALL interpolate rather than jump between positions.
+- **UI-BTN-003** — Pointer press SHALL spawn a clipped ripple originating at the press location.
+- **UI-BTN-004** — The ripple SHALL expand and fade over time and be clipped to the button shape.
+- **UI-BTN-005** — Buttons SHALL display a border or outer glow transition on hover/focus appropriate to theme.
+- **UI-BTN-006** — Pressed state SHALL visually respond immediately, independent of completion of the command.
+- **UI-BTN-007** — Disabled buttons SHALL not execute commands and SHALL not run misleading active hover/ripple effects.
+- **UI-BTN-008** — Repeated rapid clicks SHALL not create unbounded animation allocations.
+### 26.2 Capsule Navigation and Dynamic Collapse
+
+- **UI-NAV-001** — The primary navigation SHALL use a pill/capsule selected indicator that slides between destinations.
+- **UI-NAV-002** — The indicator position/size SHALL interpolate between previous and next item bounds.
+- **UI-NAV-003** — The navigation region SHALL support a compact/collapsed state when available width becomes constrained.
+- **UI-NAV-004** — Collapse/expand SHALL be animated and preserve current destination.
+- **UI-NAV-005** — Labels SHALL not become hit-testable while fully hidden.
+- **UI-NAV-006** — Keyboard navigation SHALL move focus independently from selected destination until activation.
+### 26.3 Modal Transition
+
+- **UI-MODAL-001** — Opening a modal SHALL animate both opacity and scale from a slightly reduced scale to full scale.
+- **UI-MODAL-002** — Closing a modal SHALL reverse the transition before destruction unless immediate shutdown is required.
+- **UI-MODAL-003** — Transitions SHALL use a project-authored cubic-Bezier easing evaluator or mathematically equivalent curve implementation.
+- **UI-MODAL-004** — Modal opening SHALL progressively darken and blur the already-rendered application background.
+- **UI-MODAL-005** — The blur SHALL be applied to application-owned framebuffer content, not dependent on blurring arbitrary external desktop windows.
+- **UI-MODAL-006** — While a modal is active, pointer and keyboard events SHALL not activate obscured background controls.
+- **UI-MODAL-007** — Focus SHALL enter the modal and return to an appropriate prior control on close.
+- **UI-MODAL-008** — Escape SHALL close noncritical dismissible modals but SHALL not bypass required confirmation logic.
+### 26.4 Dynamic Frosted Navigation
+
+- **UI-FROST-001** — When the main content under the top navigation is scrolled from its origin, the navigation background blur strength SHALL increase smoothly with scroll distance up to a defined maximum.
+- **UI-FROST-002** — The top navigation shadow SHALL transition from absent/negligible to visible as scroll distance increases.
+- **UI-FROST-003** — Blur and shadow SHALL be derived from continuous scroll progress rather than a binary threshold-only state.
+- **UI-FROST-004** — Returning to scroll origin SHALL smoothly remove the added blur/shadow.
+- **UI-FROST-005** — The blur algorithm SHALL be project-authored. A separable box/Gaussian approximation is acceptable if visually smooth and documented.
+- **UI-FROST-006** — Repeated scroll updates SHALL reuse bounded buffers and SHALL not leak image surfaces.
+### 26.5 Animation Timing
+
+- **UI-ANIM-001** — Animation progress SHALL use a monotonic clock.
+- **UI-ANIM-002** — Animations SHALL be time-based, not dependent on a fixed number of event-loop iterations.
+- **UI-ANIM-003** — Large frame delays SHALL clamp or advance animations safely rather than producing numerical instability.
+- **UI-ANIM-004** — At the end of an animation, state SHALL snap exactly to its final logical value to avoid accumulated drift.
+- **UI-ANIM-005** — Animations SHALL not block SQL execution/result processing by sleeping in the main event handler.
+- **UI-ANIM-006** — Long database work SHALL not permanently freeze repaint; progress/cancel events SHALL be serviced at documented safe points.
+## 27. Text Rendering and UTF-8 Handling
+
+- **UTF8-001** — All application text and SQL TEXT values SHALL use UTF-8 at API/storage boundaries unless explicitly documented otherwise.
+- **UTF8-002** — UTF-8 decoding SHALL validate continuation bytes, overlong encodings, surrogate scalar values, and values above Unicode maximum.
+- **UTF8-003** — Caret movement in the custom editor SHALL not land in the middle of a UTF-8 code unit sequence.
+- **UTF8-004** — Backspace/Delete SHALL remove at least one full Unicode code point rather than one arbitrary byte.
+- **UTF8-005** — Full grapheme-cluster editing is optional, but the implementation SHALL document this limit if not provided.
+- **UTF8-006** — Chinese identifiers/values SHALL be preserved exactly through insert, query, export, reopen, and GUI rendering where glyph availability permits.
+- **UTF8-007** — If the selected X11 font cannot display a glyph, the renderer SHALL use a replacement/fallback behavior without corrupting underlying data.
+- **UTF8-008** — The query editor SHALL preserve tabs/newlines according to documented editing behavior.
+- **UTF8-009** — Clipboard operations SHALL be length-aware and SHALL not truncate valid UTF-8 at arbitrary internal buffer limits without reporting it.
+## 28. Memory Management and Defensive C Requirements
+
+- **MEM-001** — Every allocation failure SHALL be handled as an error path; dereferencing a NULL allocation is forbidden.
+- **MEM-002** — Size arithmetic for allocations, page offsets, row lengths, and result counts SHALL use overflow-checked operations.
+- **MEM-003** — Ownership rules SHALL be clear for allocated pages, AST nodes, strings, values, plans, statements, and GUI objects.
+- **MEM-004** — Error cleanup paths SHALL release resources already acquired.
+- **MEM-005** — No function SHALL return pointers to expired stack storage.
+- **MEM-006** — Buffers receiving formatted text SHALL use bounded operations or precomputed exact sizing.
+- **MEM-007** — User-controlled length values SHALL not be passed unchecked to stack allocations.
+- **MEM-008** — Recursive algorithms operating on corrupt on-disk structures SHALL have depth/cycle protection.
+- **MEM-009** — SQL parser nesting SHALL have a documented finite limit or safe dynamic protection against stack exhaustion.
+- **MEM-010** — The engine SHALL cap schema-name length, column count, maximum SQL statement length, maximum row/value length, and maximum expression depth with documented limits.
+- **MEM-011** — Limits SHALL return explicit errors rather than wrap integers.
+- **MEM-012** — Test builds SHOULD enable strong compiler warnings and SHALL contain no intentionally ignored warnings from project code under documented build flags.
+## 29. Error Model
+
+The implementation SHALL define stable error categories. Numeric codes MAY be more granular, but the following categories SHALL remain distinguishable:
+- **ERR-001** — Error category `OK` SHALL be representable.
+- **ERR-002** — Error category `USAGE` SHALL be representable.
+- **ERR-003** — Error category `IO` SHALL be representable.
+- **ERR-004** — Error category `NOT_FOUND` SHALL be representable.
+- **ERR-005** — Error category `PERMISSION` SHALL be representable.
+- **ERR-006** — Error category `BUSY_LOCKED` SHALL be representable.
+- **ERR-007** — Error category `AUTHENTICATION` SHALL be representable.
+- **ERR-008** — Error category `CORRUPTION` SHALL be representable.
+- **ERR-009** — Error category `UNSUPPORTED_FORMAT` SHALL be representable.
+- **ERR-010** — Error category `SQL_LEX` SHALL be representable.
+- **ERR-011** — Error category `SQL_PARSE` SHALL be representable.
+- **ERR-012** — Error category `SQL_BIND` SHALL be representable.
+- **ERR-013** — Error category `CONSTRAINT` SHALL be representable.
+- **ERR-014** — Error category `TYPE` SHALL be representable.
+- **ERR-015** — Error category `LIMIT` SHALL be representable.
+- **ERR-016** — Error category `OUT_OF_MEMORY` SHALL be representable.
+- **ERR-017** — Error category `CANCELLED` SHALL be representable.
+- **ERR-018** — Error category `TRANSACTION_STATE` SHALL be representable.
+- **ERR-019** — Error category `RECOVERY_REQUIRED` SHALL be representable.
+- **ERR-020** — Error category `RECOVERY_FAILED` SHALL be representable.
+- **ERR-021** — Error category `INTERNAL_INVARIANT` SHALL be representable.
+- **ERR-100** — Error messages SHALL contain actionable context without exposing passwords, derived keys, decrypted page content unrelated to the failing operation, or memory addresses as required user diagnostics.
+- **ERR-101** — A recoverable user error SHALL not terminate the GUI process.
+- **ERR-102** — An internal invariant failure in release builds SHALL fail the operation safely and avoid continuing to write using known-invalid state.
+## 30. Determinism
+
+- **DET-001** — Given the same logical database contents, schema, fixed cryptographic/test randomness, and operation sequence, test-mode structural outputs SHALL be reproducible.
+- **DET-002** — Query results without ORDER BY MAY follow engine traversal order, but tests requiring deterministic row order SHALL explicitly use ORDER BY.
+- **DET-003** — `EXPLAIN` output SHALL be deterministic for fixed schema/statistics.
+- **DET-004** — Fixture generation SHALL accept a seed and generate identical logical fixture contents for the same seed.
+- **DET-005** — Integrity reports SHALL order page/object findings deterministically.
+- **DET-006** — JSON diagnostic output SHALL use stable field names and deterministic ordering where documented.
+- **DET-007** — Cryptographic production nonces/salts SHALL remain random/unique; deterministic cryptographic randomness is permitted only behind an explicit test-only injection path that cannot be enabled accidentally in ordinary production invocation.
+## 31. Required Developer Utility — `locscan`
+
+`locscan` is part of the assignment and SHALL itself be implemented in C17. Its purpose is to measure authored project scale without counting build/test outputs or unrelated binary artifacts.
+
+- **LOC-001** — Recursively scan a directory tree.
+- **LOC-002** — Classify files into production source, headers, tests, documentation, config/fixture definitions, generated/ignored, binary/unsupported.
+- **LOC-003** — Count physical lines for included text files.
+- **LOC-004** — Produce per-file, per-category, and total line counts.
+- **LOC-005** — Support an explicit ignore list.
+- **LOC-006** — Support glob-like ignore patterns defined by the project.
+- **LOC-007** — Support a JSON configuration file.
+- **LOC-008** — Support a YAML configuration file for the same core settings.
+- **LOC-009** — Implement the required JSON and YAML subset parsers in project source; using an external parser is forbidden.
+- **LOC-010** — Reject malformed configuration with line/column or useful location information.
+- **LOC-011** — Never treat a binary file containing incidental newline bytes as source/document text merely by counting bytes.
+- **LOC-012** — Have a documented binary-detection rule and explicit extension overrides.
+- **LOC-013** — Ignore at minimum ordinary compiler outputs, object files, executables, core dumps, test temp directories, logs, generated query results, generated screenshots, database/WAL files, caches, and coverage output when configured/defaulted.
+- **LOC-014** — Do not ignore authored test source merely because it is under a test directory.
+- **LOC-015** — Do not ignore authored documentation merely because its extension is `.txt`.
+- **LOC-016** — Provide human-readable and JSON reports.
+- **LOC-017** — Use deterministic sorted path order.
+- **LOC-018** — Return nonzero for unreadable required config or traversal failure that invalidates totals.
+- **LOC-019** — Handle UTF-8 path names supported by the operating system without corrupting output.
+- **LOC-020** — Tests SHALL include misleading extensions, binary files with newlines, empty files, no-final-newline files, ignored nested directories, symlink behavior, and malformed config.
+## 32. Required Developer Utility — `edb-fixture`
+
+- **FIX-001** — Generate fixture SQL and/or fixture databases from a named deterministic scenario.
+- **FIX-002** — Accept an explicit numeric seed.
+- **FIX-003** — Generate small, medium, and stress fixture profiles.
+- **FIX-004** — Include ASCII, Chinese UTF-8, emoji/non-BMP scalar values, empty strings, NULLs, blobs, extreme signed integers, real values, and long text.
+- **FIX-005** — Generate rows designed to force B+ tree splits and overflow pages.
+- **FIX-006** — Generate duplicate values for nonunique indexes and boundary values for unique constraints.
+- **FIX-007** — Generate relational tables suitable for joins and aggregates.
+- **FIX-008** — Generate data suitable for range scans and ORDER BY testing.
+- **FIX-009** — Never silently depend on wall-clock time when a seed is supplied.
+- **FIX-010** — Emit a manifest containing seed, scenario, expected row counts, and checksums of generated source fixtures.
+## 33. Required Developer Utility — `edb-crashrun`
+
+- **CRASH-001** — Launch a child process executing a defined transaction workload.
+- **CRASH-002** — Inject abrupt termination at named database durability checkpoints exposed only in test builds.
+- **CRASH-003** — Run each crash point repeatedly with deterministic seeds.
+- **CRASH-004** — Reopen the resulting database and invoke integrity verification.
+- **CRASH-005** — Validate logical state against allowed pre-commit/post-commit outcomes.
+- **CRASH-006** — Report crash-point name, child exit state, recovery result, integrity result, and logical-state result.
+- **CRASH-007** — Never accept a mixed transaction state as success.
+- **CRASH-008** — Cover crashes during WAL append, WAL durability barrier, main-page write, checkpoint metadata update, vacuum replacement, and rekey replacement.
+- **CRASH-009** — Remove or isolate previous-run artifacts so one test does not mask another.
+- **CRASH-010** — Return nonzero if any crash scenario violates the expected state set.
+## 34. Automated Testing Architecture
+
+- **TEST-001** — `make test` SHALL build test binaries and execute the complete mandatory automated suite.
+- **TEST-002** — `make check` SHALL include `make test` plus stricter static/runtime invariant checks available within the project.
+- **TEST-003** — Tests SHALL be reproducible from a clean source checkout without requiring prebuilt database files not generated from checked-in fixture definitions.
+- **TEST-004** — Test failures SHALL identify the failing test and expected/actual condition.
+- **TEST-005** — A single failure SHALL cause an overall nonzero status even if later tests continue.
+- **TEST-006** — Tests SHALL not modify source-controlled fixture definitions.
+- **TEST-007** — Test temporary directories SHALL be isolated by test case or worker so stale files cannot create false success.
+- **TEST-008** — At least one full end-to-end test SHALL create a database, define schema, insert data, query, index, update, delete, commit, close, reopen, verify, export, vacuum, and query again.
+- **TEST-009** — At least one full encrypted end-to-end test SHALL exercise create/open/wrong-password/tamper/rekey/reopen.
+- **TEST-010** — At least one test SHALL execute the same engine operation through CLI and C API and compare logical results.
+- **TEST-011** — Mandatory tests SHALL verify both logical result correctness and structural evidence for features whose purpose can otherwise be faked, including B+ tree depth, composite seek bounds, MVCC historical-version retention, and WAL recovery state.
+- **TEST-012** — A passing test suite SHALL contain no mandatory `skip`, `xfail`, TODO-only, disabled-by-default, or environment-silenced cases.
+- **TEST-013** — Every randomized/model-based failure SHALL print a reproducible seed plus the minimal operation prefix known to reproduce the failure when practical.
+- **TEST-014** — Concurrency tests SHALL include synchronization barriers so the intended transaction interleavings are deterministic rather than relying only on sleep timing.
+- **TEST-015** — Tests that assert planner/index behavior SHALL inspect `EXPLAIN` or internal plan diagnostics in addition to checking result rows.
+- **TEST-016** — Tests that assert MVCC behavior SHALL use at least two independent connections and mandatory process-level cases SHALL use separate OS processes.
+- **TEST-017** — Test fixtures SHALL be regenerated from authored definitions during a clean test run; opaque prebuilt databases SHALL not be the sole source of expected state.
+- **TEST-018** — The test summary SHALL list mandatory suite coverage by requirement family, including composite-index and MVCC cases.
+### 34.1 Mandatory Unit-Test Families
+
+- **UT-001** — Unit tests SHALL cover byte-order encode/decode.
+- **UT-002** — Unit tests SHALL cover checked integer arithmetic.
+- **UT-003** — Unit tests SHALL cover dynamic buffers/strings.
+- **UT-004** — Unit tests SHALL cover UTF-8 decoder/encoder.
+- **UT-005** — Unit tests SHALL cover hash/checksum used for noncryptographic integrity if any.
+- **UT-006** — Unit tests SHALL cover SHA-256.
+- **UT-007** — Unit tests SHALL cover HMAC-SHA-256.
+- **UT-008** — Unit tests SHALL cover PBKDF2.
+- **UT-009** — Unit tests SHALL cover ChaCha20 block.
+- **UT-010** — Unit tests SHALL cover HChaCha20.
+- **UT-011** — Unit tests SHALL cover Poly1305.
+- **UT-012** — Unit tests SHALL cover XChaCha20-Poly1305.
+- **UT-013** — Unit tests SHALL cover CSV parser/writer.
+- **UT-014** — Unit tests SHALL cover JSON subset parser.
+- **UT-015** — Unit tests SHALL cover YAML subset parser.
+- **UT-016** — Unit tests SHALL cover SQL lexer.
+- **UT-017** — Unit tests SHALL cover expression parser precedence.
+- **UT-018** — Unit tests SHALL cover statement parser.
+- **UT-019** — Unit tests SHALL cover value coercion/comparison.
+- **UT-020** — Unit tests SHALL cover LIKE matcher.
+- **UT-021** — Unit tests SHALL cover B+ tree search.
+- **UT-022** — Unit tests SHALL cover B+ tree split.
+- **UT-023** — Unit tests SHALL cover B+ tree deletion rebalance.
+- **UT-024** — Unit tests SHALL cover pager cache eviction.
+- **UT-025** — Unit tests SHALL cover record encode/decode.
+- **UT-026** — Unit tests SHALL cover overflow chain.
+- **UT-027** — Unit tests SHALL cover freelist.
+- **UT-028** — Unit tests SHALL cover schema catalog.
+- **UT-029** — Unit tests SHALL cover query plan selection.
+- **UT-030** — Unit tests SHALL cover sort comparator.
+- **UT-031** — Unit tests SHALL cover aggregate states.
+- **UT-032** — Unit tests SHALL cover WAL record encode/decode.
+- **UT-033** — Unit tests SHALL cover WAL truncated-tail parser.
+- **UT-034** — Unit tests SHALL cover error-code propagation.
+- **UT-035** — Unit tests SHALL cover animation cubic-Bezier evaluator.
+- **UT-036** — Unit tests SHALL cover GUI rectangle/hit-test geometry.
+- **UT-037** — Unit tests SHALL cover scroll physics/clamping.
+- **UT-038** — Unit tests SHALL cover text-editor UTF-8 caret movement.
+- **UT-039** — Unit tests SHALL cover composite tuple-key encode/decode with mixed INTEGER/REAL/TEXT/BLOB/NULL components.
+- **UT-040** — Unit tests SHALL prove composite tuple encoding is prefix/unambiguous-safe for values such as (`"ab"`,`"c"`) versus (`"a"`,`"bc"`).
+- **UT-041** — Unit tests SHALL cover lexicographic composite-key comparator including ties, NULL, negative numbers, long UTF-8, and binary BLOB values.
+- **UT-042** — Unit tests SHALL cover nonunique composite-key row-identity tie breaking.
+- **UT-043** — Unit tests SHALL cover UNIQUE composite NULL semantics.
+- **UT-044** — Unit tests SHALL cover leftmost-prefix bound construction for equality prefix plus range component.
+- **UT-045** — Unit tests SHALL cover rejection of unusable non-leftmost-only seek requests.
+- **UT-046** — Unit tests SHALL cover MVCC snapshot visibility predicate across creator/retire transaction states.
+- **UT-047** — Unit tests SHALL cover own-write/own-delete visibility.
+- **UT-048** — Unit tests SHALL cover committed-after-snapshot invisibility.
+- **UT-049** — Unit tests SHALL cover aborted-version invisibility.
+- **UT-050** — Unit tests SHALL cover oldest-active-snapshot calculation and reclaimability decision.
+- **UT-051** — Unit tests SHALL cover version-chain traversal and cycle detection.
+- **UT-052** — Unit tests SHALL cover transaction/commit-sequence serialization and checked-overflow handling.
+- **UT-053** — Unit tests SHALL cover historical index-entry visibility filtering.
+- **UT-054** — Unit tests SHALL cover savepoint rollback bookkeeping for newly created/retired versions.
+### 34.2 Mandatory Integration-Test Families
+
+- **IT-001** — Integration tests SHALL cover create/open/close empty database.
+- **IT-002** — Integration tests SHALL cover create/drop table persistence.
+- **IT-003** — Integration tests SHALL cover add column/rename table.
+- **IT-004** — Integration tests SHALL cover primary-key insert/lookup.
+- **IT-005** — Integration tests SHALL cover secondary-index creation on populated table.
+- **IT-006** — Integration tests SHALL cover unique-index violation rollback.
+- **IT-007** — Integration tests SHALL cover large TEXT/BLOB overflow persistence.
+- **IT-008** — Integration tests SHALL cover mass insert causing multilevel B+ tree.
+- **IT-009** — Integration tests SHALL cover mass delete causing B+ tree merges/root collapse.
+- **IT-010** — Integration tests SHALL cover update of indexed value.
+- **IT-011** — Integration tests SHALL cover delete removes secondary index entry.
+- **IT-012** — Integration tests SHALL cover transaction commit persistence.
+- **IT-013** — Integration tests SHALL cover transaction rollback.
+- **IT-014** — Integration tests SHALL cover savepoint rollback/release.
+- **IT-015** — Integration tests SHALL cover autocommit statement atomicity.
+- **IT-016** — Integration tests SHALL cover checkpoint and reopen.
+- **IT-017** — Integration tests SHALL cover WAL recovery after unclean exit.
+- **IT-018** — Integration tests SHALL cover VACUUM logical equivalence.
+- **IT-019** — Integration tests SHALL cover ANALYZE and EXPLAIN.
+- **IT-020** — Integration tests SHALL cover INNER JOIN correctness.
+- **IT-021** — Integration tests SHALL cover LEFT JOIN NULL extension.
+- **IT-022** — Integration tests SHALL cover GROUP BY/HAVING aggregates.
+- **IT-023** — Integration tests SHALL cover ORDER BY/LIMIT/OFFSET.
+- **IT-024** — Integration tests SHALL cover CSV round trip.
+- **IT-025** — Integration tests SHALL cover SQL dump round trip.
+- **IT-026** — Integration tests SHALL cover Chinese TEXT round trip/search.
+- **IT-027** — Integration tests SHALL cover multiple database handles to different files.
+- **IT-028** — Integration tests SHALL cover database locking competition.
+- **IT-029** — Integration tests SHALL cover read-only open enforcement.
+- **IT-030** — Integration tests SHALL cover wrong password no modification.
+- **IT-031** — Integration tests SHALL cover rekey.
+- **IT-032** — Integration tests SHALL cover integrity checker healthy database.
+- **IT-033** — Integration tests SHALL cover index rebuild repair path.
+- **IT-034** — Integration tests SHALL cover freelist rebuild repair path.
+- **IT-035** — Integration tests SHALL cover salvage to new database.
+- **IT-036** — Integration tests SHALL create and reopen a two-column composite index and verify catalog column order.
+- **IT-037** — Integration tests SHALL force a multilevel B+ tree whose keys are composite tuples and verify point/prefix/range scans.
+- **IT-038** — Integration tests SHALL update first, middle, and last components of a composite key and verify old/new lookup behavior.
+- **IT-039** — Integration tests SHALL delete rows from a composite index and force rebalance/merge with exact tuple validation.
+- **IT-040** — Integration tests SHALL verify UNIQUE composite duplicates fail atomically while multiple NULL-containing tuples follow CIDX-009.
+- **IT-041** — Integration tests SHALL verify EXPLAIN chooses `(a,b,c)` for `a=?`, `a=? AND b=?`, and `a=? AND b=? AND c BETWEEN ...` where appropriate.
+- **IT-042** — Integration tests SHALL verify EXPLAIN does not claim direct seek on `(a,b,c)` for `b=?` alone.
+- **IT-043** — Integration tests SHALL verify ORDER BY can use a compatible composite index and retains explicit sort for an incompatible order.
+- **IT-044** — Integration tests SHALL verify composite index-assisted join correctness and plan selection.
+- **IT-045** — Integration tests SHALL verify composite index rebuild from table data after a repair request.
+- **IT-046** — Integration tests SHALL verify composite indexes remain correct across VACUUM and rekey.
+- **IT-047** — Integration tests SHALL verify a reader opened before writer commit observes the old row while a new reader observes the new row.
+- **IT-048** — Integration tests SHALL verify stable repeated SELECT results inside one explicit reader transaction while another process commits updates/inserts/deletes.
+- **IT-049** — Integration tests SHALL verify a writer reads its own insert/update/delete changes before commit.
+- **IT-050** — Integration tests SHALL verify writer rollback never exposes created versions to another reader.
+- **IT-051** — Integration tests SHALL verify update creates an older visible version for a preexisting snapshot and a newer visible version for post-commit snapshots.
+- **IT-052** — Integration tests SHALL verify delete preserves an older snapshot's row and hides it from post-commit snapshots.
+- **IT-053** — Integration tests SHALL verify indexed-key update preserves old-key lookup for old snapshot and new-key lookup for new snapshot.
+- **IT-054** — Integration tests SHALL verify composite indexed-key update has the same old/new snapshot behavior across all key components.
+- **IT-055** — Integration tests SHALL verify old versions are not reclaimed while a reader snapshot needs them.
+- **IT-056** — Integration tests SHALL verify versions become reclaimable after the oldest relevant reader ends and maintenance reclaims them without logical change.
+- **IT-057** — Integration tests SHALL verify at least eight simultaneous reader processes can hold consistent snapshots while one writer commits deterministic changes.
+- **IT-058** — Integration tests SHALL verify a second writer receives BUSY/timeout according to configured policy and cannot corrupt state.
+- **IT-059** — Integration tests SHALL verify a killed reader process does not permanently pin version reclamation.
+- **IT-060** — Integration tests SHALL verify incompatible DDL/VACUUM/rekey is rejected or waits deterministically while an active snapshot exists.
+- **IT-061** — Integration tests SHALL verify read-only transactions do not accidentally publish transaction-visible write state.
+- **IT-062** — Integration tests SHALL verify MVCC state across close/reopen and ordinary checkpoint.
+- **IT-063** — Integration tests SHALL verify integrity checker accepts a healthy database containing retained historical versions.
+### 34.3 Mandatory Corruption-Test Families
+
+- **CT-001** — Corruption tests SHALL cover zero-length file.
+- **CT-002** — Corruption tests SHALL cover random non-database file.
+- **CT-003** — Corruption tests SHALL cover truncated header.
+- **CT-004** — Corruption tests SHALL cover wrong magic.
+- **CT-005** — Corruption tests SHALL cover unsupported major version.
+- **CT-006** — Corruption tests SHALL cover declared page count beyond file.
+- **CT-007** — Corruption tests SHALL cover single-bit encrypted page tamper.
+- **CT-008** — Corruption tests SHALL cover page type mutation.
+- **CT-009** — Corruption tests SHALL cover child pointer out of range.
+- **CT-010** — Corruption tests SHALL cover B+ tree key order corruption.
+- **CT-011** — Corruption tests SHALL cover B+ tree child cycle.
+- **CT-012** — Corruption tests SHALL cover overflow chain cycle.
+- **CT-013** — Corruption tests SHALL cover overflow chain missing page.
+- **CT-014** — Corruption tests SHALL cover freelist references live page.
+- **CT-015** — Corruption tests SHALL cover freelist duplicate page.
+- **CT-016** — Corruption tests SHALL cover catalog invalid record.
+- **CT-017** — Corruption tests SHALL cover secondary index references missing row.
+- **CT-018** — Corruption tests SHALL cover unique index duplicate key.
+- **CT-019** — Corruption tests SHALL cover WAL truncated mid-record.
+- **CT-020** — Corruption tests SHALL cover WAL checksum/tag failure.
+- **CT-021** — Corruption tests SHALL cover WAL invalid record length.
+- **CT-022** — Corruption tests SHALL cover copied encrypted page from another database.
+- **CT-023** — Corruption tests SHALL cover truncated database tail.
+- **CT-024** — Corruption tests SHALL cover corrupted vacuum/rekey temporary output handled without replacing valid original.
+- **CT-025** — Corruption tests SHALL cover composite-index key with malformed component length/type tag.
+- **CT-026** — Corruption tests SHALL cover composite-index component count/catalog mismatch.
+- **CT-027** — Corruption tests SHALL cover composite-index tuple ordering violation with otherwise structurally valid B+ tree links.
+- **CT-028** — Corruption tests SHALL cover composite-index entry whose tuple disagrees with referenced row version.
+- **CT-029** — Corruption tests SHALL cover MVCC version-chain self-cycle.
+- **CT-030** — Corruption tests SHALL cover MVCC version-chain multi-node cycle.
+- **CT-031** — Corruption tests SHALL cover impossible creator/retire commit ordering.
+- **CT-032** — Corruption tests SHALL cover version referencing nonexistent transaction/commit metadata.
+- **CT-033** — Corruption tests SHALL cover historical index entry referencing a missing historical row version.
+- **CT-034** — Corruption tests SHALL cover reclaim metadata marking a version free while still reachable by a valid version/index chain.
+- **CT-035** — Corruption tests SHALL cover WAL tail containing a committed MVCC change whose index-version update is incomplete and require recovery to converge correctly.
+### 34.4 Mandatory SQL Behavior Cases
+
+- **SQLT-001** — Automated SQL tests SHALL cover empty table SELECT.
+- **SQLT-002** — Automated SQL tests SHALL cover single-row CRUD.
+- **SQLT-003** — Automated SQL tests SHALL cover NULL predicates.
+- **SQLT-004** — Automated SQL tests SHALL cover operator precedence.
+- **SQLT-005** — Automated SQL tests SHALL cover parentheses precedence override.
+- **SQLT-006** — Automated SQL tests SHALL cover integer min/max.
+- **SQLT-007** — Automated SQL tests SHALL cover integer overflow attempt.
+- **SQLT-008** — Automated SQL tests SHALL cover real arithmetic.
+- **SQLT-009** — Automated SQL tests SHALL cover division by zero.
+- **SQLT-010** — Automated SQL tests SHALL cover string escaping.
+- **SQLT-011** — Automated SQL tests SHALL cover quoted identifier.
+- **SQLT-012** — Automated SQL tests SHALL cover Chinese identifier if identifiers permit general UTF-8.
+- **SQLT-013** — Automated SQL tests SHALL cover LIKE `%中文%` match.
+- **SQLT-014** — Automated SQL tests SHALL cover LIKE `_` over multibyte code point.
+- **SQLT-015** — Automated SQL tests SHALL cover ORDER BY ascending/descending.
+- **SQLT-016** — Automated SQL tests SHALL cover deterministic NULL ordering.
+- **SQLT-017** — Automated SQL tests SHALL cover DISTINCT with duplicates/NULL.
+- **SQLT-018** — Automated SQL tests SHALL cover LIMIT zero.
+- **SQLT-019** — Automated SQL tests SHALL cover LIMIT/OFFSET boundaries.
+- **SQLT-020** — Automated SQL tests SHALL cover ambiguous join column error.
+- **SQLT-021** — Automated SQL tests SHALL cover INNER JOIN no matches.
+- **SQLT-022** — Automated SQL tests SHALL cover LEFT JOIN no matches.
+- **SQLT-023** — Automated SQL tests SHALL cover three-table join.
+- **SQLT-024** — Automated SQL tests SHALL cover COUNT(*) empty/nonempty.
+- **SQLT-025** — Automated SQL tests SHALL cover SUM/AVG NULL behavior.
+- **SQLT-026** — Automated SQL tests SHALL cover GROUP BY multiple groups.
+- **SQLT-027** — Automated SQL tests SHALL cover HAVING filter.
+- **SQLT-028** — Automated SQL tests SHALL cover UPDATE with index predicate.
+- **SQLT-029** — Automated SQL tests SHALL cover DELETE with range predicate.
+- **SQLT-030** — Automated SQL tests SHALL cover constraint failure inside explicit transaction.
+- **SQLT-031** — Automated SQL tests SHALL cover savepoint nested rollback.
+- **SQLT-032** — Automated SQL tests SHALL cover multiple semicolon-separated statements.
+- **SQLT-033** — Automated SQL tests SHALL cover syntax error source position.
+- **SQLT-034** — Automated SQL tests SHALL cover invalid UTF-8 TEXT insertion.
+- **SQLT-035** — Automated SQL tests SHALL cover 1 MiB value round trip.
+
+### 34.5 Mandatory Composite-Index Acceptance Matrix
+
+The following matrix is normative. Implementations MAY add cases but SHALL NOT remove these.
+
+- **CIDXT-001** — Build `(a,b)` over an empty table; validate empty root/index metadata and reopen.
+- **CIDXT-002** — Insert one tuple; point lookup by full tuple returns exactly one row.
+- **CIDXT-003** — Insert many equal `a` values with varying `b`; prefix scan `a=?` returns exactly the matching ordered range.
+- **CIDXT-004** — Insert many equal `(a,b)` values into a nonunique index; every row remains independently addressable and no entry overwrites another.
+- **CIDXT-005** — Insert ascending tuple sequence until at least three B+ tree levels exist.
+- **CIDXT-006** — Repeat CIDX-005 in descending tuple order.
+- **CIDXT-007** — Repeat with deterministic pseudorandom tuple order and compare traversal with a reference sorted tuple list.
+- **CIDXT-008** — Delete tuple patterns forcing leaf borrow-left and validate all remaining tuple scans.
+- **CIDXT-009** — Delete tuple patterns forcing leaf borrow-right.
+- **CIDXT-010** — Force merge-left, merge-right, internal merge, and root collapse with composite keys.
+- **CIDXT-011** — Test `(INTEGER,TEXT)` keys around negative/zero/positive numbers and Chinese UTF-8 strings.
+- **CIDXT-012** — Test `(TEXT,TEXT)` keys that would collide under naive delimiter-free concatenation.
+- **CIDXT-013** — Test `(BLOB,INTEGER)` with embedded NUL and all byte values in BLOB components.
+- **CIDXT-014** — Test NULL in each component position and combinations of multiple NULL components.
+- **CIDXT-015** — UNIQUE `(a,b)` rejects duplicate `(1,2)` while permitting the mandatory NULL-containing non-conflicting cases.
+- **CIDXT-016** — A uniqueness failure after a page split/rebalance opportunity leaves both table and every index structurally unchanged after statement rollback.
+- **CIDXT-017** — Update only first component; old full-tuple seek disappears for new snapshots and new seek appears.
+- **CIDXT-018** — Update only second/middle component with same guarantees.
+- **CIDXT-019** — Update several components in one statement affecting many rows; statement is all-or-nothing on constraint failure.
+- **CIDXT-020** — Delete all rows sharing one leading prefix and verify neighboring prefix ranges remain intact.
+- **CIDXT-021** — `WHERE a=?` on `(a,b,c)` uses a prefix seek and returns reference-model rows.
+- **CIDXT-022** — `WHERE a=? AND b=?` uses a longer prefix seek.
+- **CIDXT-023** — `WHERE a=? AND b=? AND c>=? AND c<?` uses equality prefix plus bounded final range.
+- **CIDXT-024** — `WHERE b=?` on `(a,b,c)` SHALL not claim an ordered direct seek on that index.
+- **CIDXT-025** — `WHERE a>? AND b=?` SHALL not falsely claim `b` narrows each position after the first range unless an explicitly stronger correct plan is implemented.
+- **CIDXT-026** — Compatible `ORDER BY a,b,c` avoids explicit sort when planner chooses the index; incompatible ordering retains a sort.
+- **CIDXT-027** — Join using equality on the first two components of inner `(a,b,c)` can use index-assisted nested-loop and matches full-scan reference results.
+- **CIDXT-028** — Drop/recreate composite index on populated table preserves query results.
+- **CIDXT-029** — `ANALYZE` then reopen preserves/reconstructs statistics without changing results.
+- **CIDXT-030** — Oversized serialized composite key fails before persistent mutation.
+- **CIDXT-031** — Crash before composite-index creation commit leaves no partially visible index.
+- **CIDXT-032** — Crash after durable composite-index creation commit recovers the complete valid index.
+- **CIDXT-033** — Index rebuild from a deliberately damaged source index recreates keys from table rows and passes `edb-check`.
+- **CIDXT-034** — VACUUM and rekey each preserve tuple ordering, uniqueness, and EXPLAIN usability.
+- **CIDXT-035** — GUI Create Index can create `(category,priority,deadline)` in that exact order; Structure view and CLI both display the same order.
+
+### 34.6 Mandatory MVCC Interleaving Matrix
+
+Tests SHALL use explicit barriers/events/pipes or equivalent deterministic synchronization. Merely sleeping for guessed durations is insufficient for these mandatory cases.
+
+- **MVCCT-001** — R1 begins; R1 reads value `v0`; W updates to `v1` and commits; R1 reads again and still sees `v0`; R2 begins after commit and sees `v1`.
+- **MVCCT-002** — R1 begins; W inserts row X and commits; repeated R1 predicate/range query does not gain X; R2 sees X.
+- **MVCCT-003** — R1 begins; W deletes X and commits; R1 still sees X; R2 does not.
+- **MVCCT-004** — W inserts X but has not committed; R1/R2 SHALL not see X; W sees X; after commit new reader sees X.
+- **MVCCT-005** — W updates X but rolls back; no other reader ever sees the uncommitted version and post-rollback state is original.
+- **MVCCT-006** — W deletes X but rolls back; row remains for all post-rollback readers.
+- **MVCCT-007** — SAVEPOINT: W updates X to `v1`, savepoint, updates to `v2`, rollback-to; W sees `v1`; commit publishes `v1` only.
+- **MVCCT-008** — An old snapshot survives a writer checkpoint and still reads its old logical state.
+- **MVCCT-009** — An old snapshot survives a writer updating a single-column indexed key; old index seek works for R1, new key works for R2.
+- **MVCCT-010** — Same as MVCCT-009 for a composite index where one leading component changes.
+- **MVCCT-011** — Same as MVCCT-010 where a non-leading component changes.
+- **MVCCT-012** — Writer deletes indexed row; old reader's index scan still returns it exactly once, new reader returns none.
+- **MVCCT-013** — Writer inserts a duplicate nonunique composite tuple; old reader sees old multiplicity, new reader sees increased multiplicity.
+- **MVCCT-014** — UNIQUE composite constraint is checked against correct writer-visible state and cannot be bypassed using invisible historical versions.
+- **MVCCT-015** — Eight readers begin on the same state, writer commits a deterministic batch, all eight retain the old snapshot, then eight new readers see the new state.
+- **MVCCT-016** — A second writer attempts BEGIN/write while W1 is active and receives the defined BUSY/timeout without changing file bytes logically.
+- **MVCCT-017** — Reader process is killed while pinning old version; after cleanup/reopen/reclamation the version becomes reclaimable and no stale lock/snapshot remains.
+- **MVCCT-018** — Long-lived reader blocks/rejects VACUUM according to specified policy; reader remains correct; VACUUM succeeds after reader ends.
+- **MVCCT-019** — Long-lived reader blocks/rejects incompatible DDL; schema remains unchanged until safe.
+- **MVCCT-020** — Rekey under incompatible active snapshot follows explicit busy policy without modifying password/file state.
+- **MVCCT-021** — Crash writer before durable commit while R1 holds old snapshot; recovery/new reader observes pre-write state.
+- **MVCCT-022** — Crash writer after durable commit while R1 existed in another surviving process; surviving R1 retains old snapshot if architecture supports continued access, while a reopened/new reader observes committed state. If process/file-recovery architecture necessarily invalidates surviving handles, the engine SHALL return a deterministic connection-invalidated error rather than mixed data; this exception SHALL be documented and tested.
+- **MVCCT-023** — Crash during recovery with retained historical versions; repeated recovery converges and `edb-check` passes.
+- **MVCCT-024** — Writer commits 100 sequential updates while R1 remains open; R1 sees initial version, latest reader sees update 100, and version storage remains valid.
+- **MVCCT-025** — End R1 then run reclamation; historical versions no longer needed are reclaimed and logical current result is unchanged.
+- **MVCCT-026** — Reader executes JOIN while writer changes joined rows; entire explicit reader transaction obeys its original snapshot.
+- **MVCCT-027** — Reader executes GROUP BY/aggregate before and after writer commit inside same transaction and receives identical logical snapshot result.
+- **MVCCT-028** — Reader uses composite prefix range before and after writer inserts keys inside that range; old snapshot range remains unchanged.
+- **MVCCT-029** — Close connection with active writer transaction; rollback removes its versions and index entries.
+- **MVCCT-030** — Process termination with active uncommitted writer is recovered as aborted/incomplete; no dirty version is visible.
+- **MVCCT-031** — Wrong-password/open failure never registers a persistent snapshot or writer state.
+- **MVCCT-032** — Allocation/I/O failure during version creation causes statement/transaction failure according to scope and never exposes half-linked chains.
+- **MVCCT-033** — Allocation/I/O failure during index-version update cannot create row/index visibility disagreement.
+- **MVCCT-034** — Version chain integrity report shows expected historical count before reclamation and reduced count after safe reclamation.
+- **MVCCT-035** — Oldest-active-snapshot metric advances only after the oldest reader ends.
+
+### 34.7 Mandatory Release-Test Completeness Rules
+
+- **TCOMP-001** — `make test` SHALL execute every mandatory test family in Sections 34.1 through 34.7 unless a more specific `make test-*` target is invoked deliberately.
+- **TCOMP-002** — Every requirement identifier in `CIDX-*` and `MVCC-*` SHALL be mapped in testing documentation to at least one automated test, structural checker, or explicit manual acceptance item; behaviorally testable requirements SHALL not be satisfied by documentation alone.
+- **TCOMP-003** — The release test report SHALL contain separate totals for unit, integration, SQL, composite-index, MVCC/concurrency, randomized/model, crash, corruption, crypto, CLI, and GUI suites.
+- **TCOMP-004** — A release SHALL fail if the composite-index suite does not force a three-level tree.
+- **TCOMP-005** — A release SHALL fail if the MVCC suite never has at least one old reader alive across a writer commit.
+- **TCOMP-006** — A release SHALL fail if concurrency tests execute only within one process.
+- **TCOMP-007** — A release SHALL fail if planner tests validate rows but do not verify the expected composite seek/full-scan distinction.
+- **TCOMP-008** — A release SHALL fail if historical-version reclamation is untested.
+- **TCOMP-009** — A release SHALL fail if `edb-check` is not run against healthy historical-version state and corrupted MVCC/composite-index fixtures.
+- **TCOMP-010** — A release SHALL fail if crash tests omit MVCC row-version and composite-index update transactions.
+- **TCOMP-011** — Mandatory randomized tests SHALL execute at least 10 deterministic seeds per relevant family in the default full suite and at least 100 seeds in `make check`, unless a stricter authored fixed operation count produces greater coverage and is documented.
+- **TCOMP-012** — The test harness SHALL preserve the first failing seed/interleaving description in evidence output before cleanup.
+
+
+## 35. Randomized and Model-Based Testing
+
+- **RAND-001** — The test suite SHALL include seeded randomized CRUD sequences against an in-memory reference model authored for the tests.
+- **RAND-002** — The reference model SHALL be simple enough to be independently understandable and SHALL not call the production storage/index implementation.
+- **RAND-003** — Randomized tests SHALL compare logical table contents after operation batches.
+- **RAND-004** — Randomized index tests SHALL compare point/range results against sorted reference data.
+- **RAND-005** — Randomized transaction tests SHALL maintain committed and uncommitted reference states.
+- **RAND-006** — On failure, the seed and operation sequence SHALL be printed or saved so the failure is reproducible.
+- **RAND-007** — Randomized tests SHALL include at least one profile executing thousands of operations.
+- **RAND-008** — Test success SHALL not depend on a particular random seed accidentally avoiding hard cases.
+## 36. GUI Automated and Visual Verification
+
+Because the GUI is native X11, it SHALL expose a deterministic test mode suitable for execution under a virtual X server. Test mode MAY fix animation time/random decorative effects while preserving real widget logic.
+
+- **GUIT-001** — GUI automation/state tests SHALL cover Launch GUI and reach start view.
+- **GUIT-002** — GUI automation/state tests SHALL cover Create a database through GUI.
+- **GUIT-003** — GUI automation/state tests SHALL cover Open an existing database through GUI.
+- **GUIT-004** — GUI automation/state tests SHALL cover Wrong-password dialog state.
+- **GUIT-005** — GUI automation/state tests SHALL cover Create table through Structure view.
+- **GUIT-006** — GUI automation/state tests SHALL cover Insert/edit/delete row through Data view.
+- **GUIT-007** — GUI automation/state tests SHALL cover Execute SQL through Query view.
+- **GUIT-008** — GUI automation/state tests SHALL cover Query syntax error presentation.
+- **GUIT-009** — GUI automation/state tests SHALL cover Result grid scrolling.
+- **GUIT-010** — GUI automation/state tests SHALL cover Schema sidebar collapse/expand.
+- **GUIT-011** — GUI automation/state tests SHALL cover Navigation capsule destination transition.
+- **GUIT-012** — GUI automation/state tests SHALL cover Button hover/press/ripple state progression.
+- **GUIT-013** — GUI automation/state tests SHALL cover Modal blocks background input.
+- **GUIT-014** — GUI automation/state tests SHALL cover Modal scale/opacity opening and closing state.
+- **GUIT-015** — GUI automation/state tests SHALL cover Background blur enabled during modal.
+- **GUIT-016** — GUI automation/state tests SHALL cover Frosted navigation blur/shadow increases as content scrolls.
+- **GUIT-017** — GUI automation/state tests SHALL cover Keyboard focus traversal.
+- **GUIT-018** — GUI automation/state tests SHALL cover UTF-8 Chinese query entry.
+- **GUIT-019** — GUI automation/state tests SHALL cover Window resize across documented minimum and normal sizes.
+- **GUIT-020** — GUI automation/state tests SHALL cover Close window with active uncommitted transaction prompts for commit/rollback/cancel or follows another explicitly defined safe interaction.
+### 36.1 Required Screenshot Checkpoints
+
+- **SHOT-001** — A deterministic screenshot capture/checkpoint SHALL exist for: Start view at default window size.
+- **SHOT-002** — A deterministic screenshot capture/checkpoint SHALL exist for: Open encrypted database password modal with blurred/dimmed background.
+- **SHOT-003** — A deterministic screenshot capture/checkpoint SHALL exist for: Main database view with expanded schema sidebar.
+- **SHOT-004** — A deterministic screenshot capture/checkpoint SHALL exist for: Main database view with collapsed sidebar.
+- **SHOT-005** — A deterministic screenshot capture/checkpoint SHALL exist for: Query editor plus populated result grid.
+- **SHOT-006** — A deterministic screenshot capture/checkpoint SHALL exist for: Query error with visible source/message region.
+- **SHOT-007** — A deterministic screenshot capture/checkpoint SHALL exist for: Data browser with selected row.
+- **SHOT-008** — A deterministic screenshot capture/checkpoint SHALL exist for: Row edit modal.
+- **SHOT-009** — A deterministic screenshot capture/checkpoint SHALL exist for: Structure view showing tables/columns/indexes.
+- **SHOT-010** — A deterministic screenshot capture/checkpoint SHALL exist for: Maintenance view showing real database statistics.
+- **SHOT-011** — A deterministic screenshot capture/checkpoint SHALL exist for: Navigation at zero scroll blur state.
+- **SHOT-012** — A deterministic screenshot capture/checkpoint SHALL exist for: Navigation at deep scroll maximum blur/shadow state.
+- **SHOT-013** — A deterministic screenshot capture/checkpoint SHALL exist for: Button hover state.
+- **SHOT-014** — A deterministic screenshot capture/checkpoint SHALL exist for: Button ripple mid-animation state in deterministic test-time mode.
+- **SHOT-015** — A deterministic screenshot capture/checkpoint SHALL exist for: Modal mid-open transition in deterministic test-time mode.
+- **SHOT-016** — A deterministic screenshot capture/checkpoint SHALL exist for: Minimum supported window size.
+- **SHOT-017** — A deterministic screenshot capture/checkpoint SHALL exist for: Large window size showing layout expansion rather than simply scaling pixels.
+- **SHOT-100** — Screenshots are validation artifacts generated by tests and SHALL NOT be required as opaque source inputs to the product.
+## 37. Performance and Scalability Floors
+
+These are engineering floors intended to prevent obviously non-scalable substitutions. They are not absolute hardware performance benchmarks.
+
+- **PERF-001** — The engine SHALL correctly store and query at least 100,000 rows in a table.
+- **PERF-002** — An indexed equality lookup on a 100,000-row table SHALL use the B+ tree index according to EXPLAIN and SHALL not report a full table scan.
+- **PERF-003** — A bounded indexed range query SHALL use an index where compatible.
+- **PERF-004** — The GUI data grid SHALL remain usable on a 100,000-row table by fetching/virtualizing bounded result windows rather than constructing 100,000 independent widgets.
+- **PERF-005** — Importing a large CSV SHALL process incrementally and SHALL not require loading the entire file into one in-memory string.
+- **PERF-006** — Exporting large query results SHALL stream rows rather than requiring the complete result set in memory.
+- **PERF-007** — Integrity checking MAY be linear in database size but SHALL operate with bounded memory relative to file size except for explicitly documented reachability structures.
+- **PERF-008** — VACUUM MAY require a second database-sized temporary file but SHALL not require holding the full database in RAM.
+- **PERF-009** — B+ tree operations SHALL have logarithmic search structure behavior rather than mandatory full scan per indexed operation.
+- **PERF-010** — Parser and lexer SHALL be linear/bounded for ordinary inputs and protected against pathological nesting limits.
+- **PERF-011** — On a 100,000-row table with index `(category,priority,deadline)`, a selective query constraining `category` and `priority` SHALL use the composite prefix index according to EXPLAIN rather than full scan.
+- **PERF-012** — Holding eight read snapshots SHALL not require duplicating the entire database file per reader.
+- **PERF-013** — One row update under MVCC SHALL not copy the entire database file as its normal versioning mechanism.
+- **PERF-014** — Historical-version storage growth MAY be proportional to changed data while snapshots are held; it SHALL be reclaimable after snapshots end.
+- **PERF-015** — MVCC visibility checks SHALL not require scanning every historical version in the database for each returned row; lookup SHALL be bounded to the relevant row/version chain or equivalent indexed metadata.
+## 38. Resource and Failure Injection
+
+- **FAIL-001** — Tests SHALL exercise simulated allocation failure at multiple internal allocation sites using a test allocator hook.
+- **FAIL-002** — Allocation failure SHALL not leave a committed transaction half-applied.
+- **FAIL-003** — Tests SHALL simulate short reads/writes or injected I/O failures through an internal I/O abstraction in test builds.
+- **FAIL-004** — I/O failure during transaction commit SHALL return failure and preserve recoverable state.
+- **FAIL-005** — I/O failure during VACUUM/rekey SHALL preserve the original valid file until safe replacement.
+- **FAIL-006** — Tests SHALL exercise full-disk-like write failure through injection without needing to actually fill the filesystem.
+- **FAIL-007** — Internal test hooks SHALL be compile-time/test-only and SHALL not silently remain user-controllable in normal release invocation.
+## 39. Security and Input Hardening
+
+- **SEC-001** — Every file-derived length/offset SHALL be treated as untrusted until validated.
+- **SEC-002** — Every SQL string length and parameter length SHALL be bounded before arithmetic/allocation.
+- **SEC-003** — Import parser SHALL not execute CSV content as SQL; imported fields are values.
+- **SEC-004** — Dump/export SHALL escape SQL or CSV output so round trips do not change literal content.
+- **SEC-005** — GUI status/error rendering SHALL treat user/database strings as text, never format strings.
+- **SEC-006** — Passwords SHALL not appear in process arguments in the default documented workflow.
+- **SEC-007** — Temporary files containing decrypted user data SHALL not be created unless required by an explicit export operation.
+- **SEC-008** — VACUUM/rekey temporary files SHALL use restrictive permissions appropriate for database confidentiality.
+- **SEC-009** — New encrypted database files SHALL use restrictive permissions by default where platform facilities permit.
+- **SEC-010** — Crash/corruption reports SHALL not dump decrypted page contents by default.
+## 40. Prohibited Shortcuts and Invalid Substitutions
+
+- **NO-001** — The following is forbidden: Wrapping SQLite or any existing database engine.
+- **NO-002** — The following is forbidden: Shelling out to a database CLI to execute queries.
+- **NO-003** — The following is forbidden: Using a CSV/JSON/YAML file as the primary database while presenting it as the required page/B+ tree engine.
+- **NO-004** — The following is forbidden: Using one flat append-only list and pretending indexes exist through full scans.
+- **NO-005** — The following is forbidden: Hard-coding expected test SQL results.
+- **NO-006** — The following is forbidden: Skipping WAL and copying the entire database per ordinary transaction as the sole atomicity mechanism.
+- **NO-007** — The following is forbidden: Using system cryptography libraries for the required cryptographic primitive implementations.
+- **NO-008** — The following is forbidden: Using `rand()` for cryptographic salts/nonces.
+- **NO-009** — The following is forbidden: Encrypting with XOR/Base64/obfuscation and labeling it encryption.
+- **NO-010** — The following is forbidden: Using Xaw/GTK/Qt widgets for required custom GUI controls.
+- **NO-011** — The following is forbidden: Rendering the GUI as HTML in a browser/webview.
+- **NO-012** — The following is forbidden: Providing buttons or menu items that are not connected to actual operations.
+- **NO-013** — The following is forbidden: Using fake progress that does not correspond to real maintenance work.
+- **NO-014** — The following is forbidden: Returning canned EXPLAIN plans unrelated to actual executor choices.
+- **NO-015** — The following is forbidden: Declaring corruption fixed by deleting/recreating user data.
+- **NO-016** — The following is forbidden: Shipping only screenshots or prerecorded outputs instead of executable behavior.
+- **NO-017** — The following is forbidden: Disabling difficult mandatory tests in the default test target.
+- **NO-018** — The following is forbidden: Marking known mandatory failures as expected-pass/skip without an explicit specification allowance.
+- **NO-019** — The following is forbidden: Changing fixture expected output to match an incorrect implementation rather than fixing the implementation.
+- **NO-020** — The following is forbidden: Counting generated artifacts as authored LOC in the required locscan default project config.
+- **NO-021** — The following is forbidden: Implementing a required composite index as independent single-column indexes while claiming tuple-key ordering/prefix seeks.
+- **NO-022** — The following is forbidden: Returning hard-coded EXPLAIN text claiming composite-index use when executor performs a full scan.
+- **NO-023** — The following is forbidden: Claiming MVCC while a writer takes a database-wide lock that prevents every required concurrent reader from maintaining a snapshot for the writer's full transaction.
+- **NO-024** — The following is forbidden: Claiming MVCC by copying the entire database file for every reader or every ordinary write transaction.
+- **NO-025** — The following is forbidden: Destructively overwriting/deleting a row version that an active required snapshot must still observe.
+- **NO-026** — The following is forbidden: Letting historical versions bypass UNIQUE constraints or leak duplicate logical rows into one snapshot.
+- **NO-027** — The following is forbidden: Reclaiming historical row/index versions solely by age/time without considering active snapshot visibility.
+## 41. Required Command-Level Acceptance Scenarios
+
+- **ACC-A01** — **Create encrypted DB:** Create a new encrypted database; create `tasks`; insert Chinese and ASCII rows; commit; close; reopen with correct password; verify exact rows.
+- **ACC-A02** — **Wrong password:** Attempt to open A01 with a wrong password; opening fails; database bytes are unchanged.
+- **ACC-A03** — **Basic CRUD:** Insert, update, select, delete across reopen; verify indexes and row counts.
+- **ACC-A04** — **Index split:** Insert enough indexed keys to produce a multilevel B+ tree; verify point and range queries plus integrity check.
+- **ACC-A05** — **Index delete rebalance:** Delete patterns forcing borrow/merge/root collapse; verify exact remaining keys and integrity.
+- **ACC-A06** — **Unique rollback:** Perform multi-row write where a uniqueness violation occurs; verify statement atomicity and unchanged valid prior rows.
+- **ACC-A07** — **Explicit rollback:** Modify multiple tables then ROLLBACK; close/reopen; verify original committed state.
+- **ACC-A08** — **Savepoints:** Apply nested savepoints, rollback one, release another, commit; verify expected mixed retained/undone actions.
+- **ACC-A09** — **Crash before commit:** Kill during transaction before durable commit; recover; verify pre-transaction state.
+- **ACC-A10** — **Crash after durable commit:** Kill after commit is durably recorded but before normal cleanup; recover; verify post-transaction state.
+- **ACC-A11** — **Crash during checkpoint:** Kill at each checkpoint injection point; reopen repeatedly; verify convergent valid state.
+- **ACC-A12** — **Large value:** Store/retrieve/update/delete >=1 MiB TEXT and BLOB values; verify checksums and overflow cleanup.
+- **ACC-A13** — **Join aggregate:** Execute INNER/LEFT joins, GROUP BY, HAVING, aggregate functions over deterministic fixture; compare expected results.
+- **ACC-A14** — **Planner:** Create alternate indexes/statistics; use EXPLAIN to prove point/range/index-assisted join choices.
+- **ACC-A15** — **CSV round trip:** Export data with commas, quotes, embedded newlines, NULL, empty string, Chinese; import into new DB; compare logical values.
+- **ACC-A16** — **Dump round trip:** Dump schema/data to SQL; rebuild new DB; compare schemas and rows.
+- **ACC-A17** — **Vacuum:** Create bloat through insert/delete; VACUUM; verify file reduction when reclaimable and exact logical equivalence.
+- **ACC-A18** — **Tamper page:** Flip a ciphertext/tag bit; open/check detects authentication/corruption and does not return forged row.
+- **ACC-A19** — **Index corruption repair:** Corrupt only a rebuildable secondary index; checker diagnoses; repair rebuilds; all rows preserved.
+- **ACC-A20** — **Partial salvage:** Damage one data region while leaving independent table intact; salvage to new DB; verify recovered set and explicit loss report.
+- **ACC-A21** — **Rekey:** Rekey encrypted DB; old password fails; new password succeeds; logical data unchanged.
+- **ACC-A22** — **Locking:** Start writer process; second conflicting writer gets busy/timeout rather than corrupting state.
+- **ACC-A23** — **GUI end-to-end:** Create/open DB, create table, insert row, query it, edit it, integrity check and close through GUI only.
+- **ACC-A24** — **GUI error recovery:** Trigger SQL error and constraint error in GUI; correct input and continue without restarting.
+- **ACC-A25** — **Unicode:** Use Chinese table data and search/LIKE/export/reopen; verify byte-preserving valid UTF-8 behavior.
+- **ACC-A26** — **LOC utility:** Run locscan over a fixture tree containing authored files and generated/binary decoys; verify exact classified totals.
+- **ACC-A29** — **Composite index creation:** Create `(category, priority, deadline)` on populated data; reopen; CLI/GUI/catalog preserve order; integrity check passes.
+- **ACC-A30** — **Composite prefix planning:** EXPLAIN proves usable seeks for leading prefixes and refuses false seek for non-leftmost-only predicate.
+- **ACC-A31** — **Composite range:** Equality prefix plus final range returns exactly reference rows in key order.
+- **ACC-A32** — **Composite unique/NULL:** Fully non-NULL duplicate fails atomically; required NULL-containing tuples coexist.
+- **ACC-A33** — **Composite update/crash:** Update multiple key components across many rows and crash at mandatory WAL points; recovery yields all-old or all-new committed logical index/table state.
+- **ACC-A34** — **MVCC stable reader:** Old reader spans writer commit and continues reading old value; new reader sees new value.
+- **ACC-A35** — **MVCC insert/delete phantom protection:** Explicit old reader repeats range query across writer insert/delete commits and retains identical snapshot result.
+- **ACC-A36** — **MVCC indexed history:** Old/new readers use an index after indexed-key update and each sees the correct historical/current key.
+- **ACC-A37** — **MVCC composite history:** Same as A36 for composite indexed key, including leading-component change.
+- **ACC-A38** — **Concurrent readers:** Eight separate reader processes retain one snapshot while writer commits; eight later readers see committed state.
+- **ACC-A39** — **Single writer:** Second writer cannot enter unsafe write state and reports BUSY/timeout.
+- **ACC-A40** — **Version GC:** Retired versions remain while needed, then are reclaimed after oldest reader ends; database remains logically identical and checker-clean.
+- **ACC-A41** — **Killed reader cleanup:** Kill snapshot-holding process; prove it no longer pins reclamation permanently.
+- **ACC-A42** — **MVCC crash before/after commit:** Crash runner demonstrates invisible pre-commit versions and durable post-commit visibility with consistent indexes.
+- **ACC-A43** — **DDL/maintenance snapshot safety:** DDL/VACUUM/rekey follows documented BUSY/wait policy while incompatible reader exists and leaves file unchanged when rejected.
+- **ACC-A44** — **MVCC corruption diagnostics:** Inject mandatory version-chain/transaction/index-history corruptions and verify exact checker error families.
+
+## 42. Manual Acceptance Checklist
+
+- [ ] **MAN-001** — Clean build succeeds with the documented build command.
+- [ ] **MAN-002** — `make test` completes with zero mandatory failures.
+- [ ] **MAN-003** — `make check` completes with zero mandatory failures.
+- [ ] **MAN-004** — `edb --help`, `edb-gui --help`, `edb-check --help`, `edb-fixture --help`, `edb-crashrun --help`, and `locscan --help` work.
+- [ ] **MAN-005** — Creating a database produces the project database format, not a renamed foreign format.
+- [ ] **MAN-006** — Database survives close/reopen.
+- [ ] **MAN-007** — Encrypted database does not contain obvious inserted plaintext test strings in ordinary persisted data/WAL regions.
+- [ ] **MAN-008** — Wrong password cannot open encrypted content.
+- [ ] **MAN-009** — Integrity checker reports healthy fixture DB.
+- [ ] **MAN-010** — Intentional corruption is detected.
+- [ ] **MAN-011** — B+ tree validator proves a multilevel tree after stress fixture.
+- [ ] **MAN-012** — EXPLAIN demonstrates index lookup.
+- [ ] **MAN-013** — Rollback really removes uncommitted writes after reopen.
+- [ ] **MAN-014** — Crash tests pass all mandatory crash points.
+- [ ] **MAN-015** — VACUUM preserves content.
+- [ ] **MAN-016** — Rekey preserves content and changes accepted password.
+- [ ] **MAN-017** — GUI launches under X11 and is functional.
+- [ ] **MAN-018** — GUI contains real schema/data from opened database.
+- [ ] **MAN-019** — All mandatory GUI views are reachable.
+- [ ] **MAN-020** — Hover lift is visibly animated.
+- [ ] **MAN-021** — Button ripple originates at click location.
+- [ ] **MAN-022** — Border/focus glow is visible and stateful.
+- [ ] **MAN-023** — Capsule navigation visibly slides.
+- [ ] **MAN-024** — Sidebar/nav collapse animates.
+- [ ] **MAN-025** — Modal scale+opacity animation is visible.
+- [ ] **MAN-026** — Background progressively darkens and blurs behind modal.
+- [ ] **MAN-027** — Top navigation blur/shadow varies continuously with scroll.
+- [ ] **MAN-028** — Window resize preserves usable layout down to documented minimum.
+- [ ] **MAN-029** — Chinese SQL/data input works.
+- [ ] **MAN-030** — GUI errors do not crash process.
+- [ ] **MAN-031** — Long operation can be cancelled where specified.
+- [ ] **MAN-032** — No required button/menu is a no-op.
+- [ ] **MAN-033** — No fake/sample-only data is used as a substitute for persistent data.
+- [ ] **MAN-034** — locscan excludes generated/binary/test-output artifacts according to config.
+- [ ] **MAN-035** — Project contains no bundled third-party database/crypto/GUI implementation used to satisfy mandatory algorithms.
+- [ ] **MAN-036** — Repository does not require generated build artifacts to compile.
+- [ ] **MAN-037** — README accurately states implemented limits and commands.
+- [ ] **MAN-038** — Create a multi-column index in GUI; reorder selected columns before creation; resulting order is visible in GUI and CLI.
+- [ ] **MAN-039** — EXPLAIN visibly distinguishes a composite leading-prefix seek from a non-leftmost predicate full scan.
+- [ ] **MAN-040** — With two CLI/process sessions, keep reader transaction open, commit update from writer, and demonstrate old/new snapshot difference.
+- [ ] **MAN-041** — GUI status/maintenance view exposes active transaction/snapshot information required by the specification without presenting fabricated counters.
+- [ ] **MAN-042** — Attempt a second concurrent writer and observe defined BUSY/timeout rather than hang/corruption.
+- [ ] **MAN-043** — Run checker before and after historical-version reclamation; both states are structurally valid and reclamation reduces eligible historical state.
+- [ ] **MAN-044** — No UI operation silently auto-commits an explicit user transaction merely to avoid MVCC/locking complexity.
+## 43. Database Format Documentation Requirements
+
+- **FMTDOC-001** — Document Header byte layout and endian convention.
+- **FMTDOC-002** — Document Physical encrypted-page envelope and logical page layout.
+- **FMTDOC-003** — Document Every page type header/payload layout.
+- **FMTDOC-004** — Document Record encoding and overflow representation.
+- **FMTDOC-005** — Document B+ tree internal/leaf entry representation.
+- **FMTDOC-006** — Document Freelist representation.
+- **FMTDOC-007** — Document Schema catalog representation.
+- **FMTDOC-008** — Document WAL file/header/record layouts.
+- **FMTDOC-009** — Document Commit/checkpoint/recovery state machine.
+- **FMTDOC-010** — Document Checksum/authentication coverage.
+- **FMTDOC-011** — Document Key derivation parameters and cryptographic context/AAD construction.
+- **FMTDOC-012** — Document Nonce uniqueness strategy.
+- **FMTDOC-013** — Document File replacement rules for VACUUM/rekey.
+- **FMTDOC-014** — Document Format-version compatibility rules.
+- **FMTDOC-015** — Document Limits encoded in format versus implementation limits.
+- **FMTDOC-016** — Document composite-index tuple-key binary encoding, type/null/length tags, row-identity tie breaker, and key-size calculation.
+- **FMTDOC-017** — Document composite-index ordering and UNIQUE NULL semantics.
+- **FMTDOC-018** — Document row-version/MVCC metadata representation and how old/new versions are linked or resolved.
+- **FMTDOC-019** — Document transaction/commit sequence representation and snapshot boundary rule.
+- **FMTDOC-020** — Document historical secondary/composite index-entry representation and reclamation rule.
+- **FMTDOC-021** — Document oldest-active-snapshot tracking and stale-process cleanup design.
+- **FMTDOC-022** — Document which MVCC state is durable versus process-local and how crash recovery reconstructs it.
+## 44. SQL Grammar Documentation Requirements
+
+- **SQLDOC-001** — List every accepted statement form.
+- **SQLDOC-002** — List reserved keywords.
+- **SQLDOC-003** — Document identifier quoting.
+- **SQLDOC-004** — Document string/blob literal syntax.
+- **SQLDOC-005** — Document operator precedence from highest to lowest.
+- **SQLDOC-006** — Document type conversion and NULL semantics.
+- **SQLDOC-007** — Document supported functions/aggregates.
+- **SQLDOC-008** — Document collation and UTF-8 behavior.
+- **SQLDOC-009** — Document unsupported SQL constructs explicitly rather than accepting partial syntax ambiguously.
+- **SQLDOC-010** — Document implementation limits: columns/table, indexes/table, key size, SQL length, expression depth, join count, parameter count.
+## 45. GUI Behavioral Edge Cases
+
+- **GUI-EDGE-001** — Click a button then drag pointer outside before release: command SHALL not fire unless documented as drag action.
+- **GUI-EDGE-002** — Rapidly open/close the same modal: no duplicate modal stack, leaked focus, or stuck blur.
+- **GUI-EDGE-003** — Resize window while modal open: modal and blur region remain correctly centered/clipped.
+- **GUI-EDGE-004** — Resize window during navigation animation: selected destination remains correct and final geometry reconciles.
+- **GUI-EDGE-005** — Scroll while top navigation animation active: blur/shadow use current scroll state without discontinuity.
+- **GUI-EDGE-006** — Execute query then switch tabs while query runs: completion associates with originating tab or defined connection state.
+- **GUI-EDGE-007** — Close a query tab with unsaved editor text: prompt or documented discard policy.
+- **GUI-EDGE-008** — Close application with active write transaction: explicit safe choice rather than silent commit.
+- **GUI-EDGE-009** — Open different database while transaction active: require safe resolution first.
+- **GUI-EDGE-010** — Delete currently selected table: views invalidate safely and do not retain dangling row pointers.
+- **GUI-EDGE-011** — Run VACUUM while a result cursor is active: reject/defer safely.
+- **GUI-EDGE-012** — Rekey while transaction active: reject with visible reason.
+- **GUI-EDGE-013** — Paste very large text into SQL editor: enforce documented editor/SQL limit without memory corruption.
+- **GUI-EDGE-014** — Paste invalid UTF-8 selection data: reject/replace safely per UTF-8 policy.
+- **GUI-EDGE-015** — Schema with long names: text clips/scrolls without overlapping controls.
+- **GUI-EDGE-016** — Empty schema: Data/Structure views show real empty states, not sample tables.
+- **GUI-EDGE-017** — No query results: show headers/empty state correctly.
+- **GUI-EDGE-018** — NULL and empty string display differently enough to inspect.
+- **GUI-EDGE-019** — BLOB display never interprets arbitrary bytes as a NUL-terminated C string.
+- **GUI-EDGE-020** — Database becomes externally inaccessible/deleted after open: next I/O surfaces an error without crashing.
+## 46. Storage and SQL Edge Cases
+
+- **EDGE-001** — Empty database with zero user tables.
+- **EDGE-002** — Empty table with indexes.
+- **EDGE-003** — One-row table.
+- **EDGE-004** — Row exactly near local-page payload boundary.
+- **EDGE-005** — Value one byte below/at/above overflow threshold.
+- **EDGE-006** — B+ tree page exactly full before insertion.
+- **EDGE-007** — Delete resulting in minimum occupancy boundary.
+- **EDGE-008** — Maximum supported key length.
+- **EDGE-009** — Key one byte above maximum rejected atomically.
+- **EDGE-010** — Maximum column count table.
+- **EDGE-011** — Attempt column count above limit.
+- **EDGE-012** — Maximum supported SQL length.
+- **EDGE-013** — SQL one byte above limit.
+- **EDGE-014** — Deep parenthesis/expression nesting at limit and above limit.
+- **EDGE-015** — INTEGER minimum and maximum.
+- **EDGE-016** — Negative zero REAL behavior documented.
+- **EDGE-017** — NaN/infinity if accepted/rejected.
+- **EDGE-018** — TEXT containing combining characters.
+- **EDGE-019** — TEXT containing 4-byte UTF-8 code points.
+- **EDGE-020** — TEXT containing embedded U+0000 policy handled explicitly.
+- **EDGE-021** — BLOB containing every byte 0x00..0xFF.
+- **EDGE-022** — Duplicate nonunique indexed key across many rows.
+- **EDGE-023** — Delete all rows then insert again.
+- **EDGE-024** — Drop table after large allocation and reclaim pages.
+- **EDGE-025** — Create/drop index repeatedly.
+- **EDGE-026** — Rollback after page splits.
+- **EDGE-027** — Rollback after overflow-page allocation.
+- **EDGE-028** — Rollback after delete/merge.
+- **EDGE-029** — Crash during first transaction in new database.
+- **EDGE-030** — Crash immediately after file creation but before first schema commit.
+- **EDGE-031** — Truncated WAL with otherwise valid DB.
+- **EDGE-032** — Empty WAL file.
+- **EDGE-033** — Unexpected extra bytes at WAL tail.
+- **EDGE-034** — Wrong database WAL paired with database.
+- **EDGE-035** — Read-only open of DB needing recovery.
+- **EDGE-036** — VACUUM encrypted DB.
+- **EDGE-037** — Rekey after VACUUM and vice versa.
+- **EDGE-038** — ANALYZE after large deletes.
+- **EDGE-039** — Query planner with unusable index due to predicate shape.
+- **EDGE-040** — ORDER BY multiple keys with ties.
+- **EDGE-041** — LEFT JOIN with NULL join keys.
+- **EDGE-042** — Aggregate over all-NULL input.
+- **EDGE-043** — UPDATE changing primary/unique indexed key.
+- **EDGE-044** — DELETE predicate matches zero rows.
+- **EDGE-045** — INSERT explicit NULL into NOT NULL.
+- **EDGE-046** — DEFAULT used for omitted column.
+- **EDGE-047** — ALTER ADD COLUMN default reflected for preexisting rows.
+- **EDGE-048** — Rename table preserves indexes/catalog references.
+- **EDGE-049** — Composite key every component at supported maximum local size but total serialized key over limit is rejected atomically.
+- **EDGE-050** — Composite key differs only in final component.
+- **EDGE-051** — Composite key has NULL first component versus NULL later component.
+- **EDGE-052** — Many duplicate nonunique composite tuples span multiple leaf pages.
+- **EDGE-053** — Composite prefix range begins/ends exactly at page split boundaries.
+- **EDGE-054** — Update leading composite component moves entry across distant B+ tree ranges.
+- **EDGE-055** — Rollback after composite index leaf/internal split restores valid structure.
+- **EDGE-056** — Old snapshot active while the same row is updated repeatedly many times.
+- **EDGE-057** — Old snapshot active while indexed key changes back to a previously used value.
+- **EDGE-058** — Delete then reinsert same unique key while older snapshot can still see deleted historical row; uniqueness and snapshots remain correct.
+- **EDGE-059** — Reader begins immediately before writer durable commit barrier and deterministic synchronization proves which snapshot boundary applies.
+- **EDGE-060** — Reader begins immediately after durable commit and sees committed version.
+- **EDGE-061** — Transaction with zero writes commits/rolls back without creating bogus visible versions.
+- **EDGE-062** — Writer changes row then ROLLBACK TO savepoint several times; version chain remains valid.
+- **EDGE-063** — Active oldest reader ends out of order relative to newer readers; reclamation boundary advances correctly.
+- **EDGE-064** — Killed/new PID or stale lock metadata does not confuse a new reader with old snapshot ownership.
+- **EDGE-065** — Transaction/commit sequence near implementation safety limit returns controlled exhaustion error before wraparound.
+- **EDGE-066** — Integrity checker runs while database contains legitimate retained historical versions and does not report false corruption.
+- **EDGE-067** — VACUUM requested with active snapshot follows documented BUSY policy and does not partially rewrite main file.
+- **EDGE-068** — Composite index rebuild while no conflicting snapshots exist produces identical logical tuple set.
+## 47. Test Evidence Output
+
+- **EVID-001** — `make test` SHALL generate a concise machine-readable summary under a dedicated test-output directory.
+- **EVID-002** — The summary SHALL record suite name, test count, pass/fail/skip counts, failing test identifiers, deterministic seeds, and total elapsed time.
+- **EVID-003** — Mandatory tests SHALL not be marked skipped in a passing release.
+- **EVID-004** — Crash suite SHALL output each crash point and observed logical recovery state.
+- **EVID-005** — Corruption suite SHALL output each mutation and detected error category.
+- **EVID-006** — GUI suite SHALL output named screenshot/checkpoint artifacts and state assertions.
+- **EVID-007** — Integrity-check scenarios SHALL retain reports for failed cases.
+- **EVID-008** — Test artifacts SHALL be removable by `make clean` and SHALL be excluded by the provided locscan project config.
+- **EVID-009** — Composite-index evidence SHALL record tree depth, tested tuple count, index key order, EXPLAIN seek prefix/range component, and checker result for required acceptance cases.
+- **EVID-010** — MVCC evidence SHALL record process/connection roles, synchronization checkpoints, snapshot/commit sequence identifiers in test diagnostics, expected visible version, observed value, and pass/fail result.
+- **EVID-011** — Version-GC evidence SHALL record retained/reclaimable version counts or equivalent structural metric before reader end and after safe reclamation.
+- **EVID-012** — Concurrency evidence SHALL record maximum simultaneous readers reached and second-writer BUSY/timeout outcome.
+- **EVID-013** — Crash evidence SHALL distinguish crashes before and after durable commit publication for MVCC transactions and include index consistency result after recovery.
+## 48. Required Build Targets
+
+- **MAKE-01** — `make all` SHALL build all production executables.
+- **MAKE-02** — `make clean` SHALL remove compiled/generated/test artifacts.
+- **MAKE-03** — `make test` SHALL build and run full mandatory automated test suite.
+- **MAKE-04** — `make check` SHALL run test plus stricter project verification.
+- **MAKE-05** — `make test-unit` SHALL run unit tests.
+- **MAKE-06** — `make test-integration` SHALL run integration tests.
+- **MAKE-07** — `make test-crash` SHALL run crash-recovery tests.
+- **MAKE-08** — `make test-corruption` SHALL run corruption tests.
+- **MAKE-09** — `make test-gui` SHALL run GUI automation/state tests under an X11 display supplied by the caller.
+- **MAKE-10** — `make fixtures` SHALL generate deterministic test fixtures.
+- **MAKE-11** — `make debug` SHALL build a diagnostics-enabled configuration.
+- **MAKE-12** — `make release` SHALL build optimized production executables.
+- **MAKE-13** — `make test-index` SHALL run B+ tree and composite-index mandatory suites.
+- **MAKE-14** — `make test-mvcc` SHALL run MVCC/concurrency deterministic suites.
+- **MAKE-15** — `make test-random` SHALL run mandatory randomized/model-based suites.
+- **MAKE-16** — `make test-sql` SHALL run SQL grammar/semantics/planner suites.
+## 49. Warning and Diagnostic Build Policy
+
+- **BUILD-001** — The Makefile SHALL request C17 explicitly.
+- **BUILD-002** — The project SHALL enable a substantial warning set in debug/check builds.
+- **BUILD-003** — Warnings originating from project source SHALL be resolved rather than globally suppressed without justification.
+- **BUILD-004** — Debug builds SHALL enable internal assertions/invariant checks.
+- **BUILD-005** — Release builds SHALL not depend on assertions for validating untrusted file/user input.
+- **BUILD-006** — Test hooks and deterministic crypto-randomness injection SHALL be disabled in ordinary release builds.
+## 50. Documentation Set Within the Submission
+
+The implementation submission itself MAY contain multiple documentation files even though this specification is distributed as one file.
+
+- **DOC-001** — README/build and usage guide.
+- **DOC-002** — Database binary format document.
+- **DOC-003** — WAL/recovery design document.
+- **DOC-004** — SQL grammar/semantics document.
+- **DOC-005** — Encryption format/nonce/KDF design document.
+- **DOC-006** — Testing guide listing suites and how to reproduce failures by seed.
+- **DOC-007** — Known implementation limits document or clearly marked README section.
+- **DOC-008** — No document SHALL claim a mandatory feature complete if its required tests are disabled or failing.
+- **DOC-009** — Database-format documentation SHALL include composite-index tuple encoding and MVCC version representation.
+- **DOC-010** — WAL/recovery documentation SHALL explain commit publication relative to MVCC visibility.
+- **DOC-011** — Testing guide SHALL include deterministic multi-process synchronization strategy for MVCC tests and requirement-to-test mapping for CIDX/MVCC identifiers.
+## 51. Definition of Done
+
+The task is complete only when every condition below is true. Partial implementation is not “done.”
+
+- [ ] **DOD-001** — All mandatory production executables build from source.
+- [ ] **DOD-002** — All mandatory features in this specification are implemented and wired.
+- [ ] **DOD-003** — No prohibited shortcut is used.
+- [ ] **DOD-004** — `make test` passes completely.
+- [ ] **DOD-005** — `make check` passes completely.
+- [ ] **DOD-006** — Unit, integration, SQL, randomized, crash, corruption, encryption, CLI, and GUI suites all pass.
+- [ ] **DOD-007** — Every mandatory command-level acceptance scenario passes.
+- [ ] **DOD-008** — Every mandatory manual acceptance checklist item is satisfiable.
+- [ ] **DOD-009** — B+ tree implementation demonstrably reaches and validates at least three levels.
+- [ ] **DOD-010** — Planner EXPLAIN demonstrates real index selection.
+- [ ] **DOD-011** — WAL crash tests prove atomic pre/post transaction outcomes.
+- [ ] **DOD-012** — Integrity checker detects all mandatory corruption fixtures.
+- [ ] **DOD-013** — At least one documented repair path and salvage-to-new-file path are demonstrated.
+- [ ] **DOD-014** — Encryption known-answer tests pass and tampering is detected.
+- [ ] **DOD-015** — Wrong password does not mutate database.
+- [ ] **DOD-016** — VACUUM and rekey interruption tests preserve a valid recoverable original/new state.
+- [ ] **DOD-017** — GUI runs as a native X11 application with custom-rendered controls.
+- [ ] **DOD-018** — All required GUI animations/effects are visibly implemented and state-tested.
+- [ ] **DOD-019** — GUI uses real engine state, not mocked data.
+- [ ] **DOD-020** — Chinese UTF-8 data survives storage/query/export/GUI workflows.
+- [ ] **DOD-021** — Required developer utilities are implemented in C17 and tested.
+- [ ] **DOD-022** — locscan reports authored line counts while excluding configured generated/binary outputs.
+- [ ] **DOD-023** — Documentation accurately describes actual format, SQL scope, limits, recovery, and build/test use.
+- [ ] **DOD-024** — No mandatory test remains skipped, expected-failing, or manually waived.
+- [ ] **DOD-025** — A clean rebuild and complete test run succeeds after removing all generated artifacts.
+- [ ] **DOD-026** — Composite indexes store true ordered tuple keys and pass the complete CIDX/CIDXT suites.
+- [ ] **DOD-027** — Planner demonstrates correct leftmost-prefix, equality-prefix-plus-range, incompatible non-leftmost, ORDER BY, and join behavior for composite indexes.
+- [ ] **DOD-028** — Composite UNIQUE NULL semantics and atomic violation rollback pass all mandatory tests.
+- [ ] **DOD-029** — MVCC snapshot isolation works with an old reader spanning writer commit and a new reader observing committed state.
+- [ ] **DOD-030** — At least eight separate reader processes coexist correctly with one writer in the mandatory concurrency scenario.
+- [ ] **DOD-031** — Indexed and composite-indexed historical key lookups return snapshot-correct rows before/after key-changing commits.
+- [ ] **DOD-032** — Historical versions/index entries are retained while needed and demonstrably reclaimed only after safe snapshot boundary advancement.
+- [ ] **DOD-033** — Second-writer exclusion, killed-reader cleanup, incompatible DDL/VACUUM/rekey policy, and savepoint MVCC behavior pass.
+- [ ] **DOD-034** — MVCC crash-before/crash-after durable commit tests converge with table and all indexes consistent.
+- [ ] **DOD-035** — `edb-check` detects every mandatory composite-index and MVCC corruption fixture without flagging healthy retained-history state.
+- [ ] **DOD-036** — Required CIDX-* and MVCC-* requirement-to-test mapping contains no behaviorally testable unmapped mandatory requirement.
+- [ ] **DOD-037** — Final evidence reports composite-index structural metrics and MVCC concurrency/reclamation metrics required by EVID-009 through EVID-013.
+## 52. Stop Conditions
+
+Implementation work SHALL continue until the Definition of Done is met or the submission explicitly reports a blocked/failed condition. The following are not valid reasons to declare completion:
+
+- **STOP-001** — The GUI looks complete while engine functionality is mocked or missing.
+- **STOP-002** — The happy path works but crash/corruption/recovery tests fail.
+- **STOP-003** — The CLI works but mandatory GUI operations are disconnected.
+- **STOP-004** — The GUI works but the CLI or C API uses different persistence logic.
+- **STOP-005** — Small fixtures pass but B+ tree split/merge/overflow tests fail.
+- **STOP-006** — Queries return correct results only because all predicates use full scans where an index is required by the specification.
+- **STOP-007** — Encryption round trip works but known-answer/authentication/tamper tests fail.
+- **STOP-008** — A database can be reopened only after clean shutdown but not after required crash scenarios.
+- **STOP-009** — Integrity checker reports damage but cannot satisfy required repair/salvage scenarios.
+- **STOP-010** — Some required tests are commented out, skipped, filtered, or removed.
+- **STOP-011** — Generated screenshots are presented as evidence for controls that are not behaviorally wired.
+- **STOP-012** — Documentation says a mandatory item is future work.
+- **STOP-013** — Build succeeds only when stale object/generated files are already present.
+- **STOP-014** — Composite index syntax exists but execution stores/uses only one indexed component.
+- **STOP-015** — Composite index queries return correct rows only by full scan while EXPLAIN falsely claims a tuple seek.
+- **STOP-016** — MVCC is claimed but required readers are blocked for the writer's whole transaction or see changing committed state inside one explicit snapshot.
+- **STOP-017** — Old row/index versions are destroyed before active snapshots release them.
+- **STOP-018** — MVCC basic reads pass but key-changing indexed/composite-indexed historical lookups fail.
+- **STOP-019** — Version reclamation is unimplemented, permanently leaks all historical versions, or reclaims them without active-snapshot safety.
+- **STOP-020** — Concurrency tests depend only on sleeps or one-process mocks and cannot demonstrate the specified interleavings.
+## 53. Completion Report Requirements
+
+- **REPORT-001** — List final executables and their purposes.
+- **REPORT-002** — List supported SQL statements/features.
+- **REPORT-003** — List database format version.
+- **REPORT-004** — List all automated test suites and pass counts.
+- **REPORT-005** — List crash injection point count and pass count.
+- **REPORT-006** — List corruption fixture count and detection/repair/salvage results.
+- **REPORT-007** — List encryption known-answer test families.
+- **REPORT-008** — List GUI automated checks and screenshot checkpoint names.
+- **REPORT-009** — Provide locscan totals by production source, headers, tests, docs, and config/fixture definitions.
+- **REPORT-010** — Explicitly disclose any mandatory requirement not satisfied; if any exists, the report SHALL state that the task is incomplete.
+- **REPORT-011** — Report composite-index maximum supported column count, serialized key limit, tree depth reached in tests, and planner acceptance cases passed.
+- **REPORT-012** — Report MVCC isolation model, maximum simultaneous reader processes tested, second-writer policy, and total deterministic MVCC interleavings passed.
+- **REPORT-013** — Report historical-version retention/reclamation metrics from the mandatory version-GC scenario.
+- **REPORT-014** — Report CIDX/MVCC requirement-to-test mapping completeness and any unmapped item as incomplete.
+## 54. Suggested Acceptance Dataset
+
+The following logical dataset SHALL be included in deterministic fixtures because it exercises text, indexing, joins, dates-as-text, priorities, NULL, and larger content without making the database product-specific.
+
+- **DATA-001** — A `tasks` table SHALL include at minimum integer primary key, UTF-8 title, optional UTF-8 description, category, priority integer, deadline text or integer representation, completion state, created timestamp representation, and optional metadata/blob field.
+- **DATA-002** — Fixture tasks SHALL include priorities 1 through 5, repeated categories, NULL deadlines, past/future deadlines, Chinese titles/descriptions, empty descriptions, and long descriptions.
+- **DATA-003** — A related `categories` or `owners` table SHALL provide join coverage.
+- **DATA-004** — Indexes SHALL include at least one unique index and indexes suitable for priority/category/deadline query demonstrations.
+- **DATA-005** — This fixture exists for validation only; the database engine SHALL remain generic and SHALL NOT hard-code Todo-specific schema behavior.
+- **DATA-006** — Fixture schema SHALL include composite nonunique index `(category, priority, deadline)` or logically equivalent three-column data capable of testing prefix/range behavior.
+- **DATA-007** — Fixture schema SHALL include at least one two-column composite UNIQUE index with deterministic NULL-containing cases.
+- **DATA-008** — Fixture workloads SHALL include updates that change the first, middle, and final composite-index components.
+- **DATA-009** — Fixture workloads SHALL include deterministic MVCC old/new versions for ASCII and Chinese TEXT values and indexed-key changes.
+## 55. Final Release Gate Checklist
+
+- [ ] **RG-01** — **Clean Source Gate:** Fresh clean tree builds all executables.
+- [ ] **RG-02** — **Core Storage Gate:** Pager, records, allocator, B+ trees, catalog pass mandatory tests.
+- [ ] **RG-03** — **SQL Gate:** Parser, planner, executor and SQL semantics pass mandatory SQL tests.
+- [ ] **RG-04** — **Transaction Gate:** Commit/rollback/savepoint/statement atomicity tests pass.
+- [ ] **RG-05** — **Durability Gate:** All mandatory crash injection tests pass.
+- [ ] **RG-06** — **Integrity Gate:** All corruption detection fixtures are correctly diagnosed.
+- [ ] **RG-07** — **Recovery Gate:** Required repair and salvage scenarios pass.
+- [ ] **RG-08** — **Crypto Gate:** Known-answer, wrong-password, tamper, reopen and rekey tests pass.
+- [ ] **RG-09** — **CLI Gate:** Interactive/batch/output/import/export/dump/check workflows pass.
+- [ ] **RG-10** — **GUI Functional Gate:** Mandatory database operations are functional through GUI.
+- [ ] **RG-11** — **GUI Visual State Gate:** Required hover/ripple/glow/capsule/modal/frosted effects are present and tested.
+- [ ] **RG-12** — **Unicode Gate:** Required Chinese/UTF-8 scenarios pass.
+- [ ] **RG-13** — **Scale Gate:** 100k-row/index/result virtualization floors are satisfied functionally.
+- [ ] **RG-14** — **Tooling Gate:** locscan, fixture, checker and crash runner are implemented and tested.
+- [ ] **RG-15** — **Documentation Gate:** Format, SQL, recovery, encryption, testing, limits and usage docs match implementation.
+- [ ] **RG-16** — **No-Shortcut Gate:** Review finds none of the prohibited substitutions.
+- [ ] **RG-17** — **Final Test Gate:** `make test` and `make check` both pass after clean rebuild.
+- [ ] **RG-18** — **Composite Index Gate:** True tuple-key storage, split/merge, UNIQUE/NULL, prefix/range planner, ORDER BY/join, crash, rebuild, VACUUM/rekey cases all pass.
+- [ ] **RG-19** — **MVCC Isolation Gate:** Stable old reader/new reader visibility, no dirty reads, own writes, rollback/savepoint, insert/delete phantom stability, and indexed historical lookups all pass.
+- [ ] **RG-20** — **MVCC Concurrency Gate:** Eight-reader-plus-writer process test, second-writer exclusion, killed-reader cleanup, and DDL/maintenance snapshot-safety cases all pass.
+- [ ] **RG-21** — **MVCC Reclamation Gate:** Historical versions are retained while needed and safely reclaimed after oldest-snapshot advancement with structural evidence.
+- [ ] **RG-22** — **Composite/MVCC Corruption Gate:** All added CT-025 through CT-035 fixtures are diagnosed and healthy historical states pass checker.
+- [ ] **RG-23** — **Requirement Mapping Gate:** Every mandatory CIDX-* and MVCC-* requirement is covered as required by TCOMP-002.
+
+**End of specification.**
