@@ -24,9 +24,31 @@ env:
 jobs:
   count:
     runs-on: ubuntu-latest
+    outputs:
+      specs: ${{ steps.discover.outputs.specs }}
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
+
+      - name: Discover spec folders
+        id: discover
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          specs_json="$(
+            find specs -mindepth 1 -maxdepth 1 -type d -printf '%f\n' \
+              | sort \
+              | jq -R -s -c 'split("\n") | map(select(length > 0))'
+          )"
+
+          if [[ "$specs_json" == "[]" ]]; then
+            echo "No spec directories found under specs/." >&2
+            exit 1
+          fi
+
+          echo "specs=$specs_json" >> "$GITHUB_OUTPUT"
+          echo "Discovered spec folders: $specs_json"
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
@@ -98,6 +120,17 @@ jobs:
             echo '```text'
             cat spec-token-counts.txt
             echo '```'
+            echo
+            echo "## Per-spec package artifacts"
+            echo
+            echo "Each directory under \`specs/\` is uploaded as its own GitHub Actions artifact."
+            echo "Downloading an artifact named \`<spec-name>\` produces \`<spec-name>.zip\`."
+            echo
+            for folder in specs/*/; do
+              [[ -d "$folder" ]] || continue
+              name="$(basename "$folder")"
+              echo "- \`${name}.zip\`"
+            done
           } >> "$GITHUB_STEP_SUMMARY"
 
       - name: Upload token-count report
@@ -106,4 +139,43 @@ jobs:
           name: spec-token-counts-${{ inputs.token_encoding }}-${{ github.run_number }}
           path: spec-token-counts.txt
           if-no-files-found: error
+          retention-days: 30
+
+  package-specs:
+    name: Package ${{ matrix.spec }}
+    needs: count
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        spec: ${{ fromJSON(needs.count.outputs.specs) }}
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Stage spec package
+        shell: bash
+        env:
+          SPEC: ${{ matrix.spec }}
+        run: |
+          set -euo pipefail
+
+          src="specs/${SPEC}"
+          [[ -d "$src" ]] || {
+            echo "Spec directory not found: $src" >&2
+            exit 1
+          }
+
+          package_root="$RUNNER_TEMP/spec-package"
+          rm -rf "$package_root"
+          mkdir -p "$package_root"
+          cp -a "$src" "$package_root/"
+
+      - name: Upload spec package
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.spec }}
+          path: ${{ runner.temp }}/spec-package/
+          if-no-files-found: error
+          include-hidden-files: true
           retention-days: 30
