@@ -11,9 +11,12 @@ Current archive: **6 logical specifications**, represented by **10 specification
 | ChatGPT Chat | GPT-5.6 Sol | High | Plus |
 | ChatGPT Work | GPT-5.6 Sol | Max | Plus |
 | Grok Web | Grok 4.5 | Fast | Free (recorded runs) |
+| [Tencent WorkBuddy](platforms/workbuddy.md) | Hy3 / selectable models | Agentic desktop; model-dependent | Run-specific |
 
 > [!NOTE]
 > Recorded runs use end-user product surfaces rather than a stateless API harness. ChatGPT runs in this archive use ChatGPT Plus, while the currently recorded Grok runs used the free Grok web surface. These environments are not fully controlled or observable and may carry product- or account-level state such as prior conversation context, memory/personalization when available and enabled, UI orchestration, model routing, tool availability, and hidden system/developer instructions. Exact behavior differs by product and may change over time. No user-installed custom skills were added to the recorded ChatGPT runs unless a run states otherwise. Results should therefore be treated as observations of the named product surfaces, not as perfectly reproducible API benchmarks.
+>
+> WorkBuddy is a newer, less familiar execution surface whose behavior depends on more than the selected foundation model. See the detailed [Tencent WorkBuddy platform profile](platforms/workbuddy.md) for its architecture, Hy3, model selection, permissions, Skills/MCP/Connectors, memory, privacy, enterprise/runtime model, benchmark implications, and comparisons with Antigravity, Codex, Claude Code, Grok Build, and Pi.
 
 Run-specific timing, usage, implementation statistics, validation evidence, and review notes are kept with each run rather than normalized across products.
 
