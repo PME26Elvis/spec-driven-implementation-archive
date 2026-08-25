@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "keyboard_mapping": [
+    {"position":0,"scan_code":44,"extended":false},
+    {"position":1,"scan_code":31,"extended":false},
+    {"position":2,"scan_code":45,"extended":false},
+    {"position":3,"scan_code":32,"extended":false},
+    {"position":4,"scan_code":46,"extended":false},
+    {"position":5,"scan_code":47,"extended":false},
+    {"position":6,"scan_code":34,"extended":false},
+    {"position":7,"scan_code":48,"extended":false},
+    {"position":8,"scan_code":35,"extended":false},
+    {"position":9,"scan_code":49,"extended":false},
+    {"position":10,"scan_code":36,"extended":false},
+    {"position":11,"scan_code":50,"extended":false},
+    {"position":12,"scan_code":16,"extended":false},
+    {"position":13,"scan_code":3,"extended":false},
+    {"position":14,"scan_code":17,"extended":false},
+    {"position":15,"scan_code":4,"extended":false},
+    {"position":16,"scan_code":18,"extended":false},
+    {"position":17,"scan_code":19,"extended":false},
+    {"position":18,"scan_code":6,"extended":false},
+    {"position":19,"scan_code":20,"extended":false},
+    {"position":20,"scan_code":7,"extended":false},
+    {"position":21,"scan_code":21,"extended":false},
+    {"position":22,"scan_code":8,"extended":false},
+    {"position":23,"scan_code":22,"extended":false}
+  ]
+}
