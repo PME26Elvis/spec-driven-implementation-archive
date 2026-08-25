@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "duration_ms": 1800,
+  "events": [
+    {"time_ms":0,"type":"transpose","value":2},
+    {"time_ms":0,"type":"release","value":"long"},
+    {"time_ms":0,"type":"sustain","value":true},
+    {"time_ms":0,"type":"note_on","id":"n1","position":0},
+    {"time_ms":300,"type":"note_off","id":"n1"},
+    {"time_ms":900,"type":"sustain","value":false}
+  ]
+}

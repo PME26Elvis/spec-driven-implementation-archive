@@ -1,0 +1,23 @@
+schema_version: 1
+include_extensions:
+  - ".c"
+  - ".h"
+  - ".md"
+  - ".txt"
+  - ".json"
+  - ".yaml"
+exclude_patterns:
+  - "vendor/**"
+  - "scratch/**"
+generated_patterns:
+  - "src/autogen/**"
+categories:
+  production_source:
+    - "src/**"
+    - "include/**"
+  test_source:
+    - "tests/**"
+  documentation:
+    - "docs/**"
+  config_spec:
+    - "config/**"

@@ -1,0 +1,59 @@
+{
+  "name": "handmade_piano_specification_driven_task_pack",
+  "version": "1.0",
+  "status": "scope-frozen-final-audited",
+  "target": "native x64 Windows 10 22H2 or later",
+  "normative_documents": [
+    "ACCEPTANCE_CHECKLIST.md",
+    "AUDIO_ENGINE.md",
+    "CHORD_RECOGNITION.md",
+    "CLI_HEADLESS_SPEC.md",
+    "DATA_FORMATS.md",
+    "DELIVERY_AND_DOD.md",
+    "DEV_TOOLS.md",
+    "DPI_SCALING.md",
+    "ENGINEERING_CONSTRAINTS.md",
+    "ERROR_HANDLING_MATRIX.md",
+    "PRODUCT_REQUIREMENTS.md",
+    "README.md",
+    "REFERENCE_FIXTURES.md",
+    "SCOPE_FREEZE.md",
+    "SETTINGS_AND_RECORDING.md",
+    "STATE_MODEL.md",
+    "TESTING_AND_ACCEPTANCE.md",
+    "TRACEABILITY_MATRIX.md",
+    "UI_UX_SPEC.md"
+  ],
+  "informative_documents": [
+    "CHANGELOG.md",
+    "DOC_LINE_COUNT.md"
+  ],
+  "fixtures": [
+    {
+      "path": "fixtures/default_settings.json",
+      "sha256": "f05777e9985a18e9081c055861f6be594b7f4ea34595820e7f464ef594d7137a",
+      "bytes": 1311
+    },
+    {
+      "path": "fixtures/locscan_equiv.json",
+      "sha256": "83bb10254168bf9e734e53f06f9ab3687708f76e81f4c152cc06ea27cc66bd63",
+      "bytes": 366
+    },
+    {
+      "path": "fixtures/locscan_equiv.yaml",
+      "sha256": "e2513d2e2770d653fbdfab044fbc197e39b9764119d07916abdf3c9e001e0879",
+      "bytes": 358
+    },
+    {
+      "path": "fixtures/render_c_major.json",
+      "sha256": "e95d28c32a6bd3f0d316f68635017f6f5e814b4e4704dc531474927294861fc9",
+      "bytes": 385
+    },
+    {
+      "path": "fixtures/render_transpose_sustain.json",
+      "sha256": "9ad68cfdff88ee5dd433f01950e50821ace1a96714a042726d9b2557308a44ab",
+      "bytes": 375
+    }
+  ],
+  "documentation_lines": 4674
+}

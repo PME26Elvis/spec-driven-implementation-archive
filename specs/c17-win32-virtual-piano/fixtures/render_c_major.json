@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "duration_ms": 1200,
+  "events": [
+    {"time_ms":0,"type":"note_on","id":"c","position":0},
+    {"time_ms":0,"type":"note_on","id":"e","position":4},
+    {"time_ms":0,"type":"note_on","id":"g","position":7},
+    {"time_ms":600,"type":"note_off","id":"c"},
+    {"time_ms":600,"type":"note_off","id":"e"},
+    {"time_ms":600,"type":"note_off","id":"g"}
+  ]
+}
