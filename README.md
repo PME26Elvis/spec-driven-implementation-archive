@@ -36,10 +36,10 @@ Equivalent X11 and Win32 task packs are grouped below as one logical specificati
 | Analog Clock Workbench | [X11](specs/c17-x11-clock-workbench) / [Win32](specs/c17-win32-clock-workbench) | X11: 39,557 · Win32: 47,431 | Interactive C17 analog clock workbench with hand-built rendering, analog/digital time interaction, playback controls, configuration, undo/redo, and deterministic verification requirements. |
 | CVC | [POSIX](specs/c17-posix-cvc) / [Win32](specs/c17-win32-cvc) | POSIX: 26,721 · Win32: 35,695 | Local C17 version-control system with content-addressed storage, commits, branches, restore-through-new-commit semantics, diff, merge-base and three-way merge, conflict handling, recovery-safe writes, and repository verification. |
 | TableTool | [Portable C17](specs/c17-tabletool) | 31,399 | Pure CLI typed table-management tool with structured tabular I/O, scriptable transformations, deterministic sorting and filtering, URL semantics, barcode support, validation, and file-based outputs. |
-| Elevator Group Control Simulator | [Portable C17](specs/c17-elevator-group-control) | 1,656,104 | Deterministic multi-elevator group-control simulator with scenario files, passenger traces, multiple dispatch strategies, discrete-time kinematics, capacity and door timing, metrics, replay, and fixed acceptance fixtures. |
+| Elevator Group Control Simulator | [Portable C17](specs/c17-elevator-group-control) | 52,744 | Deterministic multi-elevator group-control simulator with scenario files, passenger traces, multiple dispatch strategies, discrete-time kinematics, capacity and door timing, metrics, replay, and fixed acceptance fixtures. |
 
 > [!NOTE]
-> Spec token estimates come from the **Count spec tokens** workflow using Repomix with the `o200k_base` encoding. The latest completed count (workflow run 5, 2026-08-30) covers all 17 specification directories and totals **2,858,406 tokens**. Token counts are estimates of checked-in specification artifacts, not model inference usage.
+> Spec token estimates come from the **Count spec tokens** workflow using Repomix with the `o200k_base` encoding. The latest completed count (workflow run 6, 2026-08-30) covers all 17 specification directories and totals **1,255,046 tokens**. When a spec contains large data-only fixture corpora, a reviewed override under [`analysis/repomix/specs/`](analysis/repomix/specs/) may exclude those corpora while retaining normative specification documents; the policy and rationale are documented in [`analysis/repomix/README.md`](analysis/repomix/README.md). Token counts are estimates of authored specification artifacts, not model inference usage.
 
 ## Recorded runs
 
@@ -52,4 +52,18 @@ Equivalent X11 and Win32 task packs are grouped below as one logical specificati
 | Pinball Sandbox (Win32) | [2026-08-17-hy3-192k-workbuddy-default](runs/c17-win32-pinball-benchmark/2026-08-17-hy3-192k-workbuddy-default) | Tencent WorkBuddy · Hy3 · High | 114,644 | Default-style code-development run using the time-limited free Hy3 access; no manual experts, skills, or connectors enabled. The submitted project reports all automated/headless gates passing while live-GUI gates remain NOT RUN. |
 
 > [!NOTE]
-> Repomix token estimates measure only the implementation artifacts included in each recorded run snapshot and selected by that run's Repomix counting rules. They do not include conversational output unless it was explicitly saved into the project, and they cannot include platform-hidden reasoning/thoughts, hidden internal context, or other non-exported model activity. Treat these figures as estimates of implementation-artifact size, not as total inference token consumption, total product usage, or cost.
+> The table above preserves each run's **historical run-specific Repomix measurement** and counting rules. It does not retroactively rewrite those observations. They measure only implementation artifacts selected by the original run's rules and do not include conversational output unless explicitly saved into the project, platform-hidden reasoning/thoughts, hidden internal context, or other non-exported model activity.
+
+### Normalized implementer-authored corpus
+
+For cross-run implementation-size comparisons, the archive now also maintains a separate normalized metric using a **reviewed per-run Repomix config**. Each config lives under the run's `analysis/repomix/` directory rather than inside the archived `project/`, so analysis metadata does not alter or masquerade as part of the submitted implementation. See [`analysis/repomix/README.md`](analysis/repomix/README.md) for the policy.
+
+| Recorded run | Authored files | Authored tokens (`o200k_base`) |
+| --- | ---: | ---: |
+| Markdown Editor (X11) · GPT-5.6 Sol Max | 42 | 231,852 |
+| DARC v0.1.0 · Grok 4.5 Fast | 36 | 49,326 |
+| 2D Physics Sandbox (X11) · Grok 4.5 Fast | 76 | 59,873 |
+| Embedded Database Engine (X11) · Grok 4.5 Fast | 76 | 113,373 |
+| Pinball Sandbox (Win32) · WorkBuddy Hy3 | 53 | 112,534 |
+
+These normalized measurements were validated by **Count authored run tokens** workflow run 1 on 2026-08-30. They exclude only snapshot-reviewed non-authored material such as compiled outputs, generated evidence/reports, logs/traces, and mechanically expanded data corpora; the exact exclusions and rationale are stored beside each recorded run.
