@@ -1,0 +1,4 @@
+LOAD "acceptance/fixtures/notes.csv" FORMAT CSV HEADER YES
+TYPE "id" INTEGER
+FIND "資料" IN ("title", "notes") MODE SENSITIVE WRITE "find_actual.csv" FORMAT CSV
+WRITE "notes_after_find_actual.csv" FORMAT CSV HEADER YES

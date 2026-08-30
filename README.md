@@ -2,7 +2,7 @@
 
 An archive of fixed, specification-driven software implementation tasks and their implementation runs, intended for manual comparison across execution surfaces and model configurations.
 
-Current archive: **6 logical specifications**, represented by **10 specification directories**, with **4 recorded implementation runs**.
+Current archive: **11 logical specifications**, represented by **17 specification directories**, with **4 recorded implementation runs**.
 
 ## Execution environment
 
@@ -32,9 +32,14 @@ Equivalent X11 and Win32 task packs are grouped below as one logical specificati
 | Sudoku | [X11](specs/c17-x11-sudoku) / [Win32](specs/c17-win32-sudoku) | X11: 67,016 · Win32: 75,059 | Modern 9×9 Sudoku desktop application with a hand-built UI, gameplay assistance, persistence, statistics, automated tests, and strict release gates. |
 | Embedded Database Engine | [X11 / Linux](specs/c17-x11-embedded-database-engine) | 36,870 | Self-contained C17 relational database engine and native X11 workbench with page-oriented persistence, B+ tree and composite indexes, SQL execution, snapshot-isolation MVCC, WAL/recovery, authenticated encryption, integrity checking, salvage, CLI/GUI front ends, and strict release gates. |
 | DARC v0.1.0 | [Linux/POSIX](specs/c17-darc-v0.1.0) | 34,641 | Headless C17 deterministic deduplicating archive with content-defined chunking, chunk-level deduplication, self-implemented compression, cryptographic IDs, Merkle integrity, snapshots/diff/restore, JSON/YAML configuration, GC, repository verification, crash-safe publication, corruption detection/recovery, and strict release gates. |
+| Virtual Piano | [Win32](specs/c17-win32-virtual-piano) | — | Native C17 virtual piano with a hand-built software-rendered UI, polyphonic synthesis, customizable keyboard mapping, chord recognition, WAV recording, a headless companion, DPI scaling, and deterministic acceptance requirements. |
+| Analog Clock Workbench | [X11](specs/c17-x11-clock-workbench) / [Win32](specs/c17-win32-clock-workbench) | — | Interactive C17 analog clock workbench with hand-built rendering, analog/digital time interaction, playback controls, configuration, undo/redo, and deterministic verification requirements. |
+| CVC | [POSIX](specs/c17-posix-cvc) / [Win32](specs/c17-win32-cvc) | — | Local C17 version-control system with content-addressed storage, commits, branches, restore-through-new-commit semantics, diff, merge-base and three-way merge, conflict handling, recovery-safe writes, and repository verification. |
+| TableTool | [Portable C17](specs/c17-tabletool) | — | Pure CLI typed table-management tool with structured tabular I/O, scriptable transformations, deterministic sorting and filtering, URL semantics, barcode support, validation, and file-based outputs. |
+| Elevator Group Control Simulator | [Portable C17](specs/c17-elevator-group-control) | — | Deterministic multi-elevator group-control simulator with scenario files, passenger traces, multiple dispatch strategies, discrete-time kinematics, capacity and door timing, metrics, replay, and fixed acceptance fixtures. |
 
 > [!NOTE]
-> Spec token estimates come from the **Count spec tokens** workflow using Repomix with the `o200k_base` encoding. The most recent recorded count shown above predates the Embedded Database Engine addition and covered the previous nine specification directories, totaling **949,331 tokens**. The new specification and overall total should be refreshed on the next token-count workflow run. Token counts are estimates of checked-in specification artifacts, not model inference usage.
+> Spec token estimates come from the **Count spec tokens** workflow using Repomix with the `o200k_base` encoding. Rows marked `—` have not yet had a token count recorded in this README. Run the workflow after specification additions to refresh those values. Token counts are estimates of checked-in specification artifacts, not model inference usage.
 
 ## Recorded runs
 

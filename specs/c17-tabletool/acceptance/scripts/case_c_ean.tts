@@ -1,0 +1,4 @@
+LOAD "acceptance/fixtures/ean.csv" FORMAT CSV HEADER YES
+TYPE "ean" EAN13
+WRITE "ean_actual.csv" FORMAT CSV HEADER YES
+BARCODE-SHEET "ean" WRITE "ean_actual.svg" MODULE 2 HEIGHT 80 GAP 20 TEXT YES

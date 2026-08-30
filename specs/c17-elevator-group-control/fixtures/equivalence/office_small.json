@@ -1,0 +1,120 @@
+{
+  "schema_version": "1.0",
+  "scenario": {
+    "name": "小型辦公室等價測試",
+    "seed": 42
+  },
+  "building": {
+    "floors": 12,
+    "floor_height_m": 3.6,
+    "lobby_floor": 1
+  },
+  "elevators": [
+    {
+      "id": "E1",
+      "capacity_persons": 8,
+      "max_speed_mps": 2.5,
+      "acceleration_mps2": 1.0,
+      "deceleration_mps2": 1.0,
+      "door_open_ms": 900,
+      "door_close_ms": 900,
+      "door_min_dwell_ms": 1200,
+      "boarding_ms_per_person": 600,
+      "alighting_ms_per_person": 500,
+      "boarding_lanes": 2,
+      "alighting_lanes": 2,
+      "initial_floor": 1,
+      "service_min_floor": 1,
+      "service_max_floor": 12
+    },
+    {
+      "id": "E2",
+      "capacity_persons": 8,
+      "max_speed_mps": 2.5,
+      "acceleration_mps2": 1.0,
+      "deceleration_mps2": 1.0,
+      "door_open_ms": 900,
+      "door_close_ms": 900,
+      "door_min_dwell_ms": 1200,
+      "boarding_ms_per_person": 600,
+      "alighting_ms_per_person": 500,
+      "boarding_lanes": 2,
+      "alighting_lanes": 2,
+      "initial_floor": 6,
+      "service_min_floor": 1,
+      "service_max_floor": 12
+    }
+  ],
+  "simulation": {
+    "duration_s": 1800,
+    "tick_ms": 100,
+    "end_mode": "drain",
+    "max_drain_s": 1800,
+    "deadlock_window_s": 300,
+    "starvation_threshold_s": 120
+  },
+  "traffic": {
+    "mode": "generated",
+    "segments": [
+      {
+        "id": "早高峰",
+        "start_s": 0,
+        "end_s": 1800,
+        "profile": "up_peak",
+        "rate_per_minute": 6.0,
+        "params": {
+          "lobby_origin_probability": 0.9
+        }
+      }
+    ],
+    "allow_overlap": false
+  },
+  "algorithms": {
+    "default_compare": [
+      "nearest_car",
+      "directional_collective",
+      "scan_look",
+      "eta_cost",
+      "zoning",
+      "adaptive_peak",
+      "destination_control"
+    ],
+    "nearest_car": {},
+    "directional_collective": {},
+    "scan_look": {},
+    "eta_cost": {},
+    "zoning": {},
+    "adaptive_peak": {},
+    "destination_control": {}
+  },
+  "metrics": {
+    "sla_wait_s": 60,
+    "histogram_bucket_s": 10,
+    "histogram_max_s": 300,
+    "percentiles": [
+      50,
+      90,
+      95,
+      99
+    ],
+    "energy": {
+      "move_per_meter": 1.0,
+      "startup": 4.0,
+      "door_cycle": 2.0,
+      "direction_reversal": 3.0,
+      "idle_per_second": 0.01,
+      "load_meter_factor": 0.02
+    }
+  },
+  "output": {
+    "event_log": true,
+    "passenger_csv": true,
+    "elevator_csv": true,
+    "summary_json": true,
+    "summary_txt": true,
+    "histogram_txt": true,
+    "comparison_csv": true,
+    "line_ending": "lf",
+    "sample_interval_s": 1
+  }
+}

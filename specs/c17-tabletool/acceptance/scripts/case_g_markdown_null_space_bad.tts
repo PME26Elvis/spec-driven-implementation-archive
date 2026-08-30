@@ -1,0 +1,2 @@
+LOAD "acceptance/fixtures/markdown_types.md" FORMAT MARKDOWN NULL-TOKEN " NULL "
+WRITE "must_not_exist_g.csv" FORMAT CSV HEADER YES NULL-TOKEN "NULL"

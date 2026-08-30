@@ -1,0 +1,6 @@
+passenger_id,arrival_us,origin_floor,destination_floor,segment_id
+1,0,1,10,cutoff
+2,0,1,10,cutoff
+3,0,1,10,cutoff
+4,0,1,10,cutoff
+5,0,1,10,cutoff

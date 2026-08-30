@@ -1,0 +1,40 @@
+include_extensions:
+  - .c
+  - .h
+  - .md
+  - .json
+  - .yaml
+  - .yml
+include_names:
+  - Makefile
+documentation_extensions:
+  - .md
+exclude_extensions:
+  - .o
+  - .a
+  - .so
+  - .png
+  - .jpg
+  - .ppm
+  - .log
+exclude_paths: []
+exclude_names:
+  - core
+  - core.dump
+binary_detection: true
+max_file_bytes: 8388608
+follow_symlinks: false
+use_default_exclusions: true
+categories:
+  source:
+    - .c
+    - .h
+  documentation:
+    - .md
+  config:
+    - .json
+    - .yaml
+    - .yml
+category_names:
+  source:
+    - Makefile

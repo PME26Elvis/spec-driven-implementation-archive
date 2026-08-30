@@ -1,0 +1,54 @@
+{
+  "version": 1,
+  "window": {
+    "width": 1100,
+    "height": 760,
+    "ui_scale": 1.0,
+    "remember_geometry": true
+  },
+  "clock": {
+    "reset_time": "10:10:30",
+    "second_hand": "smooth",
+    "drag_snap": "off",
+    "snap_seconds": 1,
+    "snap_minutes": 1,
+    "snap_hours": 1,
+    "face_style": "minimal"
+  },
+  "playback": {
+    "default_rate": 1.0,
+    "initially_playing": false,
+    "large_gap_clamp_seconds": 5.0
+  },
+  "display": {
+    "hour_mode": 24,
+    "accent_hue": 210,
+    "show_all_hour_numbers": false,
+    "show_status_strip": true
+  },
+  "animation": {
+    "enabled": true,
+    "speed_multiplier": 1.0,
+    "hover_ms": 140,
+    "ripple_ms": 420,
+    "capsule_ms": 240,
+    "toggle_ms": 180,
+    "modal_open_ms": 280,
+    "modal_close_ms": 220,
+    "page_ms": 240
+  },
+  "effects": {
+    "modal_blur_radius": 12,
+    "nav_blur_radius": 10,
+    "shadow_strength": 0.35,
+    "glow_strength": 0.5,
+    "frost_scroll_range": 120
+  },
+  "persistence": {
+    "save_on_exit": true,
+    "remember_time": true,
+    "remember_rate": true,
+    "remember_play_pause": false,
+    "state_file": "clock-state.json"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "name": "Analog Clock Workbench",
+  "version": "1.0.1",
+  "language": "C17",
+  "platform": "Linux/X11",
+  "projects": ["dev_tools", "clock_workbench"],
+  "required_release_gates": 25
+}

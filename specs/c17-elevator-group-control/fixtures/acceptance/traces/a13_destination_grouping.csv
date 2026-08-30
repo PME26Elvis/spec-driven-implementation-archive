@@ -1,0 +1,7 @@
+passenger_id,arrival_us,origin_floor,destination_floor,segment_id
+1,0,1,3,cluster
+2,0,1,4,cluster
+3,0,1,5,cluster
+4,0,1,15,cluster
+5,0,1,16,cluster
+6,0,1,17,cluster

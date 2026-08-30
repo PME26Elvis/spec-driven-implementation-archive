@@ -1,0 +1,14 @@
+{
+  "format_version": 1,
+  "save": {
+    "show_diffstat": true
+  },
+  "tracking": {
+    "include": ["**"],
+    "exclude": ["build/**", "**/*.log"]
+  },
+  "diffstat": {
+    "include": ["src/**", "docs/**"],
+    "exclude": ["docs/generated/**"]
+  }
+}

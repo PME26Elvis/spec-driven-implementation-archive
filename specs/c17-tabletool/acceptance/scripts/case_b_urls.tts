@@ -1,0 +1,4 @@
+LOAD "acceptance/fixtures/urls.csv" FORMAT CSV HEADER YES
+TYPE "id" INTEGER
+TYPE "url" URL
+WRITE "urls_actual.csv" FORMAT CSV HEADER YES

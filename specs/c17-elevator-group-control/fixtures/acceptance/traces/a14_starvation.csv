@@ -1,0 +1,7 @@
+passenger_id,arrival_us,origin_floor,destination_floor,segment_id
+1,0,1,20,burden
+2,1000000,10,1,old_waiter
+3,3000000,18,1,newer
+4,5000000,17,1,newer
+5,7000000,16,1,newer
+6,9000000,15,1,newer
