@@ -15,13 +15,16 @@ on:
           - physics-sandbox
           - embedded-database
           - pinball-win32-workbuddy
+  pull_request:
+    paths:
+      - .github/workflows/run-builds.yml
 
 permissions:
   contents: read
 
 jobs:
   markdown:
-    if: ${{ inputs.run == 'all' || inputs.run == 'markdown' }}
+    if: ${{ github.event_name == 'pull_request' || inputs.run == 'all' || inputs.run == 'markdown' }}
     name: Markdown Editor (X11)
     runs-on: ubuntu-latest
     timeout-minutes: 20
@@ -46,7 +49,7 @@ jobs:
           make all
 
   darc:
-    if: ${{ inputs.run == 'all' || inputs.run == 'darc' }}
+    if: ${{ github.event_name == 'pull_request' || inputs.run == 'all' || inputs.run == 'darc' }}
     name: DARC v0.1.0
     runs-on: ubuntu-latest
     timeout-minutes: 20
@@ -68,7 +71,7 @@ jobs:
           make all
 
   physics-sandbox:
-    if: ${{ inputs.run == 'all' || inputs.run == 'physics-sandbox' }}
+    if: ${{ github.event_name == 'pull_request' || inputs.run == 'all' || inputs.run == 'physics-sandbox' }}
     name: 2D Physics Sandbox (X11)
     runs-on: ubuntu-latest
     timeout-minutes: 20
@@ -90,7 +93,7 @@ jobs:
           make all
 
   embedded-database:
-    if: ${{ inputs.run == 'all' || inputs.run == 'embedded-database' }}
+    if: ${{ github.event_name == 'pull_request' || inputs.run == 'all' || inputs.run == 'embedded-database' }}
     name: Embedded Database Engine (X11)
     runs-on: ubuntu-latest
     timeout-minutes: 20
@@ -112,7 +115,7 @@ jobs:
           make all
 
   pinball-win32-workbuddy:
-    if: ${{ inputs.run == 'all' || inputs.run == 'pinball-win32-workbuddy' }}
+    if: ${{ github.event_name == 'pull_request' || inputs.run == 'all' || inputs.run == 'pinball-win32-workbuddy' }}
     name: Pinball Sandbox (Win32 · WorkBuddy Hy3)
     runs-on: windows-latest
     timeout-minutes: 30
