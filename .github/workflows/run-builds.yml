@@ -13,6 +13,8 @@ on:
           - markdown
           - darc
           - physics-sandbox
+          - embedded-database
+          - pinball-win32-workbuddy
 
 permissions:
   contents: read
@@ -86,3 +88,100 @@ jobs:
         run: |
           make clean
           make all
+
+  embedded-database:
+    if: ${{ inputs.run == 'all' || inputs.run == 'embedded-database' }}
+    name: Embedded Database Engine (X11)
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    defaults:
+      run:
+        working-directory: runs/c17-x11-embedded-database-engine/2026-08-17-grok-4.5-fast-web/project
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Install build dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends build-essential libx11-dev
+
+      - name: Clean and build
+        run: |
+          make clean
+          make all
+
+  pinball-win32-workbuddy:
+    if: ${{ inputs.run == 'all' || inputs.run == 'pinball-win32-workbuddy' }}
+    name: Pinball Sandbox (Win32 · WorkBuddy Hy3)
+    runs-on: windows-latest
+    timeout-minutes: 30
+    steps:
+      - name: Preserve LF line endings
+        shell: pwsh
+        run: git config --global core.autocrlf input
+
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up MinGW-w64
+        id: msys2
+        uses: msys2/setup-msys2@v2
+        with:
+          msystem: MINGW64
+          suppress-deprecation-warnings: msystem-mingw64
+          update: true
+          install: >-
+            mingw-w64-x86_64-gcc
+
+      - name: Recreate recorded build layout
+        shell: pwsh
+        env:
+          MSYS2_LOCATION: ${{ steps.msys2.outputs.msys2-location }}
+        run: |
+          $ErrorActionPreference = 'Stop'
+
+          $source = Join-Path $env:GITHUB_WORKSPACE 'runs\c17-win32-pinball-benchmark\2026-08-17-hy3-192k-workbuddy-default\project\pinball_sandbox_v1.0.0_without_evidence'
+          $recordedRoot = 'D:\0814\pinball_sandbox_v1.0.0'
+          $toolchainLink = 'D:\0814\toolchain\mingw64'
+          $toolchainTarget = Join-Path $env:MSYS2_LOCATION 'mingw64'
+
+          if (Test-Path $recordedRoot) {
+            Remove-Item -Recurse -Force $recordedRoot
+          }
+          New-Item -ItemType Directory -Force -Path 'D:\0814\toolchain' | Out-Null
+          Copy-Item -LiteralPath $source -Destination $recordedRoot -Recurse -Force
+
+          if (Test-Path $toolchainLink) {
+            Remove-Item -Recurse -Force $toolchainLink
+          }
+          New-Item -ItemType Junction -Path $toolchainLink -Target $toolchainTarget | Out-Null
+
+          if (-not (Test-Path 'D:\0814\toolchain\mingw64\bin\gcc.exe')) {
+            throw 'Recorded MinGW path was not created successfully.'
+          }
+
+      - name: Build recorded project
+        shell: msys2 {0}
+        run: |
+          bash /d/0814/pinball_sandbox_v1.0.0/tools/build_core.sh
+          bash /d/0814/pinball_sandbox_v1.0.0/tools/build_app.sh
+          bash /d/0814/pinball_sandbox_v1.0.0/tools/build_tools.sh
+
+      - name: Verify expected binaries
+        shell: pwsh
+        run: |
+          $expected = @(
+            'D:\0814\pinball_sandbox_v1.0.0\build\pinball_sandbox.exe',
+            'D:\0814\pinball_sandbox_v1.0.0\build\simcheck.exe',
+            'D:\0814\pinball_sandbox_v1.0.0\build\scenecheck.exe',
+            'D:\0814\pinball_sandbox_v1.0.0\build\locscan.exe',
+            'D:\0814\pinball_sandbox_v1.0.0\build\releasecheck.exe'
+          )
+
+          $missing = $expected | Where-Object { -not (Test-Path $_) }
+          if ($missing) {
+            throw "Missing expected binaries: $($missing -join ', ')"
+          }
+
+          $expected | ForEach-Object { Write-Host "PASS: $_" }
