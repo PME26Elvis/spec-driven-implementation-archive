@@ -1,0 +1,25 @@
+{
+  "$schema": "https://repomix.com/schemas/latest/schema.json",
+  "output": {"style": "xml", "git": {"sortByChanges": false}},
+  "include": ["**/*"],
+  "ignore": {
+    "useGitignore": false,
+    "useDotIgnore": false,
+    "useDefaultPatterns": false,
+    "customPatterns": [
+      "RELEASE_EVIDENCE.json",
+      "RELEASE_RESULT.json",
+      "TEST_REPORT.md",
+      "TEST_SUMMARY.json",
+      "VISUAL_EVIDENCE.md",
+      "err.txt",
+      "locscan_report.json",
+      "rtcheck.diff.txt",
+      "test_trace.pbr",
+      "fixtures/**",
+      "tests/malformed/**"
+    ]
+  },
+  "security": {"enableSecurityCheck": false},
+  "tokenCount": {"encoding": "o200k_base"}
+}

@@ -1,0 +1,13 @@
+{
+  "$schema": "https://repomix.com/schemas/latest/schema.json",
+  "output": {"style": "xml", "git": {"sortByChanges": false}},
+  "include": ["**/*"],
+  "ignore": {
+    "useGitignore": false,
+    "useDotIgnore": false,
+    "useDefaultPatterns": false,
+    "customPatterns": ["evidence/**"]
+  },
+  "security": {"enableSecurityCheck": false},
+  "tokenCount": {"encoding": "o200k_base"}
+}

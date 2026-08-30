@@ -1,0 +1,17 @@
+{
+  "$schema": "https://repomix.com/schemas/latest/schema.json",
+  "output": {"style": "xml", "git": {"sortByChanges": false}},
+  "include": ["**/*"],
+  "ignore": {
+    "useGitignore": false,
+    "useDotIgnore": false,
+    "useDefaultPatterns": false,
+    "customPatterns": [
+      "docs/evidence/EVIDENCE_MATRIX.md",
+      "docs/evidence/FULL_ID_MATRIX.csv",
+      "docs/evidence/FULL_ID_MATRIX.md"
+    ]
+  },
+  "security": {"enableSecurityCheck": false},
+  "tokenCount": {"encoding": "o200k_base"}
+}

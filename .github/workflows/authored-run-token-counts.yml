@@ -1,0 +1,92 @@
+name: Count authored run tokens
+
+on:
+  workflow_dispatch:
+    inputs:
+      token_encoding:
+        description: Repomix token-count encoding
+        required: true
+        type: choice
+        default: o200k_base
+        options:
+          - o200k_base
+          - cl100k_base
+          - p50k_base
+          - p50k_edit
+          - r50k_base
+  pull_request:
+    paths:
+      - .github/workflows/authored-run-token-counts.yml
+      - runs/**/analysis/repomix/**
+      - analysis/repomix/README.md
+
+permissions:
+  contents: read
+
+env:
+  REPOMIX_VERSION: '1.18.0'
+
+jobs:
+  count:
+    name: ${{ matrix.name }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: Markdown Editor (X11)
+            project: runs/c17-x11-markdown/2026-08-10-gpt-work-5.6-sol-max/project/c17_x11_markdown_editor
+            config: runs/c17-x11-markdown/2026-08-10-gpt-work-5.6-sol-max/analysis/repomix/repomix.config.json
+          - name: DARC v0.1.0
+            project: runs/c17-darc-v0.1.0/2026-08-12-grok-4.5-fast-web/project/darc_gates_closed_v0.1/darc
+            config: runs/c17-darc-v0.1.0/2026-08-12-grok-4.5-fast-web/analysis/repomix/repomix.config.json
+          - name: 2D Physics Sandbox (X11)
+            project: runs/c17-x11-physics-sandbox/2026-08-14-grok-4.5-fast-web/project/physics_sandbox_v1.0_wip/physics_sandbox
+            config: runs/c17-x11-physics-sandbox/2026-08-14-grok-4.5-fast-web/analysis/repomix/repomix.config.json
+          - name: Embedded Database Engine (X11)
+            project: runs/c17-x11-embedded-database-engine/2026-08-17-grok-4.5-fast-web/project
+            config: runs/c17-x11-embedded-database-engine/2026-08-17-grok-4.5-fast-web/analysis/repomix/repomix.config.json
+          - name: Pinball Sandbox (Win32 · WorkBuddy Hy3)
+            project: runs/c17-win32-pinball-benchmark/2026-08-17-hy3-192k-workbuddy-default/project/pinball_sandbox_v1.0.0_without_evidence
+            config: runs/c17-win32-pinball-benchmark/2026-08-17-hy3-192k-workbuddy-default/analysis/repomix/repomix.config.json
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Count reviewed authored corpus
+        shell: bash
+        env:
+          TOKEN_ENCODING: ${{ inputs.token_encoding || 'o200k_base' }}
+          PROJECT: ${{ matrix.project }}
+          CONFIG: ${{ matrix.config }}
+          NO_COLOR: '1'
+        run: |
+          set -euo pipefail
+          log="$RUNNER_TEMP/repomix.log"
+          output="$RUNNER_TEMP/repomix.xml"
+
+          npx --yes "repomix@${REPOMIX_VERSION}" "$PROJECT" \
+            --config "$CONFIG" \
+            --token-count-encoding "$TOKEN_ENCODING" \
+            --output "$output" \
+            --top-files-len 0 \
+            2>&1 | tee "$log"
+
+          tokens="$(sed -nE 's/^[[:space:]]*Total Tokens:[[:space:]]*([0-9,]+)[[:space:]]+tokens.*$/\1/p' "$log" | head -n 1)"
+          files="$(sed -nE 's/^[[:space:]]*Total Files:[[:space:]]*([0-9,]+)[[:space:]]+files.*$/\1/p' "$log" | head -n 1)"
+          test -n "$tokens"
+
+          {
+            echo "## ${{ matrix.name }}"
+            echo
+            echo "- Project: \`$PROJECT\`"
+            echo "- Config: \`$CONFIG\`"
+            echo "- Encoding: \`$TOKEN_ENCODING\`"
+            echo "- Files: **${files:-unknown}**"
+            echo "- Tokens: **$tokens**"
+          } >> "$GITHUB_STEP_SUMMARY"
