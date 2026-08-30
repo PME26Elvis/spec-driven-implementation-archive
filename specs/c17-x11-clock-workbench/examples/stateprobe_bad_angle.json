@@ -1,0 +1,32 @@
+{
+  "version": 1,
+  "state": {
+    "canonical_time": 36630.25,
+    "playback_rate": -1.0,
+    "is_playing": false,
+    "selected_field": "minute",
+    "hour_mode": 24,
+    "second_hand": "smooth"
+  },
+  "undo": [
+    {
+      "kind": "time",
+      "before": {
+        "canonical_time": 36000.0
+      },
+      "after": {
+        "canonical_time": 36630.25
+      }
+    }
+  ],
+  "redo": [],
+  "expected": {
+    "digital": "10:10:30",
+    "ampm": null,
+    "angles_deg": {
+      "hour": 305.2520833333333,
+      "minute": 64.025,
+      "second": 181.5
+    }
+  }
+}

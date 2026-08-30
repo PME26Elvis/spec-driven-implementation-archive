@@ -1,0 +1,4 @@
+passenger_id,arrival_us,origin_floor,destination_floor,segment_id
+1,0,1,10,up
+2,0,1,12,up
+3,3000000,5,2,down

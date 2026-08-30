@@ -1,0 +1,3 @@
+LOAD "acceptance/fixtures/ean_bad.csv" FORMAT CSV HEADER YES
+TYPE "ean" EAN13
+WRITE "must_not_exist.csv" FORMAT CSV HEADER YES

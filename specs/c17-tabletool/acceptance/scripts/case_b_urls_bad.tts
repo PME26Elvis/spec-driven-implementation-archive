@@ -1,0 +1,3 @@
+LOAD "acceptance/fixtures/urls_bad.csv" FORMAT CSV HEADER YES
+TYPE "url" URL
+WRITE "must_not_exist.csv" FORMAT CSV HEADER YES

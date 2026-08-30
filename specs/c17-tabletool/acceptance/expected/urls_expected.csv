@@ -1,0 +1,5 @@
+id,url
+1,http://example.com/
+2,https://example.com/b?Q=One#Part
+3,http://127.0.0.1/a/%2F
+4,https://example.com:8443/

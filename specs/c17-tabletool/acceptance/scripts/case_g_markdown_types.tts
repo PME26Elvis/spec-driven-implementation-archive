@@ -1,0 +1,4 @@
+LOAD "acceptance/fixtures/markdown_types.md" FORMAT MARKDOWN NULL-TOKEN "NULL"
+TYPE "active" BOOLEAN
+TYPE "due" DATE
+WRITE "markdown_types_actual.csv" FORMAT CSV HEADER YES NULL-TOKEN "NULL"

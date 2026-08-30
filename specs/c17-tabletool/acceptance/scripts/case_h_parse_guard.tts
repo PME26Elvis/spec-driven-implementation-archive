@@ -1,0 +1,3 @@
+LOAD "acceptance/fixtures/parse_guard.csv" FORMAT CSV HEADER YES
+WRITE "parse_guard_output.csv" FORMAT CSV HEADER YES
+THIS IS NOT A VALID TABLETOOL STATEMENT

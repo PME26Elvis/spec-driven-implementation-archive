@@ -1,0 +1,19 @@
+LOAD "acceptance/fixtures/mutations.tsv" FORMAT TSV HEADER YES NULL-TOKEN "\\N"
+TYPE "id" INTEGER
+TYPE "points" DECIMAL
+TYPE "flag" BOOLEAN
+ADD COLUMN "deadline" DATE DEFAULT "2026-09-01" AT 3
+ADD COLUMN "scratch" STRING DEFAULT "x"
+SET CELL 2 "deadline" = "2026-08-31"
+SET NULL 1 "deadline"
+INSERT ROW AT 2 VALUES (4, "Delta", "2026-09-04", 2.50, FALSE, "i")
+APPEND ROW VALUES (5, "Echo", "2026-09-05", 1.25, TRUE, "a")
+DELETE ROW 4
+MOVE ROW 4 TO 1
+SWAP ROWS 2 3
+SET CELL 4 "name" = "Beta2"
+RENAME COLUMN "flag" TO "done"
+MOVE COLUMN "name" TO 1
+SWAP COLUMNS "points" "deadline"
+DROP COLUMN "scratch"
+WRITE "mutations_actual.md" FORMAT MARKDOWN NULL-TOKEN "NULL"

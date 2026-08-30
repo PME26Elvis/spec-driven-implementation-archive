@@ -1,0 +1,7 @@
+passenger_id,arrival_us,origin_floor,destination_floor,segment_id
+1,0,1,8,mixed_service
+2,0,1,9,mixed_service
+3,0,1,25,mixed_service
+4,0,1,26,mixed_service
+5,5000000,25,1,upper_down
+6,7000000,15,1,mid_down

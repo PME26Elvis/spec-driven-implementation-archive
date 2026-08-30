@@ -1,0 +1,5 @@
+LOAD "acceptance/fixtures/code128.csv" FORMAT CSV HEADER YES
+TYPE "id" INTEGER
+TYPE "payload" CODE128
+WRITE "code128_actual.csv" FORMAT CSV HEADER YES
+BARCODE-SHEET "payload" WRITE "code128_actual.svg" MODULE 2 HEIGHT 80 GAP 20 TEXT YES

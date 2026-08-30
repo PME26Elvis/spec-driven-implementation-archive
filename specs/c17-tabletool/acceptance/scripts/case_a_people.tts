@@ -1,0 +1,5 @@
+LOAD "acceptance/fixtures/people.csv" FORMAT CSV HEADER YES
+TYPE "points" INTEGER
+TYPE "price" DECIMAL
+SORT BY "points" DESC, "name" ASC
+WRITE "people_actual.md" FORMAT MARKDOWN
