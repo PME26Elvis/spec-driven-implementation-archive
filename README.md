@@ -2,7 +2,7 @@
 
 An archive of fixed, specification-driven software implementation tasks and their implementation runs, intended for manual comparison across execution surfaces and model configurations.
 
-Current archive: **11 logical specifications**, represented by **17 specification directories**, with **4 recorded implementation runs**.
+Current archive: **11 logical specifications**, represented by **17 specification directories**, with **5 recorded implementation runs**.
 
 ## Execution environment
 
@@ -32,14 +32,14 @@ Equivalent X11 and Win32 task packs are grouped below as one logical specificati
 | Sudoku | [X11](specs/c17-x11-sudoku) / [Win32](specs/c17-win32-sudoku) | X11: 67,016 · Win32: 75,059 | Modern 9×9 Sudoku desktop application with a hand-built UI, gameplay assistance, persistence, statistics, automated tests, and strict release gates. |
 | Embedded Database Engine | [X11 / Linux](specs/c17-x11-embedded-database-engine) | 36,870 | Self-contained C17 relational database engine and native X11 workbench with page-oriented persistence, B+ tree and composite indexes, SQL execution, snapshot-isolation MVCC, WAL/recovery, authenticated encryption, integrity checking, salvage, CLI/GUI front ends, and strict release gates. |
 | DARC v0.1.0 | [Linux/POSIX](specs/c17-darc-v0.1.0) | 34,641 | Headless C17 deterministic deduplicating archive with content-defined chunking, chunk-level deduplication, self-implemented compression, cryptographic IDs, Merkle integrity, snapshots/diff/restore, JSON/YAML configuration, GC, repository verification, crash-safe publication, corruption detection/recovery, and strict release gates. |
-| Virtual Piano | [Win32](specs/c17-win32-virtual-piano) | — | Native C17 virtual piano with a hand-built software-rendered UI, polyphonic synthesis, customizable keyboard mapping, chord recognition, WAV recording, a headless companion, DPI scaling, and deterministic acceptance requirements. |
-| Analog Clock Workbench | [X11](specs/c17-x11-clock-workbench) / [Win32](specs/c17-win32-clock-workbench) | — | Interactive C17 analog clock workbench with hand-built rendering, analog/digital time interaction, playback controls, configuration, undo/redo, and deterministic verification requirements. |
-| CVC | [POSIX](specs/c17-posix-cvc) / [Win32](specs/c17-win32-cvc) | — | Local C17 version-control system with content-addressed storage, commits, branches, restore-through-new-commit semantics, diff, merge-base and three-way merge, conflict handling, recovery-safe writes, and repository verification. |
-| TableTool | [Portable C17](specs/c17-tabletool) | — | Pure CLI typed table-management tool with structured tabular I/O, scriptable transformations, deterministic sorting and filtering, URL semantics, barcode support, validation, and file-based outputs. |
-| Elevator Group Control Simulator | [Portable C17](specs/c17-elevator-group-control) | — | Deterministic multi-elevator group-control simulator with scenario files, passenger traces, multiple dispatch strategies, discrete-time kinematics, capacity and door timing, metrics, replay, and fixed acceptance fixtures. |
+| Virtual Piano | [Win32](specs/c17-win32-virtual-piano) | 35,298 | Native C17 virtual piano with a hand-built software-rendered UI, polyphonic synthesis, customizable keyboard mapping, chord recognition, WAV recording, a headless companion, DPI scaling, and deterministic acceptance requirements. |
+| Analog Clock Workbench | [X11](specs/c17-x11-clock-workbench) / [Win32](specs/c17-win32-clock-workbench) | X11: 39,557 · Win32: 47,431 | Interactive C17 analog clock workbench with hand-built rendering, analog/digital time interaction, playback controls, configuration, undo/redo, and deterministic verification requirements. |
+| CVC | [POSIX](specs/c17-posix-cvc) / [Win32](specs/c17-win32-cvc) | POSIX: 26,721 · Win32: 35,695 | Local C17 version-control system with content-addressed storage, commits, branches, restore-through-new-commit semantics, diff, merge-base and three-way merge, conflict handling, recovery-safe writes, and repository verification. |
+| TableTool | [Portable C17](specs/c17-tabletool) | 31,399 | Pure CLI typed table-management tool with structured tabular I/O, scriptable transformations, deterministic sorting and filtering, URL semantics, barcode support, validation, and file-based outputs. |
+| Elevator Group Control Simulator | [Portable C17](specs/c17-elevator-group-control) | 1,656,104 | Deterministic multi-elevator group-control simulator with scenario files, passenger traces, multiple dispatch strategies, discrete-time kinematics, capacity and door timing, metrics, replay, and fixed acceptance fixtures. |
 
 > [!NOTE]
-> Spec token estimates come from the **Count spec tokens** workflow using Repomix with the `o200k_base` encoding. Rows marked `—` have not yet had a token count recorded in this README. Run the workflow after specification additions to refresh those values. Token counts are estimates of checked-in specification artifacts, not model inference usage.
+> Spec token estimates come from the **Count spec tokens** workflow using Repomix with the `o200k_base` encoding. The latest completed count (workflow run 5, 2026-08-30) covers all 17 specification directories and totals **2,858,406 tokens**. Token counts are estimates of checked-in specification artifacts, not model inference usage.
 
 ## Recorded runs
 
@@ -49,6 +49,7 @@ Equivalent X11 and Win32 task packs are grouped below as one logical specificati
 | DARC v0.1.0 | [2026-08-12-grok-4.5-fast-web](runs/c17-darc-v0.1.0/2026-08-12-grok-4.5-fast-web) | Grok Web · Grok 4.5 · Fast | 49,490 | Free web run; run README includes Repomix statistics and a later independent GPT-5.6 Sol review whose release verdict is FAIL. |
 | 2D Physics Sandbox (X11) | [2026-08-14-grok-4.5-fast-web](runs/c17-x11-physics-sandbox/2026-08-14-grok-4.5-fast-web) | Grok Web · Grok 4.5 · Fast | 74,017 | Free web run; Repomix records 81 files, with a later independent GPT-5.6 Sol review assessing the v1.0 release as BLOCKED. |
 | Embedded Database Engine (X11) | [2026-08-17-grok-4.5-fast-web](runs/c17-x11-embedded-database-engine/2026-08-17-grok-4.5-fast-web) | Grok Web · Grok 4.5 · Fast | — | Free web run; archive includes the submitted project snapshot and conversation export, with a later independent GPT-5.6 Sol review assessing the v1.0 release as **FAIL / BLOCKED**. |
+| Pinball Sandbox (Win32) | [2026-08-17-hy3-192k-workbuddy-default](runs/c17-win32-pinball-benchmark/2026-08-17-hy3-192k-workbuddy-default) | Tencent WorkBuddy · Hy3 · High | 114,644 | Default-style code-development run using the time-limited free Hy3 access; no manual experts, skills, or connectors enabled. The submitted project reports all automated/headless gates passing while live-GUI gates remain NOT RUN. |
 
 > [!NOTE]
 > Repomix token estimates measure only the implementation artifacts included in each recorded run snapshot and selected by that run's Repomix counting rules. They do not include conversational output unless it was explicitly saved into the project, and they cannot include platform-hidden reasoning/thoughts, hidden internal context, or other non-exported model activity. Treat these figures as estimates of implementation-artifact size, not as total inference token consumption, total product usage, or cost.
