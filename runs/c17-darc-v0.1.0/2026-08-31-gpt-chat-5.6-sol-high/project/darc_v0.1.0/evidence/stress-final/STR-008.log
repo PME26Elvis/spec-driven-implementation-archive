@@ -1,0 +1,4 @@
+DARC acceptance runner; root=/dev/shm/darc-tests-N6T3ju; randomized_seed=0x5eedc0de; mode=case; case=STR-008
+PASS STR-008 — second GC removes no additional unreachable objects and retained live snapshot remains byte-exact/restorable/healthy
+
+RESULT total_passed=1 total_failed=0 total_skipped=0 catalog_total=1 randomized_seed=0x5eedc0de

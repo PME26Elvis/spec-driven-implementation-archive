@@ -1,0 +1,102 @@
+=== production forbidden-call scan (expected no matches) ===
+=== external-tool token scan (expected no matches) ===
+=== production TODO/FIXME/placeholder/mock scan (expected no matches) ===
+=== production environment hooks ===
+src/repo.c:67:int cvc_get_timestamp(int64_t*out){const char*s=getenv("CVC_TEST_TIMESTAMP");if(s){if(!cvc_parse_i64_timestamp(s,out))return cvc_errorf("invalid CVC_TEST_TIMESTAMP");return 0;}time_t t=time(NULL);if(t==(time_t)-1)return cvc_errorf("cannot read wall clock");if(sizeof(time_t)>sizeof(int64_t)){/* practical platforms won't hit this */}*out=(int64_t)t;return 0;}
+=== production includes ===
+#include "cvc_commands.h"
+#include "cvc_common.h"
+#include "cvc_config.h"
+#include "cvc_diff.h"
+#include "cvc_glob.h"
+#include "cvc_json.h"
+#include "cvc_merge.h"
+#include "cvc_object.h"
+#include "cvc_repo.h"
+#include "cvc_sha256.h"
+#include "cvc_snapshot.h"
+#include "cvc_verify.h"
+#include "cvc_worktree.h"
+#include <dirent.h>
+#include <errno.h>
+#include <fcntl.h>
+#include <limits.h>
+#include <math.h>
+#include <stdarg.h>
+#include <stdbool.h>
+#include <stddef.h>
+#include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <sys/stat.h>
+#include <sys/types.h>
+#include <time.h>
+#include <unistd.h>
+=== current normal ABI dependencies (clang release-equivalent binary) ===
+	linux-vdso.so.1 (0x00007fba91286000)
+	libc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007fba91057000)
+	/lib64/ld-linux-x86-64.so.2 (0x00007fba91288000)
+=== undefined dynamic symbols ===
+                 U __errno_location@GLIBC_2.2.5
+                 U __libc_start_main@GLIBC_2.34
+                 U abort@GLIBC_2.2.5
+                 U bcmp@GLIBC_2.2.5
+                 U calloc@GLIBC_2.2.5
+                 U close@GLIBC_2.2.5
+                 U closedir@GLIBC_2.2.5
+                 U exit@GLIBC_2.2.5
+                 U fchmod@GLIBC_2.2.5
+                 U fcntl@GLIBC_2.2.5
+                 U fputc@GLIBC_2.2.5
+                 U free@GLIBC_2.2.5
+                 U fstat@GLIBC_2.33
+                 U fsync@GLIBC_2.2.5
+                 U fwrite@GLIBC_2.2.5
+                 U getcwd@GLIBC_2.2.5
+                 U getenv@GLIBC_2.2.5
+                 U link@GLIBC_2.2.5
+                 U lseek@GLIBC_2.2.5
+                 U lstat@GLIBC_2.33
+                 U malloc@GLIBC_2.2.5
+                 U memchr@GLIBC_2.2.5
+                 U memcmp@GLIBC_2.2.5
+                 U memcpy@GLIBC_2.14
+                 U memset@GLIBC_2.2.5
+                 U mkdir@GLIBC_2.2.5
+                 U mkdtemp@GLIBC_2.2.5
+                 U mkstemp@GLIBC_2.2.5
+                 U open@GLIBC_2.2.5
+                 U opendir@GLIBC_2.2.5
+                 U perror@GLIBC_2.2.5
+                 U printf@GLIBC_2.2.5
+                 U putc@GLIBC_2.2.5
+                 U puts@GLIBC_2.2.5
+                 U qsort@GLIBC_2.2.5
+                 U read@GLIBC_2.2.5
+                 U readdir@GLIBC_2.2.5
+                 U readlink@GLIBC_2.2.5
+                 U realloc@GLIBC_2.2.5
+                 U rename@GLIBC_2.2.5
+                 U rmdir@GLIBC_2.2.5
+                 U snprintf@GLIBC_2.2.5
+                 U stderr@GLIBC_2.2.5
+                 U stdout@GLIBC_2.2.5
+                 U strchr@GLIBC_2.2.5
+                 U strcmp@GLIBC_2.2.5
+                 U strerror@GLIBC_2.2.5
+                 U strlen@GLIBC_2.2.5
+                 U strncmp@GLIBC_2.2.5
+                 U strrchr@GLIBC_2.2.5
+                 U strstr@GLIBC_2.2.5
+                 U strtod@GLIBC_2.2.5
+                 U symlink@GLIBC_2.2.5
+                 U time@GLIBC_2.2.5
+                 U unlink@GLIBC_2.2.5
+                 U vfprintf@GLIBC_2.2.5
+                 U vsnprintf@GLIBC_2.2.5
+                 U write@GLIBC_2.2.5
+                 w _ITM_deregisterTMCloneTable
+                 w _ITM_registerTMCloneTable
+                 w __cxa_finalize@GLIBC_2.2.5
+                 w __gmon_start__

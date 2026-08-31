@@ -1,0 +1,53 @@
+# canonical config with comments
+
+repository:
+  format_version: 1  # value
+  parity_enabled: true  # value
+  parity_data_members: 8  # value
+scan:
+  follow_symlinks: false  # value
+  cross_filesystems: false  # value
+  include:
+    - "**"
+  exclude:
+    - "**/*.tmp"
+    - "**/.cache/**"
+  exclude_hidden: false  # value
+  on_special_file: "error"  # value
+  on_permission_error: "error"  # value
+chunking:
+  algorithm: "buzhash64"  # value
+  window_bytes: 64  # value
+  min_bytes: 16384  # value
+  avg_bytes: 65536  # value
+  max_bytes: 262144  # value
+compression:
+  algorithm: "lzh1"  # value
+  enabled: true  # value
+  min_savings_bytes: 1  # value
+snapshot:
+  name: null  # value
+  parent: null  # value
+  timestamp_ns: null  # value
+  trust_unchanged_identity: true  # value
+restore:
+  overwrite: "never"  # value
+  preserve_mode: true  # value
+  preserve_mtime: true  # value
+  create_hardlinks: true  # value
+  on_unrecoverable: "error"  # value
+diff:
+  path: null  # value
+  top_n_svg: 50  # value
+  show_chunk_metrics: true  # value
+verify:
+  level: "full"  # value
+  repair: false  # value
+gc:
+  dry_run: false  # value
+  repack_parity: true  # value
+output:
+  format: "text"  # value
+  color: "auto"  # value
+  quiet: false  # value
+  verbose: false  # value

@@ -1,0 +1,5 @@
+diff_svg_bytes=1063 stats_svg_bytes=1118
+evidence/human-diff.svg standalone=1
+evidence/human-stats.svg standalone=1
+renderer=ImageMagick render=PASS
+stats_svg_layout_fix=PASS bar_x=340 max_bar_width=580 canvas_width=960 render=PASS

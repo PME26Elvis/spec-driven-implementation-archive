@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="1100" height="372" viewBox="0 0 1100 372">
+<rect width="1100" height="372" fill="white"/><text x="32" y="42" font-family="sans-serif" font-size="24">DARC diff b0463936fa32 → 16337ed8d35e</text>
+<text x="32" y="82" font-family="monospace" font-size="16">A 1   D 0   M 1   P 1   T 0   H 0   logical +12 bytes</text>
+<text x="32" y="112" font-family="sans-serif" font-size="15">Modified-file chunk reuse 0.00%</text><rect x="32" y="128" width="700" height="18" fill="#ddd"/><rect x="32" y="128" width="0.00" height="18" fill="#4a8"/>
+<text x="32" y="184" font-family="monospace" font-size="15">ST   OLD SIZE      NEW SIZE      REUSE    PATH</text>
+<text x="32" y="214" font-family="monospace" font-size="14">P              0             0     0.0%  src</text>
+<text x="32" y="238" font-family="monospace" font-size="14">M              6            11     0.0%  src/a.txt</text>
+<text x="32" y="262" font-family="monospace" font-size="14">A              0             7     0.0%  src/b.txt</text>
+</svg>

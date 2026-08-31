@@ -1,0 +1,4 @@
+DARC acceptance runner; root=/dev/shm/darc-tests-aX2pS4; randomized_seed=0x5eedc0de; mode=case; case=STR-004
+PASS STR-004 — 10 overlapping snapshots remain valid; adjacent diffs succeed and new stored data shows substantial reuse
+
+RESULT total_passed=1 total_failed=0 total_skipped=0 catalog_total=1 randomized_seed=0x5eedc0de

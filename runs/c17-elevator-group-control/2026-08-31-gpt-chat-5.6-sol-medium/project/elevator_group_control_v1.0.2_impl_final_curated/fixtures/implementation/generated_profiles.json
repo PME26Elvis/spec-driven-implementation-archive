@@ -1,0 +1,161 @@
+{
+  "schema_version": "1.0",
+  "scenario": {
+    "name": "Implementation Five Profile Generator",
+    "seed": 987654321
+  },
+  "building": {
+    "floors": 6,
+    "floor_height_m": 3.6,
+    "lobby_floor": 1
+  },
+  "elevators": [
+    {
+      "id": "T1",
+      "capacity_persons": 8,
+      "max_speed_mps": 4,
+      "acceleration_mps2": 1.2,
+      "deceleration_mps2": 1.2,
+      "door_open_ms": 500,
+      "door_close_ms": 500,
+      "door_min_dwell_ms": 500,
+      "boarding_ms_per_person": 500,
+      "alighting_ms_per_person": 500,
+      "boarding_lanes": 2,
+      "alighting_lanes": 2,
+      "initial_floor": 1,
+      "service_min_floor": 1,
+      "service_max_floor": 6
+    }
+  ],
+  "simulation": {
+    "duration_s": 100,
+    "tick_ms": 100,
+    "end_mode": "drain",
+    "max_drain_s": 100,
+    "deadlock_window_s": 300,
+    "starvation_threshold_s": 120
+  },
+  "traffic": {
+    "mode": "generated",
+    "allow_overlap": false,
+    "segments": [
+      {
+        "id": "up",
+        "start_s": 0,
+        "end_s": 20,
+        "profile": "up_peak",
+        "rate_per_minute": 60.0,
+        "params": {
+          "lobby_origin_probability": 1.0
+        }
+      },
+      {
+        "id": "down",
+        "start_s": 20,
+        "end_s": 40,
+        "profile": "down_peak",
+        "rate_per_minute": 60.0,
+        "params": {
+          "lobby_destination_probability": 1.0
+        }
+      },
+      {
+        "id": "inter",
+        "start_s": 40,
+        "end_s": 60,
+        "profile": "interfloor",
+        "rate_per_minute": 60.0,
+        "params": {}
+      },
+      {
+        "id": "mixed",
+        "start_s": 60,
+        "end_s": 80,
+        "profile": "mixed",
+        "rate_per_minute": 60.0,
+        "params": {
+          "up_fraction": 0.3,
+          "down_fraction": 0.3,
+          "interfloor_fraction": 0.4
+        }
+      },
+      {
+        "id": "burst",
+        "start_s": 80,
+        "end_s": 100,
+        "profile": "burst",
+        "count": 20,
+        "params": {
+          "distribution": "uniform_window",
+          "center_s": 90,
+          "window_s": 20,
+          "origin_weights": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "destination_weights": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ]
+        }
+      }
+    ]
+  },
+  "algorithms": {
+    "default_compare": [
+      "nearest_car",
+      "directional_collective",
+      "scan_look",
+      "eta_cost",
+      "zoning",
+      "adaptive_peak",
+      "destination_control"
+    ],
+    "nearest_car": {},
+    "directional_collective": {},
+    "scan_look": {},
+    "eta_cost": {},
+    "zoning": {},
+    "adaptive_peak": {},
+    "destination_control": {}
+  },
+  "metrics": {
+    "sla_wait_s": 60,
+    "histogram_bucket_s": 10,
+    "histogram_max_s": 300,
+    "percentiles": [
+      50,
+      90,
+      95,
+      99
+    ],
+    "energy": {
+      "move_per_meter": 1.0,
+      "startup": 4.0,
+      "door_cycle": 2.0,
+      "direction_reversal": 3.0,
+      "idle_per_second": 0.01,
+      "load_meter_factor": 0.02
+    }
+  },
+  "output": {
+    "event_log": false,
+    "passenger_csv": false,
+    "elevator_csv": false,
+    "summary_json": true,
+    "summary_txt": true,
+    "histogram_txt": true,
+    "comparison_csv": true,
+    "sample_interval_s": 1,
+    "line_ending": "lf"
+  }
+}

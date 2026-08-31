@@ -1,0 +1,2 @@
+b4fa5a27511aec8f7425c3300163fab0ee10f929ac60a11ad688509683eb495d  cvc_taskpack_v1.0.1_implementation_release.zip
+8f4c58e0f5ac567aa8fe7b0e29c8231c1045330ee377a76ba2db8c172bf62ede  chatgpt-export.md

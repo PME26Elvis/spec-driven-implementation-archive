@@ -1,0 +1,18 @@
+cc -std=c17 -O2 -g -Wall -Wextra -Wpedantic -Wshadow -Wconversion -Wsign-conversion -Wstrict-prototypes -Werror -D_POSIX_C_SOURCE=200809L -Iinclude  -c -o src/commands.o src/commands.c
+cc -std=c17 -O2 -g -Wall -Wextra -Wpedantic -Wshadow -Wconversion -Wsign-conversion -Wstrict-prototypes -Werror -D_POSIX_C_SOURCE=200809L -Iinclude  -c -o src/common.o src/common.c
+cc -std=c17 -O2 -g -Wall -Wextra -Wpedantic -Wshadow -Wconversion -Wsign-conversion -Wstrict-prototypes -Werror -D_POSIX_C_SOURCE=200809L -Iinclude  -c -o src/config.o src/config.c
+cc -std=c17 -O2 -g -Wall -Wextra -Wpedantic -Wshadow -Wconversion -Wsign-conversion -Wstrict-prototypes -Werror -D_POSIX_C_SOURCE=200809L -Iinclude  -c -o src/diff.o src/diff.c
+cc -std=c17 -O2 -g -Wall -Wextra -Wpedantic -Wshadow -Wconversion -Wsign-conversion -Wstrict-prototypes -Werror -D_POSIX_C_SOURCE=200809L -Iinclude  -c -o src/glob.o src/glob.c
+cc -std=c17 -O2 -g -Wall -Wextra -Wpedantic -Wshadow -Wconversion -Wsign-conversion -Wstrict-prototypes -Werror -D_POSIX_C_SOURCE=200809L -Iinclude  -c -o src/json.o src/json.c
+cc -std=c17 -O2 -g -Wall -Wextra -Wpedantic -Wshadow -Wconversion -Wsign-conversion -Wstrict-prototypes -Werror -D_POSIX_C_SOURCE=200809L -Iinclude  -c -o src/main.o src/main.c
+cc -std=c17 -O2 -g -Wall -Wextra -Wpedantic -Wshadow -Wconversion -Wsign-conversion -Wstrict-prototypes -Werror -D_POSIX_C_SOURCE=200809L -Iinclude  -c -o src/merge.o src/merge.c
+cc -std=c17 -O2 -g -Wall -Wextra -Wpedantic -Wshadow -Wconversion -Wsign-conversion -Wstrict-prototypes -Werror -D_POSIX_C_SOURCE=200809L -Iinclude  -c -o src/object.o src/object.c
+cc -std=c17 -O2 -g -Wall -Wextra -Wpedantic -Wshadow -Wconversion -Wsign-conversion -Wstrict-prototypes -Werror -D_POSIX_C_SOURCE=200809L -Iinclude  -c -o src/repo.o src/repo.c
+cc -std=c17 -O2 -g -Wall -Wextra -Wpedantic -Wshadow -Wconversion -Wsign-conversion -Wstrict-prototypes -Werror -D_POSIX_C_SOURCE=200809L -Iinclude  -c -o src/sha256.o src/sha256.c
+cc -std=c17 -O2 -g -Wall -Wextra -Wpedantic -Wshadow -Wconversion -Wsign-conversion -Wstrict-prototypes -Werror -D_POSIX_C_SOURCE=200809L -Iinclude  -c -o src/snapshot.o src/snapshot.c
+cc -std=c17 -O2 -g -Wall -Wextra -Wpedantic -Wshadow -Wconversion -Wsign-conversion -Wstrict-prototypes -Werror -D_POSIX_C_SOURCE=200809L -Iinclude  -c -o src/verify.o src/verify.c
+cc -std=c17 -O2 -g -Wall -Wextra -Wpedantic -Wshadow -Wconversion -Wsign-conversion -Wstrict-prototypes -Werror -D_POSIX_C_SOURCE=200809L -Iinclude  -c -o src/worktree.o src/worktree.c
+cc -std=c17 -O2 -g -Wall -Wextra -Wpedantic -fPIC -shared tests/faultio.c -ldl -o tests/libfaultio.so
+cc -std=c17 -O2 -g -Wall -Wextra -Wpedantic -Wshadow -Wconversion -Wsign-conversion -Wstrict-prototypes -Werror -D_POSIX_C_SOURCE=200809L src/commands.o src/common.o src/config.o src/diff.o src/glob.o src/json.o src/main.o src/merge.o src/object.o src/repo.o src/sha256.o src/snapshot.o src/verify.o src/worktree.o  -o cvc
+cc -std=c17 -O2 -g -Wall -Wextra -Wpedantic -Wshadow -Wconversion -Wsign-conversion -Wstrict-prototypes -Werror -D_POSIX_C_SOURCE=200809L -Iinclude tests/unit_core.c src/commands.o src/common.o src/config.o src/diff.o src/glob.o src/json.o src/merge.o src/object.o src/repo.o src/sha256.o src/snapshot.o src/verify.o src/worktree.o  -o tests/unit_core
+cc -std=c17 -O2 -g -Wall -Wextra -Wpedantic -Wshadow -Wconversion -Wsign-conversion -Wstrict-prototypes -Werror -D_POSIX_C_SOURCE=200809L -Iinclude tests/mergebase_unit.c src/commands.o src/common.o src/config.o src/diff.o src/glob.o src/json.o src/merge.o src/object.o src/repo.o src/sha256.o src/snapshot.o src/verify.o src/worktree.o  -o tests/mergebase_unit

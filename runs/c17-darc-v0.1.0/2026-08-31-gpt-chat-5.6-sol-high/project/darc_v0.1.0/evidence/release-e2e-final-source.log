@@ -1,0 +1,27 @@
+./tests/release_e2e.sh
+Initialized DARC repository at /tmp/darc-release-e2e/repo (format v1)
+Snapshot 9c81814f00dbd98fc300558da080b966a53e8c56860e43d3cb5c9dba3d7405fd created
+  files: 2  dirs: 2  logical: 2097162 bytes
+  chunks: 3 unique, 3 new  stored new: 2610 bytes
+  incremental: 0 fast-path, 2 reread  skipped: 0
+Snapshot 363a96e7ffb7d3ca748630e5b4bd297b49bf5c3b0d2926b0365f5e9753683156 created
+  files: 3  dirs: 2  logical: 2097171 bytes
+  chunks: 5 unique, 2 new  stored new: 1315 bytes
+  incremental: 1 fast-path, 2 reread  skipped: 0
+Restore 9c81814f00dbd98fc300558da080b966a53e8c56860e43d3cb5c9dba3d7405fd: SUCCESS
+  subtree: /
+  files=2 dirs=2 symlinks=1 hardlinks=2
+  logical bytes=2097162 chunks=9 parity-reconstructed=0
+  partial hardlink topology fallbacks=0
+Deleted snapshot ref 9c81814f00dbd98fc300558da080b966a53e8c56860e43d3cb5c9dba3d7405fd; canonical objects retained until GC.
+GC complete
+  reachable objects: 14
+  removed objects: 4
+  reclaimed stored bytes: 1072
+  parity stripes active: 2
+Restore 363a96e7ffb7d3ca748630e5b4bd297b49bf5c3b0d2926b0365f5e9753683156: SUCCESS
+  subtree: /
+  files=3 dirs=2 symlinks=1 hardlinks=2
+  logical bytes=2097171 chunks=10 parity-reconstructed=0
+  partial hardlink topology fallbacks=0
+E2E_PASS snapshot1=9c81814f00dbd98fc300558da080b966a53e8c56860e43d3cb5c9dba3d7405fd snapshot2=363a96e7ffb7d3ca748630e5b4bd297b49bf5c3b0d2926b0365f5e9753683156 corrupt_detect_rc=6 final_scrub=HEALTHY

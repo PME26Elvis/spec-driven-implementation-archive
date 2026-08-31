@@ -1,0 +1,6 @@
+#include "darc.h"
+#include <stdlib.h>
+uint64_t darc_rol64(uint64_t x,unsigned n){n&=63u;return n?((x<<n)|(x>>(64u-n))):x;}
+void darc_buzhash_table(uint64_t t[256]){uint64_t st=UINT64_C(0xD6E8FEB86659FD93);for(int i=0;i<256;i++){st+=UINT64_C(0x9E3779B97F4A7C15);uint64_t z=st;z=(z^(z>>30))*UINT64_C(0xBF58476D1CE4E5B9);z=(z^(z>>27))*UINT64_C(0x94D049BB133111EB);z^=z>>31;t[i]=z;}}
+int darc_cdc_buffer(const uint8_t*d,size_t n,size_t min,size_t avg,size_t max,DarcCuts*c){c->ends=NULL;c->n=c->cap=0;if(!n)return 0;if(avg==0||(avg&(avg-1))||min>=avg||avg>=max)return -1;uint64_t t[256];darc_buzhash_table(t);size_t start=0;while(start<n){uint64_t h=0;uint8_t win[64];size_t wn=0,wp=0;size_t i=start;for(;i<n;i++){uint8_t in=d[i];if(wn<64){h=darc_rol64(h,1)^t[in];win[wn++]=in;}else{uint8_t out=win[wp];win[wp]=in;wp=(wp+1)%64;h=darc_rol64(h,1)^t[in]^t[out];}size_t clen=i-start+1;bool cut=false;if(clen>=min&&((h&(avg-1))==0))cut=true;if(clen>=max)cut=true;if(cut){i++;break;}}size_t end=i;if(end>n)end=n;if(end==start)end=n;if(c->n==c->cap){size_t nc=c->cap?c->cap*2:16;size_t*p=darc_realloc(c->ends,nc*sizeof *p);if(!p){darc_cuts_free(c);return -1;}c->ends=p;c->cap=nc;}c->ends[c->n++]=end;start=end;}return 0;}
+void darc_cuts_free(DarcCuts*c){free(c->ends);c->ends=NULL;c->n=c->cap=0;}
