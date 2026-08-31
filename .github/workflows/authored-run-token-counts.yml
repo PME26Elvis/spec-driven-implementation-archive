@@ -49,6 +49,9 @@ jobs:
           - name: Pinball Sandbox (Win32 · WorkBuddy Hy3)
             project: runs/c17-win32-pinball-benchmark/2026-08-17-hy3-192k-workbuddy-default/project/pinball_sandbox_v1.0.0_without_evidence
             config: runs/c17-win32-pinball-benchmark/2026-08-17-hy3-192k-workbuddy-default/analysis/repomix/repomix.config.json
+          - name: Sudoku (Win32 · WorkBuddy Hy3 192k)
+            project: runs/c17-win32-sudoku/2026-08-20-hy3-192k-workbuddy-code-development/project/0820-sudoku-workbuddy_curated
+            config: runs/c17-win32-sudoku/2026-08-20-hy3-192k-workbuddy-code-development/analysis/repomix/repomix.config.json
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
