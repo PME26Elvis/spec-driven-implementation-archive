@@ -1,0 +1,4 @@
+DARC acceptance runner; root=/dev/shm/darc-tests-h7jyLV; randomized_seed=0x5eedc0de; mode=case; case=STR-007
+PASS STR-007 — after successful repair, second and third repair-capable scrub report HEALTHY and make zero content/metadata mutation
+
+RESULT total_passed=1 total_failed=0 total_skipped=0 catalog_total=1 randomized_seed=0x5eedc0de

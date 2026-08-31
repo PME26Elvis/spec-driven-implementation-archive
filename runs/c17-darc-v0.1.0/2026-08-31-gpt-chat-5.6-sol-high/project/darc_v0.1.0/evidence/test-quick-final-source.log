@@ -1,0 +1,254 @@
+cc -std=c17 -O2 -g -Wall -Wextra -Wpedantic -Wshadow -Wconversion -Wstrict-prototypes -D_FILE_OFFSET_BITS=64 -Iinclude -DDARC_TESTING -o tests/test_runner tests/test_alg.c tests/test_cli_delete.c tests/test_config.c tests/test_crash.c tests/test_diff.c tests/test_format.c tests/test_incremental.c tests/test_pending.c tests/test_repo.c tests/test_restore.c tests/test_runner.c tests/test_security.c tests/test_stress.c tests/test_verify_gc.c src/buzhash.o src/cli.o src/config.o src/crc32c.o src/diff.o src/format.o src/index.o src/json.o src/lzh1.o src/parity.o src/repo.o src/restore.o src/rhmap.o src/sha256.o src/snapshot.o src/util.o src/verify_gc.o src/walk.o src/yaml.o
+tests/test_runner.c: In function 'main':
+tests/test_runner.c:321:2: warning: this 'if' clause does not guard... [-Wmisleading-indentation]
+  321 |  if(!getenv("DARC_TEST_KEEP"))(void)darc_remove_tree(test_root);return failed?1:0;
+      |  ^~
+tests/test_runner.c:321:65: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'if'
+  321 |  if(!getenv("DARC_TEST_KEEP"))(void)darc_remove_tree(test_root);return failed?1:0;
+      |                                                                 ^~~~~~
+./tests/test_runner --quick
+DARC acceptance runner; root=/tmp/darc-tests-WZft7i; randomized_seed=0x5eedc0de; mode=quick
+PASS ALG-001 — SHA-256 empty vector
+PASS ALG-002 — SHA-256 abc vector
+PASS ALG-003 — SHA-256 multi-block vector
+PASS ALG-004 — SHA-256 million-a
+PASS ALG-005 — CRC-32C Castagnoli vector
+PASS ALG-006 — SplitMix table fixed samples
+PASS ALG-007 — rolling update equals independent window recomputation
+PASS ALG-008 — empty CDC produces no chunks
+PASS ALG-009 — tiny input has EOF chunk
+PASS ALG-010 — CDC obeys forced max boundary
+PASS ALG-011 — 1MiB CDC boundaries match normative golden
+PASS ALG-012 — 1-byte insertion resynchronizes; shared chunks=10
+PASS ALG-013 — literal token golden
+PASS ALG-014 — repeated token golden
+PASS ALG-015 — equal useful matches choose nearest distance
+PASS ALG-016 — overlapping distance-1 run encoded
+PASS ALG-017 — match length capped at 258
+PASS ALG-018 — distance cap accepts exactly 32768 and never exceeds it
+PASS ALG-019 — single Huffman symbol length=1/code 0 by canonical construction
+PASS ALG-020 — equal-frequency canonical lengths deterministic
+PASS ALG-021 — Huffman round-trip 0..255 distribution
+PASS ALG-022 — oversubscribed Huffman codebook rejected
+PASS ALG-023 — LZH1 abc exact payload
+PASS ALG-024 — incompressible chunk uses raw codec
+PASS ALG-025 — compressible chunk selects LZH1 and round-trips
+PASS ALG-026 — truncated LZH1 bitstream rejected
+PASS ALG-027 — LZ invalid distance before output rejected
+PASS ALG-028 — Robin Hood collision/wrap/delete chain
+PASS ALG-029 — Robin Hood resize retains mappings and <=70% load
+PASS ALG-030 — 8+1 XOR reconstructs each single member exactly
+PASS CFG-001 — example JSON validates and emits normative hashes
+PASS CFG-002 — example YAML validates to same hashes
+PASS CFG-003 — recursive JSON key permutation preserves normalized hash
+PASS CFG-004 — YAML comments/whitespace preserve normalized hash
+PASS CFG-005 — CLI output format overrides explicit config
+PASS CFG-006 — unknown nested key rejected
+PASS CFG-007 — duplicate JSON key rejected
+PASS CFG-008 — JSON trailing comma rejected with location
+PASS CFG-009 — JSON comments rejected
+PASS CFG-010 — valid JSON surrogate pair decoded to supplementary UTF-8
+PASS CFG-011 — lone surrogate rejected
+PASS CFG-012 — malformed UTF-8 rejected safely
+PASS CFG-013 — YAML yes is string, not coerced boolean
+PASS CFG-014 — YAML anchors/aliases rejected
+PASS CFG-015 — YAML tab indentation rejected with location
+PASS CFG-016 — duplicate YAML key rejected
+PASS CFG-017 — min >= avg rejected
+PASS CFG-018 — non-power-of-two avg rejected
+PASS CFG-019 — max > 16MiB rejected
+PASS CFG-020 — unsupported command format rejected before repository mutation
+PASS CFG-021 — document nesting depth limit enforced
+PASS CFG-022 — integer overflow rejected
+PASS SCN-001 — init creates required v1 repository layout
+PASS SCN-002 — init refuses nonempty ordinary directory
+PASS SCN-003 — empty directory snapshot creates canonical empty source TREE
+PASS SCN-004 — 1-byte file is one EOF chunk and restores exactly
+PASS SCN-005 — zero-byte FILE has zero chunks and SHA-256(empty)
+PASS SCN-006 — depth-8 directory hierarchy captured deterministically
+PASS SCN-007 — directory enumeration/creation order does not change canonical snapshot CID
+PASS SCN-008 — UTF-8 Chinese/emoji filename preserved snapshot->restore
+PASS SCN-009 — invalid UTF-8 raw filename retained; JSON exposes path_hex
+PASS SCN-010 — default scanner stores symlink without following it
+PASS SCN-011 — broken symlink target preserved exactly
+PASS SCN-012 — cyclic symlinks do not recurse under default policy
+PASS SCN-013 — hardlink pair represented as one primary + one topology entry
+PASS SCN-014 — hardlink primary is lexicographically first path, independent of creation order
+PASS SCN-015 — independent duplicate files remain two regular paths sharing FILE/content identity
+PASS SCN-016 — FIFO default policy fails without publishing snapshot
+PASS SCN-017 — FIFO skip policy succeeds with explicit skip evidence
+PASS SCN-018 — effective unreadable-file error fails atomically with E_PERMISSION
+PASS SCN-019 — permission skip policy succeeds with explicit skip count
+PASS SCN-020 — repository nested inside source is excluded and reported
+PASS SCN-021 — glob * is same-component only
+PASS SCN-022 — glob ** traverses nested components
+PASS SCN-023 — glob class includes a,b and excludes c
+PASS SCN-024 — later negated exclude re-includes matching path
+PASS SCN-025 — hidden files included by default
+PASS SCN-026 — exclude_hidden removes hidden components consistently
+PASS SCN-027 — file changing on first read retries once and archives stable second state
+PASS SCN-028 — repeated file changes fail after one retry with no published ref
+PASS SCN-030 — multiple source roots represented by deterministic labels independent of CLI ordering
+PASS VER-001 — healthy quick exits 0
+PASS VER-002 — healthy full exits 0
+PASS VER-003 — healthy scrub verifies active parity
+PASS VER-004 — raw CHUNK payload corruption detected and CID identified
+PASS VER-005 — compressed bitstream corruption rejected without unsafe decode
+PASS VER-006 — truncated object detected
+PASS VER-007 — stored_len header corruption fails header CRC/format verification
+PASS VER-008 — payload CRC corruption detected
+PASS VER-009 — single protected missing chunk classified repairable
+PASS VER-010 — missing chunk parity-reconstructed and CID-valid after repair
+PASS VER-011 — corrupt protected chunk safely replaced by parity reconstruction
+PASS VER-012 — two unavailable members in stripe are unrecoverable
+PASS VER-013 — missing parity with healthy data is degraded/repairable
+PASS VER-014 — parity regenerated while chunk bytes stay unchanged
+PASS VER-015 — corrupt parity replaced; healthy data untouched
+PASS VER-016 — missing index degrades verification without affecting canonical snapshot bytes
+PASS VER-017 — explicit repair deterministically rebuilds missing index
+PASS VER-018 — index extra record for missing object detected
+PASS VER-019 — object absent from derived index detected while canonical object remains readable
+PASS VER-020 — missing TREE child object produces Merkle failure with affected CID
+PASS VER-021 — TREE payload/CID corruption detected
+PASS VER-022 — corrupt published SNAPSHOT target reported without crash
+PASS VER-023 — malformed ref detected; GC dry-run refuses unsafe reachability
+PASS VER-024 — ref whose target object is missing is detected
+PASS VER-025 — 100+ soft-parent history remains bounded; deleting old parent ref does not invalidate descendants
+PASS VER-026 — degraded verify JSON is valid and structured
+PASS VER-027 — verify SVG is standalone and includes health counts/final status
+PASS VER-028 — repair never deletes refs or rewrites history to hide unrecoverable data
+PASS GCI-001 — two rebuilds produce byte-identical chunks.idx
+PASS GCI-002 — persistent index records are sorted by full CID
+PASS GCI-003 — index checksum byte flip detected by inspect and verify
+PASS GCI-004 — healthy fully reachable repo proposes/removes zero canonical objects
+PASS GCI-005 — safe orphan CHUNK collected without affecting refs
+PASS GCI-006 — published historical snapshot keeps old-only FILE/CHUNK reachable
+PASS GCI-007 — deleting old snapshot ref makes old-only semantic objects reclaimable
+PASS GCI-008 — gc --dry-run is byte/file immutable over entire repository
+PASS GCI-009 — stripe with dead member repacked to live members; scrub remains healthy
+PASS GCI-010 — equivalent live sets yield byte-identical parity repack catalog
+PASS GCI-011 — 10-overlap history GC leaves retained snapshots scrub-clean and restorable
+PASS GCI-012 — GC refuses corrupt ref before deleting garbage
+PASS GCI-013 — dry-run reclaim object/byte counts equal independent orphan calculation
+PASS GCI-014 — post-GC index contains all/only surviving canonical objects
+PASS GCI-015 — empty repository GC is safe and remains scrub-healthy
+PASS FMT-001 — raw CHUNK framing bytes/header CRC/payload CRC/CID match normative golden
+PASS FMT-002 — FILE canonical payload and CID match normative golden
+PASS FMT-003 — TREE exact golden matches and unsorted input is canonical bytewise name-sorted
+PASS FMT-004 — SNAPSHOT canonical payload and CID match normative golden
+PASS FMT-005 — canonical serializer ignores native struct padding/poison bytes
+PASS FMT-006 — unknown semantic object version rejected as unsupported exit 10
+PASS FMT-007 — unknown codec id is rejected rather than guessed
+PASS FMT-008 — all canonical object filenames use lower-case 2+62 CID hex layout
+PASS FMT-009 — equivalent trees/config/fixed timestamp yield identical snapshot CID/object bytes
+PASS FMT-010 — reverse filesystem creation order yields same root TREE CID
+PASS SEC-001 — malicious '..' manifest cannot escape restore root; outside sentinel unchanged
+PASS SEC-002 — pre-existing symlink parent is rejected by component-wise restore
+PASS SEC-003 — near-u64 framed length rejected without attempting enormous allocation
+PASS SEC-004 — compressed stream that would overrun declared semantic length is rejected
+PASS SEC-005 — semantic path containing embedded NUL is rejected as repository/path corruption
+PASS SEC-006 — core workflows do not shell/delegate to tar/find/hash/compression utilities
+PASS SEC-007 — repo-under-source boundary is skipped across repeated snapshots; archived file count stays stable
+PASS SEC-008 — integrity error remains line-structured and CID-based for control-character filenames
+PASS CLI-001 — top help lists all required command families
+PASS CLI-002 — every canonical subcommand has offline Usage/Example help and destructive warning where required
+PASS CLI-003 — stable version string emitted
+PASS CLI-004 — repo-required command maps missing repository to stable exit/code
+PASS CLI-005 — unknown option rejected as usage error
+PASS CLI-006 — real pair of valid SNAPSHOT CIDs sharing eight hex digits is ambiguous
+PASS CLI-007 — unique >=8 CID prefix selects exact snapshot
+PASS CLI-008 — duplicate published names are ambiguous
+PASS CLI-009 — HEAD resolves to current published snapshot
+PASS CLI-010 — JSON stdout remains parseable while scanner warning/progress stays on stderr
+PASS CLI-011 — quiet suppresses chatter but preserves required list data
+PASS CLI-012 — integrity exit code takes precedence while structured presentation remains valid
+PASS CLI-013 — snapshot list is deterministic newest-first
+PASS CLI-014 — snapshot show exposes required identity, ancestry, Merkle, stats, parity/profile/source metadata
+PASS CLI-015 — GC dry-run unambiguously states immutability and proposed reclaim
+PASS DEL-001 — non-HEAD delete removes only target ref; canonical objects remain pre-GC
+PASS DEL-002 — delete dry-run is byte/file immutable and reports plan
+PASS DEL-003 — destructive delete requires --yes and leaves ref intact otherwise
+PASS DEL-004 — deleting HEAD selects greatest created_ns then greatest CID tie-break
+PASS DEL-005 — deleting final snapshot empties refs/HEAD but retains objects until GC
+PASS DEL-006 — child remains valid/restorable after soft-parent ref deletion; GC may reclaim A-only chunk
+PASS CRS-001 — crash before first final object rename leaves old publication valid and recoverable
+PASS CRS-002 — first published immutable chunk can become orphan but no ref publishes; recovery+GC is healthy
+PASS CRS-003 — all pre-snapshot objects may remain garbage but new snapshot is invisible and old repo recovers
+PASS CRS-004 — published ref survives crash before HEAD; old HEAD remains well-formed and recovery retains both valid refs
+PASS CRS-005 — checkpoint immediately before atomic HEAD rename preserves previous valid HEAD
+PASS CRS-006 — HEAD/ref are durable before derived index; recovery rebuilds index and new snapshot verifies
+PASS CRS-007 — crash with fully written/fsynced index temp before rename leaves authoritative refs/objects valid and index rebuildable
+PASS CRS-008 — durable complete marker may remain after crash; reopen recovery safely removes completed journal
+PASS CRS-009 — injected partial object write fails before rename; no truncated canonical object/ref is published
+PASS CRS-010 — object fsync failure prevents publication of snapshot ref and preserves old repo
+PASS CRS-011 — object rename failure leaves no new ref and cleanup/recovery is safe
+PASS CRS-012 — ENOSPC after objects but before ref returns I/O and old snapshot publication stays valid
+PASS CRS-013 — allocation #96 fails inside JSON parser and returns cleanly without crash
+PASS CRS-014 — selected in-command allocation failure exposes no partial new snapshot
+PASS CRS-015 — GC crash before replacement parity creation leaves old catalog/protection and live data intact
+PASS CRS-016 — new parity may be durable orphan before catalog swap while old protection mapping remains valid
+PASS CRS-017 — crash after an unreachable deletion never removes live objects; recovery/GC leaves HEAD restorable
+PASS CRS-018 — live writer flock blocks snapshot and GC with exit 9 before recovery/mutation
+PASS CRS-019 — stale lock metadata without live flock does not cause blind destructive unlock or false conflict
+PASS INC-001 — identical second snapshot reuses all canonical content objects
+PASS INC-002 — parent stat identity uses scan-cache fast path without reread
+PASS INC-003 — one-byte insertion preserves distant CDC chunks; reused=2056833/2097153
+PASS INC-004 — single-byte replacement reuses most chunks
+PASS INC-005 — append reuses earlier chunks; only tail/new data changes
+PASS INC-006 — metadata-only change reuses FILE CID, changes tree, diff P
+PASS INC-007 — rename is D+A while chunks are reused
+PASS INC-008 — independent duplicate adds no chunks and restores as separate inode
+PASS INC-009 — introducing hardlink reuses content and diff classifies topology H
+PASS INC-010 — explicit old parent is stored exactly and accepted for incremental comparison
+PASS INC-011 — invalid explicit parent exits 4 without published or transient journal mutation
+PASS INC-012 — corrupt existing duplicate canonical object is detected and never overwritten
+PASS INC-013 — CHUNK semantic CIDs are independent of stored compression codec
+PASS INC-014 — unchanged deep subtree TREE CID is reused while changed branch differs
+PASS INC-015 — equivalent repos/tree/config/fixed timestamp produce identical snapshot CID
+PASS DIF-001 — added file emitted exactly once
+PASS DIF-002 — deleted file emitted exactly once
+PASS DIF-003 — content modification classified M with chunk metrics
+PASS DIF-004 — permission-only change classified P with mode field
+PASS DIF-005 — mtime-only change classified P with mtime field
+PASS DIF-006 — file-to-directory replacement classified T
+PASS DIF-007 — symlink target change classified P and identifies target field
+PASS DIF-008 — independent equal file becoming hardlink classified H
+PASS DIF-009 — unchanged snapshots omit rows and report zero summary
+PASS DIF-010 — metadata-only diff reports no false new chunk bytes consistently
+PASS DIF-011 — chunk-reuse multiset accounts each new-file occurrence exactly once
+PASS DIF-012 — file path filter narrows entries and summary
+PASS DIF-013 — subtree path filter includes only selected subtree
+PASS DIF-014 — valid UTF-8 Chinese path remains readable in text diff
+PASS DIF-015 — control-byte filename is escaped and cannot split report row
+PASS DIF-016 — JSON diff is exactly one independently parsed document with coherent counters
+PASS DIF-017 — every NDJSON line parses independently and typed summary is present
+PASS DIF-018 — SVG is independently well-formed, standalone, and includes key metrics
+PASS DIF-019 — SVG special-character path is XML-escaped safely
+PASS DIF-020 — fixed diff/options produce byte-identical SVG
+PASS DIF-021 — --color never emits no SGR escape sequences
+PASS DIF-022 — JSON stdout remains a single parseable document under verbose/progress conditions
+PASS RST-001 — full mixed-tree restore matches independent source tree/content
+PASS RST-002 — file mode bits preserved
+PASS RST-003 — archived nanosecond mtimes preserved on target filesystem
+PASS RST-004 — relative and absolute symlink targets preserved as link bytes, never followed
+PASS RST-005 — broken symlink recreated identically
+PASS RST-006 — hardlink group of three restores to one inode
+PASS RST-007 — independent identical files remain separate inodes
+PASS RST-008 — empty file and empty directory both restored
+PASS RST-009 — partial file restore creates only selected file plus necessary parents
+PASS RST-010 — partial directory restore contains whole selected subtree only
+PASS RST-011 — selected hardlink without primary restores regular bytes and emits topology-loss warning
+PASS RST-012 — overwrite=never rejects conflict and leaves existing bytes unchanged
+PASS RST-013 — overwrite=files replaces existing regular file via temp+atomic rename
+PASS RST-014 — overwrite=files rejects directory/file type replacement
+PASS RST-015 — overwrite=all resolves file/directory conflicts to final snapshot tree
+PASS RST-016 — malicious '..' archive path is rejected before any outside write
+PASS RST-017 — absolute/slash-bearing malicious manifest component is rejected before writing
+PASS RST-018 — component-by-component O_NOFOLLOW rejects destination symlink-prefix escape
+PASS RST-019 — corrupt unprotected chunk fails restore and no corrupt final filename is published
+PASS RST-020 — single protected missing chunk reconstructed exactly without silent repository repair
+PASS RST-021 — two missing members in one parity stripe are unrecoverable; no placeholder file published
+PASS RST-022 — FILE full-digest mismatch detected before temporary file is renamed final
+PASS RST-024 — invalid UTF-8 raw filename bytes are reproduced where POSIX filesystem permits
+
+RESULT total_passed=242 total_failed=0 total_skipped=0 catalog_total=242 randomized_seed=0x5eedc0de

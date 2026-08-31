@@ -1,0 +1,4 @@
+DARC acceptance runner; root=/dev/shm/darc-tests-Hc74rY; randomized_seed=0x5eedc0de; mode=case; case=STR-005
+PASS STR-005 — verify/GC traverse a canonical FILE carrying 100,000 chunk-reference records without fixed small limits
+
+RESULT total_passed=1 total_failed=0 total_skipped=0 catalog_total=1 randomized_seed=0x5eedc0de

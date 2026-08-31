@@ -52,6 +52,15 @@ jobs:
           - name: Sudoku (Win32 · WorkBuddy Hy3 192k)
             project: runs/c17-win32-sudoku/2026-08-20-hy3-192k-workbuddy-code-development/project/0820-sudoku-workbuddy_curated
             config: runs/c17-win32-sudoku/2026-08-20-hy3-192k-workbuddy-code-development/analysis/repomix/repomix.config.json
+          - name: DARC v0.1.0 (ChatGPT · GPT-5.6 Sol High)
+            project: runs/c17-darc-v0.1.0/2026-08-31-gpt-chat-5.6-sol-high/project/darc_v0.1.0
+            config: runs/c17-darc-v0.1.0/2026-08-31-gpt-chat-5.6-sol-high/analysis/repomix/repomix.config.json
+          - name: Elevator Group Control (ChatGPT · GPT-5.6 Sol Medium)
+            project: runs/c17-elevator-group-control/2026-08-31-gpt-chat-5.6-sol-medium/project/elevator_group_control_v1.0.2_impl_final_curated
+            config: runs/c17-elevator-group-control/2026-08-31-gpt-chat-5.6-sol-medium/analysis/repomix/repomix.config.json
+          - name: CVC POSIX (ChatGPT · GPT-5.6 Sol High)
+            project: runs/c17-posix-cvc/2026-08-31-gpt-chat-5.6-sol-high/project/cvc_taskpack_v1.0.1_implementation_release
+            config: runs/c17-posix-cvc/2026-08-31-gpt-chat-5.6-sol-high/analysis/repomix/repomix.config.json
     steps:
       - name: Check out repository
         uses: actions/checkout@v4

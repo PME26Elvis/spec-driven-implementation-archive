@@ -2,13 +2,13 @@
 
 An archive of fixed, specification-driven software implementation tasks and their implementation runs, intended for manual comparison across execution surfaces and model configurations.
 
-Current archive: **11 logical specifications**, represented by **17 specification directories**, with **6 recorded implementation runs**.
+Current archive: **11 logical specifications**, represented by **17 specification directories**, with **9 recorded implementation runs**.
 
 ## Execution environment
 
 | Execution Surface | Model | Reasoning / Mode | Account Tier Represented |
 | --- | --- | --- | --- |
-| ChatGPT Chat | GPT-5.6 Sol | High | Plus |
+| ChatGPT Chat | GPT-5.6 Sol | High / Medium (run-specific) | Plus |
 | ChatGPT Work | GPT-5.6 Sol | Max | Plus |
 | Grok Web | Grok 4.5 | Fast | Free (recorded runs) |
 | [Tencent WorkBuddy](platforms/workbuddy.zh-TW.md) | Hy3 / selectable models | Agentic desktop; model-dependent | Run-specific |
@@ -51,6 +51,9 @@ Equivalent X11 and Win32 task packs are grouped below as one logical specificati
 | Embedded Database Engine (X11) | [2026-08-17-grok-4.5-fast-web](runs/c17-x11-embedded-database-engine/2026-08-17-grok-4.5-fast-web) | Grok Web · Grok 4.5 · Fast | — | Free web run; archive includes the submitted project snapshot and conversation export, with a later independent GPT-5.6 Sol review assessing the v1.0 release as **FAIL / BLOCKED**. |
 | Pinball Sandbox (Win32) | [2026-08-17-hy3-192k-workbuddy-default](runs/c17-win32-pinball-benchmark/2026-08-17-hy3-192k-workbuddy-default) | Tencent WorkBuddy · Hy3 · High | 114,644 | Default-style code-development run using the time-limited free Hy3 access; no manual experts, skills, or connectors enabled. The submitted project reports all automated/headless gates passing while live-GUI gates remain NOT RUN. |
 | Sudoku (Win32) | [2026-08-20-hy3-192k-workbuddy-code-development](runs/c17-win32-sudoku/2026-08-20-hy3-192k-workbuddy-code-development) | Tencent WorkBuddy · Hy3 · High | — | Time-limited free Hy3 run with a 192k context window in Code Development mode; no experts, skills, or connectors were manually enabled. Git stores a curated source/evidence snapshot while raw-workspace provenance and checksum are recorded with the run. |
+| DARC v0.1.0 | [2026-08-31-gpt-chat-5.6-sol-high](runs/c17-darc-v0.1.0/2026-08-31-gpt-chat-5.6-sol-high) | ChatGPT Chat · GPT-5.6 Sol · High | — | Plus Chat run; final submitted package and conversation are archived, with generated evidence excluded only from the normalized authored-corpus metric. |
+| Elevator Group Control Simulator | [2026-08-31-gpt-chat-5.6-sol-medium](runs/c17-elevator-group-control/2026-08-31-gpt-chat-5.6-sol-medium) | ChatGPT Chat · GPT-5.6 Sol · Medium | — | Plus Chat run; Git stores the implementation-owned curated snapshot while the large generated evidence corpus and duplicate task-pack inputs are tracked by archive provenance. |
+| CVC (POSIX) | [2026-08-31-gpt-chat-5.6-sol-high](runs/c17-posix-cvc/2026-08-31-gpt-chat-5.6-sol-high) | ChatGPT Chat · GPT-5.6 Sol · High | — | Plus Chat run; final release package and conversation are archived, with generated evidence logs excluded only from normalized Repomix measurement. |
 
 > [!NOTE]
 > The table above preserves each run's **historical run-specific Repomix measurement** and counting rules. It does not retroactively rewrite those observations. They measure only implementation artifacts selected by the original run's rules and do not include conversational output unless explicitly saved into the project, platform-hidden reasoning/thoughts, hidden internal context, or other non-exported model activity.
@@ -67,5 +70,8 @@ For cross-run implementation-size comparisons, the archive now also maintains a 
 | Embedded Database Engine (X11) · Grok 4.5 Fast | 76 | 113,373 |
 | Pinball Sandbox (Win32) · WorkBuddy Hy3 | 53 | 112,534 |
 | Sudoku (Win32) · WorkBuddy Hy3 192k | 71 | 218,447 |
+| DARC v0.1.0 · GPT-5.6 Sol High | 52 | 160,382 |
+| Elevator Group Control · GPT-5.6 Sol Medium | 13 | 74,992 |
+| CVC POSIX · GPT-5.6 Sol High | 40 | 86,167 |
 
-These normalized measurements were most recently validated for all six recorded runs on 2026-08-31. They exclude only snapshot-reviewed non-authored material such as compiled outputs, generated evidence/reports, logs/traces, and mechanically expanded data corpora; the exact exclusions and rationale are stored beside each recorded run.
+These normalized measurements were most recently validated for all nine recorded runs on 2026-08-31. They exclude only snapshot-reviewed non-authored material such as compiled outputs, generated evidence/reports, logs/traces, mechanically expanded data corpora, and byte-identical benchmark inputs already preserved in the canonical specification tree; the exact exclusions and rationale are stored beside each recorded run.

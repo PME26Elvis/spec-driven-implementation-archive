@@ -1,0 +1,4 @@
+DARC acceptance runner; root=/dev/shm/darc-tests-e9hVJ4; randomized_seed=0x5eedc0de; mode=case; case=STR-001
+PASS STR-001 — 20,000 deterministic files complete snapshot, incremental diff, restore, and scrub verify
+
+RESULT total_passed=1 total_failed=0 total_skipped=0 catalog_total=1 randomized_seed=0x5eedc0de

@@ -1,0 +1,4 @@
+DARC acceptance runner; root=/dev/shm/darc-tests-FDwBwg; randomized_seed=0x5eedc0de; mode=case; case=SCN-029
+PASS SCN-029 — 512MiB logical sparse/patterned file is actually streamed with bounded 64KiB read requests
+
+RESULT total_passed=1 total_failed=0 total_skipped=0 catalog_total=1 randomized_seed=0x5eedc0de

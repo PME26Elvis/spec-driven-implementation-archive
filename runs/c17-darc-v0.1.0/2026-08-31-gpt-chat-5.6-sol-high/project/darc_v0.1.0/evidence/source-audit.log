@@ -1,0 +1,20 @@
+DARC final source audit
+production TODO/FIXME/placeholder/mock/stub markers:
+NONE
+production subprocess/dynamic-loader calls:
+NONE
+required implementation source files:
+PASS src/buzhash.c
+PASS src/sha256.c
+PASS src/crc32c.c
+PASS src/lzh1.c
+PASS src/json.c
+PASS src/yaml.c
+PASS src/rhmap.c
+PASS src/format.c
+PASS src/parity.c
+runtime dependency:
+	linux-vdso.so.1 (0x00007fe5e9baf000)
+	libc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007fe5e9976000)
+	/lib64/ld-linux-x86-64.so.2 (0x00007fe5e9bb1000)
+audit_result=PASS

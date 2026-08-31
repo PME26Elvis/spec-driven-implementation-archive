@@ -1,0 +1,12 @@
+# Omitted from the curated Git project; preserved in the raw ZIP.
+evidence/final/**
+specs/**
+SHA256SUMS.txt
+fixtures/README.md
+fixtures/acceptance/**
+fixtures/equivalence/**
+fixtures/invalid/**
+fixtures/traces/**
+
+# Retained implementation-owned fixture:
+# fixtures/implementation/**

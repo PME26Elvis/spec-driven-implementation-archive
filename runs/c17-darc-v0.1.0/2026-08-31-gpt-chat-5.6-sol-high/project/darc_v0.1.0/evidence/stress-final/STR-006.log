@@ -1,0 +1,4 @@
+DARC acceptance runner; root=/dev/shm/darc-tests-uj07de; randomized_seed=0x5eedc0de; mode=case; case=STR-006
+PASS STR-006 — 50-seed randomized full lifecycle (nested/empty/duplicate/hardlink/symlink/UTF-8/raw-byte/modes/partial-large mutation); failing_seed=0x0000000000000000
+
+RESULT total_passed=1 total_failed=0 total_skipped=0 catalog_total=1 randomized_seed=0x5eedc0de

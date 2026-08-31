@@ -1,0 +1,8 @@
+catalog_unique=252
+trace_rows=252
+trace_unique=252
+missing=0
+extra=0
+duplicates=0
+all_status_pass=1
+result=PASS

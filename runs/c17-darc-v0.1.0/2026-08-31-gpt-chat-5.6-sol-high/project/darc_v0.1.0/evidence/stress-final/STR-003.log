@@ -1,0 +1,4 @@
+DARC acceptance runner; root=/dev/shm/darc-tests-J7HWQv; randomized_seed=0x5eedc0de; mode=case; case=STR-003
+PASS STR-003 — single 512MiB file snapshot/restore is bounded streaming and byte-exact
+
+RESULT total_passed=1 total_failed=0 total_skipped=0 catalog_total=1 randomized_seed=0x5eedc0de

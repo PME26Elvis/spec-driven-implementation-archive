@@ -1,0 +1,51 @@
+PASS 01 sha empty
+PASS 02 sha abc
+PASS 03 sha multiblock
+PASS 04 sha byte chunks
+PASS 05 sha split chunks
+PASS 06 json minimal
+PASS 07 json nested
+PASS 08 json escapes
+PASS 09 json BMP
+PASS 10 json surrogate
+PASS 11 json high surrogate reject
+PASS 12 json low surrogate reject
+PASS 13 json invalid UTF8
+PASS 14 json duplicate
+PASS 15 json decoded duplicate
+PASS 16 json trailing comma object
+PASS 17 json trailing comma array
+PASS 18 json comments
+PASS 19 json garbage
+PASS 20 json BOM
+PASS 21 json number leading zero
+PASS 22 json number incomplete frac
+PASS 23 json number incomplete exp
+PASS 24 json overflow
+PASS 25 json nul length aware
+PASS 26 glob star no slash
+PASS 27 glob question
+PASS 28 glob dstar
+PASS 29 glob dstar slash zero
+PASS 30 glob dstar root
+PASS 31 glob triple reject
+PASS 32 glob Chinese exact
+PASS 33 myers identical
+PASS 34 myers add front
+PASS 35 myers add end
+PASS 36 myers delete middle
+PASS 37 myers replace
+PASS 38 myers repeats
+PASS 39 myers no-final-newline
+PASS 40 myers CRLF
+PASS 41 myers unicode
+PASS 42 3way disjoint
+PASS 43 3way identical edit
+PASS 44 3way overlap conflict
+PASS 45 3way same insert once
+PASS 46 3way different insert conflict
+PASS 47 canonical empty blob
+PASS 48 canonical abc blob
+PASS 49 canonical empty tree
+PASS 50 canonical root commit
+UNIT SUMMARY: 50/50 passed

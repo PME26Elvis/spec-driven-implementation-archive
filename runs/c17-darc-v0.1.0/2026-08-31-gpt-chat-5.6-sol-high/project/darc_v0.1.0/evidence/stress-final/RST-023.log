@@ -1,0 +1,4 @@
+DARC acceptance runner; root=/dev/shm/darc-tests-25z4JJ; randomized_seed=0x5eedc0de; mode=case; case=RST-023
+PASS RST-023 — 512MiB logical sparse/patterned restore streams bounded writes and preserves exact bytes
+
+RESULT total_passed=1 total_failed=0 total_skipped=0 catalog_total=1 randomized_seed=0x5eedc0de

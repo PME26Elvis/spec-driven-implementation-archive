@@ -1,0 +1,280 @@
+cc -std=c17 -O2 -g -Wall -Wextra -Wpedantic -Wshadow -Wconversion -Wstrict-prototypes -D_POSIX_C_SOURCE=200809L -Iinclude  -c -o src/commands.o src/commands.c
+cc -std=c17 -O2 -g -Wall -Wextra -Wpedantic -Wshadow -Wconversion -Wstrict-prototypes -D_POSIX_C_SOURCE=200809L -Iinclude  -c -o src/common.o src/common.c
+cc -std=c17 -O2 -g -Wall -Wextra -Wpedantic -Wshadow -Wconversion -Wstrict-prototypes -D_POSIX_C_SOURCE=200809L -Iinclude  -c -o src/config.o src/config.c
+cc -std=c17 -O2 -g -Wall -Wextra -Wpedantic -Wshadow -Wconversion -Wstrict-prototypes -D_POSIX_C_SOURCE=200809L -Iinclude  -c -o src/diff.o src/diff.c
+cc -std=c17 -O2 -g -Wall -Wextra -Wpedantic -Wshadow -Wconversion -Wstrict-prototypes -D_POSIX_C_SOURCE=200809L -Iinclude  -c -o src/glob.o src/glob.c
+cc -std=c17 -O2 -g -Wall -Wextra -Wpedantic -Wshadow -Wconversion -Wstrict-prototypes -D_POSIX_C_SOURCE=200809L -Iinclude  -c -o src/json.o src/json.c
+cc -std=c17 -O2 -g -Wall -Wextra -Wpedantic -Wshadow -Wconversion -Wstrict-prototypes -D_POSIX_C_SOURCE=200809L -Iinclude  -c -o src/main.o src/main.c
+cc -std=c17 -O2 -g -Wall -Wextra -Wpedantic -Wshadow -Wconversion -Wstrict-prototypes -D_POSIX_C_SOURCE=200809L -Iinclude  -c -o src/merge.o src/merge.c
+cc -std=c17 -O2 -g -Wall -Wextra -Wpedantic -Wshadow -Wconversion -Wstrict-prototypes -D_POSIX_C_SOURCE=200809L -Iinclude  -c -o src/object.o src/object.c
+cc -std=c17 -O2 -g -Wall -Wextra -Wpedantic -Wshadow -Wconversion -Wstrict-prototypes -D_POSIX_C_SOURCE=200809L -Iinclude  -c -o src/repo.o src/repo.c
+cc -std=c17 -O2 -g -Wall -Wextra -Wpedantic -Wshadow -Wconversion -Wstrict-prototypes -D_POSIX_C_SOURCE=200809L -Iinclude  -c -o src/sha256.o src/sha256.c
+cc -std=c17 -O2 -g -Wall -Wextra -Wpedantic -Wshadow -Wconversion -Wstrict-prototypes -D_POSIX_C_SOURCE=200809L -Iinclude  -c -o src/snapshot.o src/snapshot.c
+cc -std=c17 -O2 -g -Wall -Wextra -Wpedantic -Wshadow -Wconversion -Wstrict-prototypes -D_POSIX_C_SOURCE=200809L -Iinclude  -c -o src/verify.o src/verify.c
+cc -std=c17 -O2 -g -Wall -Wextra -Wpedantic -Wshadow -Wconversion -Wstrict-prototypes -D_POSIX_C_SOURCE=200809L -Iinclude  -c -o src/worktree.o src/worktree.c
+cc -std=c17 -O2 -g -Wall -Wextra -Wpedantic -fPIC -shared tests/faultio.c -ldl -o tests/libfaultio.so
+cc -std=c17 -O2 -g -Wall -Wextra -Wpedantic -Wshadow -Wconversion -Wstrict-prototypes -D_POSIX_C_SOURCE=200809L src/commands.o src/common.o src/config.o src/diff.o src/glob.o src/json.o src/main.o src/merge.o src/object.o src/repo.o src/sha256.o src/snapshot.o src/verify.o src/worktree.o  -o cvc
+cc -std=c17 -O2 -g -Wall -Wextra -Wpedantic -Wshadow -Wconversion -Wstrict-prototypes -D_POSIX_C_SOURCE=200809L -Iinclude tests/unit_core.c src/commands.o src/common.o src/config.o src/diff.o src/glob.o src/json.o src/merge.o src/object.o src/repo.o src/sha256.o src/snapshot.o src/verify.o src/worktree.o  -o tests/unit_core
+cc -std=c17 -O2 -g -Wall -Wextra -Wpedantic -Wshadow -Wconversion -Wstrict-prototypes -D_POSIX_C_SOURCE=200809L -Iinclude tests/mergebase_unit.c src/commands.o src/common.o src/config.o src/diff.o src/glob.o src/json.o src/merge.o src/object.o src/repo.o src/sha256.o src/snapshot.o src/verify.o src/worktree.o  -o tests/mergebase_unit
+./tests/unit_core
+PASS 01 sha empty
+PASS 02 sha abc
+PASS 03 sha multiblock
+PASS 04 sha byte chunks
+PASS 05 sha split chunks
+PASS 06 json minimal
+PASS 07 json nested
+PASS 08 json escapes
+PASS 09 json BMP
+PASS 10 json surrogate
+PASS 11 json high surrogate reject
+PASS 12 json low surrogate reject
+PASS 13 json invalid UTF8
+PASS 14 json duplicate
+PASS 15 json decoded duplicate
+PASS 16 json trailing comma object
+PASS 17 json trailing comma array
+PASS 18 json comments
+PASS 19 json garbage
+PASS 20 json BOM
+PASS 21 json number leading zero
+PASS 22 json number incomplete frac
+PASS 23 json number incomplete exp
+PASS 24 json overflow
+PASS 25 json nul length aware
+PASS 26 glob star no slash
+PASS 27 glob question
+PASS 28 glob dstar
+PASS 29 glob dstar slash zero
+PASS 30 glob dstar root
+PASS 31 glob triple reject
+PASS 32 glob Chinese exact
+PASS 33 myers identical
+PASS 34 myers add front
+PASS 35 myers add end
+PASS 36 myers delete middle
+PASS 37 myers replace
+PASS 38 myers repeats
+PASS 39 myers no-final-newline
+PASS 40 myers CRLF
+PASS 41 myers unicode
+PASS 42 3way disjoint
+PASS 43 3way identical edit
+PASS 44 3way overlap conflict
+PASS 45 3way same insert once
+PASS 46 3way different insert conflict
+PASS 47 canonical empty blob
+PASS 48 canonical abc blob
+PASS 49 canonical empty tree
+PASS 50 canonical root commit
+UNIT SUMMARY: 50/50 passed
+./tests/mergebase_unit
+mergebase_unit: PASS
+python3 tests/acceptance.py ./cvc
+A01: PASS - test_A_build
+A02: PASS - test_A_cli
+A03: PASS - test_A_cli
+A04: PASS - test_A_cli
+A05: PASS - test_A_cli
+A06: PASS - test_A_cli
+A07: PASS - test_A_cli
+A08: PASS - test_A_cli
+A09: PASS - test_A_cli
+B01: PASS - test_B_init
+B02: PASS - test_B_init
+B03: PASS - test_B_init
+B04: PASS - test_B_init
+B05: PASS - test_B_init
+B06: PASS - test_B_init
+B07: PASS - test_B_partial
+C01: PASS - <lambda>
+C02: PASS - <lambda>
+C03: PASS - <lambda>
+C04: PASS - <lambda>
+C05: PASS - <lambda>
+C06: PASS - <lambda>
+C07: PASS - <lambda>
+C08: PASS - <lambda>
+C09: PASS - <lambda>
+C10: PASS - <lambda>
+C11: PASS - <lambda>
+C12: PASS - <lambda>
+C13: PASS - <lambda>
+C14: PASS - <lambda>
+C15: PASS - <lambda>
+C16: PASS - <lambda>
+C17: PASS - <lambda>
+C18: PASS - <lambda>
+C19: PASS - c19
+C20: PASS - <lambda>
+D01: PASS - unit_ok
+D02: PASS - unit_ok
+D03: PASS - unit_ok
+D04: PASS - unit_ok
+D05: PASS - d05_06
+D06: PASS - d05_06
+D07: PASS - d07
+D08: PASS - deterministic
+D09: PASS - deterministic
+D10: PASS - unit_ok
+D11: PASS - d11
+D12: PASS - d12
+D13: PASS - unit_ok
+D14: PASS - d14
+E01: PASS - e_basic
+E02: PASS - e_basic
+E03: PASS - e_nul
+E04: PASS - e_nul
+E05: PASS - e_nul
+E06: PASS - e_size
+E07: PASS - e_fifo_nested
+E08: PASS - e_fifo_nested
+E09: PASS - e_basic
+E10: PASS - e_basic
+E11: PASS - e_basic
+E12: PASS - e_many
+E13: PASS - e_basic
+E14: PASS - e_roundtrip_nul
+E15: PASS - e_badname
+F01: PASS - <lambda>
+F02: PASS - <lambda>
+F03: PASS - <lambda>
+F04: PASS - f04_05
+F05: PASS - f04_05
+F06: PASS - f06_07
+F07: PASS - f06_07
+F08: PASS - f08
+G01: PASS - g_core
+G02: PASS - g_core
+G03: PASS - g_core
+G04: PASS - g04_05
+G05: PASS - g04_05
+G06: PASS - g06
+G07: PASS - g07
+G08: PASS - g08
+G09: PASS - g09
+G10: PASS - g10
+G11: PASS - <lambda>
+H01: PASS - unit_ok
+H02: PASS - unit_ok
+H03: PASS - unit_ok
+H04: PASS - unit_ok
+H05: PASS - h05
+H06: PASS - h06_09_12
+H07: PASS - <lambda>
+H08: PASS - h08
+H09: PASS - h06_09_12
+H10: PASS - unit_ok
+H11: PASS - unit_ok
+H12: PASS - h06_09_12
+H13: PASS - h13
+H14: PASS - h14
+I01: PASS - unit_ok
+I02: PASS - unit_ok
+I03: PASS - unit_ok
+I04: PASS - unit_ok
+I05: PASS - unit_ok
+I06: PASS - unit_ok
+I07: PASS - unit_ok
+I08: PASS - unit_ok
+I09: PASS - unit_ok
+I10: PASS - unit_ok
+I11: PASS - i11_12
+I12: PASS - i11_12
+I13: PASS - i13
+J01: PASS - j01_05_06
+J02: PASS - j01_05_06
+J03: PASS - j03
+J04: PASS - j01_05_06
+J05: PASS - j01_05_06
+J06: PASS - j01_05_06
+J07: PASS - j07_12
+J08: PASS - <lambda>
+J09: PASS - <lambda>
+J10: PASS - j10
+J11: PASS - j11
+J12: PASS - j07_12
+J13: PASS - j13
+J14: PASS - j14
+K01: PASS - k01_03_05_07
+K02: PASS - k01_03_05_07
+K03: PASS - k01_03_05_07
+K04: PASS - k04
+K05: PASS - k01_03_05_07
+K06: PASS - k06
+K07: PASS - k01_03_05_07
+K08: PASS - k08_09
+K09: PASS - k08_09
+K10: PASS - k10
+K11: PASS - k11
+K12: PASS - k12
+K13: PASS - k13
+L01: PASS - l_self_ancestor_ff
+L02: PASS - l_self_ancestor_ff
+L03: PASS - l_self_ancestor_ff
+L04: PASS - l04
+L05: PASS - l05
+L06: PASS - l06
+L07: PASS - l07
+L08: PASS - l08
+L09: PASS - l09
+L10: PASS - l10
+L11: PASS - l11
+L12: PASS - l12_13_18
+L13: PASS - l12_13_18
+L14: PASS - l14
+L15: PASS - l15
+L16: PASS - l16
+L17: PASS - l17
+L18: PASS - l12_13_18
+L19: PASS - l19
+L20: PASS - l20
+L21: PASS - l21
+L22: PASS - l22
+L23: PASS - l23
+L24: PASS - l24_probe
+L25: PASS - l25_26_27
+L26: PASS - l25_26_27
+L27: PASS - l25_26_27
+L28: PASS - l28
+M01: PASS - m_core
+M02: PASS - m_core
+M03: PASS - m_core
+M04: PASS - m_core
+M05: PASS - m_core
+M06: PASS - m06
+M07: PASS - m07
+M08: PASS - m08
+M09: PASS - m09
+N01: PASS - n01_10
+N02: PASS - n02
+N03: PASS - n03
+N04: PASS - n04
+N05: PASS - n05
+N06: PASS - n06
+N07: PASS - n07
+N08: PASS - n08
+N09: PASS - n09
+N10: PASS - n01_10
+N11: PASS - n11
+N12: PASS - n12
+N13: PASS - n13
+N14: PASS - n14
+N15: PASS - n15
+O01: PASS - o01_02
+O02: PASS - o01_02
+O03: PASS - o03
+O04: PASS - o04
+O05: PASS - o05
+O06: PASS - o06
+O07: PASS - o07
+O08: PASS - o08
+O09: PASS - o09
+O10: PASS - o10
+J11b: PASS - <lambda>
+L07b: PASS - l07b
+ACCEPTANCE SUMMARY: 202/202 PASS, 0 FAIL, 0 MISSING, 0 SKIPPED
+python3 tests/supplemental.py ./cvc
+PASS supplemental: restore structural symlink without follow
+PASS supplemental: post-rename fsync failure rollback
+SUPPLEMENTAL SUMMARY: 2/2 passed

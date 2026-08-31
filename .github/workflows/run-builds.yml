@@ -16,6 +16,9 @@ on:
           - embedded-database
           - pinball-win32-workbuddy
           - sudoku-win32-workbuddy
+          - darc-chatgpt
+          - elevator-chatgpt
+          - cvc-chatgpt
   pull_request:
     paths:
       - .github/workflows/run-builds.yml
@@ -237,3 +240,69 @@ jobs:
             exit /b 1
           )
           echo PASS: build\bin\sudoku.exe
+
+  darc-chatgpt:
+    if: ${{ github.event_name == 'pull_request' || inputs.run == 'all' || inputs.run == 'darc-chatgpt' }}
+    name: DARC v0.1.0 (ChatGPT · GPT-5.6 Sol High)
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    defaults:
+      run:
+        working-directory: runs/c17-darc-v0.1.0/2026-08-31-gpt-chat-5.6-sol-high/project/darc_v0.1.0
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Install build dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends build-essential
+
+      - name: Clean and build
+        run: |
+          make clean
+          make all
+
+  elevator-chatgpt:
+    if: ${{ github.event_name == 'pull_request' || inputs.run == 'all' || inputs.run == 'elevator-chatgpt' }}
+    name: Elevator Group Control (ChatGPT · GPT-5.6 Sol Medium)
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    defaults:
+      run:
+        working-directory: runs/c17-elevator-group-control/2026-08-31-gpt-chat-5.6-sol-medium/project/elevator_group_control_v1.0.2_impl_final_curated
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Install build dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends build-essential
+
+      - name: Clean and build
+        run: |
+          make clean
+          make all
+
+  cvc-chatgpt:
+    if: ${{ github.event_name == 'pull_request' || inputs.run == 'all' || inputs.run == 'cvc-chatgpt' }}
+    name: CVC POSIX (ChatGPT · GPT-5.6 Sol High)
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    defaults:
+      run:
+        working-directory: runs/c17-posix-cvc/2026-08-31-gpt-chat-5.6-sol-high/project/cvc_taskpack_v1.0.1_implementation_release
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Install build dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends build-essential
+
+      - name: Clean and build
+        run: |
+          make clean
+          make all

@@ -1,0 +1,5 @@
+install -d "/tmp/darc-install-smoke/bin"
+install -m 0755 darc "/tmp/darc-install-smoke/bin/darc"
+darc 0.1.0
+rm -f "/tmp/darc-install-smoke/bin/darc"
+install_uninstall_smoke=PASS
