@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "suite": "failure",
+  "source_commit": "d6e82717791b5f29eaffd466585a4ed858df226248f9232d33bde8fb830118c1",
+  "started_epoch_ms": 1788088830889,
+  "duration_ms": 2765,
+  "total": 3,
+  "passed": 3,
+  "failed": 0,
+  "skipped": 0,
+  "exit_status": 0,
+  "cases": [
+    {
+      "name": "failure-vault-corruption-modes",
+      "requirement_ids": ["G7","VUL-02","VUL-03","STA-06"],
+      "status": "passed",
+      "duration_ms": 283,
+      "assertion_count": 10,
+      "failure_message": null,
+      "evidence_paths": []
+    },
+    {
+      "name": "failure-vault-bak-recovery",
+      "requirement_ids": ["G7","VUL-04","STA-07"],
+      "status": "passed",
+      "duration_ms": 184,
+      "assertion_count": 6,
+      "failure_message": null,
+      "evidence_paths": []
+    },
+    {
+      "name": "failure-generator-guard",
+      "requirement_ids": ["G9.1","GEN-05"],
+      "status": "passed",
+      "duration_ms": 2298,
+      "assertion_count": 2,
+      "failure_message": null,
+      "evidence_paths": []
+    }
+  ]
+}

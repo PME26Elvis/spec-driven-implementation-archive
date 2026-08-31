@@ -1,0 +1,18 @@
+suite: unit-locstat
+source_commit: d6e82717791b5f29eaffd466585a4ed858df226248f9232d33bde8fb830118c1
+started_epoch_ms: 1788088834419
+--------------------------------------------------------------------------------
+passed  locstat.empty_file                                                         6 asserts      0ms
+passed  locstat.single_line_no_newline                                             4 asserts      0ms
+passed  locstat.lf_vs_crlf                                                         5 asserts      0ms
+passed  locstat.blank_comment_mix                                                  4 asserts      0ms
+passed  locstat.comment_in_strings                                                 3 asserts      0ms
+passed  locstat.json_config_parse_error                                           10 asserts      0ms
+passed  locstat.category_priority                                                  5 asserts      0ms
+passed  locstat.nested_and_ignore                                                 15 asserts    408ms
+passed  locstat.tinyvcs_exclusion                                                  9 asserts     63ms
+passed  locstat.reparse_point_and_root                                             5 asserts      3ms
+passed  locstat.unreadable_path                                                    7 asserts     66ms
+passed  locstat.stable_ordering                                                   16 asserts    202ms
+--------------------------------------------------------------------------------
+total 12  passed 12  failed 0  skipped 0  duration_ms 3000  exit_status 0

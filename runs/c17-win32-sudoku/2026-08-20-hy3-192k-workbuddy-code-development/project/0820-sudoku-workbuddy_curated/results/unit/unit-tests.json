@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "suite": "unit-sudoku",
+  "source_commit": "d6e82717791b5f29eaffd466585a4ed858df226248f9232d33bde8fb830118c1",
+  "started_epoch_ms": 1788088768326,
+  "duration_ms": 53967,
+  "total": 6,
+  "passed": 6,
+  "failed": 0,
+  "skipped": 0,
+  "exit_status": 0,
+  "cases": [
+    {
+      "name": "sudoku-validate-and-solve",
+      "requirement_ids": ["SDK-01","SDK-03","SDK-07"],
+      "status": "passed",
+      "duration_ms": 0,
+      "assertion_count": 6,
+      "failure_message": null,
+      "evidence_paths": []
+    },
+    {
+      "name": "sudoku-conflict-detection",
+      "requirement_ids": ["SDK-04","SDK-05"],
+      "status": "passed",
+      "duration_ms": 0,
+      "assertion_count": 4,
+      "failure_message": null,
+      "evidence_paths": []
+    },
+    {
+      "name": "sudoku-logic-solve-trace",
+      "requirement_ids": ["SDK-08","SDK-09","SDK-10"],
+      "status": "passed",
+      "duration_ms": 0,
+      "assertion_count": 7,
+      "failure_message": null,
+      "evidence_paths": []
+    },
+    {
+      "name": "sudoku-hint-and-auto",
+      "requirement_ids": ["HNT-01","HNT-03","HNT-05","SDK-14"],
+      "status": "passed",
+      "duration_ms": 0,
+      "assertion_count": 7,
+      "failure_message": null,
+      "evidence_paths": []
+    },
+    {
+      "name": "sudoku-difficulty-bands",
+      "requirement_ids": ["DIF-01","DIF-02","DIF-03","DIF-04","DIF-05","DIF-06","DIF-07","DIF-08"],
+      "status": "passed",
+      "duration_ms": 53926,
+      "assertion_count": 4,
+      "failure_message": null,
+      "evidence_paths": []
+    },
+    {
+      "name": "sudoku-generator-determinism",
+      "requirement_ids": ["SDK-19","G9.1"],
+      "status": "passed",
+      "duration_ms": 40,
+      "assertion_count": 2,
+      "failure_message": null,
+      "evidence_paths": []
+    }
+  ]
+}

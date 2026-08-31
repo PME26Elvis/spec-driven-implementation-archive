@@ -1,0 +1,12 @@
+suite: unit-sudoku
+source_commit: d6e82717791b5f29eaffd466585a4ed858df226248f9232d33bde8fb830118c1
+started_epoch_ms: 1788088768326
+--------------------------------------------------------------------------------
+passed  sudoku-validate-and-solve                                                  6 asserts      0ms
+passed  sudoku-conflict-detection                                                  4 asserts      0ms
+passed  sudoku-logic-solve-trace                                                   7 asserts      0ms
+passed  sudoku-hint-and-auto                                                       7 asserts      0ms
+passed  sudoku-difficulty-bands                                                    4 asserts  53926ms
+passed  sudoku-generator-determinism                                               2 asserts     40ms
+--------------------------------------------------------------------------------
+total 6  passed 6  failed 0  skipped 0  duration_ms 53967  exit_status 0
