@@ -15,9 +15,11 @@ The raw ZIP is not committed to Git. It is intended to be published unchanged as
 
 ## Curated Git snapshot
 
-The repository stores `project/0820-sudoku-workbuddy_curated/`, containing **136 files**. The selection preserves implementation source, headers, tests, developer tools, scripts, configuration, the embedded benchmark task pack, and lightweight textual validation results while omitting large generated/runtime material.
+The repository stores `project/0820-sudoku-workbuddy_curated/`, containing **105 files**. The selection preserves implementation source, headers, tests, developer tools, scripts, configuration, and lightweight textual validation results while omitting large generated/runtime material and a redundant embedded copy of the benchmark task pack.
 
-The embedded `c17-win32-sudoku-task-pack-v1.0.0/` was compared during ingestion with the canonical repository copy under `specs/c17-win32-sudoku/` and matched. It is retained in the curated project as benchmark-input provenance, but excluded from the normalized implementer-authored Repomix metric.
+The raw workspace's `c17-win32-sudoku-task-pack-v1.0.0/` was compared during ingestion with the canonical repository copy under `specs/c17-win32-sudoku/` and matched byte-for-byte. Because the canonical spec is already versioned in this repository and the complete raw ZIP preserves the original workspace, the duplicate task-pack directory is intentionally omitted from the curated project. This also keeps the archived run checkout-friendly on Windows, where the extra nested path depth exceeded Git's default path limit.
+
+Conversation exports retain their original bytes but use archive-normalized short filenames (`workbuddy-export.md` and `workbuddy-output-only.txt`) so the run can be checked out on Windows.
 
 ## Omitted raw-workspace material
 
@@ -28,6 +30,7 @@ The exact reviewed omission patterns are recorded in `omitted-paths.txt`. The do
 - `build/obj/**` — 286 compiler intermediate files, about 14.4 MB.
 - `build/evidence/**` — generated evidence artifacts, about 65.5 MB.
 - `build/logs/**`, `build/tmp/**`, `.tinyvcs/**`, `.workbuddy/**`, and root `objects/**` — generated logs, temporary/runtime state, tool databases, and workspace state.
+- `c17-win32-sudoku-task-pack-v1.0.0/**` — verified duplicate benchmark input already preserved canonically under `specs/c17-win32-sudoku/` and in the raw Release ZIP.
 
 The otherwise-generated `build/` tree contained four authored helpers that were deliberately retained:
 
