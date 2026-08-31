@@ -1,0 +1,12 @@
+suite: unit-tinyvcs
+source_commit: d6e82717791b5f29eaffd466585a4ed858df226248f9232d33bde8fb830118c1
+started_epoch_ms: 1788089606293
+--------------------------------------------------------------------------------
+passed  tinyvcs.init_and_reinit                                                    2 asserts      0ms
+passed  tinyvcs.blob_roundtrip                                                     9 asserts     93ms
+passed  tinyvcs.index_roundtrip                                                    8 asserts    185ms
+passed  tinyvcs.commit_and_verify                                                 13 asserts    726ms
+passed  tinyvcs.branch_second_commit                                              10 asserts   1100ms
+passed  tinyvcs.status_classification                                              8 asserts    539ms
+--------------------------------------------------------------------------------
+total 6  passed 6  failed 0  skipped 0  duration_ms 2643  exit_status 0

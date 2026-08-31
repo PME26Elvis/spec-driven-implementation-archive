@@ -1,0 +1,374 @@
+{
+  "schema_version": 1,
+  "suite": "unit-crypto",
+  "source_commit": "d6e82717791b5f29eaffd466585a4ed858df226248f9232d33bde8fb830118c1",
+  "started_epoch_ms": 1788088823001,
+  "duration_ms": 178,
+  "total": 40,
+  "passed": 40,
+  "failed": 0,
+  "skipped": 0,
+  "exit_status": 0,
+  "cases": [
+    {
+      "name": "unit.crypto.sha256.published_vectors",
+      "requirement_ids": ["SEC-01","SEC-02","VCS-02"],
+      "status": "passed",
+      "duration_ms": 0,
+      "assertion_count": 8,
+      "failure_message": null,
+      "evidence_paths": []
+    },
+    {
+      "name": "unit.crypto.sha256.one_million_a",
+      "requirement_ids": ["SEC-01","VCS-02"],
+      "status": "passed",
+      "duration_ms": 6,
+      "assertion_count": 1,
+      "failure_message": null,
+      "evidence_paths": []
+    },
+    {
+      "name": "unit.crypto.sha256.incremental_matches_oneshot",
+      "requirement_ids": ["SEC-01","VCS-02"],
+      "status": "passed",
+      "duration_ms": 0,
+      "assertion_count": 64,
+      "failure_message": null,
+      "evidence_paths": []
+    },
+    {
+      "name": "unit.crypto.hmac_sha256.rfc4231_cases",
+      "requirement_ids": ["SEC-01"],
+      "status": "passed",
+      "duration_ms": 0,
+      "assertion_count": 7,
+      "failure_message": null,
+      "evidence_paths": []
+    },
+    {
+      "name": "unit.crypto.hmac_sha256.key_length_boundaries",
+      "requirement_ids": ["SEC-01"],
+      "status": "passed",
+      "duration_ms": 0,
+      "assertion_count": 7,
+      "failure_message": null,
+      "evidence_paths": []
+    },
+    {
+      "name": "unit.crypto.hmac_sha256.incremental_update",
+      "requirement_ids": ["SEC-01"],
+      "status": "passed",
+      "duration_ms": 0,
+      "assertion_count": 1,
+      "failure_message": null,
+      "evidence_paths": []
+    },
+    {
+      "name": "unit.crypto.hmac_sha256.precomputed_key_form",
+      "requirement_ids": ["SEC-01"],
+      "status": "passed",
+      "duration_ms": 0,
+      "assertion_count": 2,
+      "failure_message": null,
+      "evidence_paths": []
+    },
+    {
+      "name": "unit.crypto.pbkdf2.rfc7914_vectors",
+      "requirement_ids": ["SEC-01"],
+      "status": "passed",
+      "duration_ms": 152,
+      "assertion_count": 4,
+      "failure_message": null,
+      "evidence_paths": []
+    },
+    {
+      "name": "unit.crypto.pbkdf2.iteration_progression",
+      "requirement_ids": ["SEC-01"],
+      "status": "passed",
+      "duration_ms": 4,
+      "assertion_count": 6,
+      "failure_message": null,
+      "evidence_paths": []
+    },
+    {
+      "name": "unit.crypto.pbkdf2.partial_final_block",
+      "requirement_ids": ["SEC-01"],
+      "status": "passed",
+      "duration_ms": 9,
+      "assertion_count": 2,
+      "failure_message": null,
+      "evidence_paths": []
+    },
+    {
+      "name": "unit.crypto.pbkdf2.embedded_nul_not_truncated",
+      "requirement_ids": ["SEC-01"],
+      "status": "passed",
+      "duration_ms": 5,
+      "assertion_count": 2,
+      "failure_message": null,
+      "evidence_paths": []
+    },
+    {
+      "name": "unit.crypto.pbkdf2.first_block_equals_hmac",
+      "requirement_ids": ["SEC-01"],
+      "status": "passed",
+      "duration_ms": 0,
+      "assertion_count": 2,
+      "failure_message": null,
+      "evidence_paths": []
+    },
+    {
+      "name": "unit.crypto.pbkdf2.production_iteration_count",
+      "requirement_ids": ["SEC-01"],
+      "status": "passed",
+      "duration_ms": 0,
+      "assertion_count": 1,
+      "failure_message": null,
+      "evidence_paths": []
+    },
+    {
+      "name": "unit.crypto.pbkdf2.rejects_bad_arguments",
+      "requirement_ids": ["SEC-01","FMT-07"],
+      "status": "passed",
+      "duration_ms": 0,
+      "assertion_count": 3,
+      "failure_message": null,
+      "evidence_paths": []
+    },
+    {
+      "name": "unit.crypto.chacha20.block_function_rfc8439",
+      "requirement_ids": ["SEC-02"],
+      "status": "passed",
+      "duration_ms": 0,
+      "assertion_count": 1,
+      "failure_message": null,
+      "evidence_paths": []
+    },
+    {
+      "name": "unit.crypto.chacha20.stream_rfc8439",
+      "requirement_ids": ["SEC-02"],
+      "status": "passed",
+      "duration_ms": 0,
+      "assertion_count": 3,
+      "failure_message": null,
+      "evidence_paths": []
+    },
+    {
+      "name": "unit.crypto.chacha20.poly1305_key_generation",
+      "requirement_ids": ["SEC-02"],
+      "status": "passed",
+      "duration_ms": 0,
+      "assertion_count": 1,
+      "failure_message": null,
+      "evidence_paths": []
+    },
+    {
+      "name": "unit.crypto.chacha20.chunked_matches_contiguous",
+      "requirement_ids": ["SEC-02"],
+      "status": "passed",
+      "duration_ms": 0,
+      "assertion_count": 1,
+      "failure_message": null,
+      "evidence_paths": []
+    },
+    {
+      "name": "unit.crypto.hchacha20.draft_vector",
+      "requirement_ids": ["SEC-02"],
+      "status": "passed",
+      "duration_ms": 0,
+      "assertion_count": 1,
+      "failure_message": null,
+      "evidence_paths": []
+    },
+    {
+      "name": "unit.crypto.xchacha20.keystream_draft_vector",
+      "requirement_ids": ["SEC-02"],
+      "status": "passed",
+      "duration_ms": 0,
+      "assertion_count": 1,
+      "failure_message": null,
+      "evidence_paths": []
+    },
+    {
+      "name": "unit.crypto.poly1305.rfc8439_2_5_2",
+      "requirement_ids": ["SEC-02"],
+      "status": "passed",
+      "duration_ms": 0,
+      "assertion_count": 2,
+      "failure_message": null,
+      "evidence_paths": []
+    },
+    {
+      "name": "unit.crypto.poly1305.rfc8439_appendix_a3",
+      "requirement_ids": ["SEC-02"],
+      "status": "passed",
+      "duration_ms": 0,
+      "assertion_count": 7,
+      "failure_message": null,
+      "evidence_paths": []
+    },
+    {
+      "name": "unit.crypto.poly1305.incremental_matches_oneshot",
+      "requirement_ids": ["SEC-02"],
+      "status": "passed",
+      "duration_ms": 0,
+      "assertion_count": 34,
+      "failure_message": null,
+      "evidence_paths": []
+    },
+    {
+      "name": "unit.crypto.poly1305.empty_message",
+      "requirement_ids": ["SEC-02"],
+      "status": "passed",
+      "duration_ms": 0,
+      "assertion_count": 2,
+      "failure_message": null,
+      "evidence_paths": []
+    },
+    {
+      "name": "unit.crypto.aead.framing_matches_rfc8439_2_8_2",
+      "requirement_ids": ["SEC-02"],
+      "status": "passed",
+      "duration_ms": 0,
+      "assertion_count": 2,
+      "failure_message": null,
+      "evidence_paths": []
+    },
+    {
+      "name": "unit.crypto.xaead.draft_vector_encrypt",
+      "requirement_ids": ["SEC-02"],
+      "status": "passed",
+      "duration_ms": 0,
+      "assertion_count": 3,
+      "failure_message": null,
+      "evidence_paths": []
+    },
+    {
+      "name": "unit.crypto.xaead.draft_vector_decrypt",
+      "requirement_ids": ["SEC-02"],
+      "status": "passed",
+      "duration_ms": 0,
+      "assertion_count": 4,
+      "failure_message": null,
+      "evidence_paths": []
+    },
+    {
+      "name": "unit.crypto.xaead.poly_key_is_derived",
+      "requirement_ids": ["SEC-02","SEC-06"],
+      "status": "passed",
+      "duration_ms": 0,
+      "assertion_count": 2,
+      "failure_message": null,
+      "evidence_paths": []
+    },
+    {
+      "name": "unit.crypto.xaead.round_trip_lengths",
+      "requirement_ids": ["SEC-02"],
+      "status": "passed",
+      "duration_ms": 1,
+      "assertion_count": 48,
+      "failure_message": null,
+      "evidence_paths": []
+    },
+    {
+      "name": "unit.crypto.xaead.rejects_wrong_key",
+      "requirement_ids": ["SEC-02","SEC-10"],
+      "status": "passed",
+      "duration_ms": 0,
+      "assertion_count": 4,
+      "failure_message": null,
+      "evidence_paths": []
+    },
+    {
+      "name": "unit.crypto.xaead.rejects_modified_nonce",
+      "requirement_ids": ["SEC-02","SEC-10"],
+      "status": "passed",
+      "duration_ms": 0,
+      "assertion_count": 48,
+      "failure_message": null,
+      "evidence_paths": []
+    },
+    {
+      "name": "unit.crypto.xaead.rejects_modified_aad",
+      "requirement_ids": ["SEC-02","SEC-10"],
+      "status": "passed",
+      "duration_ms": 0,
+      "assertion_count": 24,
+      "failure_message": null,
+      "evidence_paths": []
+    },
+    {
+      "name": "unit.crypto.xaead.rejects_modified_ciphertext",
+      "requirement_ids": ["SEC-02","SEC-10"],
+      "status": "passed",
+      "duration_ms": 0,
+      "assertion_count": 12,
+      "failure_message": null,
+      "evidence_paths": []
+    },
+    {
+      "name": "unit.crypto.xaead.rejects_modified_tag",
+      "requirement_ids": ["SEC-02","SEC-10"],
+      "status": "passed",
+      "duration_ms": 0,
+      "assertion_count": 34,
+      "failure_message": null,
+      "evidence_paths": []
+    },
+    {
+      "name": "unit.crypto.xaead.rejects_truncated_ciphertext",
+      "requirement_ids": ["SEC-02","SEC-03","FMT-07"],
+      "status": "passed",
+      "duration_ms": 1,
+      "assertion_count": 2,
+      "failure_message": null,
+      "evidence_paths": []
+    },
+    {
+      "name": "unit.crypto.xaead.fresh_nonce_changes_output",
+      "requirement_ids": ["SEC-02","WIN-13"],
+      "status": "passed",
+      "duration_ms": 0,
+      "assertion_count": 6177,
+      "failure_message": null,
+      "evidence_paths": []
+    },
+    {
+      "name": "unit.crypto.xaead.rejects_oversized_input",
+      "requirement_ids": ["SEC-03","FMT-07"],
+      "status": "passed",
+      "duration_ms": 0,
+      "assertion_count": 1,
+      "failure_message": null,
+      "evidence_paths": []
+    },
+    {
+      "name": "unit.crypto.constant_time.tag_comparison",
+      "requirement_ids": ["SEC-10"],
+      "status": "passed",
+      "duration_ms": 0,
+      "assertion_count": 18,
+      "failure_message": null,
+      "evidence_paths": []
+    },
+    {
+      "name": "unit.crypto.secure_wipe.clears_buffer",
+      "requirement_ids": ["SEC-06"],
+      "status": "passed",
+      "duration_ms": 0,
+      "assertion_count": 1,
+      "failure_message": null,
+      "evidence_paths": []
+    },
+    {
+      "name": "unit.crypto.csprng.bcrypt_gen_random",
+      "requirement_ids": ["WIN-13"],
+      "status": "passed",
+      "duration_ms": 0,
+      "assertion_count": 561,
+      "failure_message": null,
+      "evidence_paths": []
+    }
+  ]
+}

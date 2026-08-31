@@ -1,0 +1,1254 @@
+{
+  "schema_version": 1,
+  "tool_version": "1.0.0",
+  "root": "D:/0820-sudoku-workbuddy",
+  "config_digest_sha256": "680861b491bf03448660806595ed4e8d131d6515372400d08263998b00b30681",
+  "scan_started_epoch_ms": 1788090479836,
+  "scan_duration_ms": 68,
+  "categories": [{
+    "name": "unclassified",
+    "file_count": 21,
+    "physical_lines": 166,
+    "blank_lines": 25,
+    "comment_only_lines": 46,
+    "code_lines": 94,
+    "mixed_code_comment_lines": 1
+  },{
+    "name": "docs",
+    "file_count": 33,
+    "physical_lines": 7587,
+    "blank_lines": 2077,
+    "comment_only_lines": 2,
+    "code_lines": 5502,
+    "mixed_code_comment_lines": 6
+  },{
+    "name": "config",
+    "file_count": 2,
+    "physical_lines": 78,
+    "blank_lines": 8,
+    "comment_only_lines": 0,
+    "code_lines": 70,
+    "mixed_code_comment_lines": 0
+  },{
+    "name": "source",
+    "file_count": 53,
+    "physical_lines": 17019,
+    "blank_lines": 1435,
+    "comment_only_lines": 1468,
+    "code_lines": 13640,
+    "mixed_code_comment_lines": 476
+  },{
+    "name": "tests",
+    "file_count": 9,
+    "physical_lines": 2731,
+    "blank_lines": 296,
+    "comment_only_lines": 355,
+    "code_lines": 2028,
+    "mixed_code_comment_lines": 52
+  }],
+  "files": [{
+    "path": ".tinyignore",
+    "category": "unclassified",
+    "bytes": 301,
+    "physical_lines": 25,
+    "blank_lines": 3,
+    "comment_only_lines": 0,
+    "code_lines": 22,
+    "mixed_code_comment_lines": 0,
+    "encoding_warning": false
+  },{
+    "path": ".workbuddy/memory/2026-08-30.md",
+    "category": "docs",
+    "bytes": 3675,
+    "physical_lines": 59,
+    "blank_lines": 5,
+    "comment_only_lines": 2,
+    "code_lines": 51,
+    "mixed_code_comment_lines": 1,
+    "encoding_warning": false
+  },{
+    "path": "app.manifest",
+    "category": "config",
+    "bytes": 1731,
+    "physical_lines": 38,
+    "blank_lines": 3,
+    "comment_only_lines": 0,
+    "code_lines": 35,
+    "mixed_code_comment_lines": 0,
+    "encoding_warning": false
+  },{
+    "path": "build.cmd",
+    "category": "config",
+    "bytes": 1731,
+    "physical_lines": 40,
+    "blank_lines": 5,
+    "comment_only_lines": 0,
+    "code_lines": 35,
+    "mixed_code_comment_lines": 0,
+    "encoding_warning": false
+  },{
+    "path": "c17-win32-sudoku-task-pack-v1.0.0/docs/00_README.md",
+    "category": "docs",
+    "bytes": 4501,
+    "physical_lines": 88,
+    "blank_lines": 19,
+    "comment_only_lines": 0,
+    "code_lines": 69,
+    "mixed_code_comment_lines": 0,
+    "encoding_warning": false
+  },{
+    "path": "c17-win32-sudoku-task-pack-v1.0.0/docs/01_ASSIGNMENT_BRIEF.md",
+    "category": "docs",
+    "bytes": 5569,
+    "physical_lines": 141,
+    "blank_lines": 41,
+    "comment_only_lines": 0,
+    "code_lines": 100,
+    "mixed_code_comment_lines": 0,
+    "encoding_warning": false
+  },{
+    "path": "c17-win32-sudoku-task-pack-v1.0.0/docs/02_SCOPE_AND_TECHNICAL_BOUNDARIES.md",
+    "category": "docs",
+    "bytes": 9317,
+    "physical_lines": 179,
+    "blank_lines": 53,
+    "comment_only_lines": 0,
+    "code_lines": 126,
+    "mixed_code_comment_lines": 0,
+    "encoding_warning": false
+  },{
+    "path": "c17-win32-sudoku-task-pack-v1.0.0/docs/03_DEV_TOOL_LOCSTAT.md",
+    "category": "docs",
+    "bytes": 5188,
+    "physical_lines": 231,
+    "blank_lines": 61,
+    "comment_only_lines": 0,
+    "code_lines": 167,
+    "mixed_code_comment_lines": 3,
+    "encoding_warning": false
+  },{
+    "path": "c17-win32-sudoku-task-pack-v1.0.0/docs/04_DEV_TOOL_TINYVCS.md",
+    "category": "docs",
+    "bytes": 7549,
+    "physical_lines": 282,
+    "blank_lines": 77,
+    "comment_only_lines": 0,
+    "code_lines": 204,
+    "mixed_code_comment_lines": 1,
+    "encoding_warning": false
+  },{
+    "path": "c17-win32-sudoku-task-pack-v1.0.0/docs/05_PRODUCT_REQUIREMENTS.md",
+    "category": "docs",
+    "bytes": 17798,
+    "physical_lines": 515,
+    "blank_lines": 145,
+    "comment_only_lines": 0,
+    "code_lines": 370,
+    "mixed_code_comment_lines": 0,
+    "encoding_warning": false
+  },{
+    "path": "c17-win32-sudoku-task-pack-v1.0.0/docs/06_UI_ENGINE_AND_VISUAL_SPEC.md",
+    "category": "docs",
+    "bytes": 12494,
+    "physical_lines": 388,
+    "blank_lines": 106,
+    "comment_only_lines": 0,
+    "code_lines": 282,
+    "mixed_code_comment_lines": 0,
+    "encoding_warning": false
+  },{
+    "path": "c17-win32-sudoku-task-pack-v1.0.0/docs/07_SUDOKU_RULES_AND_ALGORITHMS.md",
+    "category": "docs",
+    "bytes": 16873,
+    "physical_lines": 510,
+    "blank_lines": 162,
+    "comment_only_lines": 0,
+    "code_lines": 348,
+    "mixed_code_comment_lines": 0,
+    "encoding_warning": false
+  },{
+    "path": "c17-win32-sudoku-task-pack-v1.0.0/docs/08_STATE_STORAGE_AND_SECURITY.md",
+    "category": "docs",
+    "bytes": 11485,
+    "physical_lines": 325,
+    "blank_lines": 94,
+    "comment_only_lines": 0,
+    "code_lines": 231,
+    "mixed_code_comment_lines": 0,
+    "encoding_warning": false
+  },{
+    "path": "c17-win32-sudoku-task-pack-v1.0.0/docs/09_ERRORS_AND_EDGE_CASES.md",
+    "category": "docs",
+    "bytes": 9028,
+    "physical_lines": 256,
+    "blank_lines": 64,
+    "comment_only_lines": 0,
+    "code_lines": 192,
+    "mixed_code_comment_lines": 0,
+    "encoding_warning": false
+  },{
+    "path": "c17-win32-sudoku-task-pack-v1.0.0/docs/10_TESTING_AND_EVIDENCE.md",
+    "category": "docs",
+    "bytes": 11239,
+    "physical_lines": 376,
+    "blank_lines": 102,
+    "comment_only_lines": 0,
+    "code_lines": 274,
+    "mixed_code_comment_lines": 0,
+    "encoding_warning": false
+  },{
+    "path": "c17-win32-sudoku-task-pack-v1.0.0/docs/11_DELIVERABLES_AND_DOD.md",
+    "category": "docs",
+    "bytes": 7658,
+    "physical_lines": 266,
+    "blank_lines": 63,
+    "comment_only_lines": 0,
+    "code_lines": 203,
+    "mixed_code_comment_lines": 0,
+    "encoding_warning": false
+  },{
+    "path": "c17-win32-sudoku-task-pack-v1.0.0/docs/12_PROHIBITED_SHORTCUTS.md",
+    "category": "docs",
+    "bytes": 6651,
+    "physical_lines": 198,
+    "blank_lines": 47,
+    "comment_only_lines": 0,
+    "code_lines": 151,
+    "mixed_code_comment_lines": 0,
+    "encoding_warning": false
+  },{
+    "path": "c17-win32-sudoku-task-pack-v1.0.0/docs/13_MANUAL_ACCEPTANCE_CHECKLIST.md",
+    "category": "docs",
+    "bytes": 9329,
+    "physical_lines": 266,
+    "blank_lines": 48,
+    "comment_only_lines": 0,
+    "code_lines": 217,
+    "mixed_code_comment_lines": 1,
+    "encoding_warning": false
+  },{
+    "path": "c17-win32-sudoku-task-pack-v1.0.0/docs/14_FINALIZED_PRODUCT_DECISIONS.md",
+    "category": "docs",
+    "bytes": 3367,
+    "physical_lines": 105,
+    "blank_lines": 33,
+    "comment_only_lines": 0,
+    "code_lines": 72,
+    "mixed_code_comment_lines": 0,
+    "encoding_warning": false
+  },{
+    "path": "c17-win32-sudoku-task-pack-v1.0.0/docs/15_PRODUCT_STATE_MACHINE.md",
+    "category": "docs",
+    "bytes": 8700,
+    "physical_lines": 238,
+    "blank_lines": 70,
+    "comment_only_lines": 0,
+    "code_lines": 168,
+    "mixed_code_comment_lines": 0,
+    "encoding_warning": false
+  },{
+    "path": "c17-win32-sudoku-task-pack-v1.0.0/docs/16_SCOPE_FREEZE_AND_ACCEPTANCE_POLICY.md",
+    "category": "docs",
+    "bytes": 4892,
+    "physical_lines": 161,
+    "blank_lines": 52,
+    "comment_only_lines": 0,
+    "code_lines": 109,
+    "mixed_code_comment_lines": 0,
+    "encoding_warning": false
+  },{
+    "path": "c17-win32-sudoku-task-pack-v1.0.0/docs/17_ACCEPTANCE_REQUIREMENT_CATALOG.md",
+    "category": "docs",
+    "bytes": 12400,
+    "physical_lines": 210,
+    "blank_lines": 27,
+    "comment_only_lines": 0,
+    "code_lines": 183,
+    "mixed_code_comment_lines": 0,
+    "encoding_warning": false
+  },{
+    "path": "c17-win32-sudoku-task-pack-v1.0.0/docs/18_NORMATIVE_CONVENTIONS_AND_GLOSSARY.md",
+    "category": "docs",
+    "bytes": 7890,
+    "physical_lines": 209,
+    "blank_lines": 80,
+    "comment_only_lines": 0,
+    "code_lines": 129,
+    "mixed_code_comment_lines": 0,
+    "encoding_warning": false
+  },{
+    "path": "c17-win32-sudoku-task-pack-v1.0.0/docs/19_CANONICAL_FORMATS_AND_LIMITS.md",
+    "category": "docs",
+    "bytes": 21689,
+    "physical_lines": 702,
+    "blank_lines": 162,
+    "comment_only_lines": 0,
+    "code_lines": 540,
+    "mixed_code_comment_lines": 0,
+    "encoding_warning": false
+  },{
+    "path": "c17-win32-sudoku-task-pack-v1.0.0/docs/20_UI_REFERENCE_CONTRACT.md",
+    "category": "docs",
+    "bytes": 12929,
+    "physical_lines": 378,
+    "blank_lines": 91,
+    "comment_only_lines": 0,
+    "code_lines": 287,
+    "mixed_code_comment_lines": 0,
+    "encoding_warning": false
+  },{
+    "path": "c17-win32-sudoku-task-pack-v1.0.0/docs/21_CANONICAL_ACCEPTANCE_SCENARIOS.md",
+    "category": "docs",
+    "bytes": 15119,
+    "physical_lines": 563,
+    "blank_lines": 211,
+    "comment_only_lines": 0,
+    "code_lines": 352,
+    "mixed_code_comment_lines": 0,
+    "encoding_warning": false
+  },{
+    "path": "c17-win32-sudoku-task-pack-v1.0.0/docs/22_RELEASE_GATE_AND_AUDIT.md",
+    "category": "docs",
+    "bytes": 9213,
+    "physical_lines": 262,
+    "blank_lines": 74,
+    "comment_only_lines": 0,
+    "code_lines": 188,
+    "mixed_code_comment_lines": 0,
+    "encoding_warning": false
+  },{
+    "path": "c17-win32-sudoku-task-pack-v1.0.0/docs/23_REQUIREMENT_TRACEABILITY_TEMPLATE.md",
+    "category": "docs",
+    "bytes": 2619,
+    "physical_lines": 77,
+    "blank_lines": 20,
+    "comment_only_lines": 0,
+    "code_lines": 57,
+    "mixed_code_comment_lines": 0,
+    "encoding_warning": false
+  },{
+    "path": "c17-win32-sudoku-task-pack-v1.0.0/docs/24_FINAL_COMPLETION_REPORT_TEMPLATE.md",
+    "category": "docs",
+    "bytes": 3460,
+    "physical_lines": 144,
+    "blank_lines": 38,
+    "comment_only_lines": 0,
+    "code_lines": 106,
+    "mixed_code_comment_lines": 0,
+    "encoding_warning": false
+  },{
+    "path": "c17-win32-sudoku-task-pack-v1.0.0/docs/25_SPECIFICATION_SELF_AUDIT.md",
+    "category": "docs",
+    "bytes": 4057,
+    "physical_lines": 120,
+    "blank_lines": 40,
+    "comment_only_lines": 0,
+    "code_lines": 80,
+    "mixed_code_comment_lines": 0,
+    "encoding_warning": false
+  },{
+    "path": "c17-win32-sudoku-task-pack-v1.0.0/docs/26_WINDOWS_NATIVE_PLATFORM_CONTRACT.md",
+    "category": "docs",
+    "bytes": 11356,
+    "physical_lines": 223,
+    "blank_lines": 66,
+    "comment_only_lines": 0,
+    "code_lines": 157,
+    "mixed_code_comment_lines": 0,
+    "encoding_warning": false
+  },{
+    "path": "c17-win32-sudoku-task-pack-v1.0.0/docs/CHANGELOG.md",
+    "category": "docs",
+    "bytes": 1966,
+    "physical_lines": 41,
+    "blank_lines": 10,
+    "comment_only_lines": 0,
+    "code_lines": 31,
+    "mixed_code_comment_lines": 0,
+    "encoding_warning": false
+  },{
+    "path": "c17-win32-sudoku-task-pack-v1.0.0/docs/DOCUMENT_MANIFEST.md",
+    "category": "docs",
+    "bytes": 1939,
+    "physical_lines": 44,
+    "blank_lines": 5,
+    "comment_only_lines": 0,
+    "code_lines": 39,
+    "mixed_code_comment_lines": 0,
+    "encoding_warning": false
+  },{
+    "path": "c17-win32-sudoku-task-pack-v1.0.0/INITIAL_PROMPT.md",
+    "category": "docs",
+    "bytes": 1049,
+    "physical_lines": 9,
+    "blank_lines": 4,
+    "comment_only_lines": 0,
+    "code_lines": 5,
+    "mixed_code_comment_lines": 0,
+    "encoding_warning": false
+  },{
+    "path": "c17-win32-sudoku-task-pack-v1.0.0/README.md",
+    "category": "docs",
+    "bytes": 1185,
+    "physical_lines": 13,
+    "blank_lines": 6,
+    "comment_only_lines": 0,
+    "code_lines": 7,
+    "mixed_code_comment_lines": 0,
+    "encoding_warning": false
+  },{
+    "path": "CHANGELOG.md",
+    "category": "docs",
+    "bytes": 432,
+    "physical_lines": 8,
+    "blank_lines": 1,
+    "comment_only_lines": 0,
+    "code_lines": 7,
+    "mixed_code_comment_lines": 0,
+    "encoding_warning": false
+  },{
+    "path": "dev_tools/locstat/locstat.c",
+    "category": "source",
+    "bytes": 4629,
+    "physical_lines": 143,
+    "blank_lines": 11,
+    "comment_only_lines": 11,
+    "code_lines": 120,
+    "mixed_code_comment_lines": 1,
+    "encoding_warning": false
+  },{
+    "path": "dev_tools/locstat/locstat_core.c",
+    "category": "source",
+    "bytes": 72350,
+    "physical_lines": 2196,
+    "blank_lines": 127,
+    "comment_only_lines": 82,
+    "code_lines": 1980,
+    "mixed_code_comment_lines": 7,
+    "encoding_warning": false
+  },{
+    "path": "dev_tools/locstat/locstat_core.h",
+    "category": "source",
+    "bytes": 13366,
+    "physical_lines": 339,
+    "blank_lines": 49,
+    "comment_only_lines": 103,
+    "code_lines": 171,
+    "mixed_code_comment_lines": 16,
+    "encoding_warning": false
+  },{
+    "path": "dev_tools/locstat/test_locstat.c",
+    "category": "source",
+    "bytes": 21477,
+    "physical_lines": 586,
+    "blank_lines": 63,
+    "comment_only_lines": 68,
+    "code_lines": 445,
+    "mixed_code_comment_lines": 10,
+    "encoding_warning": false
+  },{
+    "path": "dev_tools/test_harness/sdk_test.c",
+    "category": "source",
+    "bytes": 29175,
+    "physical_lines": 918,
+    "blank_lines": 90,
+    "comment_only_lines": 45,
+    "code_lines": 781,
+    "mixed_code_comment_lines": 2,
+    "encoding_warning": false
+  },{
+    "path": "dev_tools/tinyvcs/test_tinyvcs.c",
+    "category": "source",
+    "bytes": 11052,
+    "physical_lines": 281,
+    "blank_lines": 30,
+    "comment_only_lines": 21,
+    "code_lines": 230,
+    "mixed_code_comment_lines": 0,
+    "encoding_warning": false
+  },{
+    "path": "dev_tools/tinyvcs/tinyvcs.c",
+    "category": "source",
+    "bytes": 648,
+    "physical_lines": 19,
+    "blank_lines": 1,
+    "comment_only_lines": 14,
+    "code_lines": 4,
+    "mixed_code_comment_lines": 0,
+    "encoding_warning": false
+  },{
+    "path": "dev_tools/tinyvcs/tinyvcs_core.c",
+    "category": "source",
+    "bytes": 115840,
+    "physical_lines": 2945,
+    "blank_lines": 173,
+    "comment_only_lines": 132,
+    "code_lines": 2626,
+    "mixed_code_comment_lines": 14,
+    "encoding_warning": false
+  },{
+    "path": "dev_tools/tinyvcs/tinyvcs_core.h",
+    "category": "source",
+    "bytes": 12306,
+    "physical_lines": 281,
+    "blank_lines": 53,
+    "comment_only_lines": 84,
+    "code_lines": 132,
+    "mixed_code_comment_lines": 12,
+    "encoding_warning": false
+  },{
+    "path": "include/app/sdk_app.h",
+    "category": "source",
+    "bytes": 4631,
+    "physical_lines": 141,
+    "blank_lines": 22,
+    "comment_only_lines": 26,
+    "code_lines": 80,
+    "mixed_code_comment_lines": 13,
+    "encoding_warning": false
+  },{
+    "path": "include/common/sdk_common.h",
+    "category": "source",
+    "bytes": 7263,
+    "physical_lines": 172,
+    "blank_lines": 20,
+    "comment_only_lines": 30,
+    "code_lines": 103,
+    "mixed_code_comment_lines": 19,
+    "encoding_warning": false
+  },{
+    "path": "include/common/sdk_crc32.h",
+    "category": "source",
+    "bytes": 526,
+    "physical_lines": 17,
+    "blank_lines": 3,
+    "comment_only_lines": 5,
+    "code_lines": 8,
+    "mixed_code_comment_lines": 1,
+    "encoding_warning": false
+  },{
+    "path": "include/common/sdk_json.h",
+    "category": "source",
+    "bytes": 2093,
+    "physical_lines": 69,
+    "blank_lines": 10,
+    "comment_only_lines": 18,
+    "code_lines": 37,
+    "mixed_code_comment_lines": 4,
+    "encoding_warning": false
+  },{
+    "path": "include/common/sdk_lzss.h",
+    "category": "source",
+    "bytes": 1588,
+    "physical_lines": 41,
+    "blank_lines": 7,
+    "comment_only_lines": 20,
+    "code_lines": 13,
+    "mixed_code_comment_lines": 1,
+    "encoding_warning": false
+  },{
+    "path": "include/common/sdk_sha256.h",
+    "category": "source",
+    "bytes": 824,
+    "physical_lines": 27,
+    "blank_lines": 5,
+    "comment_only_lines": 5,
+    "code_lines": 16,
+    "mixed_code_comment_lines": 1,
+    "encoding_warning": false
+  },{
+    "path": "include/common/sdk_win.h",
+    "category": "source",
+    "bytes": 9837,
+    "physical_lines": 227,
+    "blank_lines": 38,
+    "comment_only_lines": 81,
+    "code_lines": 103,
+    "mixed_code_comment_lines": 5,
+    "encoding_warning": false
+  },{
+    "path": "include/crypto/sdk_aead.h",
+    "category": "source",
+    "bytes": 2115,
+    "physical_lines": 50,
+    "blank_lines": 6,
+    "comment_only_lines": 21,
+    "code_lines": 22,
+    "mixed_code_comment_lines": 1,
+    "encoding_warning": false
+  },{
+    "path": "include/crypto/sdk_chacha.h",
+    "category": "source",
+    "bytes": 1520,
+    "physical_lines": 37,
+    "blank_lines": 6,
+    "comment_only_lines": 10,
+    "code_lines": 20,
+    "mixed_code_comment_lines": 1,
+    "encoding_warning": false
+  },{
+    "path": "include/crypto/sdk_hmac.h",
+    "category": "source",
+    "bytes": 1887,
+    "physical_lines": 48,
+    "blank_lines": 8,
+    "comment_only_lines": 11,
+    "code_lines": 28,
+    "mixed_code_comment_lines": 1,
+    "encoding_warning": false
+  },{
+    "path": "include/crypto/sdk_pbkdf2.h",
+    "category": "source",
+    "bytes": 1056,
+    "physical_lines": 26,
+    "blank_lines": 5,
+    "comment_only_lines": 10,
+    "code_lines": 10,
+    "mixed_code_comment_lines": 1,
+    "encoding_warning": false
+  },{
+    "path": "include/crypto/sdk_poly1305.h",
+    "category": "source",
+    "bytes": 1279,
+    "physical_lines": 37,
+    "blank_lines": 5,
+    "comment_only_lines": 8,
+    "code_lines": 23,
+    "mixed_code_comment_lines": 1,
+    "encoding_warning": false
+  },{
+    "path": "include/platform/sdk_platform.h",
+    "category": "source",
+    "bytes": 615,
+    "physical_lines": 24,
+    "blank_lines": 5,
+    "comment_only_lines": 5,
+    "code_lines": 13,
+    "mixed_code_comment_lines": 1,
+    "encoding_warning": false
+  },{
+    "path": "include/storage/sdk_vault.h",
+    "category": "source",
+    "bytes": 5850,
+    "physical_lines": 174,
+    "blank_lines": 26,
+    "comment_only_lines": 26,
+    "code_lines": 110,
+    "mixed_code_comment_lines": 12,
+    "encoding_warning": false
+  },{
+    "path": "include/sudoku/sdk_sudoku.h",
+    "category": "source",
+    "bytes": 15136,
+    "physical_lines": 339,
+    "blank_lines": 53,
+    "comment_only_lines": 115,
+    "code_lines": 121,
+    "mixed_code_comment_lines": 50,
+    "encoding_warning": false
+  },{
+    "path": "include/test/sdk_test.h",
+    "category": "tests",
+    "bytes": 10854,
+    "physical_lines": 199,
+    "blank_lines": 32,
+    "comment_only_lines": 72,
+    "code_lines": 89,
+    "mixed_code_comment_lines": 6,
+    "encoding_warning": false
+  },{
+    "path": "include/ui/sdk_ui.h",
+    "category": "source",
+    "bytes": 7835,
+    "physical_lines": 163,
+    "blank_lines": 21,
+    "comment_only_lines": 35,
+    "code_lines": 89,
+    "mixed_code_comment_lines": 18,
+    "encoding_warning": false
+  },{
+    "path": "include/ui/sdk_ui_font_data.h",
+    "category": "source",
+    "bytes": 5031,
+    "physical_lines": 104,
+    "blank_lines": 1,
+    "comment_only_lines": 2,
+    "code_lines": 6,
+    "mixed_code_comment_lines": 95,
+    "encoding_warning": false
+  },{
+    "path": "objects/0d/8e8716a7934493634421a6bce0abc10d61cb62121f11d2ab2b2bde213adca1",
+    "category": "unclassified",
+    "bytes": 74,
+    "physical_lines": 0,
+    "blank_lines": 0,
+    "comment_only_lines": 0,
+    "code_lines": 0,
+    "mixed_code_comment_lines": 0,
+    "encoding_warning": false
+  },{
+    "path": "objects/14/f5162e2fe3d240d0d37aaab0f90e4af9a7cfa79639f3bab005b5bfb4174d9f",
+    "category": "unclassified",
+    "bytes": 66,
+    "physical_lines": 0,
+    "blank_lines": 0,
+    "comment_only_lines": 0,
+    "code_lines": 0,
+    "mixed_code_comment_lines": 0,
+    "encoding_warning": false
+  },{
+    "path": "objects/25/feddc55b28887a0a3394babf5fad1b1f5da7d6aace627edd39b49d1a329fdb",
+    "category": "unclassified",
+    "bytes": 129,
+    "physical_lines": 0,
+    "blank_lines": 0,
+    "comment_only_lines": 0,
+    "code_lines": 0,
+    "mixed_code_comment_lines": 0,
+    "encoding_warning": false
+  },{
+    "path": "objects/2c/f8d83d9ee29543b34a87727421fdecb7e3f3a183d337639025de576db9ebb4",
+    "category": "unclassified",
+    "bytes": 70,
+    "physical_lines": 0,
+    "blank_lines": 0,
+    "comment_only_lines": 0,
+    "code_lines": 0,
+    "mixed_code_comment_lines": 0,
+    "encoding_warning": false
+  },{
+    "path": "objects/4c/7ad7f1c2fa265d6064f3ee6395582ccd93044b9f5778e78b3579e7c22061a1",
+    "category": "unclassified",
+    "bytes": 105,
+    "physical_lines": 0,
+    "blank_lines": 0,
+    "comment_only_lines": 0,
+    "code_lines": 0,
+    "mixed_code_comment_lines": 0,
+    "encoding_warning": false
+  },{
+    "path": "objects/51/dd0150c76ddb5f10164386c782192b805a6457761192b6a3d631a0ceea469e",
+    "category": "unclassified",
+    "bytes": 146,
+    "physical_lines": 0,
+    "blank_lines": 0,
+    "comment_only_lines": 0,
+    "code_lines": 0,
+    "mixed_code_comment_lines": 0,
+    "encoding_warning": false
+  },{
+    "path": "objects/60/8cb5c0ad0bb8bd5fb39a1668a03ec7b491b6012a794d961eb7227df1c8c427",
+    "category": "unclassified",
+    "bytes": 129,
+    "physical_lines": 0,
+    "blank_lines": 0,
+    "comment_only_lines": 0,
+    "code_lines": 0,
+    "mixed_code_comment_lines": 0,
+    "encoding_warning": false
+  },{
+    "path": "objects/6c/f5e935cf5539e1ebddc92bac53ec7585314ce8dc1450b2c2231bab690d36c0",
+    "category": "unclassified",
+    "bytes": 140,
+    "physical_lines": 0,
+    "blank_lines": 0,
+    "comment_only_lines": 0,
+    "code_lines": 0,
+    "mixed_code_comment_lines": 0,
+    "encoding_warning": false
+  },{
+    "path": "objects/90/d763f05f5c4adf693bd839862f55c7d9146a7fd0409b667ad94eccb24cb6e9",
+    "category": "unclassified",
+    "bytes": 132,
+    "physical_lines": 0,
+    "blank_lines": 0,
+    "comment_only_lines": 0,
+    "code_lines": 0,
+    "mixed_code_comment_lines": 0,
+    "encoding_warning": false
+  },{
+    "path": "objects/a6/c6e626d90f1b593c80e02d50d21ac0da7a9cb43de4b5baf64f84beb8759da4",
+    "category": "unclassified",
+    "bytes": 88,
+    "physical_lines": 0,
+    "blank_lines": 0,
+    "comment_only_lines": 0,
+    "code_lines": 0,
+    "mixed_code_comment_lines": 0,
+    "encoding_warning": false
+  },{
+    "path": "objects/bd/0404a260ca3841c7497051f390e72fff2cca472c909dfa6492a93881ad50ca",
+    "category": "unclassified",
+    "bytes": 132,
+    "physical_lines": 0,
+    "blank_lines": 0,
+    "comment_only_lines": 0,
+    "code_lines": 0,
+    "mixed_code_comment_lines": 0,
+    "encoding_warning": false
+  },{
+    "path": "objects/dc/44050a9f4e73c8139ee4b478b6146fd9b15d7ef3fa3f2d07a41af5f3a16f10",
+    "category": "unclassified",
+    "bytes": 136,
+    "physical_lines": 0,
+    "blank_lines": 0,
+    "comment_only_lines": 0,
+    "code_lines": 0,
+    "mixed_code_comment_lines": 0,
+    "encoding_warning": false
+  },{
+    "path": "objects/e0/0c50e16a2df38f8d6bf809e181ad0248da6e6719f35f9f7e65d6f606199f7f",
+    "category": "unclassified",
+    "bytes": 70,
+    "physical_lines": 0,
+    "blank_lines": 0,
+    "comment_only_lines": 0,
+    "code_lines": 0,
+    "mixed_code_comment_lines": 0,
+    "encoding_warning": false
+  },{
+    "path": "objects/ec/0c46d20a1037b69e3598dcfbcc9d4552e2b10491f4d67b181f4e2f49540de9",
+    "category": "unclassified",
+    "bytes": 136,
+    "physical_lines": 0,
+    "blank_lines": 0,
+    "comment_only_lines": 0,
+    "code_lines": 0,
+    "mixed_code_comment_lines": 0,
+    "encoding_warning": false
+  },{
+    "path": "objects/ee/93cf5e2de8bb5f26b7db1a4687b77f3b9c469280234b03ea4e5909b983509b",
+    "category": "unclassified",
+    "bytes": 140,
+    "physical_lines": 0,
+    "blank_lines": 0,
+    "comment_only_lines": 0,
+    "code_lines": 0,
+    "mixed_code_comment_lines": 0,
+    "encoding_warning": false
+  },{
+    "path": "objects/f5/18333770ca7db4a9b96a70c14852879f2a079b9529e1e499d83135ec2ec7a6",
+    "category": "unclassified",
+    "bytes": 105,
+    "physical_lines": 0,
+    "blank_lines": 0,
+    "comment_only_lines": 0,
+    "code_lines": 0,
+    "mixed_code_comment_lines": 0,
+    "encoding_warning": false
+  },{
+    "path": "objects/f5/cde1dd427b13112031f58f97f4ca9be048e967967d1096ea003f1e68bd6ef0",
+    "category": "unclassified",
+    "bytes": 105,
+    "physical_lines": 0,
+    "blank_lines": 0,
+    "comment_only_lines": 0,
+    "code_lines": 0,
+    "mixed_code_comment_lines": 0,
+    "encoding_warning": false
+  },{
+    "path": "src/app/entry/sdk_entry.c",
+    "category": "source",
+    "bytes": 914,
+    "physical_lines": 26,
+    "blank_lines": 5,
+    "comment_only_lines": 1,
+    "code_lines": 19,
+    "mixed_code_comment_lines": 1,
+    "encoding_warning": false
+  },{
+    "path": "src/app/sdk_app.c",
+    "category": "source",
+    "bytes": 15736,
+    "physical_lines": 408,
+    "blank_lines": 26,
+    "comment_only_lines": 36,
+    "code_lines": 339,
+    "mixed_code_comment_lines": 7,
+    "encoding_warning": false
+  },{
+    "path": "src/app/sdk_pages.c",
+    "category": "source",
+    "bytes": 15130,
+    "physical_lines": 340,
+    "blank_lines": 35,
+    "comment_only_lines": 29,
+    "code_lines": 274,
+    "mixed_code_comment_lines": 2,
+    "encoding_warning": false
+  },{
+    "path": "src/common/sdk_common.c",
+    "category": "source",
+    "bytes": 7373,
+    "physical_lines": 314,
+    "blank_lines": 32,
+    "comment_only_lines": 2,
+    "code_lines": 280,
+    "mixed_code_comment_lines": 0,
+    "encoding_warning": false
+  },{
+    "path": "src/common/sdk_crc32.c",
+    "category": "source",
+    "bytes": 1047,
+    "physical_lines": 42,
+    "blank_lines": 7,
+    "comment_only_lines": 3,
+    "code_lines": 32,
+    "mixed_code_comment_lines": 0,
+    "encoding_warning": false
+  },{
+    "path": "src/common/sdk_json.c",
+    "category": "source",
+    "bytes": 16552,
+    "physical_lines": 598,
+    "blank_lines": 32,
+    "comment_only_lines": 10,
+    "code_lines": 553,
+    "mixed_code_comment_lines": 3,
+    "encoding_warning": false
+  },{
+    "path": "src/common/sdk_lzss.c",
+    "category": "source",
+    "bytes": 4940,
+    "physical_lines": 154,
+    "blank_lines": 14,
+    "comment_only_lines": 8,
+    "code_lines": 124,
+    "mixed_code_comment_lines": 8,
+    "encoding_warning": false
+  },{
+    "path": "src/common/sdk_sha256.c",
+    "category": "source",
+    "bytes": 4553,
+    "physical_lines": 138,
+    "blank_lines": 14,
+    "comment_only_lines": 1,
+    "code_lines": 123,
+    "mixed_code_comment_lines": 0,
+    "encoding_warning": false
+  },{
+    "path": "src/common/sdk_win.c",
+    "category": "source",
+    "bytes": 43373,
+    "physical_lines": 1400,
+    "blank_lines": 78,
+    "comment_only_lines": 74,
+    "code_lines": 1240,
+    "mixed_code_comment_lines": 8,
+    "encoding_warning": false
+  },{
+    "path": "src/crypto/sdk_aead.c",
+    "category": "source",
+    "bytes": 5124,
+    "physical_lines": 149,
+    "blank_lines": 25,
+    "comment_only_lines": 8,
+    "code_lines": 116,
+    "mixed_code_comment_lines": 0,
+    "encoding_warning": false
+  },{
+    "path": "src/crypto/sdk_chacha.c",
+    "category": "source",
+    "bytes": 4382,
+    "physical_lines": 134,
+    "blank_lines": 14,
+    "comment_only_lines": 14,
+    "code_lines": 106,
+    "mixed_code_comment_lines": 0,
+    "encoding_warning": false
+  },{
+    "path": "src/crypto/sdk_hmac.c",
+    "category": "source",
+    "bytes": 3553,
+    "physical_lines": 103,
+    "blank_lines": 20,
+    "comment_only_lines": 3,
+    "code_lines": 80,
+    "mixed_code_comment_lines": 0,
+    "encoding_warning": false
+  },{
+    "path": "src/crypto/sdk_pbkdf2.c",
+    "category": "source",
+    "bytes": 3067,
+    "physical_lines": 95,
+    "blank_lines": 12,
+    "comment_only_lines": 12,
+    "code_lines": 71,
+    "mixed_code_comment_lines": 0,
+    "encoding_warning": false
+  },{
+    "path": "src/crypto/sdk_poly1305.c",
+    "category": "source",
+    "bytes": 7144,
+    "physical_lines": 212,
+    "blank_lines": 29,
+    "comment_only_lines": 17,
+    "code_lines": 166,
+    "mixed_code_comment_lines": 0,
+    "encoding_warning": false
+  },{
+    "path": "src/platform/sdk_platform.c",
+    "category": "source",
+    "bytes": 4527,
+    "physical_lines": 141,
+    "blank_lines": 11,
+    "comment_only_lines": 4,
+    "code_lines": 125,
+    "mixed_code_comment_lines": 1,
+    "encoding_warning": false
+  },{
+    "path": "src/storage/sdk_vault.c",
+    "category": "source",
+    "bytes": 31559,
+    "physical_lines": 693,
+    "blank_lines": 47,
+    "comment_only_lines": 36,
+    "code_lines": 593,
+    "mixed_code_comment_lines": 17,
+    "encoding_warning": false
+  },{
+    "path": "src/sudoku/sdk_sudoku_board.c",
+    "category": "source",
+    "bytes": 6308,
+    "physical_lines": 159,
+    "blank_lines": 11,
+    "comment_only_lines": 4,
+    "code_lines": 139,
+    "mixed_code_comment_lines": 5,
+    "encoding_warning": false
+  },{
+    "path": "src/sudoku/sdk_sudoku_gen.c",
+    "category": "source",
+    "bytes": 25258,
+    "physical_lines": 643,
+    "blank_lines": 71,
+    "comment_only_lines": 92,
+    "code_lines": 465,
+    "mixed_code_comment_lines": 15,
+    "encoding_warning": false
+  },{
+    "path": "src/sudoku/sdk_sudoku_hint.c",
+    "category": "source",
+    "bytes": 3906,
+    "physical_lines": 112,
+    "blank_lines": 14,
+    "comment_only_lines": 24,
+    "code_lines": 73,
+    "mixed_code_comment_lines": 1,
+    "encoding_warning": false
+  },{
+    "path": "src/sudoku/sdk_sudoku_logic.c",
+    "category": "source",
+    "bytes": 29524,
+    "physical_lines": 683,
+    "blank_lines": 41,
+    "comment_only_lines": 55,
+    "code_lines": 579,
+    "mixed_code_comment_lines": 8,
+    "encoding_warning": false
+  },{
+    "path": "src/sudoku/sdk_sudoku_solver.c",
+    "category": "source",
+    "bytes": 3354,
+    "physical_lines": 118,
+    "blank_lines": 10,
+    "comment_only_lines": 8,
+    "code_lines": 94,
+    "mixed_code_comment_lines": 6,
+    "encoding_warning": false
+  },{
+    "path": "src/ui/sdk_ui_base.c",
+    "category": "source",
+    "bytes": 5055,
+    "physical_lines": 142,
+    "blank_lines": 6,
+    "comment_only_lines": 7,
+    "code_lines": 124,
+    "mixed_code_comment_lines": 5,
+    "encoding_warning": false
+  },{
+    "path": "src/ui/sdk_ui_components.c",
+    "category": "source",
+    "bytes": 8680,
+    "physical_lines": 203,
+    "blank_lines": 17,
+    "comment_only_lines": 9,
+    "code_lines": 176,
+    "mixed_code_comment_lines": 1,
+    "encoding_warning": false
+  },{
+    "path": "src/ui/sdk_ui_fb.c",
+    "category": "source",
+    "bytes": 16223,
+    "physical_lines": 389,
+    "blank_lines": 17,
+    "comment_only_lines": 18,
+    "code_lines": 348,
+    "mixed_code_comment_lines": 6,
+    "encoding_warning": false
+  },{
+    "path": "src/ui/sdk_ui_font.c",
+    "category": "source",
+    "bytes": 2127,
+    "physical_lines": 64,
+    "blank_lines": 7,
+    "comment_only_lines": 2,
+    "code_lines": 55,
+    "mixed_code_comment_lines": 0,
+    "encoding_warning": false
+  },{
+    "path": "src/ui/sdk_ui_font_data.h",
+    "category": "source",
+    "bytes": 5031,
+    "physical_lines": 104,
+    "blank_lines": 1,
+    "comment_only_lines": 2,
+    "code_lines": 6,
+    "mixed_code_comment_lines": 95,
+    "encoding_warning": false
+  },{
+    "path": "src/ui/sdk_ui_theme.c",
+    "category": "source",
+    "bytes": 2802,
+    "physical_lines": 51,
+    "blank_lines": 1,
+    "comment_only_lines": 1,
+    "code_lines": 49,
+    "mixed_code_comment_lines": 0,
+    "encoding_warning": false
+  },{
+    "path": "tests/batch/test_batch.c",
+    "category": "tests",
+    "bytes": 8002,
+    "physical_lines": 193,
+    "blank_lines": 25,
+    "comment_only_lines": 13,
+    "code_lines": 150,
+    "mixed_code_comment_lines": 5,
+    "encoding_warning": false
+  },{
+    "path": "tests/e2e/test_e2e.c",
+    "category": "tests",
+    "bytes": 3656,
+    "physical_lines": 99,
+    "blank_lines": 15,
+    "comment_only_lines": 17,
+    "code_lines": 61,
+    "mixed_code_comment_lines": 6,
+    "encoding_warning": false
+  },{
+    "path": "tests/failure/test_failure.c",
+    "category": "tests",
+    "bytes": 6396,
+    "physical_lines": 164,
+    "blank_lines": 21,
+    "comment_only_lines": 17,
+    "code_lines": 122,
+    "mixed_code_comment_lines": 4,
+    "encoding_warning": false
+  },{
+    "path": "tests/integration/test_integration.c",
+    "category": "tests",
+    "bytes": 4417,
+    "physical_lines": 133,
+    "blank_lines": 22,
+    "comment_only_lines": 13,
+    "code_lines": 93,
+    "mixed_code_comment_lines": 5,
+    "encoding_warning": false
+  },{
+    "path": "tests/unit/test_crypto.c",
+    "category": "tests",
+    "bytes": 55026,
+    "physical_lines": 1359,
+    "blank_lines": 124,
+    "comment_only_lines": 161,
+    "code_lines": 1069,
+    "mixed_code_comment_lines": 5,
+    "encoding_warning": false
+  },{
+    "path": "tests/unit/test_sudoku.c",
+    "category": "tests",
+    "bytes": 7135,
+    "physical_lines": 180,
+    "blank_lines": 15,
+    "comment_only_lines": 17,
+    "code_lines": 141,
+    "mixed_code_comment_lines": 7,
+    "encoding_warning": false
+  },{
+    "path": "tests/unit/test_vault.c",
+    "category": "tests",
+    "bytes": 7787,
+    "physical_lines": 196,
+    "blank_lines": 21,
+    "comment_only_lines": 13,
+    "code_lines": 160,
+    "mixed_code_comment_lines": 2,
+    "encoding_warning": false
+  },{
+    "path": "tests/visual/visrender.c",
+    "category": "tests",
+    "bytes": 9170,
+    "physical_lines": 208,
+    "blank_lines": 21,
+    "comment_only_lines": 32,
+    "code_lines": 143,
+    "mixed_code_comment_lines": 12,
+    "encoding_warning": false
+  },{
+    "path": "tools/build_app.sh",
+    "category": "unclassified",
+    "bytes": 2245,
+    "physical_lines": 57,
+    "blank_lines": 10,
+    "comment_only_lines": 26,
+    "code_lines": 20,
+    "mixed_code_comment_lines": 1,
+    "encoding_warning": false
+  },{
+    "path": "tools/build_exe.sh",
+    "category": "unclassified",
+    "bytes": 2068,
+    "physical_lines": 50,
+    "blank_lines": 10,
+    "comment_only_lines": 20,
+    "code_lines": 20,
+    "mixed_code_comment_lines": 0,
+    "encoding_warning": false
+  },{
+    "path": "tools/tv_smoke.ps1",
+    "category": "unclassified",
+    "bytes": 1173,
+    "physical_lines": 34,
+    "blank_lines": 2,
+    "comment_only_lines": 0,
+    "code_lines": 32,
+    "mixed_code_comment_lines": 0,
+    "encoding_warning": false
+  }],
+  "excluded": [{
+    "path": ".tinyvcs",
+    "reason": "default_dir"
+  },{
+    "path": "build",
+    "reason": "default_dir"
+  },{
+    "path": "results",
+    "reason": "default_dir"
+  }],
+  "warnings": [],
+  "errors": [],
+  "totals": {
+    "files": 118,
+    "physical_lines": 27581,
+    "blank_lines": 3841,
+    "comment_only_lines": 1871,
+    "code_lines": 21334,
+    "mixed_code_comment_lines": 535,
+    "bytes": 1013382,
+    "excluded": 3,
+    "warnings": 0,
+    "errors": 0
+  }
+}

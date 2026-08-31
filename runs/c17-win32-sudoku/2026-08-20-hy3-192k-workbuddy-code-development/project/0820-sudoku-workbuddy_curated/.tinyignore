@@ -1,0 +1,25 @@
+# tinyvcs ignore rules for the C17/Win32 Sudoku project
+# Build artifacts
+build
+results
+.workbuddy
+
+# Native binaries / intermediate objects
+*.pdb
+*.obj
+*.ilk
+*.exe
+*.dll
+*.lib
+*.exp
+
+# Stray dev-tool probe artifacts
+locprobe*
+genprobe*
+digprobe*
+*~
+
+# Local editor/OS turds
+*.swp
+Thumbs.db
+.DS_Store

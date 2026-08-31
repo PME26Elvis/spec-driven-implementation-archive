@@ -1,0 +1,132 @@
+{
+  "schema_version": 1,
+  "tool_version": "1.0.0",
+  "root": "D:/0820-sudoku-workbuddy",
+  "config_digest_sha256": "680861b491bf03448660806595ed4e8d131d6515372400d08263998b00b30681",
+  "scan_started_epoch_ms": 1788090481070,
+  "scan_duration_ms": 40,
+  "categories": [{
+    "name": "tests",
+    "file_count": 9,
+    "physical_lines": 2731,
+    "blank_lines": 296,
+    "comment_only_lines": 355,
+    "code_lines": 2028,
+    "mixed_code_comment_lines": 52
+  }],
+  "files": [{
+    "path": "include/test/sdk_test.h",
+    "category": "tests",
+    "bytes": 10854,
+    "physical_lines": 199,
+    "blank_lines": 32,
+    "comment_only_lines": 72,
+    "code_lines": 89,
+    "mixed_code_comment_lines": 6,
+    "encoding_warning": false
+  },{
+    "path": "tests/batch/test_batch.c",
+    "category": "tests",
+    "bytes": 8002,
+    "physical_lines": 193,
+    "blank_lines": 25,
+    "comment_only_lines": 13,
+    "code_lines": 150,
+    "mixed_code_comment_lines": 5,
+    "encoding_warning": false
+  },{
+    "path": "tests/e2e/test_e2e.c",
+    "category": "tests",
+    "bytes": 3656,
+    "physical_lines": 99,
+    "blank_lines": 15,
+    "comment_only_lines": 17,
+    "code_lines": 61,
+    "mixed_code_comment_lines": 6,
+    "encoding_warning": false
+  },{
+    "path": "tests/failure/test_failure.c",
+    "category": "tests",
+    "bytes": 6396,
+    "physical_lines": 164,
+    "blank_lines": 21,
+    "comment_only_lines": 17,
+    "code_lines": 122,
+    "mixed_code_comment_lines": 4,
+    "encoding_warning": false
+  },{
+    "path": "tests/integration/test_integration.c",
+    "category": "tests",
+    "bytes": 4417,
+    "physical_lines": 133,
+    "blank_lines": 22,
+    "comment_only_lines": 13,
+    "code_lines": 93,
+    "mixed_code_comment_lines": 5,
+    "encoding_warning": false
+  },{
+    "path": "tests/unit/test_crypto.c",
+    "category": "tests",
+    "bytes": 55026,
+    "physical_lines": 1359,
+    "blank_lines": 124,
+    "comment_only_lines": 161,
+    "code_lines": 1069,
+    "mixed_code_comment_lines": 5,
+    "encoding_warning": false
+  },{
+    "path": "tests/unit/test_sudoku.c",
+    "category": "tests",
+    "bytes": 7135,
+    "physical_lines": 180,
+    "blank_lines": 15,
+    "comment_only_lines": 17,
+    "code_lines": 141,
+    "mixed_code_comment_lines": 7,
+    "encoding_warning": false
+  },{
+    "path": "tests/unit/test_vault.c",
+    "category": "tests",
+    "bytes": 7787,
+    "physical_lines": 196,
+    "blank_lines": 21,
+    "comment_only_lines": 13,
+    "code_lines": 160,
+    "mixed_code_comment_lines": 2,
+    "encoding_warning": false
+  },{
+    "path": "tests/visual/visrender.c",
+    "category": "tests",
+    "bytes": 9170,
+    "physical_lines": 208,
+    "blank_lines": 21,
+    "comment_only_lines": 32,
+    "code_lines": 143,
+    "mixed_code_comment_lines": 12,
+    "encoding_warning": false
+  }],
+  "excluded": [{
+    "path": ".tinyvcs",
+    "reason": "default_dir"
+  },{
+    "path": "build",
+    "reason": "default_dir"
+  },{
+    "path": "results",
+    "reason": "default_dir"
+  }],
+  "warnings": [],
+  "errors": [],
+  "totals": {
+    "files": 118,
+    "physical_lines": 27581,
+    "blank_lines": 3841,
+    "comment_only_lines": 1871,
+    "code_lines": 21334,
+    "mixed_code_comment_lines": 535,
+    "bytes": 1013382,
+    "excluded": 3,
+    "warnings": 0,
+    "errors": 0
+  }
+}

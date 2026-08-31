@@ -1,0 +1,30 @@
+# Paths intentionally omitted from the Git curated project snapshot.
+# They remain preserved in the unchanged raw Release ZIP.
+
+# Verified byte-for-byte duplicate of canonical specs/c17-win32-sudoku/.
+c17-win32-sudoku-task-pack-v1.0.0/**
+
+.tinyvcs/**
+.workbuddy/**
+objects/**
+
+results/screenshots/**
+
+build/bin/**
+build/obj/**
+build/logs/**
+build/tmp/**
+build/evidence/**
+build/cc.log
+build/locstat_text.txt
+build/lt2.txt
+build/vault_test/dump.txt
+build/vault_test/ui_smoke.bmp
+build/vault_test/vault.sdk
+build/vault_test/vault.sdk.bak
+
+# Explicitly retained authored helpers from build/:
+# build/_cc.cmd
+# build/_exe.cmd
+# build/vault_test/genfont.py
+# build/vault_test/parse.py

@@ -1,0 +1,372 @@
+{
+  "schema_version": 1,
+  "tool_version": "1.0.0",
+  "root": "D:/0820-sudoku-workbuddy",
+  "config_digest_sha256": "680861b491bf03448660806595ed4e8d131d6515372400d08263998b00b30681",
+  "scan_started_epoch_ms": 1788090481625,
+  "scan_duration_ms": 37,
+  "categories": [{
+    "name": "docs",
+    "file_count": 33,
+    "physical_lines": 7587,
+    "blank_lines": 2077,
+    "comment_only_lines": 2,
+    "code_lines": 5502,
+    "mixed_code_comment_lines": 6
+  }],
+  "files": [{
+    "path": ".workbuddy/memory/2026-08-30.md",
+    "category": "docs",
+    "bytes": 3675,
+    "physical_lines": 59,
+    "blank_lines": 5,
+    "comment_only_lines": 2,
+    "code_lines": 51,
+    "mixed_code_comment_lines": 1,
+    "encoding_warning": false
+  },{
+    "path": "c17-win32-sudoku-task-pack-v1.0.0/docs/00_README.md",
+    "category": "docs",
+    "bytes": 4501,
+    "physical_lines": 88,
+    "blank_lines": 19,
+    "comment_only_lines": 0,
+    "code_lines": 69,
+    "mixed_code_comment_lines": 0,
+    "encoding_warning": false
+  },{
+    "path": "c17-win32-sudoku-task-pack-v1.0.0/docs/01_ASSIGNMENT_BRIEF.md",
+    "category": "docs",
+    "bytes": 5569,
+    "physical_lines": 141,
+    "blank_lines": 41,
+    "comment_only_lines": 0,
+    "code_lines": 100,
+    "mixed_code_comment_lines": 0,
+    "encoding_warning": false
+  },{
+    "path": "c17-win32-sudoku-task-pack-v1.0.0/docs/02_SCOPE_AND_TECHNICAL_BOUNDARIES.md",
+    "category": "docs",
+    "bytes": 9317,
+    "physical_lines": 179,
+    "blank_lines": 53,
+    "comment_only_lines": 0,
+    "code_lines": 126,
+    "mixed_code_comment_lines": 0,
+    "encoding_warning": false
+  },{
+    "path": "c17-win32-sudoku-task-pack-v1.0.0/docs/03_DEV_TOOL_LOCSTAT.md",
+    "category": "docs",
+    "bytes": 5188,
+    "physical_lines": 231,
+    "blank_lines": 61,
+    "comment_only_lines": 0,
+    "code_lines": 167,
+    "mixed_code_comment_lines": 3,
+    "encoding_warning": false
+  },{
+    "path": "c17-win32-sudoku-task-pack-v1.0.0/docs/04_DEV_TOOL_TINYVCS.md",
+    "category": "docs",
+    "bytes": 7549,
+    "physical_lines": 282,
+    "blank_lines": 77,
+    "comment_only_lines": 0,
+    "code_lines": 204,
+    "mixed_code_comment_lines": 1,
+    "encoding_warning": false
+  },{
+    "path": "c17-win32-sudoku-task-pack-v1.0.0/docs/05_PRODUCT_REQUIREMENTS.md",
+    "category": "docs",
+    "bytes": 17798,
+    "physical_lines": 515,
+    "blank_lines": 145,
+    "comment_only_lines": 0,
+    "code_lines": 370,
+    "mixed_code_comment_lines": 0,
+    "encoding_warning": false
+  },{
+    "path": "c17-win32-sudoku-task-pack-v1.0.0/docs/06_UI_ENGINE_AND_VISUAL_SPEC.md",
+    "category": "docs",
+    "bytes": 12494,
+    "physical_lines": 388,
+    "blank_lines": 106,
+    "comment_only_lines": 0,
+    "code_lines": 282,
+    "mixed_code_comment_lines": 0,
+    "encoding_warning": false
+  },{
+    "path": "c17-win32-sudoku-task-pack-v1.0.0/docs/07_SUDOKU_RULES_AND_ALGORITHMS.md",
+    "category": "docs",
+    "bytes": 16873,
+    "physical_lines": 510,
+    "blank_lines": 162,
+    "comment_only_lines": 0,
+    "code_lines": 348,
+    "mixed_code_comment_lines": 0,
+    "encoding_warning": false
+  },{
+    "path": "c17-win32-sudoku-task-pack-v1.0.0/docs/08_STATE_STORAGE_AND_SECURITY.md",
+    "category": "docs",
+    "bytes": 11485,
+    "physical_lines": 325,
+    "blank_lines": 94,
+    "comment_only_lines": 0,
+    "code_lines": 231,
+    "mixed_code_comment_lines": 0,
+    "encoding_warning": false
+  },{
+    "path": "c17-win32-sudoku-task-pack-v1.0.0/docs/09_ERRORS_AND_EDGE_CASES.md",
+    "category": "docs",
+    "bytes": 9028,
+    "physical_lines": 256,
+    "blank_lines": 64,
+    "comment_only_lines": 0,
+    "code_lines": 192,
+    "mixed_code_comment_lines": 0,
+    "encoding_warning": false
+  },{
+    "path": "c17-win32-sudoku-task-pack-v1.0.0/docs/10_TESTING_AND_EVIDENCE.md",
+    "category": "docs",
+    "bytes": 11239,
+    "physical_lines": 376,
+    "blank_lines": 102,
+    "comment_only_lines": 0,
+    "code_lines": 274,
+    "mixed_code_comment_lines": 0,
+    "encoding_warning": false
+  },{
+    "path": "c17-win32-sudoku-task-pack-v1.0.0/docs/11_DELIVERABLES_AND_DOD.md",
+    "category": "docs",
+    "bytes": 7658,
+    "physical_lines": 266,
+    "blank_lines": 63,
+    "comment_only_lines": 0,
+    "code_lines": 203,
+    "mixed_code_comment_lines": 0,
+    "encoding_warning": false
+  },{
+    "path": "c17-win32-sudoku-task-pack-v1.0.0/docs/12_PROHIBITED_SHORTCUTS.md",
+    "category": "docs",
+    "bytes": 6651,
+    "physical_lines": 198,
+    "blank_lines": 47,
+    "comment_only_lines": 0,
+    "code_lines": 151,
+    "mixed_code_comment_lines": 0,
+    "encoding_warning": false
+  },{
+    "path": "c17-win32-sudoku-task-pack-v1.0.0/docs/13_MANUAL_ACCEPTANCE_CHECKLIST.md",
+    "category": "docs",
+    "bytes": 9329,
+    "physical_lines": 266,
+    "blank_lines": 48,
+    "comment_only_lines": 0,
+    "code_lines": 217,
+    "mixed_code_comment_lines": 1,
+    "encoding_warning": false
+  },{
+    "path": "c17-win32-sudoku-task-pack-v1.0.0/docs/14_FINALIZED_PRODUCT_DECISIONS.md",
+    "category": "docs",
+    "bytes": 3367,
+    "physical_lines": 105,
+    "blank_lines": 33,
+    "comment_only_lines": 0,
+    "code_lines": 72,
+    "mixed_code_comment_lines": 0,
+    "encoding_warning": false
+  },{
+    "path": "c17-win32-sudoku-task-pack-v1.0.0/docs/15_PRODUCT_STATE_MACHINE.md",
+    "category": "docs",
+    "bytes": 8700,
+    "physical_lines": 238,
+    "blank_lines": 70,
+    "comment_only_lines": 0,
+    "code_lines": 168,
+    "mixed_code_comment_lines": 0,
+    "encoding_warning": false
+  },{
+    "path": "c17-win32-sudoku-task-pack-v1.0.0/docs/16_SCOPE_FREEZE_AND_ACCEPTANCE_POLICY.md",
+    "category": "docs",
+    "bytes": 4892,
+    "physical_lines": 161,
+    "blank_lines": 52,
+    "comment_only_lines": 0,
+    "code_lines": 109,
+    "mixed_code_comment_lines": 0,
+    "encoding_warning": false
+  },{
+    "path": "c17-win32-sudoku-task-pack-v1.0.0/docs/17_ACCEPTANCE_REQUIREMENT_CATALOG.md",
+    "category": "docs",
+    "bytes": 12400,
+    "physical_lines": 210,
+    "blank_lines": 27,
+    "comment_only_lines": 0,
+    "code_lines": 183,
+    "mixed_code_comment_lines": 0,
+    "encoding_warning": false
+  },{
+    "path": "c17-win32-sudoku-task-pack-v1.0.0/docs/18_NORMATIVE_CONVENTIONS_AND_GLOSSARY.md",
+    "category": "docs",
+    "bytes": 7890,
+    "physical_lines": 209,
+    "blank_lines": 80,
+    "comment_only_lines": 0,
+    "code_lines": 129,
+    "mixed_code_comment_lines": 0,
+    "encoding_warning": false
+  },{
+    "path": "c17-win32-sudoku-task-pack-v1.0.0/docs/19_CANONICAL_FORMATS_AND_LIMITS.md",
+    "category": "docs",
+    "bytes": 21689,
+    "physical_lines": 702,
+    "blank_lines": 162,
+    "comment_only_lines": 0,
+    "code_lines": 540,
+    "mixed_code_comment_lines": 0,
+    "encoding_warning": false
+  },{
+    "path": "c17-win32-sudoku-task-pack-v1.0.0/docs/20_UI_REFERENCE_CONTRACT.md",
+    "category": "docs",
+    "bytes": 12929,
+    "physical_lines": 378,
+    "blank_lines": 91,
+    "comment_only_lines": 0,
+    "code_lines": 287,
+    "mixed_code_comment_lines": 0,
+    "encoding_warning": false
+  },{
+    "path": "c17-win32-sudoku-task-pack-v1.0.0/docs/21_CANONICAL_ACCEPTANCE_SCENARIOS.md",
+    "category": "docs",
+    "bytes": 15119,
+    "physical_lines": 563,
+    "blank_lines": 211,
+    "comment_only_lines": 0,
+    "code_lines": 352,
+    "mixed_code_comment_lines": 0,
+    "encoding_warning": false
+  },{
+    "path": "c17-win32-sudoku-task-pack-v1.0.0/docs/22_RELEASE_GATE_AND_AUDIT.md",
+    "category": "docs",
+    "bytes": 9213,
+    "physical_lines": 262,
+    "blank_lines": 74,
+    "comment_only_lines": 0,
+    "code_lines": 188,
+    "mixed_code_comment_lines": 0,
+    "encoding_warning": false
+  },{
+    "path": "c17-win32-sudoku-task-pack-v1.0.0/docs/23_REQUIREMENT_TRACEABILITY_TEMPLATE.md",
+    "category": "docs",
+    "bytes": 2619,
+    "physical_lines": 77,
+    "blank_lines": 20,
+    "comment_only_lines": 0,
+    "code_lines": 57,
+    "mixed_code_comment_lines": 0,
+    "encoding_warning": false
+  },{
+    "path": "c17-win32-sudoku-task-pack-v1.0.0/docs/24_FINAL_COMPLETION_REPORT_TEMPLATE.md",
+    "category": "docs",
+    "bytes": 3460,
+    "physical_lines": 144,
+    "blank_lines": 38,
+    "comment_only_lines": 0,
+    "code_lines": 106,
+    "mixed_code_comment_lines": 0,
+    "encoding_warning": false
+  },{
+    "path": "c17-win32-sudoku-task-pack-v1.0.0/docs/25_SPECIFICATION_SELF_AUDIT.md",
+    "category": "docs",
+    "bytes": 4057,
+    "physical_lines": 120,
+    "blank_lines": 40,
+    "comment_only_lines": 0,
+    "code_lines": 80,
+    "mixed_code_comment_lines": 0,
+    "encoding_warning": false
+  },{
+    "path": "c17-win32-sudoku-task-pack-v1.0.0/docs/26_WINDOWS_NATIVE_PLATFORM_CONTRACT.md",
+    "category": "docs",
+    "bytes": 11356,
+    "physical_lines": 223,
+    "blank_lines": 66,
+    "comment_only_lines": 0,
+    "code_lines": 157,
+    "mixed_code_comment_lines": 0,
+    "encoding_warning": false
+  },{
+    "path": "c17-win32-sudoku-task-pack-v1.0.0/docs/CHANGELOG.md",
+    "category": "docs",
+    "bytes": 1966,
+    "physical_lines": 41,
+    "blank_lines": 10,
+    "comment_only_lines": 0,
+    "code_lines": 31,
+    "mixed_code_comment_lines": 0,
+    "encoding_warning": false
+  },{
+    "path": "c17-win32-sudoku-task-pack-v1.0.0/docs/DOCUMENT_MANIFEST.md",
+    "category": "docs",
+    "bytes": 1939,
+    "physical_lines": 44,
+    "blank_lines": 5,
+    "comment_only_lines": 0,
+    "code_lines": 39,
+    "mixed_code_comment_lines": 0,
+    "encoding_warning": false
+  },{
+    "path": "c17-win32-sudoku-task-pack-v1.0.0/INITIAL_PROMPT.md",
+    "category": "docs",
+    "bytes": 1049,
+    "physical_lines": 9,
+    "blank_lines": 4,
+    "comment_only_lines": 0,
+    "code_lines": 5,
+    "mixed_code_comment_lines": 0,
+    "encoding_warning": false
+  },{
+    "path": "c17-win32-sudoku-task-pack-v1.0.0/README.md",
+    "category": "docs",
+    "bytes": 1185,
+    "physical_lines": 13,
+    "blank_lines": 6,
+    "comment_only_lines": 0,
+    "code_lines": 7,
+    "mixed_code_comment_lines": 0,
+    "encoding_warning": false
+  },{
+    "path": "CHANGELOG.md",
+    "category": "docs",
+    "bytes": 432,
+    "physical_lines": 8,
+    "blank_lines": 1,
+    "comment_only_lines": 0,
+    "code_lines": 7,
+    "mixed_code_comment_lines": 0,
+    "encoding_warning": false
+  }],
+  "excluded": [{
+    "path": ".tinyvcs",
+    "reason": "default_dir"
+  },{
+    "path": "build",
+    "reason": "default_dir"
+  },{
+    "path": "results",
+    "reason": "default_dir"
+  }],
+  "warnings": [],
+  "errors": [],
+  "totals": {
+    "files": 118,
+    "physical_lines": 27581,
+    "blank_lines": 3841,
+    "comment_only_lines": 1871,
+    "code_lines": 21334,
+    "mixed_code_comment_lines": 535,
+    "bytes": 1013382,
+    "excluded": 3,
+    "warnings": 0,
+    "errors": 0
+  }
+}

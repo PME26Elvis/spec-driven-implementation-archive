@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "tool_version": "1.0.0",
+  "root": "D:/0820-sudoku-workbuddy",
+  "config_digest_sha256": "680861b491bf03448660806595ed4e8d131d6515372400d08263998b00b30681",
+  "scan_started_epoch_ms": 1788090482111,
+  "scan_duration_ms": 40,
+  "categories": [{
+    "name": "config",
+    "file_count": 2,
+    "physical_lines": 78,
+    "blank_lines": 8,
+    "comment_only_lines": 0,
+    "code_lines": 70,
+    "mixed_code_comment_lines": 0
+  }],
+  "files": [{
+    "path": "app.manifest",
+    "category": "config",
+    "bytes": 1731,
+    "physical_lines": 38,
+    "blank_lines": 3,
+    "comment_only_lines": 0,
+    "code_lines": 35,
+    "mixed_code_comment_lines": 0,
+    "encoding_warning": false
+  },{
+    "path": "build.cmd",
+    "category": "config",
+    "bytes": 1731,
+    "physical_lines": 40,
+    "blank_lines": 5,
+    "comment_only_lines": 0,
+    "code_lines": 35,
+    "mixed_code_comment_lines": 0,
+    "encoding_warning": false
+  }],
+  "excluded": [{
+    "path": ".tinyvcs",
+    "reason": "default_dir"
+  },{
+    "path": "build",
+    "reason": "default_dir"
+  },{
+    "path": "results",
+    "reason": "default_dir"
+  }],
+  "warnings": [],
+  "errors": [],
+  "totals": {
+    "files": 118,
+    "physical_lines": 27581,
+    "blank_lines": 3841,
+    "comment_only_lines": 1871,
+    "code_lines": 21334,
+    "mixed_code_comment_lines": 535,
+    "bytes": 1013382,
+    "excluded": 3,
+    "warnings": 0,
+    "errors": 0
+  }
+}

@@ -1,0 +1,572 @@
+{
+  "schema_version": 1,
+  "tool_version": "1.0.0",
+  "root": "D:/0820-sudoku-workbuddy",
+  "config_digest_sha256": "680861b491bf03448660806595ed4e8d131d6515372400d08263998b00b30681",
+  "scan_started_epoch_ms": 1788090480554,
+  "scan_duration_ms": 48,
+  "categories": [{
+    "name": "source",
+    "file_count": 53,
+    "physical_lines": 17019,
+    "blank_lines": 1435,
+    "comment_only_lines": 1468,
+    "code_lines": 13640,
+    "mixed_code_comment_lines": 476
+  }],
+  "files": [{
+    "path": "dev_tools/locstat/locstat.c",
+    "category": "source",
+    "bytes": 4629,
+    "physical_lines": 143,
+    "blank_lines": 11,
+    "comment_only_lines": 11,
+    "code_lines": 120,
+    "mixed_code_comment_lines": 1,
+    "encoding_warning": false
+  },{
+    "path": "dev_tools/locstat/locstat_core.c",
+    "category": "source",
+    "bytes": 72350,
+    "physical_lines": 2196,
+    "blank_lines": 127,
+    "comment_only_lines": 82,
+    "code_lines": 1980,
+    "mixed_code_comment_lines": 7,
+    "encoding_warning": false
+  },{
+    "path": "dev_tools/locstat/locstat_core.h",
+    "category": "source",
+    "bytes": 13366,
+    "physical_lines": 339,
+    "blank_lines": 49,
+    "comment_only_lines": 103,
+    "code_lines": 171,
+    "mixed_code_comment_lines": 16,
+    "encoding_warning": false
+  },{
+    "path": "dev_tools/locstat/test_locstat.c",
+    "category": "source",
+    "bytes": 21477,
+    "physical_lines": 586,
+    "blank_lines": 63,
+    "comment_only_lines": 68,
+    "code_lines": 445,
+    "mixed_code_comment_lines": 10,
+    "encoding_warning": false
+  },{
+    "path": "dev_tools/test_harness/sdk_test.c",
+    "category": "source",
+    "bytes": 29175,
+    "physical_lines": 918,
+    "blank_lines": 90,
+    "comment_only_lines": 45,
+    "code_lines": 781,
+    "mixed_code_comment_lines": 2,
+    "encoding_warning": false
+  },{
+    "path": "dev_tools/tinyvcs/test_tinyvcs.c",
+    "category": "source",
+    "bytes": 11052,
+    "physical_lines": 281,
+    "blank_lines": 30,
+    "comment_only_lines": 21,
+    "code_lines": 230,
+    "mixed_code_comment_lines": 0,
+    "encoding_warning": false
+  },{
+    "path": "dev_tools/tinyvcs/tinyvcs.c",
+    "category": "source",
+    "bytes": 648,
+    "physical_lines": 19,
+    "blank_lines": 1,
+    "comment_only_lines": 14,
+    "code_lines": 4,
+    "mixed_code_comment_lines": 0,
+    "encoding_warning": false
+  },{
+    "path": "dev_tools/tinyvcs/tinyvcs_core.c",
+    "category": "source",
+    "bytes": 115840,
+    "physical_lines": 2945,
+    "blank_lines": 173,
+    "comment_only_lines": 132,
+    "code_lines": 2626,
+    "mixed_code_comment_lines": 14,
+    "encoding_warning": false
+  },{
+    "path": "dev_tools/tinyvcs/tinyvcs_core.h",
+    "category": "source",
+    "bytes": 12306,
+    "physical_lines": 281,
+    "blank_lines": 53,
+    "comment_only_lines": 84,
+    "code_lines": 132,
+    "mixed_code_comment_lines": 12,
+    "encoding_warning": false
+  },{
+    "path": "include/app/sdk_app.h",
+    "category": "source",
+    "bytes": 4631,
+    "physical_lines": 141,
+    "blank_lines": 22,
+    "comment_only_lines": 26,
+    "code_lines": 80,
+    "mixed_code_comment_lines": 13,
+    "encoding_warning": false
+  },{
+    "path": "include/common/sdk_common.h",
+    "category": "source",
+    "bytes": 7263,
+    "physical_lines": 172,
+    "blank_lines": 20,
+    "comment_only_lines": 30,
+    "code_lines": 103,
+    "mixed_code_comment_lines": 19,
+    "encoding_warning": false
+  },{
+    "path": "include/common/sdk_crc32.h",
+    "category": "source",
+    "bytes": 526,
+    "physical_lines": 17,
+    "blank_lines": 3,
+    "comment_only_lines": 5,
+    "code_lines": 8,
+    "mixed_code_comment_lines": 1,
+    "encoding_warning": false
+  },{
+    "path": "include/common/sdk_json.h",
+    "category": "source",
+    "bytes": 2093,
+    "physical_lines": 69,
+    "blank_lines": 10,
+    "comment_only_lines": 18,
+    "code_lines": 37,
+    "mixed_code_comment_lines": 4,
+    "encoding_warning": false
+  },{
+    "path": "include/common/sdk_lzss.h",
+    "category": "source",
+    "bytes": 1588,
+    "physical_lines": 41,
+    "blank_lines": 7,
+    "comment_only_lines": 20,
+    "code_lines": 13,
+    "mixed_code_comment_lines": 1,
+    "encoding_warning": false
+  },{
+    "path": "include/common/sdk_sha256.h",
+    "category": "source",
+    "bytes": 824,
+    "physical_lines": 27,
+    "blank_lines": 5,
+    "comment_only_lines": 5,
+    "code_lines": 16,
+    "mixed_code_comment_lines": 1,
+    "encoding_warning": false
+  },{
+    "path": "include/common/sdk_win.h",
+    "category": "source",
+    "bytes": 9837,
+    "physical_lines": 227,
+    "blank_lines": 38,
+    "comment_only_lines": 81,
+    "code_lines": 103,
+    "mixed_code_comment_lines": 5,
+    "encoding_warning": false
+  },{
+    "path": "include/crypto/sdk_aead.h",
+    "category": "source",
+    "bytes": 2115,
+    "physical_lines": 50,
+    "blank_lines": 6,
+    "comment_only_lines": 21,
+    "code_lines": 22,
+    "mixed_code_comment_lines": 1,
+    "encoding_warning": false
+  },{
+    "path": "include/crypto/sdk_chacha.h",
+    "category": "source",
+    "bytes": 1520,
+    "physical_lines": 37,
+    "blank_lines": 6,
+    "comment_only_lines": 10,
+    "code_lines": 20,
+    "mixed_code_comment_lines": 1,
+    "encoding_warning": false
+  },{
+    "path": "include/crypto/sdk_hmac.h",
+    "category": "source",
+    "bytes": 1887,
+    "physical_lines": 48,
+    "blank_lines": 8,
+    "comment_only_lines": 11,
+    "code_lines": 28,
+    "mixed_code_comment_lines": 1,
+    "encoding_warning": false
+  },{
+    "path": "include/crypto/sdk_pbkdf2.h",
+    "category": "source",
+    "bytes": 1056,
+    "physical_lines": 26,
+    "blank_lines": 5,
+    "comment_only_lines": 10,
+    "code_lines": 10,
+    "mixed_code_comment_lines": 1,
+    "encoding_warning": false
+  },{
+    "path": "include/crypto/sdk_poly1305.h",
+    "category": "source",
+    "bytes": 1279,
+    "physical_lines": 37,
+    "blank_lines": 5,
+    "comment_only_lines": 8,
+    "code_lines": 23,
+    "mixed_code_comment_lines": 1,
+    "encoding_warning": false
+  },{
+    "path": "include/platform/sdk_platform.h",
+    "category": "source",
+    "bytes": 615,
+    "physical_lines": 24,
+    "blank_lines": 5,
+    "comment_only_lines": 5,
+    "code_lines": 13,
+    "mixed_code_comment_lines": 1,
+    "encoding_warning": false
+  },{
+    "path": "include/storage/sdk_vault.h",
+    "category": "source",
+    "bytes": 5850,
+    "physical_lines": 174,
+    "blank_lines": 26,
+    "comment_only_lines": 26,
+    "code_lines": 110,
+    "mixed_code_comment_lines": 12,
+    "encoding_warning": false
+  },{
+    "path": "include/sudoku/sdk_sudoku.h",
+    "category": "source",
+    "bytes": 15136,
+    "physical_lines": 339,
+    "blank_lines": 53,
+    "comment_only_lines": 115,
+    "code_lines": 121,
+    "mixed_code_comment_lines": 50,
+    "encoding_warning": false
+  },{
+    "path": "include/ui/sdk_ui.h",
+    "category": "source",
+    "bytes": 7835,
+    "physical_lines": 163,
+    "blank_lines": 21,
+    "comment_only_lines": 35,
+    "code_lines": 89,
+    "mixed_code_comment_lines": 18,
+    "encoding_warning": false
+  },{
+    "path": "include/ui/sdk_ui_font_data.h",
+    "category": "source",
+    "bytes": 5031,
+    "physical_lines": 104,
+    "blank_lines": 1,
+    "comment_only_lines": 2,
+    "code_lines": 6,
+    "mixed_code_comment_lines": 95,
+    "encoding_warning": false
+  },{
+    "path": "src/app/entry/sdk_entry.c",
+    "category": "source",
+    "bytes": 914,
+    "physical_lines": 26,
+    "blank_lines": 5,
+    "comment_only_lines": 1,
+    "code_lines": 19,
+    "mixed_code_comment_lines": 1,
+    "encoding_warning": false
+  },{
+    "path": "src/app/sdk_app.c",
+    "category": "source",
+    "bytes": 15736,
+    "physical_lines": 408,
+    "blank_lines": 26,
+    "comment_only_lines": 36,
+    "code_lines": 339,
+    "mixed_code_comment_lines": 7,
+    "encoding_warning": false
+  },{
+    "path": "src/app/sdk_pages.c",
+    "category": "source",
+    "bytes": 15130,
+    "physical_lines": 340,
+    "blank_lines": 35,
+    "comment_only_lines": 29,
+    "code_lines": 274,
+    "mixed_code_comment_lines": 2,
+    "encoding_warning": false
+  },{
+    "path": "src/common/sdk_common.c",
+    "category": "source",
+    "bytes": 7373,
+    "physical_lines": 314,
+    "blank_lines": 32,
+    "comment_only_lines": 2,
+    "code_lines": 280,
+    "mixed_code_comment_lines": 0,
+    "encoding_warning": false
+  },{
+    "path": "src/common/sdk_crc32.c",
+    "category": "source",
+    "bytes": 1047,
+    "physical_lines": 42,
+    "blank_lines": 7,
+    "comment_only_lines": 3,
+    "code_lines": 32,
+    "mixed_code_comment_lines": 0,
+    "encoding_warning": false
+  },{
+    "path": "src/common/sdk_json.c",
+    "category": "source",
+    "bytes": 16552,
+    "physical_lines": 598,
+    "blank_lines": 32,
+    "comment_only_lines": 10,
+    "code_lines": 553,
+    "mixed_code_comment_lines": 3,
+    "encoding_warning": false
+  },{
+    "path": "src/common/sdk_lzss.c",
+    "category": "source",
+    "bytes": 4940,
+    "physical_lines": 154,
+    "blank_lines": 14,
+    "comment_only_lines": 8,
+    "code_lines": 124,
+    "mixed_code_comment_lines": 8,
+    "encoding_warning": false
+  },{
+    "path": "src/common/sdk_sha256.c",
+    "category": "source",
+    "bytes": 4553,
+    "physical_lines": 138,
+    "blank_lines": 14,
+    "comment_only_lines": 1,
+    "code_lines": 123,
+    "mixed_code_comment_lines": 0,
+    "encoding_warning": false
+  },{
+    "path": "src/common/sdk_win.c",
+    "category": "source",
+    "bytes": 43373,
+    "physical_lines": 1400,
+    "blank_lines": 78,
+    "comment_only_lines": 74,
+    "code_lines": 1240,
+    "mixed_code_comment_lines": 8,
+    "encoding_warning": false
+  },{
+    "path": "src/crypto/sdk_aead.c",
+    "category": "source",
+    "bytes": 5124,
+    "physical_lines": 149,
+    "blank_lines": 25,
+    "comment_only_lines": 8,
+    "code_lines": 116,
+    "mixed_code_comment_lines": 0,
+    "encoding_warning": false
+  },{
+    "path": "src/crypto/sdk_chacha.c",
+    "category": "source",
+    "bytes": 4382,
+    "physical_lines": 134,
+    "blank_lines": 14,
+    "comment_only_lines": 14,
+    "code_lines": 106,
+    "mixed_code_comment_lines": 0,
+    "encoding_warning": false
+  },{
+    "path": "src/crypto/sdk_hmac.c",
+    "category": "source",
+    "bytes": 3553,
+    "physical_lines": 103,
+    "blank_lines": 20,
+    "comment_only_lines": 3,
+    "code_lines": 80,
+    "mixed_code_comment_lines": 0,
+    "encoding_warning": false
+  },{
+    "path": "src/crypto/sdk_pbkdf2.c",
+    "category": "source",
+    "bytes": 3067,
+    "physical_lines": 95,
+    "blank_lines": 12,
+    "comment_only_lines": 12,
+    "code_lines": 71,
+    "mixed_code_comment_lines": 0,
+    "encoding_warning": false
+  },{
+    "path": "src/crypto/sdk_poly1305.c",
+    "category": "source",
+    "bytes": 7144,
+    "physical_lines": 212,
+    "blank_lines": 29,
+    "comment_only_lines": 17,
+    "code_lines": 166,
+    "mixed_code_comment_lines": 0,
+    "encoding_warning": false
+  },{
+    "path": "src/platform/sdk_platform.c",
+    "category": "source",
+    "bytes": 4527,
+    "physical_lines": 141,
+    "blank_lines": 11,
+    "comment_only_lines": 4,
+    "code_lines": 125,
+    "mixed_code_comment_lines": 1,
+    "encoding_warning": false
+  },{
+    "path": "src/storage/sdk_vault.c",
+    "category": "source",
+    "bytes": 31559,
+    "physical_lines": 693,
+    "blank_lines": 47,
+    "comment_only_lines": 36,
+    "code_lines": 593,
+    "mixed_code_comment_lines": 17,
+    "encoding_warning": false
+  },{
+    "path": "src/sudoku/sdk_sudoku_board.c",
+    "category": "source",
+    "bytes": 6308,
+    "physical_lines": 159,
+    "blank_lines": 11,
+    "comment_only_lines": 4,
+    "code_lines": 139,
+    "mixed_code_comment_lines": 5,
+    "encoding_warning": false
+  },{
+    "path": "src/sudoku/sdk_sudoku_gen.c",
+    "category": "source",
+    "bytes": 25258,
+    "physical_lines": 643,
+    "blank_lines": 71,
+    "comment_only_lines": 92,
+    "code_lines": 465,
+    "mixed_code_comment_lines": 15,
+    "encoding_warning": false
+  },{
+    "path": "src/sudoku/sdk_sudoku_hint.c",
+    "category": "source",
+    "bytes": 3906,
+    "physical_lines": 112,
+    "blank_lines": 14,
+    "comment_only_lines": 24,
+    "code_lines": 73,
+    "mixed_code_comment_lines": 1,
+    "encoding_warning": false
+  },{
+    "path": "src/sudoku/sdk_sudoku_logic.c",
+    "category": "source",
+    "bytes": 29524,
+    "physical_lines": 683,
+    "blank_lines": 41,
+    "comment_only_lines": 55,
+    "code_lines": 579,
+    "mixed_code_comment_lines": 8,
+    "encoding_warning": false
+  },{
+    "path": "src/sudoku/sdk_sudoku_solver.c",
+    "category": "source",
+    "bytes": 3354,
+    "physical_lines": 118,
+    "blank_lines": 10,
+    "comment_only_lines": 8,
+    "code_lines": 94,
+    "mixed_code_comment_lines": 6,
+    "encoding_warning": false
+  },{
+    "path": "src/ui/sdk_ui_base.c",
+    "category": "source",
+    "bytes": 5055,
+    "physical_lines": 142,
+    "blank_lines": 6,
+    "comment_only_lines": 7,
+    "code_lines": 124,
+    "mixed_code_comment_lines": 5,
+    "encoding_warning": false
+  },{
+    "path": "src/ui/sdk_ui_components.c",
+    "category": "source",
+    "bytes": 8680,
+    "physical_lines": 203,
+    "blank_lines": 17,
+    "comment_only_lines": 9,
+    "code_lines": 176,
+    "mixed_code_comment_lines": 1,
+    "encoding_warning": false
+  },{
+    "path": "src/ui/sdk_ui_fb.c",
+    "category": "source",
+    "bytes": 16223,
+    "physical_lines": 389,
+    "blank_lines": 17,
+    "comment_only_lines": 18,
+    "code_lines": 348,
+    "mixed_code_comment_lines": 6,
+    "encoding_warning": false
+  },{
+    "path": "src/ui/sdk_ui_font.c",
+    "category": "source",
+    "bytes": 2127,
+    "physical_lines": 64,
+    "blank_lines": 7,
+    "comment_only_lines": 2,
+    "code_lines": 55,
+    "mixed_code_comment_lines": 0,
+    "encoding_warning": false
+  },{
+    "path": "src/ui/sdk_ui_font_data.h",
+    "category": "source",
+    "bytes": 5031,
+    "physical_lines": 104,
+    "blank_lines": 1,
+    "comment_only_lines": 2,
+    "code_lines": 6,
+    "mixed_code_comment_lines": 95,
+    "encoding_warning": false
+  },{
+    "path": "src/ui/sdk_ui_theme.c",
+    "category": "source",
+    "bytes": 2802,
+    "physical_lines": 51,
+    "blank_lines": 1,
+    "comment_only_lines": 1,
+    "code_lines": 49,
+    "mixed_code_comment_lines": 0,
+    "encoding_warning": false
+  }],
+  "excluded": [{
+    "path": ".tinyvcs",
+    "reason": "default_dir"
+  },{
+    "path": "build",
+    "reason": "default_dir"
+  },{
+    "path": "results",
+    "reason": "default_dir"
+  }],
+  "warnings": [],
+  "errors": [],
+  "totals": {
+    "files": 118,
+    "physical_lines": 27581,
+    "blank_lines": 3841,
+    "comment_only_lines": 1871,
+    "code_lines": 21334,
+    "mixed_code_comment_lines": 535,
+    "bytes": 1013382,
+    "excluded": 3,
+    "warnings": 0,
+    "errors": 0
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "suite": "unit-tinyvcs",
+  "source_commit": "d6e82717791b5f29eaffd466585a4ed858df226248f9232d33bde8fb830118c1",
+  "started_epoch_ms": 1788089606293,
+  "duration_ms": 2643,
+  "total": 6,
+  "passed": 6,
+  "failed": 0,
+  "skipped": 0,
+  "exit_status": 0,
+  "cases": [
+    {
+      "name": "tinyvcs.init_and_reinit",
+      "requirement_ids": ["docs03-init"],
+      "status": "passed",
+      "duration_ms": 0,
+      "assertion_count": 2,
+      "failure_message": null,
+      "evidence_paths": []
+    },
+    {
+      "name": "tinyvcs.blob_roundtrip",
+      "requirement_ids": ["docs19-blob"],
+      "status": "passed",
+      "duration_ms": 93,
+      "assertion_count": 9,
+      "failure_message": null,
+      "evidence_paths": []
+    },
+    {
+      "name": "tinyvcs.index_roundtrip",
+      "requirement_ids": ["docs19-index"],
+      "status": "passed",
+      "duration_ms": 185,
+      "assertion_count": 8,
+      "failure_message": null,
+      "evidence_paths": []
+    },
+    {
+      "name": "tinyvcs.commit_and_verify",
+      "requirement_ids": ["docs19-commit"],
+      "status": "passed",
+      "duration_ms": 726,
+      "assertion_count": 13,
+      "failure_message": null,
+      "evidence_paths": []
+    },
+    {
+      "name": "tinyvcs.branch_second_commit",
+      "requirement_ids": ["docs19-branch"],
+      "status": "passed",
+      "duration_ms": 1100,
+      "assertion_count": 10,
+      "failure_message": null,
+      "evidence_paths": []
+    },
+    {
+      "name": "tinyvcs.status_classification",
+      "requirement_ids": ["docs19-status"],
+      "status": "passed",
+      "duration_ms": 539,
+      "assertion_count": 8,
+      "failure_message": null,
+      "evidence_paths": []
+    }
+  ]
+}

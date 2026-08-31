@@ -1,0 +1,142 @@
+Microsoft (R) COFF/PE Dumper Version 14.44.35211.0
+Copyright (C) Microsoft Corporation.  All rights reserved.
+
+
+Dump of file sudoku.exe
+
+File Type: EXECUTABLE IMAGE
+
+  Section contains the following imports:
+
+    KERNEL32.dll
+             140030010 Import Address Table
+             14003F1B0 Import Name Table
+                     0 time date stamp
+                     0 Index of first forwarder reference
+
+                         64B WriteFile
+                          94 CloseHandle
+                         412 MultiByteToWideChar
+                         128 DeleteFileW
+                         1B9 FlushFileBuffers
+                         261 GetFileAttributesW
+                         267 GetFileSize
+                         498 ReadFile
+                         40B MoveFileExW
+                         4E8 ReplaceFileW
+                         18F FindClose
+                         195 FindFirstFileExW
+                         1A6 FindNextFileW
+                         26A GetFileType
+                         27D GetLastError
+                          DA CreateFileW
+                         471 QueryPerformanceFrequency
+                         233 GetCurrentProcessId
+                         30A GetSystemTimeAsFileTime
+                         291 GetModuleFileNameW
+                         64A WriteConsoleW
+                         216 GetConsoleMode
+                         21A GetConsoleOutputCP
+                         375 HeapSize
+                         555 SetFilePointerEx
+                         2D4 GetProcessHeap
+                         2F8 GetStringTypeW
+                         57F SetStdHandle
+                         1C4 FreeEnvironmentStringsW
+                         253 GetEnvironmentStringsW
+                         637 WideCharToMultiByte
+                         1DB GetCPInfo
+                         2B6 GetOEMCP
+                         1CC GetACP
+                         3AE IsValidCodePage
+                         470 QueryPerformanceCounter
+                         295 GetModuleHandleW
+                         4F5 RtlCaptureContext
+                         4FD RtlLookupFunctionEntry
+                         504 RtlVirtualUnwind
+                         5E6 UnhandledExceptionFilter
+                         5A4 SetUnhandledExceptionFilter
+                         232 GetCurrentProcess
+                         5C4 TerminateProcess
+                         3A8 IsProcessorFeaturePresent
+                         237 GetCurrentThreadId
+                         38A InitializeSListHead
+                         3A0 IsDebuggerPresent
+                         2F1 GetStartupInfoW
+                         503 RtlUnwindEx
+                         564 SetLastError
+                         149 EnterCriticalSection
+                         3E0 LeaveCriticalSection
+                         123 DeleteCriticalSection
+                         386 InitializeCriticalSectionAndSpinCount
+                         5D6 TlsAlloc
+                         5D8 TlsGetValue
+                         5D9 TlsSetValue
+                         5D7 TlsFree
+                         1C5 FreeLibrary
+                         2CD GetProcAddress
+                         3E6 LoadLibraryExW
+                         145 EncodePointer
+                         487 RaiseException
+                         4FF RtlPcToFileHeader
+                         1F0 GetCommandLineA
+                         1F1 GetCommandLineW
+                         2F3 GetStdHandle
+                         178 ExitProcess
+                         294 GetModuleHandleExW
+                         36C HeapAlloc
+                         370 HeapFree
+                         373 HeapReAlloc
+                         1B4 FlsAlloc
+                         1B6 FlsGetValue
+                         1B7 FlsSetValue
+                         1B5 FlsFree
+                         3D4 LCMapStringW
+
+    USER32.dll
+             140030288 Import Address Table
+             14003F428 Import Name Table
+                     0 time date stamp
+                     0 Index of first forwarder reference
+
+                         18B GetMessageW
+                         36F SetThreadDpiAwarenessContext
+                         259 LoadCursorW
+                         224 InvalidateRect
+                          F4 EndPaint
+                          11 BeginPaint
+                         3D4 UpdateWindow
+                         372 SetTimer
+                         382 SetWindowPos
+                         39A ShowWindow
+                          B5 DestroyWindow
+                          76 CreateWindowExW
+                         2DF RegisterClassExW
+                         2AF PostQuitMessage
+                          A7 DefWindowProcW
+                          BD DispatchMessageW
+                         3BA TranslateMessage
+
+    GDI32.dll
+             140030000 Import Address Table
+             14003F1A0 Import Name Table
+                     0 time date stamp
+                     0 Index of first forwarder reference
+
+                         3B1 StretchDIBits
+
+    bcrypt.dll
+             140030318 Import Address Table
+             14003F4B8 Import Name Table
+                     0 time date stamp
+                     0 Index of first forwarder reference
+
+                          1D BCryptGenRandom
+
+  Summary
+
+        3000 .data
+        2000 .pdata
+       10000 .rdata
+        1000 .reloc
+       2F000 .text

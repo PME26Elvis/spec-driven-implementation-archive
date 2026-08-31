@@ -1,0 +1,11 @@
+suite: integration
+source_commit: d6e82717791b5f29eaffd466585a4ed858df226248f9232d33bde8fb830118c1
+started_epoch_ms: 1788088825829
+--------------------------------------------------------------------------------
+passed  integration.lifecycle                                                      8 asserts     44ms
+passed  integration.undo_redo                                                      5 asserts     57ms
+passed  integration.notes                                                          4 asserts     84ms
+passed  integration.vault_unlock                                                   5 asserts    283ms
+passed  integration.auto_solve                                                     1 asserts    449ms
+--------------------------------------------------------------------------------
+total 5  passed 5  failed 0  skipped 0  duration_ms 917  exit_status 0
