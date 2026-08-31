@@ -10,4 +10,7 @@ Reviewed exclusion:
 
 Implementation-authored source, headers, tests, README, release documentation, traceability, and manual checklist remain included.
 
-Expected static selection: **40 authored files**. CI records the exact `o200k_base` token count.
+Validated by `Count authored run tokens` workflow run 12 with Repomix 1.18.0 and `o200k_base`:
+
+- **40 authored files**
+- **86,167 tokens**
