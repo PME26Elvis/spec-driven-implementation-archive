@@ -3,7 +3,11 @@
 
 ## Repomix 統計
 ### Project
-Project 採 archive 統一的 reviewed implementer-authored corpus 規則計算；精確 token 數等待本 run 的 `analysis/repomix/repomix.config.json` 由 `Count authored run tokens` workflow 驗證後記錄。
+使用 archive 統一的 reviewed implementer-authored corpus 規則，排除 generated results 與 auto-generated font tables（`o200k_base`）。
+
+Total Files: 71 files
+
+Total Tokens: 218,463 tokens
 
 ### Conversation
 使用不同 Tokenizer 估算大約 670,000 Tokens。
