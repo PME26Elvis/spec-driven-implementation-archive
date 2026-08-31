@@ -12,7 +12,6 @@
     "useDotIgnore": false,
     "useDefaultPatterns": false,
     "customPatterns": [
-      "c17-win32-sudoku-task-pack-v1.0.0/**",
       "results/**",
       "include/ui/sdk_ui_font_data.h",
       "src/ui/sdk_ui_font_data.h"
