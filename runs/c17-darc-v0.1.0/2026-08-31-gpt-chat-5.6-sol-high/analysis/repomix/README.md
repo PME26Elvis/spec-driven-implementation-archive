@@ -15,4 +15,7 @@ Reviewed exclusions:
 
 The four acceptance files above were verified byte-identical to the canonical task-pack copies. Generated/filled `acceptance/CHECKLIST_COMPLETED.md` and `acceptance/TRACEABILITY.md` remain included because they were produced by this implementation run.
 
-Expected static selection: **52 authored files**. CI records the exact `o200k_base` token count.
+Validated by `Count authored run tokens` workflow run 12 with Repomix 1.18.0 and `o200k_base`:
+
+- **52 authored files**
+- **160,382 tokens**
