@@ -14,7 +14,7 @@ Reviewed Repomix exclusions from the 105-file curated project:
 
 Everything else in the curated project is retained in the normalized metric, including C source/headers, tests, developer tools, build/test scripts, configuration, documentation, and the authored generator/helper scripts preserved from `build/`.
 
-The curated project contains **105 files**. These reviewed exclusions remove 34 generated evidence/font files, leaving **71 authored files**. `Count authored run tokens` workflow run 3 validated this exact selection with Repomix 1.18.0 and `o200k_base`: **218,463 tokens**.
+The curated project contains **105 files**. These reviewed exclusions remove 34 generated evidence/font files, leaving **71 authored files**. The final-snapshot `Count authored run tokens` validation with Repomix 1.18.0 and `o200k_base` reports **218,447 tokens**.
 
 From the repository root:
 

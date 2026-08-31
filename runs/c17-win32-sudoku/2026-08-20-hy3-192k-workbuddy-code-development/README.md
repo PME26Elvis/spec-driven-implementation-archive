@@ -7,7 +7,7 @@
 
 Total Files: 71 files
 
-Total Tokens: 218,463 tokens
+Total Tokens: 218,447 tokens
 
 ### Conversation
 使用不同 Tokenizer 估算大約 670,000 Tokens。

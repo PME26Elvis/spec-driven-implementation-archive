@@ -66,6 +66,6 @@ For cross-run implementation-size comparisons, the archive now also maintains a 
 | 2D Physics Sandbox (X11) · Grok 4.5 Fast | 76 | 59,873 |
 | Embedded Database Engine (X11) · Grok 4.5 Fast | 76 | 113,373 |
 | Pinball Sandbox (Win32) · WorkBuddy Hy3 | 53 | 112,534 |
-| Sudoku (Win32) · WorkBuddy Hy3 192k | 71 | 218,463 |
+| Sudoku (Win32) · WorkBuddy Hy3 192k | 71 | 218,447 |
 
 These normalized measurements were most recently validated for all six recorded runs on 2026-08-31. They exclude only snapshot-reviewed non-authored material such as compiled outputs, generated evidence/reports, logs/traces, and mechanically expanded data corpora; the exact exclusions and rationale are stored beside each recorded run.
