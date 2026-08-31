@@ -5,9 +5,11 @@ ChatGPT Chat · GPT-5.6 Sol · High（Plus）。
 本 run 的 project snapshot 位於 `project/cvc_taskpack_v1.0.1_implementation_release/`。
 
 ## Repomix
-使用 archive 統一的 reviewed implementer-authored corpus 規則；精確 `o200k_base` token 數由 `Count authored run tokens` workflow 計算並回填 root README。
+使用 archive 統一的 reviewed implementer-authored corpus 規則（Repomix 1.18.0、`o200k_base`）。
 
-預期 authored files：**40**
+Total Files: **40 files**
+
+Total Tokens: **86,167 tokens**
 
 ## Conversation
 原始 ChatGPT export：`conversations/chatgpt-export.md`。
