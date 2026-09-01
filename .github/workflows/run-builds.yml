@@ -11,6 +11,7 @@ on:
         options:
           - all
           - markdown
+          - markdown-win32-workbuddy-deepseek
           - darc
           - physics-sandbox
           - embedded-database
@@ -373,3 +374,85 @@ jobs:
             throw "Missing expected binary: $exe"
           }
           Write-Host "PASS: $exe"
+
+  markdown-win32-workbuddy-deepseek:
+    if: ${{ github.event_name == 'pull_request' || inputs.run == 'all' || inputs.run == 'markdown-win32-workbuddy-deepseek' }}
+    name: Markdown Editor Win32 (WorkBuddy · Deepseek-V4-Pro)
+    runs-on: windows-latest
+    timeout-minutes: 30
+    steps:
+      - name: Preserve LF line endings
+        shell: pwsh
+        run: git config --global core.autocrlf input
+
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up MinGW-w64
+        id: msys2-markdown
+        uses: msys2/setup-msys2@v2
+        with:
+          msystem: MINGW64
+          update: true
+          install: >-
+            mingw-w64-x86_64-gcc
+            mingw-w64-x86_64-make
+
+      - name: Recreate recorded WorkBuddy build layout
+        shell: pwsh
+        env:
+          MSYS2_LOCATION: ${{ steps.msys2-markdown.outputs.msys2-location }}
+        run: |
+          $ErrorActionPreference = 'Stop'
+
+          $source = Join-Path $env:GITHUB_WORKSPACE 'runs\c17-win32-markdown\2026-09-01-deepseek-v4-pro-1m-workbuddy-code-development\project\c17-markdown-editor'
+          $recordedBase = 'D:\0901-workbuddy-markdown-editor'
+          $recordedRoot = Join-Path $recordedBase 'c17-markdown-editor'
+          $toolchainParent = Join-Path $recordedBase 'toolchain'
+          $toolchainLink = Join-Path $toolchainParent 'mingw64'
+          $toolchainTarget = Join-Path $env:MSYS2_LOCATION 'mingw64'
+
+          if (Test-Path $recordedBase) {
+            Remove-Item -Recurse -Force $recordedBase
+          }
+
+          New-Item -ItemType Directory -Force -Path $recordedBase | Out-Null
+          New-Item -ItemType Directory -Force -Path $toolchainParent | Out-Null
+          Copy-Item -LiteralPath $source -Destination $recordedRoot -Recurse -Force
+          New-Item -ItemType Junction -Path $toolchainLink -Target $toolchainTarget | Out-Null
+
+          $gcc = 'D:\0901-workbuddy-markdown-editor\toolchain\mingw64\bin\gcc.exe'
+          $make = 'D:\0901-workbuddy-markdown-editor\toolchain\mingw64\bin\mingw32-make.exe'
+          if (-not (Test-Path $gcc)) {
+            throw "Missing recorded GCC path: $gcc"
+          }
+          if (-not (Test-Path $make)) {
+            throw "Missing recorded make path: $make"
+          }
+
+      - name: Build archived Markdown project
+        shell: msys2 {0}
+        run: |
+          cd /d/0901-workbuddy-markdown-editor/c17-markdown-editor
+          mingw32-make clean
+          mingw32-make all
+          mingw32-make tests
+
+      - name: Verify expected binaries
+        shell: pwsh
+        run: |
+          $root = 'D:\0901-workbuddy-markdown-editor\c17-markdown-editor\build'
+          $expected = @(
+            (Join-Path $root 'mdeditor.exe'),
+            (Join-Path $root 'locscan.exe'),
+            (Join-Path $root 'fixturegen.exe'),
+            (Join-Path $root 'evidencecheck.exe'),
+            (Join-Path $root 'testrunner.exe')
+          )
+
+          $missing = $expected | Where-Object { -not (Test-Path $_) }
+          if ($missing) {
+            throw "Missing expected binaries: $($missing -join ', ')"
+          }
+
+          $expected | ForEach-Object { Write-Host "PASS: $_" }
