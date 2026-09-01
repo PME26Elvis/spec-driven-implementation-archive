@@ -2,7 +2,7 @@
 
 An archive of fixed, specification-driven software implementation tasks and their implementation runs, intended for manual comparison across execution surfaces and model configurations.
 
-Current archive: **11 logical specifications**, represented by **17 specification directories**, with **10 recorded implementation runs**.
+Current archive: **11 logical specifications**, represented by **17 specification directories**, with **11 recorded implementation runs**.
 
 ## Execution environment
 
@@ -46,6 +46,7 @@ Equivalent X11 and Win32 task packs are grouped below as one logical specificati
 | Specification | Run | Execution Surface | Notes |
 | --- | --- | --- | --- |
 | Markdown Editor (X11) | [2026-08-10-gpt-work-5.6-sol-max](runs/c17-x11-markdown/2026-08-10-gpt-work-5.6-sol-max) | ChatGPT Work · GPT-5.6 Sol · Max | Plus; run README records timing, weekly-usage consumption, original run-specific statistics, and pending manual testing. |
+| Markdown Editor (Win32) | [2026-09-01-deepseek-v4-pro-1m-workbuddy-code-development](runs/c17-win32-markdown/2026-09-01-deepseek-v4-pro-1m-workbuddy-code-development) | Tencent WorkBuddy · Deepseek-V4-Pro · 超高 | Code Development mode with a 1M context window; approximately 1,659 WorkBuddy credits consumed. Implementer evidence did not close every Release Gate, and later manual GUI testing found multiple usability defects including a crash after typing into a newly created document. |
 | DARC v0.1.0 | [2026-08-12-grok-4.5-fast-web](runs/c17-darc-v0.1.0/2026-08-12-grok-4.5-fast-web) | Grok Web · Grok 4.5 · Fast | Free web run; run README includes original run statistics and a later independent GPT-5.6 Sol review whose release verdict is FAIL. |
 | 2D Physics Sandbox (X11) | [2026-08-14-grok-4.5-fast-web](runs/c17-x11-physics-sandbox/2026-08-14-grok-4.5-fast-web) | Grok Web · Grok 4.5 · Fast | Free web run; a later independent GPT-5.6 Sol review assesses the v1.0 release as BLOCKED. |
 | Embedded Database Engine (X11) | [2026-08-17-grok-4.5-fast-web](runs/c17-x11-embedded-database-engine/2026-08-17-grok-4.5-fast-web) | Grok Web · Grok 4.5 · Fast | Free web run; archive includes the submitted project snapshot and conversation export, with a later independent GPT-5.6 Sol review assessing the v1.0 release as **FAIL / BLOCKED**. |
@@ -66,6 +67,7 @@ For cross-run implementation-size comparisons, the archive maintains a separate 
 | Recorded run | Authored files | Authored tokens (`o200k_base`) |
 | --- | ---: | ---: |
 | Markdown Editor (X11) · GPT-5.6 Sol Max | 42 | 231,852 |
+| Markdown Editor (Win32) · WorkBuddy Deepseek-V4-Pro | 56 | 116,606 |
 | DARC v0.1.0 · Grok 4.5 Fast | 36 | 49,326 |
 | 2D Physics Sandbox (X11) · Grok 4.5 Fast | 76 | 59,873 |
 | Embedded Database Engine (X11) · Grok 4.5 Fast | 76 | 113,373 |
@@ -76,4 +78,4 @@ For cross-run implementation-size comparisons, the archive maintains a separate 
 | CVC POSIX · GPT-5.6 Sol High | 40 | 86,167 |
 | CVC Win32 · WorkBuddy Deepseek-V4-Flash | 54 | 152,176 |
 
-These normalized measurements were most recently validated for all ten recorded runs on 2026-09-01. They exclude only snapshot-reviewed non-authored material such as compiled outputs, generated evidence/reports, logs/traces, mechanically expanded data corpora, and byte-identical benchmark inputs already preserved in the canonical specification tree; the exact exclusions and rationale are stored beside each recorded run.
+These normalized measurements were most recently validated for all eleven recorded runs on 2026-09-01. They exclude only snapshot-reviewed non-authored material such as compiled outputs, generated evidence/reports, logs/traces, mechanically expanded data corpora, and byte-identical benchmark inputs already preserved in the canonical specification tree; the exact exclusions and rationale are stored beside each recorded run.
