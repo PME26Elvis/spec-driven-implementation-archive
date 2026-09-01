@@ -37,6 +37,9 @@ jobs:
           - name: Markdown Editor (X11)
             project: runs/c17-x11-markdown/2026-08-10-gpt-work-5.6-sol-max/project/c17_x11_markdown_editor
             config: runs/c17-x11-markdown/2026-08-10-gpt-work-5.6-sol-max/analysis/repomix/repomix.config.json
+          - name: Markdown Editor Win32 (WorkBuddy · Deepseek-V4-Pro)
+            project: runs/c17-win32-markdown/2026-09-01-deepseek-v4-pro-1m-workbuddy-code-development/project/c17-markdown-editor
+            config: runs/c17-win32-markdown/2026-09-01-deepseek-v4-pro-1m-workbuddy-code-development/analysis/repomix/repomix.config.json
           - name: DARC v0.1.0
             project: runs/c17-darc-v0.1.0/2026-08-12-grok-4.5-fast-web/project/darc_gates_closed_v0.1/darc
             config: runs/c17-darc-v0.1.0/2026-08-12-grok-4.5-fast-web/analysis/repomix/repomix.config.json
