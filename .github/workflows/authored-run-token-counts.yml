@@ -61,6 +61,9 @@ jobs:
           - name: CVC POSIX (ChatGPT · GPT-5.6 Sol High)
             project: runs/c17-posix-cvc/2026-08-31-gpt-chat-5.6-sol-high/project/cvc_taskpack_v1.0.1_implementation_release
             config: runs/c17-posix-cvc/2026-08-31-gpt-chat-5.6-sol-high/analysis/repomix/repomix.config.json
+          - name: CVC Win32 (WorkBuddy · Deepseek-V4-Flash)
+            project: runs/c17-win32-cvc/2026-08-31-deepseek-v4-flash-200k-workbuddy-code-development/project/cvc
+            config: runs/c17-win32-cvc/2026-08-31-deepseek-v4-flash-200k-workbuddy-code-development/analysis/repomix/repomix.config.json
     steps:
       - name: Check out repository
         uses: actions/checkout@v4

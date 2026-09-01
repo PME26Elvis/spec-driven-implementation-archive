@@ -2,7 +2,7 @@
 
 An archive of fixed, specification-driven software implementation tasks and their implementation runs, intended for manual comparison across execution surfaces and model configurations.
 
-Current archive: **11 logical specifications**, represented by **17 specification directories**, with **9 recorded implementation runs**.
+Current archive: **11 logical specifications**, represented by **17 specification directories**, with **10 recorded implementation runs**.
 
 ## Execution environment
 
@@ -54,6 +54,7 @@ Equivalent X11 and Win32 task packs are grouped below as one logical specificati
 | DARC v0.1.0 | [2026-08-31-gpt-chat-5.6-sol-high](runs/c17-darc-v0.1.0/2026-08-31-gpt-chat-5.6-sol-high) | ChatGPT Chat · GPT-5.6 Sol · High | Plus Chat run; final submitted package and conversation are archived, and the byte-exact raw ZIP is preserved as a Release asset. |
 | Elevator Group Control Simulator | [2026-08-31-gpt-chat-5.6-sol-medium](runs/c17-elevator-group-control/2026-08-31-gpt-chat-5.6-sol-medium) | ChatGPT Chat · GPT-5.6 Sol · Medium | Plus Chat run; Git stores the 13-file implementation-owned curated snapshot while the complete 705-file raw submission, including the large generated evidence corpus, is preserved as a Release asset. |
 | CVC (POSIX) | [2026-08-31-gpt-chat-5.6-sol-high](runs/c17-posix-cvc/2026-08-31-gpt-chat-5.6-sol-high) | ChatGPT Chat · GPT-5.6 Sol · High | Plus Chat run; final release package and conversation are archived, and the byte-exact raw ZIP is preserved as a Release asset. |
+| CVC (Win32) | [2026-08-31-deepseek-v4-flash-200k-workbuddy-code-development](runs/c17-win32-cvc/2026-08-31-deepseek-v4-flash-200k-workbuddy-code-development) | Tencent WorkBuddy · Deepseek-V4-Flash · reasoning off | Code Development mode with a 200K context window; approximately 300 WorkBuddy credits consumed. The run records a 0.17× night-discount credit multiplier shown by the UI at capture time. |
 
 > [!NOTE]
 > Historical run-specific measurements and counting rules, when available, remain in the individual run directories. For cross-run implementation-size comparison, use the normalized authored-corpus table below; it applies one reviewed archive policy across all recorded runs.
@@ -73,5 +74,6 @@ For cross-run implementation-size comparisons, the archive maintains a separate 
 | DARC v0.1.0 · GPT-5.6 Sol High | 52 | 160,382 |
 | Elevator Group Control · GPT-5.6 Sol Medium | 13 | 74,992 |
 | CVC POSIX · GPT-5.6 Sol High | 40 | 86,167 |
+| CVC Win32 · WorkBuddy Deepseek-V4-Flash | 54 | 152,176 |
 
-These normalized measurements were most recently validated for all nine recorded runs on 2026-08-31. They exclude only snapshot-reviewed non-authored material such as compiled outputs, generated evidence/reports, logs/traces, mechanically expanded data corpora, and byte-identical benchmark inputs already preserved in the canonical specification tree; the exact exclusions and rationale are stored beside each recorded run.
+These normalized measurements were most recently validated for all ten recorded runs on 2026-09-01. They exclude only snapshot-reviewed non-authored material such as compiled outputs, generated evidence/reports, logs/traces, mechanically expanded data corpora, and byte-identical benchmark inputs already preserved in the canonical specification tree; the exact exclusions and rationale are stored beside each recorded run.

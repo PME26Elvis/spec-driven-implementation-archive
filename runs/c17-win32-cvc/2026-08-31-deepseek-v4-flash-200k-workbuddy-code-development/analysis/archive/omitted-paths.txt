@@ -1,0 +1,20 @@
+# Omitted from Git project snapshot
+
+The following files were present in the raw submission but omitted from Git because they are derived CPython bytecode caches. The byte-exact original ZIP remains checksum-addressed for later Release-asset preservation.
+
+cvc/tests/run/__pycache__/test_category_A.cpython-313.pyc
+cvc/tests/run/__pycache__/test_category_B.cpython-313.pyc
+cvc/tests/run/__pycache__/test_category_C.cpython-313.pyc
+cvc/tests/run/__pycache__/test_category_D.cpython-313.pyc
+cvc/tests/run/__pycache__/test_category_E.cpython-313.pyc
+cvc/tests/run/__pycache__/test_category_F.cpython-313.pyc
+cvc/tests/run/__pycache__/test_category_G.cpython-313.pyc
+cvc/tests/run/__pycache__/test_category_H.cpython-313.pyc
+cvc/tests/run/__pycache__/test_category_I.cpython-313.pyc
+cvc/tests/run/__pycache__/test_category_J.cpython-313.pyc
+cvc/tests/run/__pycache__/test_category_K.cpython-313.pyc
+cvc/tests/run/__pycache__/test_category_L.cpython-313.pyc
+cvc/tests/run/__pycache__/test_category_M.cpython-313.pyc
+cvc/tests/run/__pycache__/test_category_N.cpython-313.pyc
+cvc/tests/run/__pycache__/test_category_O.cpython-313.pyc
+cvc/tests/run/__pycache__/testlib.cpython-313.pyc
