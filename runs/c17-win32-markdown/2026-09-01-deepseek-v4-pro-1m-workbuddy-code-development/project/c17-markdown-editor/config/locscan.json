@@ -1,0 +1,12 @@
+{
+  "include_extensions": [".c", ".h", ".md", ".txt"],
+  "source_extensions": [".c", ".h"],
+  "test_extensions": [".c"],
+  "documentation_extensions": [".md", ".txt"],
+  "config_build_extensions": [".json", ".yaml", ".yml", ".mk", ".bat", ".sh"],
+  "exclude_dirs": ["build", "toolchain", ".git", ".mdeditor", "evidence", "fixtures_out", "node_modules"],
+  "exclude_paths": ["*.o", "*.a", "*.exe", "*.obj", "*.dll", "*.log", "*.png", "*.jpg", "*.jpeg", "*.bmp", "*.pdf"],
+  "generated_paths": ["fixture-manifest.json", "evidence/manifest.json"],
+  "include_overrides": [],
+  "follow_directory_reparse_points": false
+}
