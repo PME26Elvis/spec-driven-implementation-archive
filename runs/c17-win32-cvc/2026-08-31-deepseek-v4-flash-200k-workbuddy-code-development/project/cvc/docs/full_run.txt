@@ -1,0 +1,259 @@
+
+=== Suite A-BuildAndSmoke ===
+  PASS  A02 help exits 0 and lists commands
+  PASS  A03 unknown command fails nonzero
+  PASS  A04 missing repository error handled
+  PASS  A05 help lists resolve + merge continue/abort
+  PASS  A06 log --max-count parsing
+  PASS  A07 nested subdir operates on repo root
+  PASS  A08 duplicate singleton options rejected
+  PASS  A09 deterministic byte ordering
+  PASS  A10 Unicode CLI args round-trip
+  PASS  A11 native execution without shell
+  PASS  A12 redirected output is UTF-8
+
+=== Suite B-Initialization ===
+  PASS  B01 init creates repo metadata
+  PASS  B02 second init refuses overwrite
+  PASS  B03 default branch is main
+  PASS  B04 empty repo status/log no crash
+  PASS  B05 save on unborn repo creates no commit
+  PASS  B06 exact v1 HEAD layout and zero lock
+  PASS  B07 partial init failure no false-valid repo
+
+=== Suite C-JSONParser ===
+  PASS  C01 valid minimal config
+  PASS  C02 valid full config
+  PASS  C03 nested arrays/objects
+  PASS  C04 escaped string characters
+  PASS  C05 BMP Unicode escape
+  PASS  C06 surrogate pair to UTF-8
+  PASS  C07 unpaired surrogate rejection
+  PASS  C08 invalid UTF-8 rejection
+  PASS  C09 duplicate key rejection
+  PASS  C10 trailing comma rejection
+  PASS  C11 comments rejection
+  PASS  C12 trailing garbage rejection
+  PASS  C13 numeric overflow rejection
+  PASS  C14 unknown schema key rejection
+  PASS  C15 wrong schema type rejection
+  PASS  C16 UTF-8 BOM rejection
+  PASS  C17 \u0000 parsed length-safely
+  PASS  C18 format_version 1.0/1e0 rejected
+  PASS  C19 config show/validate + init
+  PASS  C20 malformed number spellings rejected
+
+=== Suite D-SHA256AndObjectStore ===
+  PASS  D01 blob 0 empty-string SHA vector
+  PASS  D02 blob 3 abc SHA vector
+  PASS  D03 multi-block SHA consistency
+  PASS  D04 incremental chunk-boundary equivalence
+  PASS  D05 identical bytes deduplicate
+  PASS  D06 existing valid object reused
+  PASS  D07 corrupt object at expected ID fails
+  PASS  D08 tree order deterministic
+  PASS  D09 deterministic commit with CVC_TEST_TIMESTAMP
+  PASS  D10 canonical blob envelope fixed IDs
+  PASS  D11 tree binary encoding independently decoded
+  PASS  D12 unsorted/noncanonical tree rejected by verify
+  PASS  D13 empty-tree and root-commit vectors
+  PASS  D14 malformed CVC_TEST_TIMESTAMP rejected
+  PASS  D15 symlink 6 target vector
+  PASS  D16 file-link vs dir-link tree vectors
+
+=== Suite E-EligibilityAndScanning ===
+  PASS  E01 ordinary text tracked
+  PASS  E02 empty file tracked
+  PASS  E03 NUL at first byte ignored
+  PASS  E04 NUL at inspected final byte ignored
+  PASS  E05 NUL after probe does not trigger
+  PASS  E06 size-eligibility boundary
+  PASS  E07 non-symlink reparse point ignored
+  PASS  E08 nested repository boundary
+  PASS  E09 hidden ordinary file tracked
+  PASS  E10 Chinese filename tracked
+  PASS  E11 deep directory tree
+  PASS  E12 several thousand small files
+  PASS  E13 empty directories not versioned
+  PASS  E14 NUL after probe round-trips
+  PASS  E15 unsupported native component skipped
+  PASS  E16 path beyond MAX_PATH
+  PASS  E17 hidden attribute + ADS
+
+=== Suite F-SymlinksAndReparse ===
+  SKIP  F01 relative file symlink round-trip (host denies symlink creation (no admin/Developer Mode))
+  SKIP  F02 absolute file symlink PrintName (host denies symlink creation)
+  SKIP  F03 dangling symlink (host denies symlink creation)
+  SKIP  F04 directory symlink not traversed (host denies symlink creation)
+  SKIP  F05 symlink loop (host denies symlink creation)
+  SKIP  F06 symlink printname change detected (host denies symlink creation)
+  SKIP  F07 file to symlink type change (host denies symlink creation)
+  SKIP  F08 metadata reparse-point defense (host denies symlink creation (needs to inject reparse point))
+  SKIP  F09 dangling directory symlink kind (host denies symlink creation)
+  SKIP  F10 junction/mount-point ignored (host denies reparse creation (needs admin/Developer Mode))
+  SKIP  F11 file vs dir symlink kind change (host denies symlink creation)
+  PASS  F12 symlink creation denied
+
+=== Suite G-SaveAndStatus ===
+  PASS  G01 first save root commit
+  PASS  G02 no-op save creates no commit
+  PASS  G03 add/modify/delete status
+  SKIP  G04 type-changed category (host denies symlink creation; type-changed surfaces as delete+add)
+  PASS  G05 ignored summary
+  PASS  G06 complete snapshot stored
+  PASS  G07 tracked-to-binary transition
+  PASS  G08 filter removal
+  PASS  G09 long UTF-8 message
+  PASS  G10 show_diffstat=false
+  PASS  G11 empty message rejected
+
+=== Suite H-GlobAndFiltering ===
+  PASS  H01 * does not cross /
+  PASS  H02 ? one non-separator byte
+  PASS  H03 ** crosses dirs
+  PASS  H04 **/*.md root md
+  PASS  H05 include/exclude precedence
+  PASS  H06 CLI list replaces diffstat config
+  PASS  H07 malformed comma list rejected
+  PASS  H08 empty include arrays
+  PASS  H09 diffstat filter not affect tree
+  PASS  H10 Chinese exact path
+  PASS  H11 3+ consecutive stars rejected
+  PASS  H12 save filters never change membership
+  PASS  H13 status/diff no diffstat inherit
+  PASS  H14 empty elements + whitespace literal
+  PASS  H15 case-sensitive glob
+
+=== Suite I-DiffAndMyers ===
+  PASS  I01 identical zero edits
+  PASS  I02 add at beginning
+  PASS  I03 add at end
+  PASS  I04 delete middle
+  PASS  I05 replacement
+  PASS  I06 repeated-line shortest script
+  PASS  I07 no-final-newline
+  PASS  I08 CRLF distinction
+  PASS  I09 Chinese/emoji content
+  PASS  I10 edit script reconstructs bytes
+  PASS  I11 save diffstat totals
+  PASS  I12 added/deleted line counts
+  PASS  I13 NUL after probe length-safe diff
+  PASS  I14 byte-safe renderer
+
+=== Suite J-BranchAndSwitch ===
+  PASS  J01 create/list branches
+  PASS  J02 create branch before first commit
+  PASS  J03 switch divergent snapshots
+  PASS  J04 current branch marker
+  PASS  J05 duplicate branch fails
+  PASS  J06 delete current branch fails
+  PASS  J07 dirty tree blocks switch
+  PASS  J08 filtered-out path collision protection
+  PASS  J09 ineligible-file collision protection
+  PASS  J10 excluded descendant preserved in needed dir
+  PASS  J11b branch starting with -
+  PASS  J12 switch current no-op
+  PASS  J13 delete noncurrent with unreachable warning
+  PASS  J14 invalid branch names rejected
+  PASS  J15 case-insensitive branch collision
+  PASS  J16 case-only switch
+  SKIP  J17 untracked case sibling collision (case-sensitive fs required to construct case siblings)
+
+=== Suite K-RevisionRestore ===
+  PASS  K01 full commit ID
+  PASS  K02 branch revision
+  PASS  K03 unique >=8-char prefix
+  PASS  K04 ambiguous/too-short prefix
+  PASS  K05 restore regular file
+  SKIP  K06 restore symbolic link (symlink support unavailable on this host)
+  PASS  K07 recursive directory restore
+  PASS  K08 absent revision path fails
+  PASS  K09 recursive dir restore removes absent tracked descendants
+  PASS  K10 restore collision leaves subtree unchanged
+  PASS  K11 unreachable resolve; corrupt candidate fails
+  PASS  K12 root-relative from subdir; leading-dash operand
+  PASS  K13 invalid path operands rejected
+
+=== Suite L-Merge ===
+  PASS  L01 self merge no-op
+  PASS  L02 already-up-to-date ancestor
+  PASS  L03 fast-forward
+  PASS  L04 divergent different-file clean merge
+  PASS  L05 non-overlapping same-file edits merge
+  PASS  L06 identical overlapping edit merges once
+  PASS  L07 overlapping nonidentical edits conflict
+  PASS  L07b boundary insertion vs adjacent replacement
+  PASS  L08 modify/delete conflict
+  PASS  L09 add/add different-content conflict
+  PASS  L11 dirty-tree precondition
+  PASS  L12 mutations blocked during merge
+  PASS  L13 resolve + continue creates merge commit
+  PASS  L14 edit to provisional path blocks continue
+  PASS  L15 merge --abort restores pre-merge tree
+  PASS  L16 merge-base traversal through earlier merge commit
+  PASS  L17 recursive new-dir merge
+  PASS  L18 edit after resolve blocks continue
+  PASS  L19 out-of-band current ref movement detected
+  PASS  L20 merge into unborn current branch
+  PASS  L21 ineligible merge result is a conflict
+  PASS  L22 finalizing state retryable
+  PASS  L23 finalizing retry reuses exact merge commit
+  PASS  L24 merge after prior merge commit
+  PASS  L25 structural conflict ours materialization
+  PASS  L26 resolve exact root; re-run replaces
+  PASS  L27 merge status visible despite filters
+  PASS  L28 abort after completed merge is rejected
+  PASS  L30 unrelated histories rejected (smoke)
+  SKIP  L10 regular-file/symlink conflict (NTFS symlink creation unavailable (no Admin/Developer Mode))
+  SKIP  L29 case-collision merge rejected (cannot construct case-collision merge on case-insensitive NTFS)
+  PASS  L32 target ref movement does not retarget merge
+  SKIP  L31 finalizing ref-update failure blocks continue (requires ref-update fault injection not reproducible black-box; covered by L23 + code review)
+
+=== Suite M-Rollback ===
+  PASS  M01 rollback ancestor tree
+  PASS  M02 rollback cross-branch commit tree
+  PASS  M03 rollback creates new commit
+  PASS  M04 rollback parent is pre-rollback HEAD
+  PASS  M05 old history remains reachable
+  PASS  M06 dirty tree blocks rollback
+  PASS  M07 collision blocks rollback
+  PASS  M08 rollback to equal tree creates commit
+  PASS  M09 rollback on unborn branch fails
+
+=== Suite N-Verification ===
+  PASS  N01 healthy repo verifies
+  PASS  N02 edited blob detected
+  PASS  N03 missing blob detected
+  PASS  N04 missing tree detected
+  PASS  N05 malformed tree detected
+  PASS  N06 malformed commit detected
+  PASS  N07 bad branch ref detected
+  PASS  N08 bad HEAD detected
+  PASS  N09 unknown repo format rejected
+  PASS  N10 unreachable valid object ok
+  SKIP  N11 reparse substitution rejected (symlink support unavailable)
+  PASS  N13 hash-invalid unreachable object fails
+  PASS  N14 wrong-type reference rejected
+  PASS  N16 noncanonical object path rejected
+  SKIP  N18 branch ref namespace collision (case-collision ref namespace not constructible on case-insensitive NTFS)
+  PASS  N12 Windows-invalid/device component rejected
+  PASS  N15 unreachable ref integrity fails
+  PASS  N17 over-long component rejected
+
+=== Suite O-Locking ===
+  PASS  O01 exclusive lock blocks second writer
+  PASS  O02 read blocked by writer; shared readers coexist
+  PASS  O05 orphan object not treated as valid
+  PASS  O06 materialization failure preserves state
+  PASS  O08 restore serialized with writer
+  PASS  O09 hard-linked outside path not mutated
+  PASS  O10 byte-range [0,1) lock; lock stays zero bytes
+  PASS  O12 incompatible open handle fails cleanly
+  SKIP  O03/O04/O07/O11 fault-injection (documented skip) (O03/O04/O07/O11 require fault injection not reproducible black-box; covered by O05/O06/O12 + code review)
+
+==================================================
+TOTAL  : 222
+PASSED : 202
+FAILED : 0
+SKIPPED: 20
+==================================================

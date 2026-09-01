@@ -19,6 +19,7 @@ on:
           - darc-chatgpt
           - elevator-chatgpt
           - cvc-chatgpt
+          - cvc-win32-workbuddy-deepseek
   pull_request:
     paths:
       - .github/workflows/run-builds.yml
@@ -306,3 +307,69 @@ jobs:
         run: |
           make clean
           make all
+
+  cvc-win32-workbuddy-deepseek:
+    if: ${{ github.event_name == 'pull_request' || inputs.run == 'all' || inputs.run == 'cvc-win32-workbuddy-deepseek' }}
+    name: CVC Win32 (WorkBuddy · Deepseek-V4-Flash)
+    runs-on: windows-latest
+    timeout-minutes: 30
+    steps:
+      - name: Preserve LF line endings
+        shell: pwsh
+        run: git config --global core.autocrlf input
+
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up MinGW-w64
+        id: msys2-cvc
+        uses: msys2/setup-msys2@v2
+        with:
+          msystem: MINGW64
+          suppress-deprecation-warnings: msystem-mingw64
+          update: true
+          install: >-
+            mingw-w64-x86_64-gcc
+
+      - name: Recreate recorded WorkBuddy build layout
+        shell: pwsh
+        env:
+          MSYS2_LOCATION: ${{ steps.msys2-cvc.outputs.msys2-location }}
+        run: |
+          $ErrorActionPreference = 'Stop'
+
+          $source = Join-Path $env:GITHUB_WORKSPACE 'runs\c17-win32-cvc\2026-08-31-deepseek-v4-flash-200k-workbuddy-code-development\project\cvc'
+          $recordedBase = 'D:\0831-cvc-workbuddy'
+          $recordedRoot = Join-Path $recordedBase 'cvc'
+          $toolchainParent = Join-Path $recordedBase 'toolchain'
+          $toolchainLink = Join-Path $toolchainParent 'mingw64'
+          $toolchainTarget = Join-Path $env:MSYS2_LOCATION 'mingw64'
+
+          if (Test-Path $recordedBase) {
+            Remove-Item -Recurse -Force $recordedBase
+          }
+
+          New-Item -ItemType Directory -Force -Path $recordedBase | Out-Null
+          New-Item -ItemType Directory -Force -Path $toolchainParent | Out-Null
+          Copy-Item -LiteralPath $source -Destination $recordedRoot -Recurse -Force
+
+          New-Item -ItemType Junction -Path $toolchainLink -Target $toolchainTarget | Out-Null
+
+          if (-not (Test-Path 'D:\0831-cvc-workbuddy\toolchain\mingw64\bin\gcc.exe')) {
+            throw 'Recorded MinGW toolchain path was not created successfully.'
+          }
+
+      - name: Build archived CVC project
+        shell: msys2 {0}
+        run: |
+          bash /d/0831-cvc-workbuddy/cvc/tools/build.sh clean
+          bash /d/0831-cvc-workbuddy/cvc/tools/build.sh all
+
+      - name: Verify expected binary
+        shell: pwsh
+        run: |
+          $exe = 'D:\0831-cvc-workbuddy\.cvc_build_tmp\bin\cvc.exe'
+          if (-not (Test-Path $exe)) {
+            throw "Missing expected binary: $exe"
+          }
+          Write-Host "PASS: $exe"
