@@ -67,6 +67,9 @@ jobs:
           - name: CVC Win32 (WorkBuddy · Deepseek-V4-Flash)
             project: runs/c17-win32-cvc/2026-08-31-deepseek-v4-flash-200k-workbuddy-code-development/project/cvc
             config: runs/c17-win32-cvc/2026-08-31-deepseek-v4-flash-200k-workbuddy-code-development/analysis/repomix/repomix.config.json
+          - name: TableTool (Grok Web · Fast)
+            project: runs/c17-tabletool/2026-09-02-grok-fast-web/project/tabletool
+            config: runs/c17-tabletool/2026-09-02-grok-fast-web/analysis/repomix/repomix.config.json
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
