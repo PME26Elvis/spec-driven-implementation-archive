@@ -80,4 +80,4 @@ For cross-run implementation-size comparisons, the archive maintains a separate 
 | CVC Win32 · WorkBuddy Deepseek-V4-Flash | 54 | 152,176 |
 | TableTool · Grok Web Fast | 31 | 39,490 |
 
-These normalized measurements were validated for all twelve recorded runs on 2026-09-02 by `Count authored run tokens` workflow run 23. They exclude only snapshot-reviewed non-authored material such as compiled outputs, generated evidence/reports, logs/traces, mechanically expanded data corpora, and byte-identical benchmark inputs already preserved in the canonical specification tree; the exact exclusions and rationale are stored beside each recorded run.
+These normalized measurements were validated for all twelve recorded runs on 2026-09-02 by `Count authored run tokens` workflow run 24. They exclude only snapshot-reviewed non-authored material such as compiled outputs, generated evidence/reports, logs/traces, mechanically expanded data corpora, and byte-identical benchmark inputs already preserved in the canonical specification tree; the exact exclusions and rationale are stored beside each recorded run.
