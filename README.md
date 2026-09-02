@@ -2,7 +2,7 @@
 
 An archive of fixed, specification-driven software implementation tasks and their implementation runs, intended for manual comparison across execution surfaces and model configurations.
 
-Current archive: **11 logical specifications**, represented by **17 specification directories**, with **11 recorded implementation runs**.
+Current archive: **11 logical specifications**, represented by **17 specification directories**, with **12 recorded implementation runs**.
 
 ## Execution environment
 
@@ -10,11 +10,11 @@ Current archive: **11 logical specifications**, represented by **17 specificatio
 | --- | --- | --- | --- |
 | ChatGPT Chat | GPT-5.6 Sol | High / Medium (run-specific) | Plus |
 | ChatGPT Work | GPT-5.6 Sol | Max | Plus |
-| Grok Web | Grok 4.5 | Fast | Free (recorded runs) |
+| Grok Web | Grok 4.5 / backend undisclosed (run-specific) | Fast | Free / run-specific |
 | [Tencent WorkBuddy](platforms/workbuddy.zh-TW.md) | Hy3 / selectable models | Agentic desktop; model-dependent | Run-specific |
 
 > [!NOTE]
-> Recorded runs use end-user product surfaces rather than a stateless API harness. ChatGPT runs in this archive use ChatGPT Plus, while the currently recorded Grok runs used the free Grok web surface. These environments are not fully controlled or observable and may carry product- or account-level state such as prior conversation context, memory/personalization when available and enabled, UI orchestration, model routing, tool availability, and hidden system/developer instructions. Exact behavior differs by product and may change over time. No user-installed custom skills were added to the recorded ChatGPT runs unless a run states otherwise. Results should therefore be treated as observations of the named product surfaces, not as perfectly reproducible API benchmarks.
+> Recorded runs use end-user product surfaces rather than a stateless API harness. ChatGPT runs in this archive use ChatGPT Plus. Recorded Grok runs use the Grok web surface; historical Grok 4.5 runs used the free tier, while exact run-specific model routing is recorded only when exposed by the product UI. These environments are not fully controlled or observable and may carry product- or account-level state such as prior conversation context, memory/personalization when available and enabled, UI orchestration, model routing, tool availability, and hidden system/developer instructions. Exact behavior differs by product and may change over time. No user-installed custom skills were added to the recorded ChatGPT runs unless a run states otherwise. Results should therefore be treated as observations of the named product surfaces, not as perfectly reproducible API benchmarks.
 >
 > WorkBuddy is a newer, less familiar execution surface whose behavior depends on more than the selected foundation model. Detailed platform profiles: [繁體中文](platforms/workbuddy.zh-TW.md) · [English](platforms/workbuddy.md). They cover its architecture, Hy3, model selection, permissions, Skills/MCP/Connectors, memory, privacy, enterprise/runtime model, benchmark implications, and comparisons with Antigravity, Codex, Claude Code, Grok Build, and Pi.
 
@@ -56,6 +56,7 @@ Equivalent X11 and Win32 task packs are grouped below as one logical specificati
 | Elevator Group Control Simulator | [2026-08-31-gpt-chat-5.6-sol-medium](runs/c17-elevator-group-control/2026-08-31-gpt-chat-5.6-sol-medium) | ChatGPT Chat · GPT-5.6 Sol · Medium | Plus Chat run; Git stores the 13-file implementation-owned curated snapshot while the complete 705-file raw submission, including the large generated evidence corpus, is preserved as a Release asset. |
 | CVC (POSIX) | [2026-08-31-gpt-chat-5.6-sol-high](runs/c17-posix-cvc/2026-08-31-gpt-chat-5.6-sol-high) | ChatGPT Chat · GPT-5.6 Sol · High | Plus Chat run; final release package and conversation are archived, and the byte-exact raw ZIP is preserved as a Release asset. |
 | CVC (Win32) | [2026-08-31-deepseek-v4-flash-200k-workbuddy-code-development](runs/c17-win32-cvc/2026-08-31-deepseek-v4-flash-200k-workbuddy-code-development) | Tencent WorkBuddy · Deepseek-V4-Flash · reasoning off | Code Development mode with a 200K context window; approximately 300 WorkBuddy credits consumed. The run records a 0.17× night-discount credit multiplier shown by the UI at capture time. |
+| TableTool | [2026-09-02-grok-fast-web](runs/c17-tabletool/2026-09-02-grok-fast-web) | Grok Web · Fast · backend undisclosed | Approximately 28-minute web run. The Fast frontend did not expose a concrete backend model; the run README records the evidence-based inference that it was likely a Grok 4.6-family fast configuration. The submitted TableTool 1.0.1 project and full Markdown/MHTML conversation exports are archived. |
 
 > [!NOTE]
 > Historical run-specific measurements and counting rules, when available, remain in the individual run directories. For cross-run implementation-size comparison, use the normalized authored-corpus table below; it applies one reviewed archive policy across all recorded runs.
@@ -77,5 +78,6 @@ For cross-run implementation-size comparisons, the archive maintains a separate 
 | Elevator Group Control · GPT-5.6 Sol Medium | 13 | 74,992 |
 | CVC POSIX · GPT-5.6 Sol High | 40 | 86,167 |
 | CVC Win32 · WorkBuddy Deepseek-V4-Flash | 54 | 152,176 |
+| TableTool · Grok Web Fast | 31 | 39,490 |
 
-These normalized measurements were most recently validated for all eleven recorded runs on 2026-09-01. They exclude only snapshot-reviewed non-authored material such as compiled outputs, generated evidence/reports, logs/traces, mechanically expanded data corpora, and byte-identical benchmark inputs already preserved in the canonical specification tree; the exact exclusions and rationale are stored beside each recorded run.
+The previous eleven recorded runs were most recently validated together on 2026-09-01; the TableTool run was locally measured with the same reviewed policy on 2026-09-02. The pull-request workflow validates the complete recorded-run matrix. They exclude only snapshot-reviewed non-authored material such as compiled outputs, generated evidence/reports, logs/traces, mechanically expanded data corpora, and byte-identical benchmark inputs already preserved in the canonical specification tree; the exact exclusions and rationale are stored beside each recorded run.
